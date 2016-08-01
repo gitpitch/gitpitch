@@ -1,7 +1,7 @@
 
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/hello-world)
 
-##GitPitch - Get The Word Out About Your GitHub Projects!
+##GitPitch - Promote, Pitch, Or Present Your GitHub Projects
 
 
 1. [What Is GitPitch?](#what)
