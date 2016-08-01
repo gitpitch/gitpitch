@@ -12,7 +12,7 @@
 <a name="what" />
 ## What Is GitPitch?
 
-GitPitch is a service that turns **PITCHME.md** markdown into online, interactive slideshows.
+GitPitch is a service that turns **PITCHME.md** markdown into online, interactive slideshows. You can use it to promote, pitch or present your GitHub projects.
 
 Each slideshow presentation is made instantly available online just as soon as you *git-commit* and *push* **PITCHME.md** on any branch within a public GitHub repo.
 
@@ -23,6 +23,6 @@ Each slideshow presentation is made instantly available online just as soon as y
 <a name="purpose" />
 ## What Is GitPitch For?
 
-GitPitch makes it simple for GitHub developers to pitch, promote or present their GitHub projects. No more Keynote. No more PowerPoint. Just Markdown. Then Git-Commit.
+GitPitch makes it simple for GitHub developers to promote, pitch or present their GitHub projects. No more Keynote. No more PowerPoint. Just Markdown. Then Git-Commit.
 
 ![TERM](images/gp-terminal.png)
