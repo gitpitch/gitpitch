@@ -39,9 +39,13 @@ Each slideshow presentation is beautifully rendered, fully responsive, and highl
 
 ## GitPitch slideshow presentations are customizable
 
-![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-bg-style.png)
+Choose between six distinct visual themes:
 
-Choose between six distinct visual themes and further [customize the look and feel](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings) of your slideshow presentations using background images and your own logo.
+![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-night-style.png)
+
+Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings) of your slideshow presentations using background images and your own logo.
+
+![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-bg-style.png)
 
 ## GitPitch slideshow presentations are social
 
