@@ -61,3 +61,5 @@ GitPitch slideshow presentations are designed for sharing. You can:
 ## GitPitch slideshow presentations just work
 
 GitPitch requires no sign-up. And no configuration. Just add **PITCHME.md** ;)
+
+The [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki) provides a detailed `How-To` that walks you through getting started, building, customizing, and sharing your GitPitch slideshow presentations.
