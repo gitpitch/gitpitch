@@ -1,0 +1,121 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2016 David Russell
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+package com.gitpitch.services;
+
+import com.gitpitch.models.MarkdownModel;
+import com.gitpitch.utils.PitchParams;
+import com.gitpitch.utils.YAMLOptions;
+import org.apache.commons.io.FilenameUtils;
+import java.util.*;
+import javax.inject.*;
+import play.Logger;
+import play.Logger.ALogger;
+
+/*
+ * PITCHME.md image support service.
+ */
+@Singleton
+public class ImageService {
+
+    private final Logger.ALogger log = Logger.of(this.getClass());
+
+    public String buildBackground(PitchParams pp,
+                                         YAMLOptions yOpts) {
+
+        return buildBackground(pp, yOpts.fetchImageBg(pp));
+    }
+
+    public String buildBackground(PitchParams pp,
+                                         String imageBgUrl) {
+
+        return new StringBuffer(MarkdownModel.MD_SPACER)
+                .append(MarkdownModel.MD_IMAGE_OPEN)
+                .append(imageBgUrl)
+                .append(MarkdownModel.MD_IMAGE_SIZE)
+                .append(MarkdownModel.MD_CLOSER)
+                .append(MarkdownModel.MD_SPACER)
+                .toString();
+    }
+
+    public String buildBackgroundOffline(String md) {
+
+        try {
+
+            String frag = md.substring(MarkdownModel.MD_IMAGE_OPEN.length());
+            String fragUrl = frag.substring(0, frag.indexOf("\""));
+            String imageName = FilenameUtils.getName(fragUrl);
+            String imageUrl = IMG_OFFLINE_DIR + imageName;
+            return buildBackground(null, imageUrl);
+
+        } catch (Exception bex) {
+        }
+
+        return md;
+    }
+
+    public String buildInlineOffline(String imageName) {
+
+        return new StringBuffer(IMG_INLINE_OPEN).append(imageName)
+                .append(IMG_INLINE_CLOSE)
+                .toString();
+
+    }
+
+    public boolean inline(String md) {
+        return md.startsWith(MarkdownModel.MD_LINK_OPEN);
+    }
+
+    public boolean background(String md) {
+        return md.contains(MarkdownModel.DATA_IMAGE_ATTR);
+    }
+
+    public String extractBgUrl(String md,
+                               String gitRawBase,
+                               MarkdownModel mdm) {
+
+        try {
+
+            String delim = mdm.extractImageDelim(md);
+            String imageBgUrl = md.substring(delim.length());
+
+            if (mdm.linkAbsolute(imageBgUrl)) {
+                return imageBgUrl;
+            } else {
+                return new StringBuffer(gitRawBase).append(imageBgUrl)
+                        .toString();
+            }
+
+        } catch (Exception pex) {
+            log.warn("extractImageBgUrl: ex={}", pex);
+            /*
+             * Invalid bg syntax, return clean slide delimiter.
+             */
+            return mdm.isHorizontal(md) ? mdm.horizDelim() : mdm.vertDelim();
+        }
+    }
+
+    private static final String IMG_OFFLINE_DIR = "./assets/md/assets/";
+    private static final String IMG_INLINE_OPEN = "![Image](" + IMG_OFFLINE_DIR;
+    private static final String IMG_INLINE_CLOSE = ")";
+}

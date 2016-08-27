@@ -1,0 +1,15 @@
+@(gid: String, deps: com.gitpitch.policies.Dependencies)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GitPitch - Get the word out about your GitHub projects.</title>
+    <script src="@deps.jquery(false)/jquery.min.js"></script>
+    <script src="@deps.gitpitchjs(false)/gist-embed-2.5.min.js"></script>
+</head>
+<body>
+<code data-gist-id="@gid" data-gist-hide-footer="true"></code>
+</body>
+</html>

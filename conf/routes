@@ -1,0 +1,36 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
+
+# Serve GitPitch GIST iFrame for {gid}.
+GET     /pitchme/gist/:gid      com.gitpitch.controllers.PitchController.gist(gid:String)
+
+# Serve PITCHME.pdf.
+GET     /pitchme/print/:user/:repo/:b/:t/PITCHME.pdf    com.gitpitch.controllers.PitchController.print(user:String, repo:String, b:String, t:String, n:String ?= null)
+
+# Serve PITCHME.zip.
+GET     /pitchme/offline/:user/:repo/:b/:t/PITCHME.zip    com.gitpitch.controllers.PitchController.offline(user:String, repo:String, b:String, t:String, n:String ?= null)
+
+# Redirect to GitHub OAuth Access Request
+# GET     /pitchme/authreq com.gitpitch.controllers.AuthController.authreq()
+
+# Handle GitHub OAuth Callback
+# GET     /pitchme/authorized   com.gitpitch.controllers.AuthController.authorized(code:String ?= null, state:String ?= null)
+
+# Serve PITCHME.md markdown.
+GET     /pitchme/markdown/:user/:repo/:b/PITCHME.md     com.gitpitch.controllers.PitchController.markdown(user:String, repo:String, b:String)
+
+# Serve PITCHME.md slideshow.
+GET     /pitchme/slideshow/:user/:repo/:b   com.gitpitch.controllers.PitchController.slideshow(user:String, repo:String, b:String, t:String ?= null, n:String ?= null, fragments:String ?= null, offline:String ?= null)
+
+# Serve PITCHME.md landing page.
+GET     /:user/:repo/:b     com.gitpitch.controllers.PitchController.landing(user:String, repo:String, b:String, t:String ?= null, n:String?= null, offline:String ?= null)
+
+# Serve PITCHME.md landing page, short URI format.
+GET     /:user/:repo    com.gitpitch.controllers.PitchController.landing(user:String, repo:String, b:String ?= null, t:String ?= null, n:String?= null, offline:String ?= null)
+
+# Catch-all route redirect to website.
+GET     /*path          com.gitpitch.controllers.PitchController.catchall(path:String)

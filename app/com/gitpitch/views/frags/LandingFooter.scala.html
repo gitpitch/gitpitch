@@ -1,0 +1,66 @@
+@(rndr: com.gitpitch.utils.GitRepoRenderer, offline: Boolean)
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <p class="navbar-text pull-left"><span class="octicon octicon-megaphone"
+                                                           style="color: #e49436; font-weight:bold; font-size:0.9em"> GET THE WORD OUT!</span>
+                    </p>
+                    @if(!offline) {
+                    <li>
+                        <a href="#popupTheme" role="button" data-toggle="modal-popover" data-placement="top"><i
+                                class="fa fa-paint-brush" aria-hidden="true"> <span style="font-family: Helvetica Neue"
+                                                                                    ,Helvetica,Arial,sans-serif;">Theme</span>
+                        </i></a>
+                    </li>
+                    <li>
+                        <a href="#popupBadge" role="button" data-toggle="modal-popover" data-placement="top"><i
+                                class="fa fa-shield" aria-hidden="true"> <span style="font-family: Helvetica Neue"
+                                                                               ,Helvetica,Arial,sans-serif;">Badge</span>
+                        </i></a>
+                    </li>
+                    <li>
+                        <a href="#popupEmbed" role="button" data-toggle="modal-popover" data-placement="top"><i
+                                class="fa fa-link" aria-hidden="true"> <span style="font-family: Helvetica Neue"
+                                                                             ,Helvetica,Arial,sans-serif;">Embed</span>
+                        </i></a>
+                    </li>
+                    <li>
+                        <a href="#popupShare" role="button" data-toggle="modal-popover" data-placement="top"><i
+                                class="fa fa-share" aria-hidden="true"> <span style="font-family: Helvetica Neue"
+                                                                              ,Helvetica,Arial,sans-serif;">Share</span>
+                        </i></a>
+                    </li>
+                    <li>
+                        @if(rndr.isValid()) {
+                        <a href="@rndr.printLink()" target="_blank"><i class="fa fa-print" aria-hidden="true"> <span
+                                style="font-family: Helvetica Neue" ,Helvetica,Arial,sans-serif;">Print</span></i></a>
+                        } else {
+                        <a title="Repo not found, print disabled."><i class="fa fa-print" aria-hidden="true"> <span
+                                style="font-family: Helvetica Neue" ,Helvetica,Arial,sans-serif;">Print</span></i></a>
+                        }
+                    </li>
+                    <li>
+                        @if(rndr.isValid()) {
+                        <a href="@rndr.offlineLink()" target="_blank"><i class="fa fa-plug" aria-hidden="true"> <span
+                                style="font-family: Helvetica Neue" ,Helvetica,Arial,sans-serif;">Offline</span></i></a>
+                        } else {
+                        <a title="Repo not found, print disabled."><i class="fa fa-plug" aria-hidden="true"> <span
+                                style="font-family: Helvetica Neue" ,Helvetica,Arial,sans-serif;">Offline</span></i></a>
+                        }
+                    </li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if(offline) {
+                        <a>[ Offline ]</a>
+                        } else {
+                        <!-- mailto -->
+                        }
+                    </li>
+                </ul>
+            </div> <!-- navbar -->
+        </div> <!-- container-fluid -->
+    </nav>

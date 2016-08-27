@@ -1,0 +1,30 @@
+@(deps: com.gitpitch.policies.Dependencies, offline: Boolean)
+
+    <script src="@deps.gitpitchjs(offline)/bootstrap-modal-popover-2.0.1.js"></script>
+    <script src="@deps.gitpitchjs(offline)/clipboard-1.5.12.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('message',function(e) {
+            var key = e.message ? 'message' : 'data';
+            var data = e[key];
+            if(data == 'FIXEDTHEME') {
+                $( "#themes-popup-content" ).empty()
+                                            .append("<span style='padding: 10px 10px'><a target='_blank' href='https://github.com/gitpitch/gitpitch/wiki/Theme-Setting'>PITCHME.yaml</a> fixed theme in use.</span>");
+            }
+        },false);
+
+    </script>
+    <script type="text/javascript">
+        new Clipboard('.btn');
+
+    </script>
+    <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 5;
+        a2a_config.color_main = "D7E5ED";
+        a2a_config.color_border = "AECADB";
+        a2a_config.color_link_text = "333333";
+        a2a_config.color_link_text_hover = "333333";
+        a2a_config.prioritize = ["twitter", "linkedin", "facebook", "google_plus", "slashdot"];
+
+    </script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>

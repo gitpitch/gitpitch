@@ -1,0 +1,85 @@
+@import com.gitpitch.views.html.frags._
+
+@(rndr: com.gitpitch.utils.GitRepoRenderer, deps: com.gitpitch.policies.Dependencies, offline: Boolean, gaToken: String)
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="GitPitch - Slideshow Presentations For Your GitHub Projects">
+    <meta name="keywords"
+          content="GitPitch, GitHub, PITCHME, PITCHME.md, Slideshow, Presentation, Project">
+    <title>GitPitch - Slideshow Presentations For Your GitHub Projects</title>
+
+    <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
+    <link href="@deps.bootstrap(offline)/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="@deps.octicons(offline)/octicons.css" rel="stylesheet" type="text/css"/>
+
+    @LandingStyle(deps, offline)
+
+    <!-- Modernizr JS for IE9 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/modernizr.min.js"></script>
+    <![endif]-->
+
+    @if(!offline) {
+        @GoogleAnalytics(gaToken)
+    }
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="51">
+
+    @LandingHeader(rndr, offline)
+
+    <div class="container-fluid" style="background-color: white; margin-top:70px">
+        <div class="row" style="background-color:white">
+            <div class="col-md-12" style="background-color: white">
+            @if(rndr.isValid()) {
+                <iframe id="slideshow" frameborder="0" allowfullscreen
+                    @if(offline) {
+                        src="./pitchme.html"
+                    } else {
+                        src="@rndr.slideshowURL()"
+                    }
+                        style="width:100%; height:0px">
+                </iframe>
+            } else {
+                <div id="messagebox" class="centered">
+                    <span class="mega-octicon octicon-mark-github">
+                        GitHub repository not found
+                        <span class="mega-octicon octicon-stop"></span>
+                    </span>
+                <div/>
+            }
+            </div>
+        </div>
+    </div>
+
+    @LandingFooter(rndr, offline)
+
+    @if(!offline) {
+        @LandingSocialFeatures(rndr)
+    }
+
+    <div style="position: fixed; bottom: 52px; right: 20px; z-index: 999">
+        <span class="octicon octicon-info" style="font-size:0.8em; color: black"></span>
+        <span style="color:black; font-size:0.8em">Press ? for Help</span>
+    </div>
+    <script src="@deps.jquery(offline)/jquery.min.js"></script>
+    <script src="@deps.bootstrap(offline)/js/bootstrap.min.js"></script>
+    @if(!offline) {
+        @LandingSocialDependencies(deps, offline)
+    }
+    <script src="@deps.gitpitchjs(offline)/adjuster.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+@import com.gitpitch.views.html.frags._
+
+@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, printing: Boolean, offline: Boolean)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="GitPitch - Slideshow Presentations For Your GitHub Projects">
+    <meta name="keywords"
+          content="GitPitch, GitHub, PITCHME, PITCHME.md, Slideshow, Presentation, Project">
+    <title>GitPitch - Slideshow Presentations For Your GitHub Projects</title>
+    <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
+    <link href="@deps.revealjs(offline)/css/reveal.css" rel="stylesheet" type="text/css"/>
+    <link href="@deps.revealjs(offline)/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css"/>
+    @if(printing) {
+    <link href="@deps.revealjs(offline)/css/print/paper.css" rel="stylesheet" type="text/css"/>
+    }
+    <link href="@deps.highlightjs(offline)/@ssm.fetchHighlightCSS()" rel="stylesheet" type="text/css"/>
+    <link href="@deps.octicons(offline)/octicons.css" rel="stylesheet" type="text/css"/>
+
+    @SlideshowStyle()
+
+    @if(ssm.hasThemeOverride()) {
+    <style>
+    @ssm.fetchThemeOverride()
+    </style>
+    }
+</head>
+<body>
+    @if(ssm.hasLogo()) {
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 999">
+        @if(offline) {
+        <img src="./assets/@ssm.fetchLogoName()"/>
+        } else {
+        <img src="@ssm.fetchLogo()"/>
+        }
+    </div>
+    }
+    <div style="position: fixed; bottom: 10px; left: 20px; z-index: 999">
+        @if(ssm.params().darkTheme()) {
+        <span class="octicon octicon-mark-github"
+              style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
+        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
+        } else {
+        <span class="octicon octicon-mark-github"
+              style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
+        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
+        }
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+            @if(offline) {
+            <section data-markdown="./assets/md/PITCHME.md"
+                     data-separator="@ssm.fetchHorzDelim()"
+                     data-separator-vertical="@ssm.fetchVertDelim()"
+                     data-separator-notes="^Note:"
+                     data-charset="utf-8">
+            </section>
+            } else {
+            <section data-markdown="@ssm.fetchMarkdown()"
+                     data-separator="@ssm.fetchHorzDelim()"
+                     data-separator-vertical="@ssm.fetchVertDelim()"
+                     data-separator-notes="^Note:"
+                     data-charset="utf-8">
+            </section>
+            }
+        </div>
+    </div>
+    <script src="@deps.revealjs(offline)/js/reveal.js"></script>
+    <script src="@deps.revealjs(offline)/lib/js/head.min.js"></script>
+    <script src="@deps.jquery(offline)/jquery.min.js"></script>
+
+    @SlideshowReveal(ssm, deps, offline)
+
+    <script>
+        @if(ssm.fixedTheme()) {
+        Reveal.addEventListener( 'ready', function( event ) {
+            window.parent.postMessage("FIXEDTHEME", '*');
+        });
+        }
+    </script>
+</body>
+</html>
