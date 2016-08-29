@@ -1,4 +1,4 @@
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/gitpitch/gitpitch/branches/master/badge.svg)](https://semaphoreci.com/gitpitch/gitpitch)
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/gitpitch/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/gitpitch/gitpitch)
 
 # Slideshow Presentations For Your GitHub Projects
 
