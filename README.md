@@ -55,7 +55,7 @@ Choose between six distinct [visual themes](https://github.com/gitpitch/gitpitch
 
 ![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-night-style.png)
 
-Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings) of your slideshow presentations using background images and your own logo.
+Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings) of your slideshow presentations using background images, your own logo and even [custom css](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS).
 
 ![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-bg-style.png)
 
