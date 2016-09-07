@@ -23,6 +23,8 @@
  */
 package com.gitpitch.controllers;
 
+import com.gitpitch.git.GRS;
+import com.gitpitch.git.GRSManager;
 import com.gitpitch.models.GitRepoModel;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.executors.FrontEndThreads;
@@ -56,6 +58,7 @@ public class PitchController extends Controller {
     private final PitchService pitchService;
     private final FrontEndThreads frontEndThreads;
     private final Dependencies deps;
+    private final GRSManager grsManager;
     private final Configuration cfg;
     private final WSClient ws;
     private final Environment env;
@@ -65,6 +68,7 @@ public class PitchController extends Controller {
     public PitchController(PitchService pitchService,
                            FrontEndThreads frontEndThreads,
                            Dependencies deps,
+                           GRSManager grsManager,
                            Configuration cfg,
                            WSClient ws,
                            Environment env) {
@@ -72,6 +76,7 @@ public class PitchController extends Controller {
         this.pitchService = pitchService;
         this.frontEndThreads = frontEndThreads;
         this.deps = deps;
+        this.grsManager = grsManager;
         this.cfg = cfg;
         this.ws = ws;
         this.env = env;
@@ -117,11 +122,13 @@ public class PitchController extends Controller {
     public CompletionStage<Result> landing(String user,
                                            String repo,
                                            String branch,
+                                           String grs,
                                            String theme,
                                            String notes,
                                            String offline) {
 
-        PitchParams pp = PitchParams.build(user, repo, branch, theme, notes);
+        PitchParams pp =
+            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
         boolean isOffline =
                 (offline == null) ? false : Boolean.parseBoolean(offline);
         Optional<GitRepoModel> grmo = pitchService.cachedRepo(pp);
@@ -134,7 +141,8 @@ public class PitchController extends Controller {
                 log.info("landing:   [ cached, online ] {}", pp);
 
             GitRepoModel grm = grmo.get();
-            GitRepoRenderer rndr = GitRepoRenderer.build(pp, grm, cfg);
+            GitRepoRenderer rndr =
+                GitRepoRenderer.build(pp, grm, cfg, grsManager.listGRS());
 
             return CompletableFuture.completedFuture(
                     ok(com.gitpitch.views.html.Landing.render(rndr,
@@ -149,7 +157,9 @@ public class PitchController extends Controller {
             }, frontEndThreads.POOL)
                     .thenApply(fetched -> {
 
-                        GitRepoRenderer rndr = GitRepoRenderer.build(pp, fetched, cfg);
+                        GitRepoRenderer rndr =
+                            GitRepoRenderer.build(pp, fetched, cfg,
+                                    grsManager.listGRS());
 
                         if (rndr.isValid()) {
                             if (isOffline)
@@ -173,7 +183,8 @@ public class PitchController extends Controller {
     /*
      * Slideshow builds and renders a GitPitch slideshow page.
      */
-    public CompletionStage<Result> slideshow(String user,
+    public CompletionStage<Result> slideshow(String grs,
+                                             String user,
                                              String repo,
                                              String branch,
                                              String theme,
@@ -181,7 +192,8 @@ public class PitchController extends Controller {
                                              String fragments,
                                              String offline) {
 
-        PitchParams pp = PitchParams.build(user, repo, branch, theme, notes);
+        PitchParams pp =
+            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
         boolean printing =
                 (fragments == null) ? false : !Boolean.parseBoolean(fragments);
         boolean isOffline =
@@ -234,11 +246,13 @@ public class PitchController extends Controller {
     /*
      * Markdown processes and renders PITCHME.md markdown.
      */
-    public CompletionStage<Result> markdown(String user,
+    public CompletionStage<Result> markdown(String grs,
+                                            String user,
                                             String repo,
                                             String branch) {
 
-        PitchParams pp = PitchParams.build(user, repo, branch);
+        PitchParams pp =
+            PitchParams.build(grsOnCall(grs), user, repo, branch);
         Optional<MarkdownModel> mdmo = pitchService.cachedMarkdown(pp);
 
         if (mdmo.isPresent()) {
@@ -263,10 +277,12 @@ public class PitchController extends Controller {
                         }
                         if (pp.isMaster()) {
                             log.info("markdown:  [ notfnd, online ] {}", pp);
-                            return ok(RFE.build(pp)).as("text/markdown");
+                            return ok(RFE.master(pp, grsManager.get(pp)))
+                                    .as("text/markdown");
                         } else {
                             log.info("markdown:  [ notfnd, online ] {}", pp);
-                            return ok(RFE.PITCHME_NOT_FOUND_ON_BRANCH).as("text/markdown");
+                            return ok(RFE.branch(pp, grsManager.get(pp)))
+                                    .as("text/markdown");
                         }
                     });
         }
@@ -276,13 +292,15 @@ public class PitchController extends Controller {
     /*
      * Print generates and renders PITCHME.pdf.
      */
-    public CompletionStage<Result> print(String user,
+    public CompletionStage<Result> print(String grs,
+                                         String user,
                                          String repo,
                                          String branch,
                                          String theme,
                                          String notes) {
 
-        PitchParams pp = PitchParams.build(user, repo, branch, theme, notes);
+        PitchParams pp =
+            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
         Optional<File> pdfo = pitchService.cachedPDF(pp);
 
         if (pdfo.isPresent()) {
@@ -316,14 +334,17 @@ public class PitchController extends Controller {
     /*
      * Offline generates and renders PITCHME.zip.
      */
-    public CompletionStage<Result> offline(String user,
+    public CompletionStage<Result> offline(String grs,
+                                           String user,
                                            String repo,
                                            String branch,
                                            String theme,
                                            String notes) {
+                                          
 
-        PitchParams pp = PitchParams.build(user, repo, branch, theme, notes);
-        log.debug("print: pp={}", pp);
+        PitchParams pp =
+            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
+        log.debug("offline: pp={}", pp);
 
         Optional<File> zipo = pitchService.cachedZip(pp);
 
@@ -353,7 +374,7 @@ public class PitchController extends Controller {
                     });
         }
 
-    } // print action
+    } // offline action
 
     /*
      * Gist generates and renders GitHub-Gist HTML for
@@ -362,6 +383,13 @@ public class PitchController extends Controller {
     public Result gist(String gid) {
         return ok(com.gitpitch.views.html.Gist.render(gid, deps));
     } // gist action
+
+    /*
+     * Determine GRS on call, explicitly defined or default.
+     */
+    private String grsOnCall(String grsParam) {
+        return grsManager.getType(grsParam);
+    }
 
     private static final String PITCHME_PRINT_ERROR =
             "GitPitch Slideshow print service temporarily unavailable.";

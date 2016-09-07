@@ -3,9 +3,13 @@
 
 ![LOGO](https://d1z75bzl1vljy2.cloudfront.net/img/gp-logo.png)
 
-#### Get the word out!
+#### Get the word out
 <br>
-<span style="color:gray">Slideshow Presentations For Your GitHub Projects</span>
+<span style="color:gray">Slideshow Presentations For Developers</span>
+<br>
+<span style="color:gray">on</span>
+<br>
+<span style="color:gray">GitHub - GitLab - Bitbucket</span>
 
 #HSLIDE
 
@@ -35,7 +39,7 @@ Create GitPitch slideshow content using GitHub flavored Markdown in your favorit
 
 ![TERMINAL](https://d1z75bzl1vljy2.cloudfront.net/hello-world/terminal.png)
 
-Git-commit on any repo branch and push your PITCHME.md to GitHub.
+Git-commit on any branch and push your PITCHME.md to GitHub, GitLab or Bitbucket.
 
 #HSLIDE
 
@@ -43,11 +47,11 @@ Git-commit on any repo branch and push your PITCHME.md to GitHub.
 
 <br>
 
-<span style="font-size: 1.5em;"><span style="color:white">htt</span><span style="color:white">ps://git</span><span style="color: #e49436">pitch</span><span style="color: white">.com/<span style="color: #e49436">user</span>/<span style="color: #e49436">repo</span></span>
+<span style="font-size: 1.3em;"><span style="color:white">htt</span><span style="color:white">ps://git</span><span style="color: #e49436">pitch</span><span style="color: white">.com/<span style="color: #e49436">user</span>/<span style="color: #e49436">repo</span>/<span style="color: #e49436">branch</span></span>
 
 <br>
 
-Instantly use your GitPitch slideshow URL to promote, pitch or present your GitHub project.
+Instantly use your GitPitch slideshow URL to promote, pitch or present absolutely anything.
 
 #HSLIDE
 <!-- .slide: data-autoslide="11000" -->
@@ -75,7 +79,7 @@ Instantly use your GitPitch slideshow URL to promote, pitch or present your GitH
 - Multiple Themes And More
 - <span style="color: #e49436">Plus...</span>
 - Your Slideshow Is Part Of Your Project
-- Under Git Version Control Within Your GitHub Repo
+- Under Git Version Control Within Your Git Repo
 
 
 #HSLIDE

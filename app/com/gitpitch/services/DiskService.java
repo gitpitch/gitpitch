@@ -23,7 +23,9 @@
  */
 package com.gitpitch.services;
 
-import com.gitpitch.utils.GitHub;
+import com.gitpitch.git.GRS;
+import com.gitpitch.git.GRSService;
+import com.gitpitch.git.GRSManager;
 import com.gitpitch.utils.PitchParams;
 import org.apache.commons.io.FileUtils;
 import play.Configuration;
@@ -36,6 +38,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Map;
 
 /*
  * File system storage service.
@@ -45,30 +48,31 @@ public class DiskService {
 
     private final Logger.ALogger log = Logger.of(this.getClass());
 
-    private final String _storage;
-    private final String _decktape;
-    private final String _rawAuthToken;
-    private Configuration configuration;
-    private ShellService shellService;
-    private WSClient ws;
+    private final String storage;
+    private final String decktape;
+    private final String rawAuthToken;
+    private final ShellService shellService;
+    private final Configuration configuration;
+    private final WSClient ws;
 
     @Inject
-    public DiskService(Configuration configuration,
-                       ShellService shellService,
+    public DiskService(ShellService shellService,
+                       Configuration configuration,
                        WSClient ws) {
-        this.configuration = configuration;
+
         this.shellService = shellService;
+        this.configuration = configuration;
         this.ws = ws;
-        this._storage = configuration.getString("gitpitch.storage.home");
-        this._decktape = configuration.getString("gitpitch.decktape.home");
-        this._rawAuthToken = configuration.getString("gitpitch.raw.auth.token");
+        this.storage = configuration.getString("gitpitch.storage.home");
+        this.decktape = configuration.getString("gitpitch.decktape.home");
+        this.rawAuthToken = configuration.getString("gitpitch.raw.auth.token");
     }
 
     /*
      * Return PitchParams branch working directory.
      */
     public Path bwd(PitchParams pp) {
-        return Paths.get(storage(), pp.user, pp.repo, pp.branch);
+        return Paths.get(storage(), pp.grs, pp.user, pp.repo, pp.branch);
     }
 
     /*
@@ -76,7 +80,7 @@ public class DiskService {
      */
     public Path asPath(PitchParams pp,
                        String filename) {
-        return Paths.get(storage(), pp.user, pp.repo, pp.branch, filename);
+        return Paths.get(storage(), pp.grs, pp.user, pp.repo, pp.branch, filename);
     }
 
     /*
@@ -112,7 +116,8 @@ public class DiskService {
     public int download(PitchParams pp,
                         Path wd,
                         String source,
-                        String dest) {
+                        String dest,
+                        Map<String,String> headers) {
 
         int downloaded = 999;
 
@@ -126,20 +131,13 @@ public class DiskService {
 
             final long start = System.currentTimeMillis();
 
-            WSRequest downloadReq = ws.url(source);
+            final WSRequest downloadReq = ws.url(source);
 
-            if (GitHub.call(source)) {
+            downloadReq.setHeader(API_CACHE_CONTROL, API_NO_CACHE);
 
-                downloadReq =
-                        downloadReq.setHeader(API_CACHE_CONTROL, API_NO_CACHE);
-
-                if (rawAuthToken() != null) {
-                    String tokenValue = API_HEADER_TOKEN + rawAuthToken();
-                    downloadReq =
-                            downloadReq.setHeader(API_HEADER_AUTH, tokenValue);
-                }
-
-            }
+            headers.forEach((k,v) -> {
+                downloadReq.setHeader(k, v);
+            });
 
             WSResponse downloadResp =
                     downloadReq.get().toCompletableFuture().get();
@@ -273,18 +271,18 @@ public class DiskService {
      * Return disk storage home directory.
      */
     public String storage() {
-        return _storage;
+        return storage;
     }
 
     /*
      * Return DeckTape PDF Exporter home directory.
      */
     public String decktape() {
-        return _decktape;
+        return decktape;
     }
 
     public String rawAuthToken() {
-        return _rawAuthToken;
+        return rawAuthToken;
     }
 
     private static final Integer STATUS_OK = 0;

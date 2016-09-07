@@ -16,13 +16,13 @@ public class FunctionalTest {
     private static final String LANDING_PITCH_FOUND = "/gitpitch/hello-world";
     private static final String LANDING_PITCH_NOT_FOUND = "/gitpitch/hello-world/not-found";
     private static final String SLIDESHOW_PITCH_FOUND =
-            "/pitchme/slideshow/gitpitch/hello-world/master";
+            "/pitchme/slideshow/github/gitpitch/hello-world/master";
     private static final String SLIDESHOW_PITCH_NOT_FOUND =
-            "/pitchme/slideshow/gitpitch/hello-world/not-found";
+            "/pitchme/slideshow/github/gitpitch/hello-world/not-found";
     private static final String MARKDOWN_PITCH_FOUND =
-            "/pitchme/markdown/gitpitch/hello-world/master/PITCHME.md";
+            "/pitchme/markdown/github/gitpitch/hello-world/master/PITCHME.md";
     private static final String MARKDOWN_PITCH_NOT_FOUND =
-            "/pitchme/markdown/gitpitch/hello-world/not-found/PITCHME.md";
+            "/pitchme/markdown/github/gitpitch/hello-world/not-found/PITCHME.md";
     private static final String UNSUPPORTED_ENDPOINT = "/unsupported";
     private static final String INVALID_ENDPOINT = "/invalid/endpoint/";
     private static final int SERVER_TEST_PORT = 3333;

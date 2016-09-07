@@ -77,6 +77,7 @@ public class PitchService {
     public Optional<GitRepoModel> cachedRepo(PitchParams pp) {
 
         String grmKey = GitRepoModel.genKey(pp);
+        log.debug("cachedRepo: grmKey={}", grmKey);
         return Optional.ofNullable(pitchCache.get(grmKey));
     }
 

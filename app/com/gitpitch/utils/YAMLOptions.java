@@ -23,6 +23,7 @@
  */
 package com.gitpitch.utils;
 
+import com.gitpitch.git.GRSService;
 import com.gitpitch.services.DiskService;
 import org.yaml.snakeyaml.Yaml;
 import play.Logger;
@@ -42,12 +43,16 @@ public final class YAMLOptions {
             Logger.of("com.gitpitch.utils.YAMLOptions");
 
     private final Map<String, String> _yProps;
+    private final GRSService grsService;
 
-    private YAMLOptions(Map<String, String> yProps) {
+    private YAMLOptions(Map<String, String> yProps,
+                        GRSService grsService) {
         this._yProps = yProps;
+        this.grsService = grsService;
     }
 
     public static YAMLOptions build(PitchParams pp,
+                                    GRSService grsService,
                                     DiskService diskService) {
 
         YAMLOptions yOpts = null;
@@ -82,7 +87,7 @@ public final class YAMLOptions {
 
                 log.debug("build: pp={}, props={}", pp, yProps);
 
-                yOpts = new YAMLOptions(yProps);
+                yOpts = new YAMLOptions(yProps, grsService);
             } else {
                 log.debug("build: pp={}, yaml not found={}", yFile);
             }
@@ -125,7 +130,7 @@ public final class YAMLOptions {
         if (isAbsolute(overridePath)) {
             return overridePath;
         } else {
-            return GitHub.rawAPI(pp, overridePath);
+            return grsService.raw(pp, overridePath);
         }
     }
 
@@ -140,7 +145,7 @@ public final class YAMLOptions {
         if (isAbsolute(logoPath)) {
             return logoPath;
         } else {
-            return GitHub.rawAPI(pp, logoPath);
+            return grsService.raw(pp, logoPath);
         }
     }
 
@@ -155,7 +160,7 @@ public final class YAMLOptions {
         if (isAbsolute(imgBgPath)) {
             return imgBgPath;
         } else {
-            return GitHub.rawAPI(pp, imgBgPath);
+            return grsService.raw(pp, imgBgPath);
         }
     }
 

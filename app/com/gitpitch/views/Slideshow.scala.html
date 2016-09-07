@@ -6,11 +6,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="GitPitch - Slideshow Presentations For Your GitHub Projects">
-    <meta name="keywords"
-          content="GitPitch, GitHub, PITCHME, PITCHME.md, Slideshow, Presentation, Project">
-    <title>GitPitch - Slideshow Presentations For Your GitHub Projects</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>GitHub, GitLab, Bitbucket Slideshow Presentations For Developers - GitPitch</title>
+    <meta content="Got for it. Just add PITCHME.md ;)" name="description">
+    <meta content="GitHub, GitLab, Bitbucket, Markdown, Slideshow, Presentation, Developers, PITCHME" name="keywords">
     <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
     <link href="@deps.revealjs(offline)/css/reveal.css" rel="stylesheet" type="text/css"/>
     <link href="@deps.revealjs(offline)/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css"/>
@@ -19,6 +18,7 @@
     }
     <link href="@deps.highlightjs(offline)/@ssm.fetchHighlightCSS()" rel="stylesheet" type="text/css"/>
     <link href="@deps.octicons(offline)/octicons.css" rel="stylesheet" type="text/css"/>
+    <link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     @SlideshowStyle()
 
@@ -39,15 +39,14 @@
     </div>
     }
     <div style="position: fixed; bottom: 10px; left: 20px; z-index: 999">
-        @if(ssm.params().darkTheme()) {
+        @if(ssm.params().grs.equals("github")) {
         <span class="octicon octicon-mark-github"
               style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
-        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
         } else {
-        <span class="octicon octicon-mark-github"
-              style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
-        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
+        <i class="fa fa-@ssm.params().grs" aria-hidden="true"
+              style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></i>
         }
+        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
     </div>
 
     <div class="reveal">

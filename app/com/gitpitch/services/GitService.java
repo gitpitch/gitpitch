@@ -25,6 +25,7 @@ package com.gitpitch.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.gitpitch.factory.MarkdownModelFactory;
+import com.gitpitch.git.*;
 import com.gitpitch.models.GitRepoModel;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.models.SlideshowModel;
@@ -58,6 +59,7 @@ public class GitService {
     private final ConcurrentHashMap<String, CountDownLatch> markdownLatchMap =
             new ConcurrentHashMap();
 
+    private final GRSManager grsManager;
     private final DiskService diskService;
     private final PrintService printService;
     private final ShellService shellService;
@@ -69,7 +71,8 @@ public class GitService {
     private final Configuration configuration;
 
     @Inject
-    public GitService(DiskService diskService,
+    public GitService(GRSManager grsManager,
+                      DiskService diskService,
                       PrintService printService,
                       ShellService shellService,
                       CacheTimeout cacheTimeout,
@@ -79,6 +82,7 @@ public class GitService {
                       CacheApi pitchCache,
                       Configuration configuration) {
 
+        this.grsManager = grsManager;
         this.diskService = diskService;
         this.printService = printService;
         this.shellService = shellService;
@@ -114,15 +118,18 @@ public class GitService {
 
         } else {
 
-            String apiCall = GitHub.repoAPI(pp);
+            GRS grs = grsManager.get(pp);
+            final GRSService grsService = grsManager.getService(grs);
+            String apiCall = grsService.repo(pp);
+
+            log.debug("fetchRepo: apiCall={}", apiCall);
             final long start = System.currentTimeMillis();
 
             WSRequest apiRequest = wsClient.url(apiCall);
 
-            if (githubApiToken() != null) {
-                String tokenValue = API_HEADER_TOKEN + githubApiToken();
-                apiRequest = apiRequest.setHeader(API_HEADER_AUTH, tokenValue);
-            }
+            grs.getHeaders().forEach((k,v) -> {
+                apiRequest.setHeader(k, v);
+            });
 
             CompletableFuture<WSResponse> apiFuture =
                     apiRequest.get().toCompletableFuture();
@@ -133,7 +140,8 @@ public class GitService {
                         log.debug("fetchRepo: pp={}, fetch meta time-taken={}",
                                 pp, (System.currentTimeMillis() - start));
 
-                        log.info("GitHub: API Rate Limit Status [ {}, {} ]",
+                        log.info("{}: API Rate Limit Status [ {}, {} ]",
+                                grs.getName(),
                                 apiResp.getHeader(API_RATE_LIMIT),
                                 apiResp.getHeader(API_RATE_LIMIT_REMAINING));
 
@@ -144,19 +152,19 @@ public class GitService {
                                 try {
 
                                     JsonNode json = apiResp.asJson();
-                                    GitRepoModel grm = new GitRepoModel(pp, json);
+                                    GitRepoModel grm = grsService.model(pp, json);
 
-                            /*
-                             * Update pitchCache with new GitRepoModel
-                             * generated using GitHub API response data.
-                             */
+                                    /*
+                                     * Update pitchCache with new GitRepoModel
+                                     * generated using GitHub API response data.
+                                     */
                                     pitchCache.set(grm.key(), grm, cacheTimeout.grm(pp));
 
                                 } catch (Exception ex) {
-                            /*
-                             * Prevent any runtime errors, such as JSON parsing,
-                             * from propogating to the front end.
-                             */
+                                    /*
+                                     * Prevent any runtime errors, such as JSON parsing,
+                                     * from propogating to the front end.
+                                     */
                                     log.warn("fetchRepo: pp={}, unexpected ex={}", pp, ex);
                                 }
 
@@ -173,7 +181,7 @@ public class GitService {
                                             Integer.parseInt(remainingHdr);
 
                                     if (rateLimitRemaining <= 0) {
-                                        log.warn("WARNING! GitHub API rate limit exceeded.");
+                                        log.warn("WARNING! {} API rate limit exceeded.", grs.getName());
                                     }
 
                                 } catch (Exception rlex) {
@@ -184,16 +192,16 @@ public class GitService {
                             log.warn("fetchRepo: pp={}, unexpected runtime ex={}", pp, rex);
                         }
 
-                /*
-                 * Current operation completed, so remove latch associated
-                 * with operation from repoLatchMap to permit future operations
-                 * on this /{user}/{repo}.
-                 */
+                        /*
+                         * Current operation completed, so remove latch associated
+                         * with operation from repoLatchMap to permit future operations
+                         * on this /{user}/{repo}.
+                         */
                         releaseCountDownLatch(repoLatchMap, grmKey);
 
-                /*
-                 * Operation completed, valid result cached, no return required.
-                 */
+                        /*
+                         * Operation completed, valid result cached, no return required.
+                         */
                         return null;
 
                     }, backEndThreads.POOL)
@@ -238,30 +246,29 @@ public class GitService {
             CompletableFuture<Void> syncFuture =
                     CompletableFuture.supplyAsync(() -> {
 
-                        Path branchPath = diskService.ensure(pp);
-                        String yamlLink = GitHub.rawAPI(pp, PITCHME_YAML, true);
-                        int downYAML =
-                                diskService.download(pp, branchPath, yamlLink, PITCHME_YAML);
+                        GRS grs = grsManager.get(pp);
+                        GRSService grsService = grsManager.getService(grs);
+                        int downYAML = grsService.download(pp, PITCHME_YAML);
                         boolean downOk = downYAML == STATUS_OK;
                         log.debug("fetchYAML: pp={}, downloaded YAML={}", pp, downYAML);
 
-                /*
-                 * Update pitchCache with new SlideshowModel.
-                 */
+                        /*
+                         * Update pitchCache with new SlideshowModel.
+                         */
                         SlideshowModel ssm =
-                                SlideshowModel.build(pp, downOk, diskService);
+                                SlideshowModel.build(pp, downOk, grsService, diskService);
                         pitchCache.set(ssm.key(), ssm, cacheTimeout.ssm(pp));
 
-                /*
-                 * Current operation completed, so remove latch associated
-                 * with operation from yamlLatchMap to permit future
-                 * operations on this /{user}/{repo}?b={branch}.
-                 */
+                        /*
+                         * Current operation completed, so remove latch associated
+                         * with operation from yamlLatchMap to permit future
+                         * operations on this /{user}/{repo}?b={branch}.
+                         */
                         releaseCountDownLatch(yamlLatchMap, ssmKey);
 
-                /*
-                 * Operation completed, valid result cached, no return required.
-                 */
+                        /*
+                         * Operation completed, valid result cached, no return required.
+                         */
                         return null;
 
                     }, backEndThreads.POOL)
@@ -307,18 +314,18 @@ public class GitService {
             CompletableFuture<Void> syncFuture =
                     CompletableFuture.supplyAsync(() -> {
 
-                        Path branchPath = diskService.ensure(pp);
-                        String mdLink = GitHub.rawAPI(pp, PITCHME_MD, true);
-                        int downStatus =
-                                diskService.download(pp, branchPath, mdLink, PITCHME_MD);
+                        GRS grs = grsManager.get(pp);
+                        GRSService grsService = grsManager.getService(grs);
+
+                        int downStatus = grsService.download(pp, PITCHME_MD);
 
                         if (downStatus == STATUS_OK) {
 
                             String ssmKey = SlideshowModel.genKey(pp);
                             Optional<SlideshowModel> ssm =
                                     Optional.ofNullable(pitchCache.get(ssmKey));
-                            MarkdownRenderer mrndr =
-                                    MarkdownRenderer.build(pp, ssm, diskService);
+                            MarkdownRenderer mrndr = MarkdownRenderer.build(pp,
+                                    ssm, grsService, diskService);
 
                             // MarkdownModel mdm = MarkdownModel.consume(mrndr);
                             MarkdownModel mdm =
@@ -330,16 +337,16 @@ public class GitService {
                                     pp, downStatus);
                         }
 
-                /*
-                 * Current operation completed, so remove latch associated
-                 * with operation from markdownLatchMap to permit future
-                 * operations on this /{user}/{repo}?b={branch}.
-                 */
+                        /*
+                         * Current operation completed, so remove latch associated
+                         * with operation from markdownLatchMap to permit future
+                         * operations on this /{user}/{repo}?b={branch}.
+                         */
                         releaseCountDownLatch(markdownLatchMap, mdmKey);
 
-                /*
-                 * Operation completed, valid result cached, no return required.
-                 */
+                        /*
+                         * Operation completed, valid result cached, no return required.
+                         */
                         return null;
 
                     }, backEndThreads.POOL)
@@ -376,10 +383,6 @@ public class GitService {
             completedLatch.countDown();
         }
 
-    }
-
-    public String githubApiToken() {
-        return configuration.getString("gitpitch.github.api.token");
     }
 
     private static final String GHUB_REPO_META =

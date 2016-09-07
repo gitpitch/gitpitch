@@ -24,6 +24,7 @@
 package com.gitpitch.models;
 
 import com.gitpitch.models.MarkdownModel;
+import com.gitpitch.git.GRSService;
 import com.gitpitch.services.DiskService;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.YAMLOptions;
@@ -71,7 +72,8 @@ public class SlideshowModel {
         this._yOpts = yOpts;
 
         this._fetchMarkdown =
-                com.gitpitch.controllers.routes.PitchController.markdown(pp.user,
+                com.gitpitch.controllers.routes.PitchController.markdown(pp.grs,
+                        pp.user,
                         pp.repo,
                         pp.branch).url();
 
@@ -83,17 +85,16 @@ public class SlideshowModel {
                 .append(this._pp.branch)
                 .toString();
 
-        this._cacheKey = new StringBuffer(MODEL_ID)
-                .append(this._pretty)
-                .toString();
+        this._cacheKey = genKey(pp);
     }
 
     public static SlideshowModel build(PitchParams pp,
                                        boolean yamlFound,
+                                       GRSService grsService,
                                        DiskService diskService) {
 
         YAMLOptions yOpts =
-                yamlFound ? YAMLOptions.build(pp, diskService) : null;
+                yamlFound ? YAMLOptions.build(pp, grsService, diskService) : null;
         return new SlideshowModel(pp, yOpts);
     }
 
@@ -103,6 +104,8 @@ public class SlideshowModel {
     public static String genKey(PitchParams pp) {
 
         return new StringBuffer(MODEL_ID).append(SLASH)
+                .append(pp.grs)
+                .append(SLASH)
                 .append(pp.user)
                 .append(SLASH)
                 .append(pp.repo)

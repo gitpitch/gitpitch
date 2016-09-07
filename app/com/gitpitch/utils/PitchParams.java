@@ -36,30 +36,36 @@ public class PitchParams {
     public String branch;
     public String theme;
     public String notes;
+    public String grs;
 
-    private PitchParams(String user,
+    private PitchParams(String grs,
+                        String user,
                         String repo) {
 
-        this(user, repo, null, null);
+        this(grs, user, repo, null);
     }
-    private PitchParams(String user,
+    private PitchParams(String grs,
+                        String user,
                         String repo,
                         String branch) {
 
-        this(user, repo, branch, null);
+        this(grs, user, repo, branch, null);
     }
-    private PitchParams(String user,
+    private PitchParams(String grs,
+                        String user,
                         String repo,
                         String branch,
                         String theme) {
-        this(user, repo, branch, theme, null);
+        this(grs, user, repo, branch, theme, null);
     }
-    private PitchParams(String user,
+    private PitchParams(String grs,
+                        String user,
                         String repo,
                         String branch,
                         String theme,
                         String notes) {
 
+        this.grs = grs;
 
         this.user = user;
         this.repo = repo;
@@ -73,34 +79,38 @@ public class PitchParams {
         this.notes = notes;
     }
 
-    public static PitchParams build(String user,
+    public static PitchParams build(String grs,
+                                    String user,
                                     String repo) {
 
-        return new PitchParams(user, repo);
+        return new PitchParams(grs, user, repo);
     }
 
-    public static PitchParams build(String user,
+    public static PitchParams build(String grs,
+                                    String user,
                                     String repo,
                                     String branch) {
 
-        return new PitchParams(user, repo, branch);
+        return new PitchParams(grs, user, repo, branch);
     }
 
-    public static PitchParams build(String user,
+    public static PitchParams build(String grs,
+                                    String user,
                                     String repo,
                                     String branch,
                                     String theme) {
 
-        return new PitchParams(user, repo, branch, theme);
+        return new PitchParams(grs, user, repo, branch, theme);
     }
 
-    public static PitchParams build(String user,
+    public static PitchParams build(String grs,
+                                    String user,
                                     String repo,
                                     String branch,
                                     String theme,
                                     String notes) {
 
-        return new PitchParams(user, repo, branch, theme, notes);
+        return new PitchParams(grs, user, repo, branch, theme, notes);
     }
 
     public static boolean isDarkTheme(String theme) {
@@ -133,7 +143,9 @@ public class PitchParams {
     }
 
     public String pretty() {
-        return new StringBuffer(SLASH).append(user)
+        return new StringBuffer(SLASH).append(grs)
+                .append(SLASH)
+                .append(user)
                 .append(SLASH)
                 .append(repo)
                 .append(SLASH)
@@ -142,7 +154,9 @@ public class PitchParams {
     }
 
     public String toString() {
-        return new StringBuffer(SLASH).append(user)
+        return new StringBuffer(SLASH).append(grs)
+                .append(SLASH)
+                .append(user)
                 .append(SLASH)
                 .append(repo)
                 .append(SLASH)

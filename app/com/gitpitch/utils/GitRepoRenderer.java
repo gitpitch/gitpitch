@@ -23,14 +23,17 @@
  */
 package com.gitpitch.utils;
 
+import com.gitpitch.git.GRS;
+import com.gitpitch.git.vendors.*;
 import com.gitpitch.models.GitRepoModel;
 import com.gitpitch.utils.PitchParams;
 import play.Configuration;
-import play.Logger;
-import play.Logger.ALogger;
-
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import play.Logger;
+import play.Logger.ALogger;
 
 /*
  * Rendering model for views.Landing.scala.html.
@@ -42,6 +45,7 @@ public class GitRepoRenderer {
     private final PitchParams _pp;
     private final GitRepoModel _grm;
     private Configuration _cfg;
+    private List<GRS> _grsServices;
     /*
      * Relative URLs for view components.
      */
@@ -57,17 +61,19 @@ public class GitRepoRenderer {
     private String _starHub;
     private String _forkHub;
 
-    private GitRepoRenderer(PitchParams pp) {
-        this(pp, null, null);
+    private GitRepoRenderer(PitchParams pp, List<GRS> grsServices) {
+        this(pp, null, null, grsServices);
     }
 
     private GitRepoRenderer(PitchParams pp,
                             GitRepoModel grm,
-                            Configuration cfg) {
+                            Configuration cfg,
+                            List<GRS> grsServices) {
 
         this._pp = pp;
         this._grm = grm;
         this._cfg = cfg;
+        this._grsServices = grsServices;
 
         if (grm != null) {
 
@@ -77,25 +83,49 @@ public class GitRepoRenderer {
              */
 
             this._landingURL = com.gitpitch.controllers.routes.PitchController
-                    .landing(_grm.owner(),
+                    .landing(_pp.grs,
+                            _grm.owner(),
                             _grm.name(),
                             _pp.branch,
                             _pp.theme,
                             _pp.notes, null).toString();
 
             this._slideshowURL = com.gitpitch.controllers.routes.PitchController
-                    .slideshow(_grm.owner(),
+                    .slideshow(_pp.grs,
+                            _grm.owner(),
                             _grm.name(),
                             _pp.branch,
                             _pp.theme,
                             _pp.notes, null, null).toString();
 
             this._markdownURL = com.gitpitch.controllers.routes.PitchController
-                    .markdown(_grm.owner(),
+                    .markdown(_pp.grs,
+                            _grm.owner(),
                             _grm.name(),
                             _pp.branch).toString();
 
-            this._orgHub = new StringBuffer(GIT_COM).append(_grm.owner())
+            Optional<GRS> grso =
+                    this._grsServices.stream()
+                                     .filter(grs -> grs.getType().equals(_pp.grs))
+                                     .findFirst();
+
+            Optional<GRS> grsoDefault =
+                    this._grsServices.stream()
+                                     .filter(grs -> grs.isDefault())
+                                     .findFirst();
+
+            String grsSite = null;
+
+            if(grso.isPresent()) {
+                grsSite = grso.get().getSite();
+            } else {
+                if(grsoDefault.isPresent())
+                    grsSite = grsoDefault.get().getSite();
+                else
+                    grsSite = GRS_GITHUB_COM;
+            }
+
+            this._orgHub = new StringBuffer(grsSite).append(_grm.owner())
                     .toString();
 
             this._repoHub =
@@ -103,14 +133,45 @@ public class GitRepoRenderer {
                             .append(this._grm.name())
                             .toString();
 
+            switch(_pp.grs) {
 
-            this._starHub = new StringBuffer(this._repoHub).append(SLASH)
-                    .append(STARGAZERS)
-                    .toString();
+                case GitHub.TYPE:
+                    this._starHub =
+                        new StringBuffer(this._repoHub).append(SLASH)
+                                                       .append(GRS_GITHUB_STARS)
+                                                       .toString();
+                    this._forkHub =
+                        new StringBuffer(this._repoHub).append(SLASH)
+                                                       .append(GRS_GITHUB_FORKS)
+                                                       .toString();
+                    break;
+                case GitLab.TYPE:
+                    this._starHub =
+                        new StringBuffer(this._repoHub).append(SLASH)
+                                                       .append(GRS_GITLAB_STARS)
+                                                       .toString();
+                    this._forkHub =
+                        new StringBuffer(this._repoHub).append(SLASH)
+                                                       .append(GRS_GITLAB_FORKS)
+                                                       .append(_pp.branch)
+                                                       .toString();
+                    break;
+                case BitBucket.TYPE:
+                    this._starHub =
+                        new StringBuffer(this._repoHub).append(SLASH)
+                                                       .append(GRS_BITBUCKET_STARS)
+                                                       .toString();
+                    this._forkHub =
+                        new StringBuffer(this._repoHub).append(SLASH)
+                                                       .append(GRS_BITBUCKET_FORKS)
+                                                       .toString();
+                    break;
 
-            this._forkHub = new StringBuffer(this._repoHub).append(SLASH)
-                    .append(FORKS)
-                    .toString();
+                default:
+                    this._starHub = "#";
+                    this._forkHub = "#";
+                    break;
+            }
         } else {
 
             /*
@@ -130,9 +191,10 @@ public class GitRepoRenderer {
 
     public static GitRepoRenderer build(PitchParams pp,
                                         GitRepoModel grm,
-                                        Configuration cfg) {
+                                        Configuration cfg,
+                                        List<GRS> grsServices) {
 
-        return new GitRepoRenderer(pp, grm, cfg);
+        return new GitRepoRenderer(pp, grm, cfg, grsServices);
     }
 
     /*
@@ -202,7 +264,8 @@ public class GitRepoRenderer {
      * Return relative URL to landing view.
      */
     public String landingURL(String theme) {
-        return com.gitpitch.controllers.routes.PitchController.landing(_grm.owner(),
+        return com.gitpitch.controllers.routes.PitchController.landing(_pp.grs,
+                _grm.owner(),
                 _grm.name(),
                 _pp.branch,
                 theme,
@@ -269,7 +332,15 @@ public class GitRepoRenderer {
      * Return GitHub repository language.
      */
     public String repoLang() {
-        return (_grm != null) ? _grm.lang() : null;
+
+        String repoLang = null;
+
+        if(_grm != null) {
+            if(_grm.lang() != null && _grm.lang().length() > 0) {
+                repoLang = _grm.lang();
+            }
+        }
+        return repoLang;
     }
 
     /*
@@ -300,19 +371,28 @@ public class GitRepoRenderer {
     }
 
     public String pageLink(boolean absolute) {
+        return pageLink(absolute, null);
+    }
+
+    public String pageLink(boolean absolute, String grs) {
+
+        grs = (grs != null) ? grs : _pp.grs;
 
         if (absolute)
             return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
                     _pp.repo,
                     _pp.branch,
+                    grs,
                     _pp.theme,
-                    _pp.notes, null)
+                    _pp.notes,
+                    null)
                     .absoluteURL(isEncrypted(),
                             hostname());
         else
             return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
                     _pp.repo,
                     _pp.branch,
+                    grs,
                     _pp.theme,
                     _pp.notes, null).toString();
     }
@@ -322,13 +402,16 @@ public class GitRepoRenderer {
         return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
                 _pp.repo,
                 _pp.branch,
+                _pp.grs,
                 theme,
-                _pp.notes, null).toString();
+                _pp.notes,
+                null).toString();
     }
 
     public String printLink() {
 
-        return com.gitpitch.controllers.routes.PitchController.print(_pp.user,
+        return com.gitpitch.controllers.routes.PitchController.print(_pp.grs,
+                _pp.user,
                 _pp.repo,
                 _pp.branch,
                 _pp.theme,
@@ -337,7 +420,8 @@ public class GitRepoRenderer {
 
     public String offlineLink() {
 
-        return com.gitpitch.controllers.routes.PitchController.offline(_pp.user,
+        return com.gitpitch.controllers.routes.PitchController.offline(_pp.grs,
+                _pp.user,
                 _pp.repo,
                 _pp.branch,
                 _pp.theme,
@@ -358,6 +442,20 @@ public class GitRepoRenderer {
                 .append(pageLink(true))
                 .append(BADGE_CLOSE)
                 .toString();
+    }
+
+    public String getGRS(PitchParams pp) {
+        String grsName = null;
+        for(GRS grs : _grsServices) {
+            if(grs.getType().equals(pp.grs)) {
+                grsName = grs.getName();
+            }
+        }
+        return grsName;
+    }
+
+    public List<GRS> listGRS() {
+        return _grsServices;
     }
 
     /*
@@ -382,9 +480,6 @@ public class GitRepoRenderer {
     private static final String SLASH = "/";
     private static final String QMARK_BRANCH = "?b=";
     private static final String QMARK_THEME = "&t=";
-    private static final String GIT_COM = "https://github.com/";
-    private static final String STARGAZERS = "stargazers";
-    private static final String FORKS = "network";
     private static final String HTTP_HASH = "#";
     private static final String EMBED_OPEN =
             "<iframe width='770' height='515' src='";
@@ -396,4 +491,12 @@ public class GitRepoRenderer {
     private static final String DEFAULT_THEME = "white";
     private static final List<String> THEMES = Arrays.asList(DEFAULT_THEME,
             "beige", "black", "moon", "night", "sky", "white");
+
+    private static final String GRS_GITHUB_COM = "https://github.com/";
+    private static final String GRS_GITHUB_STARS = "stargazers";
+    private static final String GRS_GITHUB_FORKS = "network";
+    private static final String GRS_GITLAB_STARS = "activity";
+    private static final String GRS_GITLAB_FORKS = "graphs/";
+    private static final String GRS_BITBUCKET_STARS = "commits/all";
+    private static final String GRS_BITBUCKET_FORKS = "branches";
 }

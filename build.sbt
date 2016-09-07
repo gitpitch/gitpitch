@@ -1,5 +1,5 @@
 name := """server"""
-version := "1.0"
+version := "1.1"
 organization := "com.gitpitch"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)

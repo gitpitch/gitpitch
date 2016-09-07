@@ -23,6 +23,7 @@
  */
 package com.gitpitch.utils;
 
+import com.gitpitch.git.GRS;
 import com.gitpitch.utils.PitchParams;
 import java.util.StringJoiner;
 
@@ -36,22 +37,19 @@ public final class RFE {
      * chance to submit a Feature Request (Issue)
      * against the repo identified by PitchParams.
      */
-    public static String build(PitchParams pp) {
+    public static String master(PitchParams pp, GRS grs) {
 
-        String newIssue = "https://github.com/" +
-                pp.user + "/" + pp.repo + "/issues/new?title=" +
-                "GitPitch - Let's get the word out!" +
-                "&body=I would really like to see a " +
-                "[GitPitch slideshow presentation](https://gitpitch.com) for this repo." +
-                " Help me help you get the word out, " +
-                "just add PITCHME.md. @gitpitch";
+        String newIssue = grs.getSite() +
+                pp.user + "/" + pp.repo + "/issues/new";
 
         StringBuffer buf = new StringBuffer();
         buf.append("<span style=\"font-size:1.1em\">PITCHME.md 404</span><br><br>")
                 .append("\n\n")
                 .append("<span style=\"font-size:0.9em\">")
                 .append("Would you like to submit a feature request to the ")
-                .append("repository owner asking them to add a GitPitch for this repo?")
+                .append("repository owner asking them to add a GitPitch for this repo on ")
+                .append(grs.getName())
+                .append("?")
                 .append(" If so, click <a target=\"_blank\" href=\"")
                 .append(newIssue)
                 .append("\">here.</a></span>");
@@ -59,9 +57,15 @@ public final class RFE {
         return buf.toString();
     }
 
-    public static final String PITCHME_NOT_FOUND_ON_BRANCH =
-            new StringJoiner("\n\n").add("<span style=\"font-size:1.1em\">PITCHME.md 404</span><br><br>")
-                    .add("<span style=\"font-size:0.9em\">No GitPitch found for this branch.</span>")
-                    .toString();
+    public static String branch(PitchParams pp, GRS grs) {
 
+        return new StringBuffer("<span style=\"font-size:1.1em\">")
+                .append("PITCHME.md 404</span><br><br>")
+                .append("\n\n")
+                .append("<span style=\"font-size:0.9em\">")
+                .append("No GitPitch found for this branch on ")
+                .append(grs.getName())
+                .append(".</span>")
+                .toString();
+    }
 }

@@ -37,6 +37,9 @@
     <logger name="com.gitpitch.filters" level="DEBUG" additivity="false">
         <appender-ref ref="ASYNCSTDOUT"/>
     </logger>
+    <logger name="com.gitpitch.git" level="DEBUG" additivity="false">
+        <appender-ref ref="ASYNCSTDOUT"/>
+    </logger>
     <logger name="com.gitpitch.utils" level="DEBUG" additivity="false">
         <appender-ref ref="ASYNCSTDOUT"/>
     </logger>

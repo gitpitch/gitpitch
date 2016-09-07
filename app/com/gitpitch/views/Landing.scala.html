@@ -12,12 +12,10 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="GitPitch - Slideshow Presentations For Your GitHub Projects">
-    <meta name="keywords"
-          content="GitPitch, GitHub, PITCHME, PITCHME.md, Slideshow, Presentation, Project">
-    <title>GitPitch - Slideshow Presentations For Your GitHub Projects</title>
-
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>GitHub, GitLab, Bitbucket Slideshow Presentations For Developers - GitPitch</title>
+    <meta content="Got for it. Just add PITCHME.md ;)" name="description">
+    <meta content="GitHub, GitLab, Bitbucket, Markdown, Slideshow, Presentation, Developers, PITCHME" name="keywords">
     <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
     <link href="@deps.bootstrap(offline)/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -55,9 +53,8 @@
                 </iframe>
             } else {
                 <div id="messagebox" class="centered">
-                    <span class="mega-octicon octicon-mark-github">
-                        GitHub repository not found
-                        <span class="mega-octicon octicon-stop"></span>
+                    <span class="mega-octicon">Git repository not found on @rndr.getGRS(rndr.params())
+                    <span class="octicon-stop"></span>
                     </span>
                 <div/>
             }
@@ -77,6 +74,18 @@
     </div>
     <script src="@deps.jquery(offline)/jquery.min.js"></script>
     <script src="@deps.bootstrap(offline)/js/bootstrap.min.js"></script>
+
+    <script>
+        $(".dropdown-menu li a").click(function(){
+            // alert("DD: selected item");
+            // $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+            // $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+            // alert("DD: selected item.text: " + $(this).text());
+            // alert("DD: selected item.data: " + $(this).data('value'));
+            $(".dropdown-toggle").html($(this).text() + ' <span class="caret">');
+            $(".dropdown-toggle").val($(this).data('value', $(this).data('value')));
+        });
+    </script>
     @if(!offline) {
         @LandingSocialDependencies(deps, offline)
     }

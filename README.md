@@ -1,6 +1,6 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/gitpitch/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/gitpitch/gitpitch)
 
-# Slideshow Presentations For Your GitHub Projects
+# Slideshow Presentations For Developers
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
@@ -12,9 +12,9 @@
 
 ## What is GitPitch?
 
-GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online, interactive slideshows. You can use it to promote, pitch or present anything, including your own GitHub projects.
+GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online and offline, interactive slideshows. You can use it to promote, pitch or present absolutely anything, including your own Git projects.
 
-Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public GitHub repo.
+Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public **GitHub**, **GitLab** or **Bitbucket** repo.
 
 ![URL](images/gp-url.jpg)
 
@@ -27,13 +27,13 @@ If you ever find yourself needing to present a concept, design, library, integra
 - To colleagues, clients or customers
 - Or at meetups or conferences
 
-Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch automatically turn those ideas into compelling, responsive, online slideshow presentations.
+Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch automatically turn those ideas into compelling, responsive, online and offline slideshow presentations.
 
 ## How does GitPitch work?
 
 ![TERMINAL](images/gp-terminal.png)
 
-No more Keynote. No more PowerPoint. Just Markdown. Then git-commit on any branch within a public GitHub repo.
+No more Keynote. No more PowerPoint. Just Markdown. Then git-commit on any branch within a public GitHub, GitLab or Bitbucket repo.
 
 ## GitPitch slideshow presentations are compelling
 

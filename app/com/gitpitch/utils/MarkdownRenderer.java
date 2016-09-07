@@ -23,9 +23,9 @@
  */
 package com.gitpitch.utils;
 
+import com.gitpitch.git.GRSService;
 import com.gitpitch.models.SlideshowModel;
 import com.gitpitch.services.DiskService;
-import com.gitpitch.utils.GitHub;
 import play.Logger;
 
 import java.nio.file.Path;
@@ -40,22 +40,26 @@ public class MarkdownRenderer {
 
     private final PitchParams _pp;
     private final Optional<SlideshowModel> _ssm;
+    private GRSService grsService;
     private DiskService diskService;
 
     private MarkdownRenderer(PitchParams pp,
                              Optional<SlideshowModel> ssm,
+                             GRSService grsService,
                              DiskService diskService) {
 
         this._pp = pp;
         this._ssm = ssm;
+        this.grsService = grsService;
         this.diskService = diskService;
     }
 
     public static MarkdownRenderer build(PitchParams pp,
                                          Optional<SlideshowModel> ssm,
+                                         GRSService grsService,
                                          DiskService diskService) {
 
-        return new MarkdownRenderer(pp, ssm, diskService);
+        return new MarkdownRenderer(pp, ssm, grsService, diskService);
     }
 
     public PitchParams pp() {
@@ -67,7 +71,7 @@ public class MarkdownRenderer {
     }
 
     public String gitRawBase() {
-        return GitHub.rawAPI(_pp);
+        return grsService.raw(_pp);
     }
 
     public Path filePath(String filename) {

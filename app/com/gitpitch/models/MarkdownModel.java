@@ -486,6 +486,8 @@ public class MarkdownModel implements Markdown {
     public static String genKey(PitchParams pp) {
 
         return new StringBuffer(MODEL_ID).append(SLASH)
+                .append(pp.grs)
+                .append(SLASH)
                 .append(pp.user)
                 .append(SLASH)
                 .append(pp.repo)
