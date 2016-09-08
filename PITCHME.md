@@ -9,7 +9,7 @@
 <br>
 <span style="color:gray">on</span>
 <br>
-<span style="color:gray">GitHub - GitLab - Bitbucket</span>
+<span style="color:gray">GitHub, GitLab and Bitbucket</span>
 
 #HSLIDE
 
