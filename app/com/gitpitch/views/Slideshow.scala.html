@@ -19,13 +19,9 @@
     <link href="@deps.highlightjs(offline)/@ssm.fetchHighlightCSS()" rel="stylesheet" type="text/css"/>
     <link href="@deps.octicons(offline)/octicons.css" rel="stylesheet" type="text/css"/>
     <link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-
     @SlideshowStyle()
-
     @if(ssm.hasThemeOverride()) {
-    <style>
-    @ssm.fetchThemeOverride()
-    </style>
+    <link href="@ssm.fetchThemeOverrideCSS()" rel="stylesheet" type="text/css"/>
     }
 </head>
 <body>

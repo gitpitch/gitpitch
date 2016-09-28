@@ -186,6 +186,17 @@ public class SlideshowModel {
     }
 
     /*
+     * Return theme override css for slideshow.
+     */
+    public String fetchThemeOverrideCSS() {
+
+        return com.gitpitch.controllers.routes.PitchController.customCSS(_pp.grs,
+                        _pp.user,
+                        _pp.repo,
+                        _pp.branch).url();
+    }
+
+    /*
      * Return active theme font for slideshow.
      */
     public String fetchThemeFont() {
