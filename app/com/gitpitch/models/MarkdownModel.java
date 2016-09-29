@@ -152,7 +152,8 @@ public class MarkdownModel implements Markdown {
                     imageService.extractBgUrl(md, gitRawBase, this);
 
                 return new StringBuffer(delimiter(md))
-                        .append(imageService.buildBackground(pp, imageBgUrl))
+                        .append(imageService.buildBackground(pp, imageBgUrl,
+                                yOpts.fetchImageBgSize(pp)))
                         .toString();
 
             } else if (gistDelimFound(md)) {
@@ -542,7 +543,7 @@ public class MarkdownModel implements Markdown {
     public static final String MD_IFRAME_OPEN =
             "<!-- .slide: data-background-iframe=\"";
     public static final String MD_IMAGE_SIZE =
-            "\" data-background-size=\"100% 100%";
+            "\" data-background-size=\"";
     public static final String MD_CLOSER = "\" -->";
     public static final String MD_SPACER = "\n";
     public static final String DATA_IMAGE_ATTR = "data-background-image=";
