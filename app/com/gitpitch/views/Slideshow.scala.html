@@ -21,7 +21,9 @@
     <link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     @SlideshowStyle()
     @if(ssm.hasThemeOverride()) {
-    <link href="@ssm.fetchThemeOverrideCSS()" rel="stylesheet" type="text/css"/>
+    <style>
+    @Html(ssm.fetchThemeOverride())
+    </style>
     }
 </head>
 <body>

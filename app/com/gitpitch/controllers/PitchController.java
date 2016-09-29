@@ -377,24 +377,6 @@ public class PitchController extends Controller {
     } // offline action
 
     /*
-     * CustomCSS returns text/css overrides for a slideshow.
-     */
-    public Result customCSS(String grs,
-                            String user,
-                            String repo,
-                            String branch) {
-
-        PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch);
-        Optional<SlideshowModel> ssmo = pitchService.cachedYAML(pp);
-        String customStyle = CUSTOM_CSS_NOT_FOUND;
-        if(ssmo.isPresent()) {
-            customStyle = ssmo.get().fetchThemeOverride();
-        }
-        return ok(customStyle).as("text/css");
-    } // customCss action
-
-    /*
      * Gist generates and renders GitHub-Gist HTML for
      * embedding within slideshows.
      */
@@ -413,7 +395,4 @@ public class PitchController extends Controller {
             "GitPitch Slideshow print service temporarily unavailable.";
     private static final String PITCHME_OFFLINE_ERROR =
             "GitPitch Slideshow offline service temporarily unavailable.";
-
-    private static final String CUSTOM_CSS_NOT_FOUND =
-            "// Custom CSS not found.";
 }

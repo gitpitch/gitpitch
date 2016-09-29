@@ -20,9 +20,6 @@ GET     /pitchme/offline/:grs/:user/:repo/:b/:t/PITCHME.zip    com.gitpitch.cont
 # Handle GitHub OAuth Callback
 # GET     /pitchme/authorized   com.gitpitch.controllers.AuthController.authorized(code:String ?= null, state:String ?= null)
 
-# Serve PITCHME.css custom theme styling.
-GET     /pitchme/custom-css/:grs/:user/:repo/:b/PITCHME.css     com.gitpitch.controllers.PitchController.customCSS(grs:String, user:String, repo:String, b:String)
-
 # Serve PITCHME.md markdown.
 GET     /pitchme/markdown/:grs/:user/:repo/:b/PITCHME.md     com.gitpitch.controllers.PitchController.markdown(grs:String, user:String, repo:String, b:String)
 
