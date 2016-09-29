@@ -322,10 +322,25 @@ public class GitService {
                         if (downStatus == STATUS_OK) {
 
                             String ssmKey = SlideshowModel.genKey(pp);
-                            Optional<SlideshowModel> ssm =
+                            Optional<SlideshowModel> ssmo =
                                     Optional.ofNullable(pitchCache.get(ssmKey));
+
+                            /*
+                             * The SSM in the pitchCache can be absent if
+                             * we are currently processing a print or offline
+                             * download. In these caes, quickly reconstitute
+                             * the SSM using YAML on disk so markdown rendering
+                             * can honor all custom YAML configurations.
+                             */
+                            if(!ssmo.isPresent()) {
+
+                                SlideshowModel ssm =
+                                    SlideshowModel.build(pp, true, grsService, diskService);
+                                ssmo = Optional.of(ssm);
+                            }
+
                             MarkdownRenderer mrndr = MarkdownRenderer.build(pp,
-                                    ssm, grsService, diskService);
+                                    ssmo, grsService, diskService);
 
                             // MarkdownModel mdm = MarkdownModel.consume(mrndr);
                             MarkdownModel mdm =
