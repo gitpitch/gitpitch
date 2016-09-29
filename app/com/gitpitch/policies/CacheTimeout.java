@@ -71,13 +71,29 @@ public class CacheTimeout {
     }
 
     /*
+     * Return cache timeout in milliseconds for print PDF file.
+     */
+    public long pdf(PitchParams pp) {
+        return pp.isMaster() ? PDF_CACHE_MAX_AGE_MASTER : PDF_CACHE_MAX_AGE_BRANCH;
+    }
+
+    /*
+     * Return cache timeout in milliseconds for offline ZIP file.
+     */
+    public long zip(PitchParams pp) {
+        return pp.isMaster() ? ZIP_CACHE_MAX_AGE_MASTER : ZIP_CACHE_MAX_AGE_BRANCH;
+    }
+
+    /*
      * PDF generation cache timeouts (ms) for PITCHME.pdf.
      */
-    public static final int PDF_CACHE_MAX_AGE = 60 * 1000 * 20;
+    public static final long PDF_CACHE_MAX_AGE_MASTER = 60 * 1000 * 20;
+    public static final long PDF_CACHE_MAX_AGE_BRANCH = 20 * 1000;
     /*
      * Offline generation cache timeouts (ms) for PITCHME.zip.
      */
-    public static final int ZIP_CACHE_MAX_AGE = 60 * 1000 * 20;
+    public static final long ZIP_CACHE_MAX_AGE_MASTER = 60 * 1000 * 20;
+    public static final long ZIP_CACHE_MAX_AGE_BRANCH = 20 * 1000;
     /*
      * Long Lived cache timeouts (sec) for GitPitch-owned repos.
      */
