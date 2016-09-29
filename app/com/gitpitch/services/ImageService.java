@@ -43,16 +43,17 @@ public class ImageService {
     public String buildBackground(PitchParams pp,
                                          YAMLOptions yOpts) {
 
-        return buildBackground(pp, yOpts.fetchImageBg(pp));
+        return buildBackground(pp, yOpts.fetchImageBg(pp), yOpts.fetchImageBgSize(pp));
     }
 
     public String buildBackground(PitchParams pp,
-                                         String imageBgUrl) {
+                                         String imageBgUrl, String imageBgSize) {
 
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_IMAGE_OPEN)
                 .append(imageBgUrl)
                 .append(MarkdownModel.MD_IMAGE_SIZE)
+                .append(imageBgSize)
                 .append(MarkdownModel.MD_CLOSER)
                 .append(MarkdownModel.MD_SPACER)
                 .toString();
@@ -66,8 +67,8 @@ public class ImageService {
             String fragUrl = frag.substring(0, frag.indexOf("\""));
             String imageName = FilenameUtils.getName(fragUrl);
             String imageUrl = IMG_OFFLINE_DIR + imageName;
-            return buildBackground(null, imageUrl);
 
+            return md.replace(fragUrl, imageUrl);
         } catch (Exception bex) {
         }
 

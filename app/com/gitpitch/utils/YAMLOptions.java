@@ -164,6 +164,16 @@ public final class YAMLOptions {
         }
     }
 
+    public String fetchImageBgSize(PitchParams pp) {
+        String bgSize = _yProps.get(IMAGE_BG_SIZE_OPTION);
+        if (bgSize == null) {
+            return DEFAULT_BG_SIZE;
+        } else {
+            return bgSize;
+        }
+    }
+
+
     public String fetchTransition(PitchParams pp) {
 
         String transition = _yProps.get(TRANSITION_OPTION);
@@ -316,6 +326,7 @@ public final class YAMLOptions {
     }
 
     public static final String PITCHME_YAML = "PITCHME.yaml";
+    public static final String DEFAULT_BG_SIZE = "100% 100%";
     public static final String DEFAULT_TRANSITION = "slide";
     public static final String MATHJAX_DEFAULT = "TeX-MML-AM_CHTML";
     public static final String HIGHLIGHT_DARK_DEFAULT = "github-gist.css";
@@ -328,6 +339,7 @@ public final class YAMLOptions {
     private static final String VERTICAL_CENTER = "vertical-center";
     private static final String LOGO_OPTION = "logo";
     private static final String IMAGE_BG_OPTION = "background";
+    private static final String IMAGE_BG_SIZE_OPTION = "background-size";
     private static final String TRANSITION_OPTION = "transition";
     private static final String AUTOSLIDE_OPTION = "autoslide";
     private static final String LOOP_OPTION = "loop";
