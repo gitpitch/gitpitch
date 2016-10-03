@@ -151,9 +151,12 @@ public class MarkdownModel implements Markdown {
                 String imageBgUrl =
                     imageService.extractBgUrl(md, gitRawBase, this);
 
+                String bgSize = (yOpts != null) ?
+                    yOpts.fetchImageBgSize(pp) : YAMLOptions.DEFAULT_BG_SIZE;
+
                 return new StringBuffer(delimiter(md))
-                        .append(imageService.buildBackground(pp, imageBgUrl,
-                                yOpts.fetchImageBgSize(pp)))
+                        .append(imageService.buildBackground(pp,
+                                imageBgUrl, bgSize))
                         .toString();
 
             } else if (gistDelimFound(md)) {
