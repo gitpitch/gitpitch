@@ -124,6 +124,11 @@ public class MarkdownModel implements Markdown {
                            YAMLOptions yOpts,
                            String gitRawBase) {
 
+        /*
+         * Clean md fragment before processing.
+         */
+        md = (md != null) ? md.trim() : md;
+
         if (slideDelimFound(md)) {
 
             if (videoDelimFound(md)) {
@@ -229,6 +234,15 @@ public class MarkdownModel implements Markdown {
 
             }
 
+        } if(imageService.tagFound(md)) {
+
+            String tagLink = imageService.tagLink(md);
+            if (linkAbsolute(tagLink)) {
+                return md;
+            } else {
+                String absTagLink = gitRawBase + tagLink;
+                return md.replace(tagLink, absTagLink);
+            }
         } else {
 
             /*
@@ -288,7 +302,8 @@ public class MarkdownModel implements Markdown {
                 String imageName = FilenameUtils.getName(pitchLink);
                 return imageService.buildInlineOffline(imageName);
             }
-
+        } else if(imageService.tagFound(md)) {
+            return imageService.buildTagOffline(md);
         } else {
 
             /*
@@ -353,6 +368,11 @@ public class MarkdownModel implements Markdown {
                 return origLink;
             }
 
+        } if(imageService.tagFound(md)) {
+            /*
+             * Img tag found in markdown fragment, process.
+             */
+            return imageService.tagLink(md);
         } else {
             return null;
         }
@@ -421,7 +441,6 @@ public class MarkdownModel implements Markdown {
                 link = gitRawBase + origLink;
             }
 
-            log.debug("extractLink: returning={}", link);
             return link;
 
         } catch (Exception lex) {

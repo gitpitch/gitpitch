@@ -83,6 +83,19 @@ public class ImageService {
 
     }
 
+    public String buildTagOffline(String md) {
+
+        try {
+
+            String imageTagUrl = tagLink(md);
+            String imageTagName = FilenameUtils.getName(imageTagUrl);
+            String offlineTagUrl = IMG_OFFLINE_DIR + imageTagName;
+            return md.replace(imageTagUrl, offlineTagUrl);
+        } catch(Exception tex) {}
+
+        return md;
+    }
+
     public boolean inline(String md) {
         return md.startsWith(MarkdownModel.MD_LINK_OPEN);
     }
@@ -116,7 +129,33 @@ public class ImageService {
         }
     }
 
+    /*
+     * Return true is HTML image tag found.
+     */
+    public boolean tagFound(String md) {
+        return md.startsWith(IMG_TAG_OPEN);
+    }
+
+    public String tagLink(String md) {
+
+        int linkTagStart = md.indexOf(IMG_TAG_SRC_OPEN);
+        int linkStart = linkTagStart + IMG_TAG_SRC_OPEN.length();
+        int linkEnd = 
+            md.indexOf(IMG_TAG_SRC_CLOSE, linkStart);
+
+        String tagLink = IMG_TAG_LINK_UNKNOWN;
+        if(linkTagStart != -1 && linkEnd != -1) {
+            tagLink = md.substring(linkStart, linkEnd);
+        }
+
+        return tagLink;
+    }
+
     private static final String IMG_OFFLINE_DIR = "./assets/md/assets/";
     private static final String IMG_INLINE_OPEN = "![Image](" + IMG_OFFLINE_DIR;
     private static final String IMG_INLINE_CLOSE = ")";
+    private static final String IMG_TAG_OPEN = "<img ";
+    private static final String IMG_TAG_SRC_OPEN = "src=\"";
+    private static final String IMG_TAG_SRC_CLOSE = "\"";
+    private static final String IMG_TAG_LINK_UNKNOWN = "#";
 }
