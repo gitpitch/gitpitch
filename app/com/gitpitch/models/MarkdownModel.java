@@ -124,12 +124,14 @@ public class MarkdownModel implements Markdown {
                            YAMLOptions yOpts,
                            String gitRawBase) {
 
-        /*
-         * Clean md fragment before processing.
-         */
-        md = (md != null) ? md.trim() : md;
-
         if (slideDelimFound(md)) {
+
+            /*
+             * Clean only delimiter fragments of whitespace
+             * noise before processing. Preserve end-of-line 
+             * characters on all non-delimiter fragments.
+             */
+            md = md.trim();
 
             if (videoDelimFound(md)) {
 
