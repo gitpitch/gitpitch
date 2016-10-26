@@ -228,6 +228,22 @@ public class SlideshowModel {
     }
 
     /*
+     * Return true if "footnote" defined in PITCHME.yaml.
+     */
+    public boolean hasFootnote() {
+
+        return (_yOpts != null) ? _yOpts.hasFootnote(params()) : false;
+    }
+
+    /*
+     * Return "footnote" defined in PITCHME.yaml.
+     */
+    public String fetchFootnote() {
+        return (_yOpts != null) ?
+            _yOpts.fetchFootnote(params()) : "Footnote undefined.";
+    }
+
+    /*
      * Return markdown for slideshow.
      */
     public String fetchMarkdown() {

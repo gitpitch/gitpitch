@@ -37,6 +37,9 @@
     </div>
     }
     <div style="position: fixed; bottom: 10px; left: 20px; z-index: 999">
+        @if(ssm.hasFootnote()) {
+        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.fetchFootnote()</span>
+        } else {
         @if(ssm.params().grs.equals("github")) {
         <span class="octicon octicon-mark-github"
               style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
@@ -45,6 +48,7 @@
               style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></i>
         }
         <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
+        }
     </div>
 
     <div class="reveal">
