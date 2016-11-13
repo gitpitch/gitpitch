@@ -389,6 +389,8 @@ public class OfflineService {
                     return markdownModel.offlineAssets(md);
                 }).collect(Collectors.toList());
 
+                log.debug("fetchOnlineAssets: assetUrls={}", assetUrls);
+
                 Path zipMdAssetsPath =
                         diskService.ensure(diskService.asPath(pp,
                                 ZIP_MD_ASSETS_DIR));

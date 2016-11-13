@@ -191,7 +191,10 @@ public class PitchService {
         File pdfFile = diskService.asFile(pp, PITCHME_PDF);
         long pdfAge = System.currentTimeMillis() - pdfFile.lastModified();
 
-        if (pdfAge > cacheTimeout.PDF_CACHE_MAX_AGE) {
+        log.debug("cachedPDF: pdfAge={}, max={}, file={}",
+            pdfAge, cacheTimeout.pdf(pp), pdfFile);
+
+        if (pdfAge > cacheTimeout.pdf(pp)) {
             diskService.delete(pp, PITCHME_PDF);
         }
 
@@ -235,9 +238,9 @@ public class PitchService {
         long zipAge = System.currentTimeMillis() - zipFile.lastModified();
 
         log.debug("cachedZip: zipAge={}, max={}, file={}",
-            zipAge, cacheTimeout.ZIP_CACHE_MAX_AGE, zipFile);
+            zipAge, cacheTimeout.zip(pp), zipFile);
 
-        if (zipAge > cacheTimeout.ZIP_CACHE_MAX_AGE) {
+        if (zipAge > cacheTimeout.zip(pp)) {
             diskService.delete(pp, PITCHME_ZIP);
             diskService.deepDelete(pp, PITCHME_ZIP_DIR);
             log.debug("cachedZip: deleted expired zip artifacts.");

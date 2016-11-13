@@ -5,7 +5,7 @@
 
 #### Get the word out
 <br>
-<span style="color:gray">Slideshow Presentations For Developers</span>
+<span style="color:gray">Markdown Presentations For Developers</span>
 <br>
 <span style="color:gray">on</span>
 <br>

@@ -126,6 +126,13 @@ public class MarkdownModel implements Markdown {
 
         if (slideDelimFound(md)) {
 
+            /*
+             * Clean only delimiter fragments of whitespace
+             * noise before processing. Preserve end-of-line 
+             * characters on all non-delimiter fragments.
+             */
+            md = md.trim();
+
             if (videoDelimFound(md)) {
 
                 /*
@@ -151,8 +158,12 @@ public class MarkdownModel implements Markdown {
                 String imageBgUrl =
                     imageService.extractBgUrl(md, gitRawBase, this);
 
+                String bgSize = (yOpts != null) ?
+                    yOpts.fetchImageBgSize(pp) : YAMLOptions.DEFAULT_BG_SIZE;
+
                 return new StringBuffer(delimiter(md))
-                        .append(imageService.buildBackground(pp, imageBgUrl))
+                        .append(imageService.buildBackground(pp,
+                                imageBgUrl, bgSize))
                         .toString();
 
             } else if (gistDelimFound(md)) {
@@ -225,6 +236,15 @@ public class MarkdownModel implements Markdown {
 
             }
 
+        } if(imageService.tagFound(md)) {
+
+            String tagLink = imageService.tagLink(md);
+            if (linkAbsolute(tagLink)) {
+                return md;
+            } else {
+                String absTagLink = gitRawBase + tagLink;
+                return md.replace(tagLink, absTagLink);
+            }
         } else {
 
             /*
@@ -284,7 +304,8 @@ public class MarkdownModel implements Markdown {
                 String imageName = FilenameUtils.getName(pitchLink);
                 return imageService.buildInlineOffline(imageName);
             }
-
+        } else if(imageService.tagFound(md)) {
+            return imageService.buildTagOffline(md);
         } else {
 
             /*
@@ -349,6 +370,11 @@ public class MarkdownModel implements Markdown {
                 return origLink;
             }
 
+        } if(imageService.tagFound(md)) {
+            /*
+             * Img tag found in markdown fragment, process.
+             */
+            return imageService.tagLink(md);
         } else {
             return null;
         }
@@ -417,7 +443,6 @@ public class MarkdownModel implements Markdown {
                 link = gitRawBase + origLink;
             }
 
-            log.debug("extractLink: returning={}", link);
             return link;
 
         } catch (Exception lex) {
@@ -542,7 +567,7 @@ public class MarkdownModel implements Markdown {
     public static final String MD_IFRAME_OPEN =
             "<!-- .slide: data-background-iframe=\"";
     public static final String MD_IMAGE_SIZE =
-            "\" data-background-size=\"100% 100%";
+            "\" data-background-size=\"";
     public static final String MD_CLOSER = "\" -->";
     public static final String MD_SPACER = "\n";
     public static final String DATA_IMAGE_ATTR = "data-background-image=";

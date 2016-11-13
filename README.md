@@ -1,6 +1,6 @@
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/gitpitch/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/gitpitch/gitpitch)
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
-# Slideshow Presentations For Developers on GitHub, GitLab and Bitbucket
+# Markdown Presentations For Developers on GitHub, GitLab and Bitbucket
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
@@ -12,7 +12,7 @@
 
 ## What is GitPitch?
 
-GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online and offline, interactive slideshows. You can use it to promote, pitch or present absolutely anything, including your own Git projects.
+GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online and offline, interactive slideshows. You can use it to promote, pitch or present anything from designs and best practices, to code snippets and complete frameworks.
 
 Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public [GitHub, GitLab or Bitbucket](https://github.com/gitpitch/gitpitch/wiki/Git-Repo-Services) repo.
 
