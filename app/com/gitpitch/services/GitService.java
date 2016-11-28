@@ -248,7 +248,8 @@ public class GitService {
 
                         GRS grs = grsManager.get(pp);
                         GRSService grsService = grsManager.getService(grs);
-                        int downYAML = grsService.download(pp, PITCHME_YAML);
+                        int downYAML = grsService.download(pp,
+                                PitchParams.PITCHME_YAML, pp.YAML());
                         boolean downOk = downYAML == STATUS_OK;
                         log.debug("fetchYAML: pp={}, downloaded YAML={}", pp, downYAML);
 
@@ -317,7 +318,8 @@ public class GitService {
                         GRS grs = grsManager.get(pp);
                         GRSService grsService = grsManager.getService(grs);
 
-                        int downStatus = grsService.download(pp, PITCHME_MD);
+                        int downStatus = grsService.download(pp,
+                                PitchParams.PITCHME_MD, pp.MD());
 
                         if (downStatus == STATUS_OK) {
 
@@ -403,8 +405,6 @@ public class GitService {
     private static final String GHUB_REPO_META =
             "https://api.github.com/repos/";
     private static final String GIT_MASTER = "master";
-    private static final String PITCHME_MD = "PITCHME.md";
-    private static final String PITCHME_YAML = "PITCHME.yaml";
     private static final String SLASH = "/";
     private static final int HTTP_OK = 200;
     private static final int STATUS_OK = 0;

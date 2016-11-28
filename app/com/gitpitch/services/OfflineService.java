@@ -181,11 +181,13 @@ public class OfflineService {
 
         int status = STATUS_UNDEF;
 
+        Path zipRoot = null;
+
         try {
 
-            Path zipRoot = prepareZipRoot(pp);
+            zipRoot = prepareZipRoot(pp);
 
-            status = fetchOnlineMarkdown(pp);
+            status = fetchOnlineMarkdown(pp, zipRoot);
 
             if (status == STATUS_OK)
                 status = processMarkdown(pp, zipRoot, ssmo);
@@ -197,13 +199,13 @@ public class OfflineService {
                 status = fetchSlideshowHTML(pp, zipRoot);
 
             if (status == STATUS_OK)
-                fetchFixedDependencies(pp);
+                fetchFixedDependencies(pp, zipRoot);
 
             if (status == STATUS_OK)
-                fetchYAMLDependencies(pp);
+                fetchYAMLDependencies(pp, zipRoot);
 
             if (status == STATUS_OK)
-                status = buildZip(pp);
+                status = buildZip(pp, zipRoot);
 
         } catch (Exception zex) {
             log.warn("generateZip: pp={}, ex={}", zex);
@@ -212,9 +214,9 @@ public class OfflineService {
             /*
              * Clean up artifacts if failed to generate zip.
              */
-            if (status != STATUS_OK) {
-                diskService.delete(pp, PITCHME_ZIP);
-                diskService.deepDelete(pp, ZIP_ROOT_DIR);
+            if (status != STATUS_OK && zipRoot != null) {
+                diskService.delete(zipRoot.resolve(PITCHME_ZIP));
+                diskService.deepDelete(zipRoot.resolve(ZIP_ROOT_DIR).toFile());
             }
         }
 
@@ -225,23 +227,29 @@ public class OfflineService {
      * Prepare zip archive root directory on disk.
      */
     private Path prepareZipRoot(PitchParams pp) {
-        return diskService.ensure(diskService.asPath(pp, ZIP_ROOT_DIR));
+        Path zipRoot = diskService.ensure(pp);
+        if(pp.pitchme != null) {
+            zipRoot = zipRoot.resolve(pp.pitchme);
+        }
+        zipRoot = zipRoot.resolve(ZIP_ROOT_DIR);
+        return diskService.ensure(zipRoot);
     }
 
     /*
      * Fetch online PITCHME.md into ZIP_MD_DIR.
      */
-    private int fetchOnlineMarkdown(PitchParams pp) {
+    private int fetchOnlineMarkdown(PitchParams pp, Path zipRoot) {
 
         String murl =
                 com.gitpitch.controllers.routes.PitchController.markdown(pp.grs,
                         pp.user,
                         pp.repo,
-                        pp.branch)
+                        pp.branch,
+                        pp.pitchme)
                         .absoluteURL(isEncrypted(), hostname());
 
         Path zipMdPath =
-                diskService.ensure(diskService.asPath(pp, ZIP_MD_DIR));
+                diskService.ensure(zipRoot.resolve(ZIP_MD_DIR));
         return diskService.download(pp,
                 zipMdPath, murl, PITCHME_ONLINE_MD,
                 grsManager.get(pp).getHeaders());
@@ -258,6 +266,7 @@ public class OfflineService {
                         pp.branch,
                         pp.grs,
                         pp.theme,
+                        pp.pitchme,
                         pp.notes,
                         ENABLED)
                         .absoluteURL(isEncrypted(), hostname());
@@ -277,6 +286,7 @@ public class OfflineService {
                         pp.repo,
                         pp.branch,
                         pp.theme,
+                        pp.pitchme,
                         pp.notes,
                         ENABLED,
                         ENABLED)
@@ -289,11 +299,11 @@ public class OfflineService {
     /*
      * Fetch fixed JS and CSS dependencies for GitPitch slideshow.
      */
-    private void fetchFixedDependencies(PitchParams pp)
+    private void fetchFixedDependencies(PitchParams pp, Path zipRoot)
             throws java.io.IOException {
 
         Path destPath =
-            diskService.ensure(diskService.asPath(pp, ZIP_ASSETS_DIR));
+            diskService.ensure(zipRoot.resolve(ZIP_ASSETS_DIR));
 
         if(env.isProd()) {
 
@@ -328,7 +338,7 @@ public class OfflineService {
         int status = STATUS_UNDEF;
 
         String consumed = null;
-        Path mdOnlinePath = diskService.asPath(pp, PITCHME_ONLINE_PATH);
+        Path mdOnlinePath = zipRoot.resolve(PITCHME_ONLINE_PATH);
         File mdOnlineFile = mdOnlinePath.toFile();
 
         if (mdOnlineFile.exists()) {
@@ -349,7 +359,7 @@ public class OfflineService {
                 }).collect(Collectors.joining("\n"));
 
                 Path mdOfflinePath =
-                        diskService.asPath(pp, PITCHME_OFFLINE_PATH);
+                        zipRoot.resolve(PITCHME_OFFLINE_PATH);
                 Files.write(mdOfflinePath, consumed.getBytes());
 
                 fetchOnlineAssets(pp, zipRoot);
@@ -375,15 +385,15 @@ public class OfflineService {
 
         List<String> assetUrls = null;
 
-        Path mdOnelinePath = diskService.asPath(pp, PITCHME_ONLINE_PATH);
-        File mdOnlineFile = mdOnelinePath.toFile();
+        Path mdOnlinePath = zipRoot.resolve(PITCHME_ONLINE_PATH);
+        File mdOnlineFile = mdOnlinePath.toFile();
 
         if (mdOnlineFile.exists()) {
 
             MarkdownModel markdownModel =
                 (MarkdownModel) markdownModelFactory.create(null);
 
-            try (Stream<String> stream = Files.lines(mdOnelinePath)) {
+            try (Stream<String> stream = Files.lines(mdOnlinePath)) {
 
                 assetUrls = stream.map(md -> {
                     return markdownModel.offlineAssets(md);
@@ -391,9 +401,8 @@ public class OfflineService {
 
                 log.debug("fetchOnlineAssets: assetUrls={}", assetUrls);
 
-                Path zipMdAssetsPath =
-                        diskService.ensure(diskService.asPath(pp,
-                                ZIP_MD_ASSETS_DIR));
+                Path zipMdAssetsPath = zipRoot.resolve(ZIP_MD_ASSETS_DIR);
+                zipMdAssetsPath = diskService.ensure(zipMdAssetsPath);
 
                 List<String> fetched = new ArrayList<String>();
 
@@ -419,7 +428,7 @@ public class OfflineService {
     /*
      * Fetch PITCHME.yaml dependencies into zip archive.
      */
-    private void fetchYAMLDependencies(PitchParams pp) {
+    private void fetchYAMLDependencies(PitchParams pp, Path zipRoot) {
 
         GRSService grsService =
                 grsManager.getService(grsManager.get(pp));
@@ -433,8 +442,7 @@ public class OfflineService {
                 String logoName = FilenameUtils.getName(logoUrl);
 
                 Path zipAssetsPath =
-                        diskService.ensure(diskService.asPath(pp,
-                                ZIP_ASSETS_DIR));
+                        diskService.ensure(zipRoot.resolve(ZIP_ASSETS_DIR));
                 diskService.download(pp, zipAssetsPath,
                         logoUrl, logoName, grsManager.get(pp).getHeaders());
                 log.debug("fetchYAMLDependencies: downloaded logo={}", logoUrl);
@@ -453,7 +461,7 @@ public class OfflineService {
              */
             if (yOpts == null || !yOpts.mathEnabled(pp)) {
 
-                Path destPath = diskService.asPath(pp, ZIP_ASSETS_DIR);
+                Path destPath = zipRoot.resolve(ZIP_ASSETS_DIR);
                 String revealVersion =
                     configuration.getString("gitpitch.dependency.revealjs");
                 Path mathPluginPath = Paths.get(destPath.toString(),
@@ -474,12 +482,13 @@ public class OfflineService {
     /*
      * Build PITCHME.zip.
      */
-    private int buildZip(PitchParams pp) {
+    private int buildZip(PitchParams pp, Path zipRoot) {
 
         /*
          * Remove PITCHME_ONLINE_MD from zip directory.
          */
-        diskService.delete(pp, PITCHME_ONLINE_PATH);
+        Path onlinePath = zipRoot.resolve(PITCHME_ONLINE_PATH);
+        diskService.delete(onlinePath);
 
         /*
          * CMD: zip -r PITCHME.zip PITCHME
@@ -490,8 +499,8 @@ public class OfflineService {
                 PITCHME_ZIP,
                 ZIP_ROOT_DIR};
 
-        Path bwd = diskService.bwd(pp);
-        return shellService.exec(ZIP_CMD, pp, bwd, cmd);
+        Path zipWd = diskService.ensure(pp, pp.pitchme);
+        return shellService.exec(ZIP_CMD, pp, zipWd, cmd);
     }
 
     public boolean isEncrypted() {
@@ -515,9 +524,9 @@ public class OfflineService {
     }
 
     private static final String ZIP_ROOT_DIR = "PITCHME";
-    private static final String ZIP_MD_DIR = "PITCHME/assets/md";
-    private static final String ZIP_MD_ASSETS_DIR = "PITCHME/assets/md/assets";
-    private static final String ZIP_ASSETS_DIR = "PITCHME/assets";
+    private static final String ZIP_MD_DIR = "assets/md";
+    private static final String ZIP_MD_ASSETS_DIR = "assets/md/assets";
+    private static final String ZIP_ASSETS_DIR = "assets";
     private static final String PITCHME_ONLINE_MD = "PITCHME.mdo";
     private static final String PITCHME_OFFLINE_MD = "PITCHME.md";
     private static final String PITCHME_ONLINE_PATH =

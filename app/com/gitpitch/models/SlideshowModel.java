@@ -75,14 +75,17 @@ public class SlideshowModel {
                 com.gitpitch.controllers.routes.PitchController.markdown(pp.grs,
                         pp.user,
                         pp.repo,
-                        pp.branch).url();
+                        pp.branch,
+                        pp.pitchme).url();
 
         this._pretty = new StringBuffer(SLASH)
                 .append(this._pp.user)
                 .append(SLASH)
                 .append(this._pp.repo)
-                .append(QMARK_BRANCH)
+                .append(PARAM_BRANCH)
                 .append(this._pp.branch)
+                .append(PARAM_PITCHME)
+                .append(this._pp.pitchme)
                 .toString();
 
         this._cacheKey = genKey(pp);
@@ -109,8 +112,10 @@ public class SlideshowModel {
                 .append(pp.user)
                 .append(SLASH)
                 .append(pp.repo)
-                .append(QMARK_BRANCH)
+                .append(PARAM_BRANCH)
                 .append(pp.branch)
+                .append(PARAM_PITCHME)
+                .append(pp.pitchme)
                 .toString();
     }
 
@@ -387,7 +392,8 @@ public class SlideshowModel {
     }
 
     private static final String SLASH = "/";
-    private static final String QMARK_BRANCH = "?b=";
+    private static final String PARAM_BRANCH = "?b=";
+    private static final String PARAM_PITCHME = "&p=";
     private static final String PITCHME_YAML = "PITCHME.yaml";
     /*
      * Model prefix identifier for cache key generator.

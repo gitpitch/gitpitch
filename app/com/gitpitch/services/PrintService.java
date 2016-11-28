@@ -89,7 +89,7 @@ public class PrintService {
             CompletableFuture<Void> syncFuture =
                     CompletableFuture.supplyAsync(() -> {
 
-                        Path branchPath = diskService.ensure(pp);
+                        Path branchPath = diskService.ensure(pp, pp.pitchme);
                         int pdfStatus = generatePDF(pp);
 
                         if (pdfStatus != STATUS_OK) {
@@ -149,8 +149,8 @@ public class PrintService {
 
         log.debug("generatePDF: pp={}", pp);
         Path branchPath = diskService.ensure(pp);
-        diskService.delete(pp, PITCHME_PDF);
-        String filePath = diskService.asFile(pp, PITCHME_PDF).toString();
+        diskService.delete(pp, pp.PDF());
+        String filePath = diskService.asFile(pp, pp.PDF()).toString();
 
         String slideshowUrl =
                 com.gitpitch.controllers.routes.PitchController.slideshow(pp.grs,
@@ -158,6 +158,7 @@ public class PrintService {
                         pp.repo,
                         pp.branch,
                         pp.theme,
+                        pp.pitchme,
                         pp.notes,
                         PRINT_NO_FRAGS,
                         null)

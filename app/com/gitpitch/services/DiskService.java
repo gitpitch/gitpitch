@@ -98,6 +98,16 @@ public class DiskService {
         return ensure(bwd(pp));
     }
 
+
+    /*
+     * Ensure PitchParams branch working sub-directory exists.
+     */
+    public Path ensure(PitchParams pp, String subdir) {
+
+        return (subdir != null) ?
+                ensure(asPath(pp, subdir)) : ensure(bwd(pp));
+    }
+
     /*
      * Ensure PitchParams branch working directory exists.
      */

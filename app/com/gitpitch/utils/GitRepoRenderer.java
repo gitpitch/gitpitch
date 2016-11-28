@@ -88,6 +88,7 @@ public class GitRepoRenderer {
                             _grm.name(),
                             _pp.branch,
                             _pp.theme,
+                            _pp.pitchme,
                             _pp.notes, null).toString();
 
             this._slideshowURL = com.gitpitch.controllers.routes.PitchController
@@ -96,13 +97,15 @@ public class GitRepoRenderer {
                             _grm.name(),
                             _pp.branch,
                             _pp.theme,
+                            _pp.pitchme,
                             _pp.notes, null, null).toString();
 
             this._markdownURL = com.gitpitch.controllers.routes.PitchController
                     .markdown(_pp.grs,
                             _grm.owner(),
                             _grm.name(),
-                            _pp.branch).toString();
+                            _pp.branch,
+                            _pp.pitchme).toString();
 
             Optional<GRS> grso =
                     this._grsServices.stream()
@@ -269,6 +272,7 @@ public class GitRepoRenderer {
                 _grm.name(),
                 _pp.branch,
                 theme,
+                _pp.pitchme,
                 _pp.notes, null).toString();
     }
 
@@ -384,6 +388,7 @@ public class GitRepoRenderer {
                     _pp.branch,
                     grs,
                     _pp.theme,
+                    _pp.pitchme,
                     _pp.notes,
                     null)
                     .absoluteURL(isEncrypted(),
@@ -394,6 +399,7 @@ public class GitRepoRenderer {
                     _pp.branch,
                     grs,
                     _pp.theme,
+                    _pp.pitchme,
                     _pp.notes, null).toString();
     }
 
@@ -404,6 +410,7 @@ public class GitRepoRenderer {
                 _pp.branch,
                 _pp.grs,
                 theme,
+                _pp.pitchme,
                 _pp.notes,
                 null).toString();
     }
@@ -415,6 +422,7 @@ public class GitRepoRenderer {
                 _pp.repo,
                 _pp.branch,
                 _pp.theme,
+                _pp.pitchme,
                 _pp.notes).toString();
     }
 
@@ -425,6 +433,7 @@ public class GitRepoRenderer {
                 _pp.repo,
                 _pp.branch,
                 _pp.theme,
+                _pp.pitchme,
                 _pp.notes).toString();
     }
 

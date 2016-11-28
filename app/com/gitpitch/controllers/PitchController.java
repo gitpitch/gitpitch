@@ -124,11 +124,13 @@ public class PitchController extends Controller {
                                            String branch,
                                            String grs,
                                            String theme,
+                                           String pitchme,
                                            String notes,
                                            String offline) {
 
         PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
+            PitchParams.build(grsOnCall(grs),
+                    user, repo, branch, theme, pitchme, notes);
         boolean isOffline =
                 (offline == null) ? false : Boolean.parseBoolean(offline);
         Optional<GitRepoModel> grmo = pitchService.cachedRepo(pp);
@@ -188,12 +190,14 @@ public class PitchController extends Controller {
                                              String repo,
                                              String branch,
                                              String theme,
+                                             String pitchme,
                                              String notes,
                                              String fragments,
                                              String offline) {
 
         PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
+            PitchParams.build(grsOnCall(grs),
+                    user, repo, branch, theme, pitchme, notes);
         boolean printing =
                 (fragments == null) ? false : !Boolean.parseBoolean(fragments);
         boolean isOffline =
@@ -249,10 +253,12 @@ public class PitchController extends Controller {
     public CompletionStage<Result> markdown(String grs,
                                             String user,
                                             String repo,
-                                            String branch) {
+                                            String branch,
+                                            String pitchme) {
 
         PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch);
+            PitchParams.build(grsOnCall(grs),
+                    user, repo, branch, null, pitchme);
         Optional<MarkdownModel> mdmo = pitchService.cachedMarkdown(pp);
 
         if (mdmo.isPresent()) {
@@ -297,10 +303,12 @@ public class PitchController extends Controller {
                                          String repo,
                                          String branch,
                                          String theme,
+                                         String pitchme,
                                          String notes) {
 
         PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
+            PitchParams.build(grsOnCall(grs),
+                    user, repo, branch, theme, pitchme, notes);
         Optional<File> pdfo = pitchService.cachedPDF(pp);
 
         if (pdfo.isPresent()) {
@@ -339,11 +347,13 @@ public class PitchController extends Controller {
                                            String repo,
                                            String branch,
                                            String theme,
+                                           String pitchme,
                                            String notes) {
                                           
 
         PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch, theme, notes);
+            PitchParams.build(grsOnCall(grs),
+                    user, repo, branch, theme, pitchme, notes);
         log.debug("offline: pp={}", pp);
 
         Optional<File> zipo = pitchService.cachedZip(pp);

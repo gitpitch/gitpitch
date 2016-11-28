@@ -34,6 +34,7 @@ import play.libs.ws.*;
 
 import javax.inject.*;
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 
@@ -188,14 +189,14 @@ public class PitchService {
      */
     public Optional<File> cachedPDF(PitchParams pp) {
 
-        File pdfFile = diskService.asFile(pp, PITCHME_PDF);
+        File pdfFile = diskService.asFile(pp, pp.PDF());
         long pdfAge = System.currentTimeMillis() - pdfFile.lastModified();
 
         log.debug("cachedPDF: pdfAge={}, max={}, file={}",
             pdfAge, cacheTimeout.pdf(pp), pdfFile);
 
         if (pdfAge > cacheTimeout.pdf(pp)) {
-            diskService.delete(pp, PITCHME_PDF);
+            diskService.delete(pp, pp.PDF());
         }
 
         return pdfFile.exists() ? Optional.of(pdfFile) : Optional.empty();
@@ -234,15 +235,16 @@ public class PitchService {
      */
     public Optional<File> cachedZip(PitchParams pp) {
 
-        File zipFile = diskService.asFile(pp, PITCHME_ZIP);
+        Path zipPath = diskService.ensure(pp, pp.pitchme);
+        File zipFile = zipPath.resolve(PITCHME_ZIP).toFile();
         long zipAge = System.currentTimeMillis() - zipFile.lastModified();
 
         log.debug("cachedZip: zipAge={}, max={}, file={}",
             zipAge, cacheTimeout.zip(pp), zipFile);
 
         if (zipAge > cacheTimeout.zip(pp)) {
-            diskService.delete(pp, PITCHME_ZIP);
-            diskService.deepDelete(pp, PITCHME_ZIP_DIR);
+            diskService.delete(zipPath.resolve(PITCHME_ZIP));
+            diskService.deepDelete(zipPath.resolve(PITCHME_ZIP_DIR).toFile());
             log.debug("cachedZip: deleted expired zip artifacts.");
         }
 

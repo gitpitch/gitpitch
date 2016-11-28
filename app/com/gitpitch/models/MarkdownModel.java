@@ -516,8 +516,10 @@ public class MarkdownModel implements Markdown {
                 .append(pp.user)
                 .append(SLASH)
                 .append(pp.repo)
-                .append(QMARK_BRANCH)
+                .append(PARAM_BRANCH)
                 .append(pp.branch)
+                .append(PARAM_PITCHME)
+                .append(pp.pitchme)
                 .toString();
     }
 
@@ -580,7 +582,8 @@ public class MarkdownModel implements Markdown {
     private static final String MD_VSLIDE_GIST = "?gist=";
 
     private static final String SLASH = "/";
-    private static final String QMARK_BRANCH = "?b=";
+    private static final String PARAM_BRANCH = "?b=";
+    private static final String PARAM_PITCHME = "&p=";
     private static final String MD_LINK_DELIM = "](";
     private static final String MD_LINK_ABS = "http";
     private static final String MD_LINK_SLASH = "/";

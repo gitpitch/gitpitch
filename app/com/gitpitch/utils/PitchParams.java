@@ -37,6 +37,7 @@ public class PitchParams {
     public String theme;
     public String notes;
     public String grs;
+    public String pitchme;
 
     private PitchParams(String grs,
                         String user,
@@ -63,6 +64,16 @@ public class PitchParams {
                         String repo,
                         String branch,
                         String theme,
+                        String pitchme) {
+
+        this(grs, user, repo, branch, theme, pitchme, null);
+    }
+    private PitchParams(String grs,
+                        String user,
+                        String repo,
+                        String branch,
+                        String theme,
+                        String pitchme,
                         String notes) {
 
         this.grs = grs;
@@ -76,6 +87,7 @@ public class PitchParams {
         else
             this.theme = DEFAULT_THEME;
 
+        this.pitchme = pitchme;
         this.notes = notes;
     }
 
@@ -108,9 +120,20 @@ public class PitchParams {
                                     String repo,
                                     String branch,
                                     String theme,
+                                    String pitchme) {
+
+        return new PitchParams(grs, user, repo, branch, theme, pitchme);
+    }
+
+    public static PitchParams build(String grs,
+                                    String user,
+                                    String repo,
+                                    String branch,
+                                    String theme,
+                                    String pitchme,
                                     String notes) {
 
-        return new PitchParams(grs, user, repo, branch, theme, notes);
+        return new PitchParams(grs, user, repo, branch, theme, pitchme, notes);
     }
 
     public static boolean isDarkTheme(String theme) {
@@ -124,6 +147,21 @@ public class PitchParams {
     public static String fetchThemeCSS(String theme) {
         return new StringBuffer(theme).append(DOT_CSS)
                 .toString();
+    }
+
+    public String MD() {
+        return (pitchme != null) ?
+            pitchme + SLASH + PITCHME_MD : PITCHME_MD;
+    }
+
+    public String YAML() {
+        return (pitchme != null) ?
+            pitchme + SLASH + PITCHME_YAML : PITCHME_YAML;
+    }
+
+    public String PDF() {
+        return (pitchme != null) ?
+            pitchme + SLASH + PITCHME_PDF : PITCHME_PDF;
     }
 
     public boolean isMaster() {
@@ -163,6 +201,8 @@ public class PitchParams {
                 .append(branch)
                 .append(" [ ")
                 .append(theme)
+                .append(", ")
+                .append(pitchme)
                 .append(" ]")
                 .toString();
     }
@@ -177,6 +217,9 @@ public class PitchParams {
         return DEFAULT_THEMES.contains(themeName);
     }
 
+    public static final String PITCHME_MD = "PITCHME.md";
+    public static final String PITCHME_YAML = "PITCHME.yaml";
+    public static final String PITCHME_PDF = "PITCHME.pdf";
     public static final String DEFAULT_THEME = "white";
     public static final String DEFAULT_THEME_CSS = "white.css";
     private static final List<String> DARK_THEMES =

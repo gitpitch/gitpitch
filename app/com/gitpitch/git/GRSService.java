@@ -67,14 +67,14 @@ public abstract class GRSService {
     /*
      * Return zero if file download completes successfully.
      */
-    public int download(PitchParams pp, String filename) {
+    public int download(PitchParams pp, String filename, String filePath) {
 
         int status = 999;
 
         GRS grs = grsManager.get(pp);
         GRSService grsService = grsManager.getService(grs);
         Path branchPath = diskService.ensure(pp);
-        String grsLink = raw(pp, filename, true);
+        String grsLink = raw(pp, filePath, true);
         log.debug("download: grsLink={}", grsLink);
 
         if (grsService.call(pp, grsLink)) {
