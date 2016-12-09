@@ -69,10 +69,17 @@ public class VideoService {
              *
              * Example link:
              * https://www.youtube.com/embed/mkiDkkdGGAQ
+             *
+             * Example link with offset start time:
+             * https://www.youtube.com/embed/mkiDkkdGGAQ?start=121
              */
+
+            String ifrOps = (videoLink.contains("?")) ?
+                YTUBE_IFR_OPS_APPEND : YTUBE_IFR_OPS;
+
             return new StringBuffer(YTUBE_DIV_OPEN).append(YTUBE_IFR_OPEN)
                     .append(videoLink)
-                    .append(YTUBE_IFR_OPS)
+                    .append(ifrOps)
                     .append(YTUBE_IFR_CLSE)
                     .append(YTUBE_DIV_CLSE)
                     .toString();
@@ -179,6 +186,7 @@ public class VideoService {
     private static final String YTUBE_DIV_OPEN = "<div data-video=\"true\" class=\"stretch\">";
     private static final String YTUBE_IFR_OPEN = "<iframe width=\"100%\" height=\"100%\" src=\"";
     private static final String YTUBE_IFR_OPS = "?wmode=opaque&amp;rel=0&amp;vq=large\" ";
+    private static final String YTUBE_IFR_OPS_APPEND = "&amp;wmode=opaque&amp;rel=0&amp;vq=large\" ";
     private static final String YTUBE_IFR_CLSE = "frameborder=\"0\" allowfullscreen></iframe>";
     private static final String YTUBE_DIV_CLSE = "</div>";
     /*
