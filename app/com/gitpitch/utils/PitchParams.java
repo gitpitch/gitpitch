@@ -213,6 +213,16 @@ public class PitchParams {
                 .toString();
     }
 
+    public String asTitle() {
+        return new StringBuffer("[ GitPitch ] ")
+                                     .append(user)
+                                     .append(SLASH)
+                                     .append(repo)
+                                     .append(SLASH)
+                                     .append(branch)
+                                     .toString();
+    }
+
     public boolean isValidTheme(String themeName) {
         return DEFAULT_THEMES.contains(themeName);
     }
@@ -238,4 +248,5 @@ public class PitchParams {
     private final String SLASH = "/";
     private final String SPACED_SLASH = " / ";
     private final String AT = "@ ";
+
 }

@@ -83,10 +83,10 @@ public class GitRepoRenderer {
              */
 
             this._landingURL = com.gitpitch.controllers.routes.PitchController
-                    .landing(_pp.grs,
-                            _grm.owner(),
+                    .landing(_grm.owner(),
                             _grm.name(),
                             _pp.branch,
+                            _pp.grs,
                             _pp.theme,
                             _pp.pitchme,
                             _pp.notes, null).toString();
@@ -267,13 +267,28 @@ public class GitRepoRenderer {
      * Return relative URL to landing view.
      */
     public String landingURL(String theme) {
-        return com.gitpitch.controllers.routes.PitchController.landing(_pp.grs,
-                _grm.owner(),
+        return com.gitpitch.controllers.routes.PitchController.landing(_grm.owner(),
                 _grm.name(),
                 _pp.branch,
+                _pp.grs,
                 theme,
                 _pp.pitchme,
                 _pp.notes, null).toString();
+    }
+
+    /*
+     * Return relative URL to landing view.
+     */
+    public String landingAbs() {
+
+        return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
+                _pp.repo,
+                _pp.branch,
+                _pp.grs,
+                _pp.theme,
+                _pp.pitchme,
+                _pp.notes, null).absoluteURL(isEncrypted(),
+                            hostname());
     }
 
     /*
@@ -467,6 +482,15 @@ public class GitRepoRenderer {
         return _grsServices;
     }
 
+
+    public String pageDescription() {
+        if(model() != null && model().description() != null) {
+            return model().description();
+        } else {
+            return AS_DESCR;
+        }
+    }
+
     /*
      * Return string representation of ViewModel.
      */
@@ -508,4 +532,7 @@ public class GitRepoRenderer {
     private static final String GRS_GITLAB_FORKS = "graphs/";
     private static final String GRS_BITBUCKET_STARS = "commits/all";
     private static final String GRS_BITBUCKET_FORKS = "branches";
+
+    private static final String AS_DESCR =
+        "Markdown Presentation powered by GitPitch.";
 }
