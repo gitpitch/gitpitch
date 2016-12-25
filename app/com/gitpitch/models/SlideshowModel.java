@@ -307,6 +307,13 @@ public class SlideshowModel {
     }
 
     /*
+     * Return "mousewheel" defined in PITCHME.yaml.
+     */
+    public boolean fetchMouseWheel() {
+        return (_yOpts != null) ? _yOpts.fetchMouseWheel(params()) : false;
+    }
+
+    /*
      * Return true if "mathjax" defined in PITCHME.yaml.
      */
     public boolean mathEnabled() {

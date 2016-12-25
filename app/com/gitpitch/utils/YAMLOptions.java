@@ -269,6 +269,23 @@ public final class YAMLOptions {
         }
     }
 
+    public Boolean fetchMouseWheel(PitchParams pp) {
+
+        try {
+            Object mouseWheel = _yProps.get(MOUSE_WHEEL_OPTION);
+
+            if (mouseWheel instanceof Boolean)
+                return (Boolean) mouseWheel;
+            else if (mouseWheel instanceof String)
+                return Boolean.parseBoolean((String) mouseWheel);
+            else
+                return false;
+
+        } catch (Exception bex) {
+            return false;
+        }
+    }
+
     public Boolean mathEnabled(PitchParams pp) {
         String mathjax = _yProps.get(MATHJAX_OPTION);
         return (mathjax != null);
@@ -353,6 +370,7 @@ public final class YAMLOptions {
     private static final String LOOP_OPTION = "loop";
     private static final String RTL_OPTION = "rtl";
     private static final String SHUFFLE_OPTION = "shuffle";
+    private static final String MOUSE_WHEEL_OPTION = "mousewheel";
     private static final String MATHJAX_OPTION = "mathjax";
     private static final String HIGHLIGHT_OPTION = "highlight";
     private static final String FOOTNOTE_OPTION = "footnote";
