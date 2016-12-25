@@ -273,8 +273,12 @@ public class SlideshowModel {
     /*
      * Return "autoslide" defined in PITCHME.yaml.
      */
-    public int fetchAutoSlide() {
-        return (_yOpts != null) ? _yOpts.fetchAutoSlide(params()) : 0;
+    public int fetchAutoSlide(boolean printing) {
+
+        if(printing)
+            return 0; // Disable auto-slide when printing.
+        else
+            return (_yOpts != null) ? _yOpts.fetchAutoSlide(params()) : 0;
     }
 
     /*

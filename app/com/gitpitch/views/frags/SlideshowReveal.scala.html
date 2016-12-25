@@ -1,4 +1,4 @@
-@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, offline: Boolean)
+@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, printing: Boolean, offline: Boolean)
 
     <script>
         Reveal.initialize({
@@ -6,7 +6,7 @@
             margin: 0.0,
             showNotes: @ssm.showNotes(),
             transition: '@ssm.fetchTransition()',
-            autoSlide: @ssm.fetchAutoSlide(),
+            autoSlide: @ssm.fetchAutoSlide(printing),
             loop: @ssm.fetchLoop(),
             center: @ssm.fetchVerticalCenter(),
             rtl: @ssm.fetchRTL(),
