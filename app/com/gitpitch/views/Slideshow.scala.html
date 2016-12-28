@@ -25,6 +25,15 @@
     @Html(ssm.fetchThemeOverride())
     </style>
     }
+
+    @if(!offline) {
+        @if(!printing) {
+            @if(ssm.hasGAToken()) {
+                @GoogleAnalytics(ssm.fetchGAToken())
+            }
+        }
+    }
+
 </head>
 <body>
     @if(ssm.hasLogo()) {

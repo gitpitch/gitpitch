@@ -383,6 +383,22 @@ public class SlideshowModel {
         return delim;
     }
 
+    /*
+     * Return true if "gatoken" defined in PITCHME.yaml.
+     */
+    public boolean hasGAToken() {
+
+        return (_yOpts != null) ? _yOpts.hasGAToken(params()) : false;
+    }
+
+    /*
+     * Return "gatoken" defined in PITCHME.yaml.
+     */
+    public String fetchGAToken() {
+        return (_yOpts != null) ?
+            _yOpts.fetchGAToken(params()) : null;
+    }
+
     public String toString() {
         return _pretty;
     }

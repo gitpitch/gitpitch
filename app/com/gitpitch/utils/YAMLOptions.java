@@ -173,7 +173,6 @@ public final class YAMLOptions {
         }
     }
 
-
     public String fetchTransition(PitchParams pp) {
 
         String transition = _yProps.get(TRANSITION_OPTION);
@@ -317,6 +316,14 @@ public final class YAMLOptions {
         return _yProps.get(FOOTNOTE_OPTION);
     }
 
+    public boolean hasGAToken(PitchParams pp) {
+        return (_yProps.get(GATOKEN_OPTION) != null);
+    }
+
+    public String fetchGAToken(PitchParams pp) {
+        return _yProps.get(GATOKEN_OPTION);
+    }
+
     public boolean hasHorzDelim(PitchParams pp) {
         return _yProps.get(HSLIDE_DELIM) != null;
     }
@@ -374,6 +381,7 @@ public final class YAMLOptions {
     private static final String MATHJAX_OPTION = "mathjax";
     private static final String HIGHLIGHT_OPTION = "highlight";
     private static final String FOOTNOTE_OPTION = "footnote";
+    private static final String GATOKEN_OPTION = "gatoken";
 
     private static final String HSLIDE_DELIM = "horz-delim";
     private static final String VSLIDE_DELIM = "vert-delim";
