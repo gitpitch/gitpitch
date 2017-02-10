@@ -53,8 +53,9 @@ public final class Dependencies {
         this.highlightjsVersion = cfg.getString("gitpitch.dependency.highlightjs");
     }
 
-    public String revealjs(boolean offline) {
-        return build(offline, REVEALJS, revealjsVersion);
+    public String revealjs(boolean offline, String versionOverride) {
+        return build(offline, REVEALJS, (versionOverride != null) ?
+            versionOverride : revealjsVersion);
     }
 
     public String bootstrap(boolean offline) {

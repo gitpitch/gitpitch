@@ -11,10 +11,10 @@
     <meta content="Markdown Presentation powered by GitPitch." name="description">
     <meta content="GitHub, GitLab, Bitbucket, Markdown, Slideshow, Presentation, Developers, PITCHME" name="keywords">
     <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
-    <link href="@deps.revealjs(offline)/css/reveal.css" rel="stylesheet" type="text/css"/>
-    <link href="@deps.revealjs(offline)/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css"/>
+    <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/reveal.css" rel="stylesheet" type="text/css"/>
+    <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css"/>
     @if(printing) {
-    <link href="@deps.revealjs(offline)/css/print/paper.css" rel="stylesheet" type="text/css"/>
+    <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/print/paper.css" rel="stylesheet" type="text/css"/>
     }
     <link href="@deps.highlightjs(offline)/@ssm.fetchHighlightCSS()" rel="stylesheet" type="text/css"/>
     <link href="@deps.octicons(offline)/octicons.css" rel="stylesheet" type="text/css"/>
@@ -79,8 +79,8 @@
             }
         </div>
     </div>
-    <script src="@deps.revealjs(offline)/js/reveal.js"></script>
-    <script src="@deps.revealjs(offline)/lib/js/head.min.js"></script>
+    <script src="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/js/reveal.js"></script>
+    <script src="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/lib/js/head.min.js"></script>
     <script src="@deps.jquery(offline)/jquery.min.js"></script>
 
     @SlideshowReveal(ssm, deps, printing, offline)

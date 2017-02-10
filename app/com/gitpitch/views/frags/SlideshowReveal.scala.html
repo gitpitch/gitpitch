@@ -15,7 +15,7 @@
             @if(ssm.mathEnabled()) {
                 math: {
                     @if(offline) {
-                    mathjax: '@deps.revealjs(offline)/plugin/math/MathJax.js',
+                    mathjax: '@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/math/MathJax.js',
                     } else {
                     mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
                     }
@@ -23,14 +23,14 @@
                 },
             }
             dependencies: [
-                { src: "@deps.revealjs(offline)/plugin/markdown/marked.js"},
-                { src: "@deps.revealjs(offline)/plugin/markdown/markdown.js"},
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/marked.js"},
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/markdown.js"},
                 @if(ssm.showNotes()) {
-                   { src: "@deps.revealjs(offline)/plugin/notes/notes.js", async: true },
+                   { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
                 }
-                { src: "@deps.revealjs(offline)/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                 @if(ssm.mathEnabled()) {
-                    { src: "@deps.revealjs(offline)/plugin/math/math.js", async: true }
+                    { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/math/math.js", async: true }
                 }
             ]
         });

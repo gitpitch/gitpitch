@@ -348,6 +348,10 @@ public final class YAMLOptions {
         return _yProps.get(VSLIDE_DELIM_REGEXP);
     }
 
+    public String fetchRevealVersion(PitchParams pp) {
+        return _yProps.get(REVEALJS_VERSION);
+    }
+
     private String defaultHighlight(PitchParams pp) {
         return PitchParams.isDarkTheme(fetchTheme(pp)) ?
                 HIGHLIGHT_DARK_DEFAULT : HIGHLIGHT_LIGHT_DEFAULT;
@@ -382,6 +386,7 @@ public final class YAMLOptions {
     private static final String HIGHLIGHT_OPTION = "highlight";
     private static final String FOOTNOTE_OPTION = "footnote";
     private static final String GATOKEN_OPTION = "gatoken";
+    private static final String REVEALJS_VERSION = "revealjs-version";
 
     private static final String HSLIDE_DELIM = "horz-delim";
     private static final String VSLIDE_DELIM = "vert-delim";

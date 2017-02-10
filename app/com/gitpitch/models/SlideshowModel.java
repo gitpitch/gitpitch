@@ -399,6 +399,15 @@ public class SlideshowModel {
             _yOpts.fetchGAToken(params()) : null;
     }
 
+    /*
+     * Return "revealjs-version" override for slideshow.
+     */
+    public String fetchRevealVersionOverride() {
+        return (_yOpts != null) ?
+            _yOpts.fetchRevealVersion(params()) : null;
+    }
+
+
     public String toString() {
         return _pretty;
     }
