@@ -251,10 +251,10 @@
 			'Home':					'First slide',
 			'End':					'Last slide',
             'S':                    'Select code block',
-			'B':			      	'Pause',
+			'B':			      	'Blackout',
 			'F':					'Fullscreen',
 			'ESC, O':				'Slide overview',
-            '*':                    "Press w/ shift to skip fragments"
+            '*':                    "Press w/ shift key to skip slide fragments"
 		};
 
 	/**
@@ -4054,7 +4054,7 @@
         if( availableRoutes().up ) {
             slide( indexh, indexv - 1 );
         } else { // Hide all fragments on top slide
-            while (previousFragment() !== false) {}
+            while (previousFragment() !== false) { }
         }
 
     }
@@ -4062,12 +4062,13 @@
     function navigateHardDown() {
 
         // Move to next slide
-        if( ( isOverview() || nextFragment() === false ) && availableRoutes().down ) {
+        if( ( isOverview() || nextFragment() === false ) &&
+            availableRoutes().down ) {
             slide( indexh, indexv + 1 );
         }
 
         // Reveal all fragments
-        while (nextFragment() !== false) {}
+        while (nextFragment() !== false) { }
 
     }
 
@@ -4266,26 +4267,22 @@
 				// n, page down
 				case 78: case 34: navigateNext(); break;
 				// h, left
-				// case 72: case 37: navigateLeft(); break;
                 case 72: case 37:
                     if (event.shiftKey) { navigateHardLeft(); }
                     else { navigateLeft(); }
                 break;
 				// l, right
-				// case 76: case 39: navigateRight(); break;
                 case 76: case 39:
                     if (event.shiftKey) { navigateHardRight(); }
                     else { navigateRight(); }
                 break;
 				// k, up
-				case 75: case 38: navigateUp(); break;
-                // case 75: case 38:
+                case 75: case 38:
                     if (event.shiftKey) { navigateHardUp(); }
                     else { navigateUp(); }
                 break;
 				// j, down
-				// case 74: case 40: navigateDown(); break;
-                case 78: case 40:
+                case 74: case 40:
                     if (event.shiftKey) { navigateHardDown(); }
                     else { navigateDown(); }
                 break;
