@@ -98,7 +98,7 @@ public class GitRepoRenderer {
                             _pp.branch,
                             _pp.theme,
                             _pp.pitchme,
-                            _pp.notes, null, null).toString();
+                            _pp.notes, null, null, null).toString();
 
             this._markdownURL = com.gitpitch.controllers.routes.PitchController
                     .markdown(_pp.grs,
@@ -439,6 +439,20 @@ public class GitRepoRenderer {
                 _pp.theme,
                 _pp.pitchme,
                 _pp.notes).toString();
+    }
+
+    public String printBrowserLink() {
+
+        return com.gitpitch.controllers.routes.PitchController.slideshow(_pp.grs,
+                _pp.user,
+                _pp.repo,
+                _pp.branch,
+                _pp.theme,
+                _pp.pitchme,
+                _pp.notes,
+                "false",
+                null,
+                "true").toString();
     }
 
     public String offlineLink() {

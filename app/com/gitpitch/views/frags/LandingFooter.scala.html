@@ -46,13 +46,9 @@
                         </i></a>
                     </li>
                     <li>
-                        @if(rndr.isValid()) {
-                        <a href="@rndr.printLink()" target="_blank"><i class="fa fa-print" aria-hidden="true"> <span
-                                style="font-family: Helvetica Neue" ,Helvetica,Arial,sans-serif;">Print</span></i></a>
-                        } else {
-                        <a title="Repo not found, print disabled."><i class="fa fa-print" aria-hidden="true"> <span
-                                style="font-family: Helvetica Neue" ,Helvetica,Arial,sans-serif;">Print</span></i></a>
-                        }
+                        <a href="#popupPrint" role="button" data-toggle="modal-popover" data-placement="top"><i
+                                class="fa fa-print" aria-hidden="true"> <span style="font-family: Helvetica Neue",Helvetica,Arial,sans-serif;">Print</span>
+                        </i></a>
                     </li>
                     <li>
                         @if(rndr.isValid()) {

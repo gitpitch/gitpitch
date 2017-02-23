@@ -81,11 +81,6 @@
 
     <script>
         $(".dropdown-menu li a").click(function(){
-            // alert("DD: selected item");
-            // $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-            // $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-            // alert("DD: selected item.text: " + $(this).text());
-            // alert("DD: selected item.data: " + $(this).data('value'));
             $(".dropdown-toggle").html($(this).text() + ' <span class="caret">');
             $(".dropdown-toggle").val($(this).data('value', $(this).data('value')));
         });

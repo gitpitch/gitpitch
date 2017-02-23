@@ -1,6 +1,6 @@
 @import com.gitpitch.views.html.frags._
 
-@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, printing: Boolean, offline: Boolean)
+@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, printing: Boolean, offline: Boolean, webPrinting: Boolean)
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,9 @@
     <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
     <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/reveal.css" rel="stylesheet" type="text/css"/>
     <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css"/>
-    @if(printing) {
+    @if(webPrinting) {
+    <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/print/pdf.css" rel="stylesheet" type="text/css"/>
+    } else {
     <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/print/paper.css" rel="stylesheet" type="text/css"/>
     }
     <link href="@deps.highlightjs(offline)/@ssm.fetchHighlightCSS()" rel="stylesheet" type="text/css"/>

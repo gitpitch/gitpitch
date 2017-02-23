@@ -193,7 +193,8 @@ public class PitchController extends Controller {
                                              String pitchme,
                                              String notes,
                                              String fragments,
-                                             String offline) {
+                                             String offline,
+                                             String webprint) {
 
         PitchParams pp =
             PitchParams.build(grsOnCall(grs),
@@ -202,6 +203,8 @@ public class PitchController extends Controller {
                 (fragments == null) ? false : !Boolean.parseBoolean(fragments);
         boolean isOffline =
                 (offline == null) ? false : Boolean.parseBoolean(offline);
+        boolean webPrinting =
+                (webprint == null) ? false : Boolean.parseBoolean(webprint);
 
         Optional<SlideshowModel> ssmo = pitchService.cachedYAML(pp);
 
@@ -222,7 +225,7 @@ public class PitchController extends Controller {
             ssm = ssm.clone(pp);
             return CompletableFuture.completedFuture(
                     ok(com.gitpitch.views.html.Slideshow.render(ssm,
-                            deps, printing, isOffline)));
+                            deps, printing, isOffline, webPrinting)));
 
         } else {
 
@@ -241,7 +244,7 @@ public class PitchController extends Controller {
                             log.info("slideshow: [ fetchd, online ] {}", pp);
 
                         return ok(com.gitpitch.views.html.Slideshow.render(fetched,
-                                deps, printing, isOffline));
+                                deps, printing, isOffline, webPrinting));
                     });
         }
 

@@ -82,3 +82,18 @@
             }
         </div>
     </div>
+    <div id="popupPrint" class="popover" style="text-align: center; font-size:1em">
+        <div class="arrow"></div>
+        <h5 class="popover-title">GitPitch Printing</h5>
+        <div class="popover-content">
+            @if(rndr.isValid()) {
+            <a href="@rndr.printLink()" target="_blank">Generate PDF on Server</a>
+            <hr style="margin-bottom: 10px; margin-top: 10px">
+            <a href="@rndr.printBrowserLink()" target="_blank">Generate PDF in Browser</a>
+            <hr style="margin-bottom: 10px; margin-top: 10px">
+            <p style="width:215px; font-size:0.8em; color: gray">Note: Browser support in <b>Chrome</b> only.
+            } else {
+            Repo not found, printing disabled.
+            }
+        </div>
+    </div>
