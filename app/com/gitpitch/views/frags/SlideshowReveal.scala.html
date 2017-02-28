@@ -25,6 +25,10 @@
             dependencies: [
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/marked.js"},
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/markdown.js"},
+                @if(ssm.chartsEnabled()) {
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/Chart.min.js"},
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/csv2chart.js"},
+                }
                 @if(ssm.showNotes()) {
                    { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
                 }

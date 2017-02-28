@@ -318,6 +318,13 @@ public class SlideshowModel {
     }
 
     /*
+     * Return true if "charts" defined in PITCHME.yaml.
+     */
+    public boolean chartsEnabled() {
+        return (_yOpts != null) ? _yOpts.fetchCharts(params()) : false;
+    }
+
+    /*
      * Return true if "mathjax" defined in PITCHME.yaml.
      */
     public boolean mathEnabled() {

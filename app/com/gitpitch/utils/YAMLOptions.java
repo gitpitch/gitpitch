@@ -184,105 +184,31 @@ public final class YAMLOptions {
     }
 
     public Integer fetchAutoSlide(PitchParams pp) {
-
-        try {
-            Object autoSlide = _yProps.get(AUTOSLIDE_OPTION);
-
-            if (autoSlide instanceof Integer)
-                return (Integer) autoSlide;
-            else if (autoSlide instanceof String)
-                return Integer.parseInt((String) autoSlide);
-            else
-                return 0;
-
-        } catch (NumberFormatException nfex) {
-            return 0;
-        }
+        return fetchIntegerOption(pp, AUTOSLIDE_OPTION);
     }
 
     public Boolean fetchVerticalCenter(PitchParams pp) {
-
-        try {
-            Object vertCenter = _yProps.get(VERTICAL_CENTER);
-
-            if (vertCenter instanceof Boolean)
-                return (Boolean) vertCenter;
-            else if (vertCenter instanceof String)
-                return Boolean.parseBoolean((String) vertCenter);
-            else
-                return true;
-
-        } catch (Exception bex) {
-            return true;
-        }
+        return fetchBooleanOption(pp, VERTICAL_CENTER, true);
     }
 
     public Boolean fetchLoop(PitchParams pp) {
-
-        try {
-            Object canLoop = _yProps.get(LOOP_OPTION);
-
-            if (canLoop instanceof Boolean)
-                return (Boolean) canLoop;
-            else if (canLoop instanceof String)
-                return Boolean.parseBoolean((String) canLoop);
-            else
-                return false;
-
-        } catch (Exception bex) {
-            return false;
-        }
+        return fetchBooleanOption(pp, LOOP_OPTION);
     }
 
     public Boolean fetchRTL(PitchParams pp) {
-
-        try {
-            Object canRTL = _yProps.get(RTL_OPTION);
-
-            if (canRTL instanceof Boolean)
-                return (Boolean) canRTL;
-            else if (canRTL instanceof String)
-                return Boolean.parseBoolean((String) canRTL);
-            else
-                return false;
-
-        } catch (Exception bex) {
-            return false;
-        }
+        return fetchBooleanOption(pp, RTL_OPTION);
     }
 
     public Boolean fetchShuffle(PitchParams pp) {
-
-        try {
-            Object canShuffle = _yProps.get(SHUFFLE_OPTION);
-
-            if (canShuffle instanceof Boolean)
-                return (Boolean) canShuffle;
-            else if (canShuffle instanceof String)
-                return Boolean.parseBoolean((String) canShuffle);
-            else
-                return false;
-
-        } catch (Exception bex) {
-            return false;
-        }
+        return fetchBooleanOption(pp, SHUFFLE_OPTION);
     }
 
     public Boolean fetchMouseWheel(PitchParams pp) {
+        return fetchBooleanOption(pp, MOUSE_WHEEL_OPTION);
+    }
 
-        try {
-            Object mouseWheel = _yProps.get(MOUSE_WHEEL_OPTION);
-
-            if (mouseWheel instanceof Boolean)
-                return (Boolean) mouseWheel;
-            else if (mouseWheel instanceof String)
-                return Boolean.parseBoolean((String) mouseWheel);
-            else
-                return false;
-
-        } catch (Exception bex) {
-            return false;
-        }
+    public Boolean fetchCharts(PitchParams pp) {
+        return fetchBooleanOption(pp, CHARTS_OPTION);
     }
 
     public Boolean mathEnabled(PitchParams pp) {
@@ -352,6 +278,45 @@ public final class YAMLOptions {
         return _yProps.get(REVEALJS_VERSION);
     }
 
+    private Boolean fetchBooleanOption(PitchParams pp, String option) {
+        return fetchBooleanOption(pp, option, false);
+    }
+
+    private Boolean fetchBooleanOption(PitchParams pp,
+                                        String option, boolean dflt) {
+
+        try {
+            Object optionValue = _yProps.get(option);
+
+            if (optionValue instanceof Boolean)
+                return (Boolean) optionValue;
+            else if (optionValue instanceof String)
+                return Boolean.parseBoolean((String) optionValue);
+            else
+                return dflt;
+
+        } catch (Exception bex) {
+            return dflt;
+        }
+    }
+
+    private Integer fetchIntegerOption(PitchParams pp, String option) {
+
+        try {
+            Object optionValue = _yProps.get(option);
+
+            if (optionValue instanceof Integer)
+                return (Integer) optionValue;
+            else if (optionValue instanceof String)
+                return Integer.parseInt((String) optionValue);
+            else
+                return 0;
+
+        } catch (NumberFormatException nfex) {
+            return 0;
+        }
+    }
+
     private String defaultHighlight(PitchParams pp) {
         return PitchParams.isDarkTheme(fetchTheme(pp)) ?
                 HIGHLIGHT_DARK_DEFAULT : HIGHLIGHT_LIGHT_DEFAULT;
@@ -386,6 +351,7 @@ public final class YAMLOptions {
     private static final String HIGHLIGHT_OPTION = "highlight";
     private static final String FOOTNOTE_OPTION = "footnote";
     private static final String GATOKEN_OPTION = "gatoken";
+    private static final String CHARTS_OPTION = "charts";
     private static final String REVEALJS_VERSION = "revealjs-version";
 
     private static final String HSLIDE_DELIM = "horz-delim";
