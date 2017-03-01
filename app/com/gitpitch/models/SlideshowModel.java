@@ -332,6 +332,13 @@ public class SlideshowModel {
     }
 
     /*
+     * Return "history" defined in PITCHME.yaml.
+     */
+    public boolean fetchHistory() {
+        return (_yOpts != null) ? _yOpts.fetchHistory(params()) : false;
+    }
+
+    /*
      * Return "mathjax" defined in PITCHME.yaml.
      */
     public String fetchMathConfig() {

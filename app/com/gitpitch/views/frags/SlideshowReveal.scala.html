@@ -12,6 +12,7 @@
             rtl: @ssm.fetchRTL(),
             shuffle: @ssm.fetchShuffle(),
             mouseWheel: @ssm.fetchMouseWheel(),
+            history: @ssm.fetchHistory(),
             @if(ssm.mathEnabled()) {
                 math: {
                     @if(offline) {

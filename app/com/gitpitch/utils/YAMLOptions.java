@@ -216,6 +216,10 @@ public final class YAMLOptions {
         return (mathjax != null);
     }
 
+    public Boolean fetchHistory(PitchParams pp) {
+        return fetchBooleanOption(pp, HISTORY_OPTION, true);
+    }
+
     public String mathConfig(PitchParams pp) {
         return mathEnabled(pp) ?
                 _yProps.get(MATHJAX_OPTION) : MATHJAX_DEFAULT;
@@ -352,6 +356,7 @@ public final class YAMLOptions {
     private static final String FOOTNOTE_OPTION = "footnote";
     private static final String GATOKEN_OPTION = "gatoken";
     private static final String CHARTS_OPTION = "charts";
+    private static final String HISTORY_OPTION = "history";
     private static final String REVEALJS_VERSION = "revealjs-version";
 
     private static final String HSLIDE_DELIM = "horz-delim";
