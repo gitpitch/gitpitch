@@ -89,5 +89,14 @@
         @LandingSocialDependencies(deps, offline)
     }
     <script src="@deps.gitpitchjs(offline)/adjuster.js"></script>
+    <script>
+    function focusOnSlides() {
+        var iframes = $("#slideshow");
+        if(iframes.length > 0) {
+            iframes[0].contentWindow.focus();
+        }
+    };
+    window.setInterval(focusOnSlides, 250);
+    </script>
 </body>
 </html>
