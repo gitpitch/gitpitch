@@ -339,6 +339,13 @@ public class SlideshowModel {
     }
 
     /*
+     * Return "slide-number" defined in PITCHME.yaml.
+     */
+    public boolean fetchSlideNumber() {
+        return (_yOpts != null) ? _yOpts.fetchSlideNumber(params()) : false;
+    }
+
+    /*
      * Return "mathjax" defined in PITCHME.yaml.
      */
     public String fetchMathConfig() {
