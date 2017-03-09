@@ -380,7 +380,10 @@ public class SlideshowModel {
         }
 
         if(delim == null) {
-            delim = buildSlideDelim(MarkdownModel.HSLIDE_DELIM_DEFAULT);
+            if(MarkdownModel.HSLIDE_REGEX_DEFAULT != null)
+                delim = buildSlideDelim(MarkdownModel.HSLIDE_REGEX_DEFAULT);
+            else
+                delim = buildSlideDelim(MarkdownModel.HSLIDE_DELIM_DEFAULT);
         }
         return delim;
     }
@@ -399,7 +402,10 @@ public class SlideshowModel {
         }
 
         if(delim == null) {
-            delim = buildSlideDelim(MarkdownModel.VSLIDE_DELIM_DEFAULT);
+            if(MarkdownModel.VSLIDE_REGEX_DEFAULT != null)
+                delim = buildSlideDelim(MarkdownModel.VSLIDE_REGEX_DEFAULT);
+            else
+                delim = buildSlideDelim(MarkdownModel.VSLIDE_DELIM_DEFAULT);
         }
         return delim;
     }

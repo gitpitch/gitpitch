@@ -124,6 +124,8 @@ public class MarkdownModel implements Markdown {
                            YAMLOptions yOpts,
                            String gitRawBase) {
 
+        md = processBackwardCompatDelim(md);
+
         if (slideDelimFound(md)) {
 
             /*
@@ -556,10 +558,39 @@ public class MarkdownModel implements Markdown {
     }
 
     /*
+     * The initial releases of GitPitch used #HSLIDE and #VSLIDE
+     * as default delimiters. To provide backwards compatability
+     * for older presentations, when these old delimters are
+     * detected within PITCHME.md we auto-translate these old
+     * delimiters to the current defaults HSLIDE|VSLIDE_DELIM_DEFAULT.
+     */
+    private String processBackwardCompatDelim(String md) {
+        try {
+            if(md.startsWith(HSLIDE_DELIM_BACK_COMPAT)) {
+                md = md.replaceFirst(HSLIDE_DELIM_BACK_COMPAT,
+                        HSLIDE_DELIM_DEFAULT);
+            } else
+            if(md.startsWith(VSLIDE_DELIM_BACK_COMPAT)) {
+                md = md.replaceFirst(VSLIDE_DELIM_BACK_COMPAT,
+                        VSLIDE_DELIM_DEFAULT);
+            }
+
+        } catch(Exception bcex) {
+            return md;
+        }
+        return md;
+    }
+
+    /*
      * Markdown Parsing Identifiers | Delimiters.
      */
-    public static final String HSLIDE_DELIM_DEFAULT = "#HSLIDE";
-    public static final String VSLIDE_DELIM_DEFAULT = "#VSLIDE";
+    public static final String HSLIDE_DELIM_DEFAULT = "---";
+    public static final String VSLIDE_DELIM_DEFAULT = "+++";
+    public static final String HSLIDE_REGEX_DEFAULT = null;
+    public static final String VSLIDE_REGEX_DEFAULT = "\\+\\+\\+";
+
+    public static final String HSLIDE_DELIM_BACK_COMPAT = "#HSLIDE";
+    public static final String VSLIDE_DELIM_BACK_COMPAT = "#VSLIDE";
 
     public static final String MD_LINK_OPEN = "![";
     public static final String MD_IMAGE_OPEN =
