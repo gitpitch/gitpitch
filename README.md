@@ -72,6 +72,10 @@ GitPitch slideshow presentations are designed for sharing. You can:
 
 Support for these social features can be found in the Web page footer of each slideshow presentation.
 
+## GitPitch slideshow presentations are composable
+
+Create and deliver content and course materials as a series of slideshow presentations that all share common assets (css, images, etc.) in a single git repo. Check out the [GitPitch Asset Sharing](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) page on the Wiki.
+
 ## GitPitch slideshow presentations just work
 
 GitPitch requires no sign-up. And no configuration. Just add **PITCHME.md** ;)
