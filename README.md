@@ -7,7 +7,11 @@
 - [What is GitPitch?](#what-is-gitpitch)
 - [Is GitPitch for you?](#is-gitpitch-for-you)
 - [How does GitPitch work?](#how-does-gitpitch-work)
-- [About GitPitch Presentations](#gitpitch-slideshow-presentations-are-compelling)
+- [Compelling Presentations](#gitpitch-slideshow-presentations-are-compelling)
+- [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
+- [Composable Presentations](#gitpitch-slideshow-presentations-are-composable)
+- [Social Presentations](#gitpitch-slideshow-presentations-are-social)
+- [Presentations That Just Work](#gitpitch-slideshow-presentations-just-work)
 - [An Open Source Project](#gitpitch---an-open-source-project)
 
 ## What is GitPitch?
@@ -59,6 +63,10 @@ Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wi
 
 ![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-bg-style.png)
 
+## GitPitch slideshow presentations are composable
+
+Create and deliver content and course materials as a series of slideshow presentations that all share common assets (css, images, etc.) in a single git repo. Check out the [GitPitch Asset Sharing](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) page on the Wiki.
+
 ## GitPitch slideshow presentations are social
 
 GitPitch slideshow presentations are designed for sharing. You can:
@@ -71,10 +79,6 @@ GitPitch slideshow presentations are designed for sharing. You can:
 - [Download and present](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline) any GitPitch presentation offline
 
 Support for these social features can be found in the Web page footer of each slideshow presentation.
-
-## GitPitch slideshow presentations are composable
-
-Create and deliver content and course materials as a series of slideshow presentations that all share common assets (css, images, etc.) in a single git repo. Check out the [GitPitch Asset Sharing](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) page on the Wiki.
 
 ## GitPitch slideshow presentations just work
 
