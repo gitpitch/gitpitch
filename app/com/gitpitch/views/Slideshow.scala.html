@@ -39,7 +39,7 @@
 </head>
 <body>
     @if(ssm.hasLogo()) {
-    <div style="position: fixed; top: 20px; left: 20px; z-index: 999">
+    <div id="gp-logo" style="position: fixed; top: 20px; left: 20px; z-index: 999">
         @if(offline) {
         <img src="./assets/@ssm.fetchLogoName()"/>
         } else {
