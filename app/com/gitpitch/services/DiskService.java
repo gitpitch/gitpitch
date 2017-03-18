@@ -26,11 +26,11 @@ package com.gitpitch.services;
 import com.gitpitch.git.GRS;
 import com.gitpitch.git.GRSService;
 import com.gitpitch.git.GRSManager;
+import com.gitpitch.services.WebService;
 import com.gitpitch.utils.PitchParams;
 import org.apache.commons.io.FileUtils;
 import play.Configuration;
 import play.Logger;
-import play.libs.ws.*;
 
 import javax.inject.*;
 import java.io.File;
@@ -53,12 +53,12 @@ public class DiskService {
     private final String rawAuthToken;
     private final ShellService shellService;
     private final Configuration configuration;
-    private final WSClient ws;
+    private final WebService ws;
 
     @Inject
     public DiskService(ShellService shellService,
                        Configuration configuration,
-                       WSClient ws) {
+                       WebService ws) {
 
         this.shellService = shellService;
         this.configuration = configuration;
@@ -141,42 +141,24 @@ public class DiskService {
 
             final long start = System.currentTimeMillis();
 
-            final WSRequest downloadReq = ws.url(source);
+            byte[] fetched = ws.fetchBytes(pp, source, headers);
 
-            downloadReq.setHeader(API_CACHE_CONTROL, API_NO_CACHE);
+            if (fetched != null) {
 
-            headers.forEach((k,v) -> {
-                downloadReq.setHeader(k, v);
-            });
-
-            WSResponse downloadResp =
-                    downloadReq.get().toCompletableFuture().get();
-
-            if (downloadResp.getStatus() == HttpURLConnection.HTTP_OK) {
-
-                byte[] body = downloadResp.asByteArray();
-                Files.write(destPath, body);
+                Files.write(destPath, fetched);
                 downloaded = STATUS_OK;
                 log.debug("download: pp={}, time-taken={} (ms) to " +
                                 "write {} bytes to {} from source={}", pp,
                         (System.currentTimeMillis() - start),
-                        body.length, destPath, source);
+                        fetched.length, destPath, source);
 
             } else {
-
-                downloaded = downloadResp.getStatus();
-                log.debug("download: pp={}, failed status={}, " +
-                        "from source={}", pp, downloaded, source);
+                log.debug("download: pp={}, failed to download and write " +
+                        "from source={}", pp, source);
             }
-
-        } catch (Exception dex) {
+        } catch(Exception dex) {
             log.warn("download: failed pp={}, from source={}, ex={}",
                     pp, source, dex);
-        }
-
-        if (downloaded != STATUS_OK) {
-            log.debug("download: pp={}, from source={}, failed status={}",
-                    pp, source, downloaded);
         }
 
         return downloaded;
@@ -296,8 +278,4 @@ public class DiskService {
     }
 
     private static final Integer STATUS_OK = 0;
-    private static final String API_HEADER_AUTH = "Authorization";
-    private static final String API_HEADER_TOKEN = "token ";
-    private static final String API_CACHE_CONTROL = "Cache-Control";
-    private static final String API_NO_CACHE = "no-cache";
 }

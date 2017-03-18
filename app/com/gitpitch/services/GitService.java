@@ -38,7 +38,6 @@ import play.cache.*;
 import play.libs.ws.*;
 
 import javax.inject.*;
-import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
@@ -66,6 +65,7 @@ public class GitService {
     private final CacheTimeout cacheTimeout;
     private final BackEndThreads backEndThreads;
     private final MarkdownModelFactory markdownModelFactory;
+    private final ComposableService composableService;
     private final WSClient wsClient;
     private final CacheApi pitchCache;
     private final Configuration configuration;
@@ -78,6 +78,7 @@ public class GitService {
                       CacheTimeout cacheTimeout,
                       BackEndThreads backEndThreads,
                       MarkdownModelFactory markdownModelFactory,
+                      ComposableService composableService,
                       WSClient wsClient,
                       CacheApi pitchCache,
                       Configuration configuration) {
@@ -89,6 +90,7 @@ public class GitService {
         this.cacheTimeout = cacheTimeout;
         this.backEndThreads = backEndThreads;
         this.markdownModelFactory = markdownModelFactory;
+        this.composableService = composableService;
         this.wsClient = wsClient;
         this.pitchCache = pitchCache;
         this.configuration = configuration;
@@ -322,6 +324,12 @@ public class GitService {
                                 PitchParams.PITCHME_MD, pp.MD());
 
                         if (downStatus == STATUS_OK) {
+
+                            /*
+                             * Process Composable Presentation includes
+                             * found within PITCHME.md.
+                             */
+                            composableService.compose(pp, grs, grsService);
 
                             String ssmKey = SlideshowModel.genKey(pp);
                             Optional<SlideshowModel> ssmo =
