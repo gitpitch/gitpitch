@@ -9,7 +9,7 @@
 - [How does GitPitch work?](#how-does-gitpitch-work)
 - [Compelling Presentations](#gitpitch-slideshow-presentations-are-compelling)
 - [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
-- [Composable Presentations](#gitpitch-slideshow-presentations-are-composable)
+- [Modular Presentations](#gitpitch-slideshow-presentations-are-modular)
 - [Social Presentations](#gitpitch-slideshow-presentations-are-social)
 - [Presentations That Just Work](#gitpitch-slideshow-presentations-just-work)
 - [An Open Source Project](#gitpitch---an-open-source-project)
@@ -63,9 +63,9 @@ Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wi
 
 ![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-bg-style.png)
 
-## GitPitch slideshow presentations are composable
+## GitPitch slideshow presentations are modular
 
-Create and deliver content and course materials as a series of slideshow presentations that all share common assets (css, images, etc.) in a single git repo. Check out the [GitPitch Asset Sharing](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) page on the Wiki.
+Create and deliver content and course materials as a series of slideshow presentations using [modular markdown](https://github.com/gitpitch/gitpitch/wiki/Modular-Markdown) and [shared assets](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) (css, images, etc.) in a single git repo.
 
 ## GitPitch slideshow presentations are social
 
