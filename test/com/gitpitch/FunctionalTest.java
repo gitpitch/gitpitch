@@ -1,3 +1,5 @@
+package com.gitpitch;
+
 import org.junit.Test;
 import play.Logger;
 import play.libs.ws.*;
