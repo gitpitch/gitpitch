@@ -1,6 +1,6 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
-# Markdown Presentations For Developers on GitHub, GitLab and Bitbucket
+# Markdown Presentations For Everyone on GitHub, GitLab and Bitbucket
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
@@ -26,9 +26,10 @@ GitPitch is an open source project so you can fork, clone, and modify the source
 
 ## Is GitPitch for you?
 
-If you ever find yourself needing to present a concept, design, library, integration, framework, or solution:
+If you ever find yourself needing to present a concept, design, library, integration, framework, or even course work:
 
 - To colleagues, clients or customers
+- To students
 - Or at meetups or conferences
 
 Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch automatically turn those ideas into compelling, responsive, online and offline slideshow presentations.
