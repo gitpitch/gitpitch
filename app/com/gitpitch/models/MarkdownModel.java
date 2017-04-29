@@ -28,6 +28,7 @@ import com.gitpitch.utils.*;
 import com.gitpitch.services.ImageService;
 import com.gitpitch.services.VideoService;
 import com.gitpitch.services.GISTService;
+import com.gitpitch.services.ShortcutsService;
 import org.apache.commons.io.FilenameUtils;
 import com.google.inject.assistedinject.Assisted;
 import javax.annotation.Nullable;
@@ -52,6 +53,7 @@ public class MarkdownModel implements Markdown {
     private final ImageService imageService;
     private final VideoService videoService;
     private final GISTService  gistService;
+    private final ShortcutsService shortcutsService;
     private final MarkdownRenderer mrndr;
     private final String markdown;
     private String hSlideDelim = HSLIDE_DELIM_DEFAULT;
@@ -61,11 +63,13 @@ public class MarkdownModel implements Markdown {
     public MarkdownModel(ImageService imageService,
                          VideoService videoService,
                          GISTService  gistService,
+                         ShortcutsService  shortcutsService,
                          @Nullable @Assisted MarkdownRenderer mrndr) {
 
         this.imageService = imageService;
         this.videoService = videoService;
         this.gistService  = gistService;
+        this.shortcutsService = shortcutsService;
         this.mrndr = mrndr;
 
         String consumed = null;
@@ -238,7 +242,7 @@ public class MarkdownModel implements Markdown {
 
             }
 
-        } if(imageService.tagFound(md)) {
+        } else if(imageService.tagFound(md)) {
 
             String tagLink = imageService.tagLink(md);
             if (linkAbsolute(tagLink)) {
@@ -247,6 +251,8 @@ public class MarkdownModel implements Markdown {
                 String absTagLink = gitRawBase + tagLink;
                 return md.replace(tagLink, absTagLink);
             }
+        } else if(shortcutsService.fragmentFound(md)) {
+            return shortcutsService.expandFragment(md);
         } else {
 
             /*
@@ -604,6 +610,8 @@ public class MarkdownModel implements Markdown {
     public static final String MD_CLOSER = "\" -->";
     public static final String MD_SPACER = "\n";
     public static final String DATA_IMAGE_ATTR = "data-background-image=";
+    public static final String MD_FRAG_OPEN = "- ";
+    public static final String MD_FRAG_CLOSE = "|";
 
     private static final String MD_HSLIDE_IMAGE = "?image=";
     private static final String MD_VSLIDE_IMAGE = "?image=";
