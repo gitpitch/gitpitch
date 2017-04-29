@@ -31,8 +31,8 @@
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/Chart.min.js"},
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/csv2chart.js"},
                 }
-                @if(ssm.showNotes()) {
-                   { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
+                @if(offline) {
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
                 }
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                 @if(ssm.mathEnabled()) {
@@ -43,7 +43,7 @@
 
         Reveal.configure({
             keyboard: {
-                83: function() { // bind "s" key to "select" code block content
+                88: function() { // bind "x" key to "select" code block content
 
                     var currentSlide = Reveal.getCurrentSlide();
                     var preBlock = $(currentSlide).find("pre");
