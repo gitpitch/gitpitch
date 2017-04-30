@@ -11,6 +11,7 @@
 - [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
 - [Modular Presentations](#gitpitch-slideshow-presentations-are-modular)
 - [Social Presentations](#gitpitch-slideshow-presentations-are-social)
+- [Speaker-Ready Presentations](#gitpitch-slideshow-presentations-are-speaker-ready)
 - [Presentations That Just Work](#gitpitch-slideshow-presentations-just-work)
 - [An Open Source Project](#gitpitch---an-open-source-project)
 
