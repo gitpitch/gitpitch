@@ -109,11 +109,20 @@ public class PitchController extends Controller {
     }
 
     /*
-     * Catchall redirects any unhandled URLs to the GitPitch website.
+     * Catchall redirects any URL with a trailing slash to the
+     * URL minus the trailing slash. Any remaining unhandled URLs
+     * are redirected to the GitPitch website.
      */
     public Result catchall(String path) {
-        log.warn("catchall: redirecting from {}", path);
-        return redirect("/");
+        try {
+            if (path != "/" && path.endsWith("/")) {
+                return redirect("/" + path.substring(0, path.length()-1));
+            } else {
+                return redirect("/");
+            }
+        } catch(Exception ex) {
+            return redirect("/");
+        }
     }
 
     /*
