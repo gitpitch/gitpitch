@@ -52,7 +52,7 @@ Each slideshow presentation is beautifully rendered, fully responsive, and highl
 - [Markdown](https://github.com/gitpitch/gitpitch/wiki/Slide-Markdown) slides
 - [Code](https://github.com/gitpitch/gitpitch/wiki/Code-Slides) and [GIST](https://github.com/gitpitch/gitpitch/wiki/GIST-Slides) slides
 - [Image](https://github.com/gitpitch/gitpitch/wiki/Image-Slides) and [Video](https://github.com/gitpitch/gitpitch/wiki/Video-Slides) slides
-- [Math Notation](https://github.com/gitpitch/gitpitch/wiki/Math-Notation-Slides) slides
+- [Math Notation](https://github.com/gitpitch/gitpitch/wiki/Math-Notation-Slides) and [Chart](https://github.com/gitpitch/gitpitch/wiki/Chart-Slides) slides
 - [Fragment](https://github.com/gitpitch/gitpitch/wiki/Fragment-Slides) slides
 
 See the [Kitchen Sink Slideshow Presentation](https://gitpitch.com/gitpitch/kitchen-sink) for a live demonstration of GitPitch slideshow features.
