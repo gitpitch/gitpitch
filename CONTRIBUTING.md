@@ -5,7 +5,7 @@
 
 ### General Support
 
-If you have general questions about GitPitch that are not answered by the [GitPitch How-To Wiki](https://github.com/gitpitch/gitpitch/wiki) then the best place to ask those questions is on [StackOverflow](http://stackoverflow.com/questions/tagged/gitpitch).
+If you have general questions about GitPitch that are not answered by the [GitPitch How-To Wiki](https://github.com/gitpitch/gitpitch/wiki) then the best way to ask those questions is by [sending me a tweet](https://twitter.com/gitpitch) on Twitter. Otherwise [open a new issue](https://github.com/gitpitch/gitpitch/issues) on GitHub.
 
 
 ### Bug Reports
@@ -16,5 +16,4 @@ When reporting a bug please make sure to include information about which browser
 ### Pull Requests
 
 - Should follow the coding style of the file you work in
-- Should be made towards the **dev branch**
 - Should include tests to verify changes where possible
