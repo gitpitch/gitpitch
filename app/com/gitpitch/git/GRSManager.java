@@ -48,6 +48,8 @@ public class GRSManager {
     private final GitHub gitHubService;
     private final GitLab gitLabService;
     private final BitBucket bitBucketService;
+    private final Gitea giteaService;
+    private final Gogs gogsService;
     private final Configuration cfg;
     private final Map<String,GRS> grsStore = new HashMap<String,GRS>();
     private GRS grsDefault;
@@ -57,6 +59,8 @@ public class GRSManager {
                       GitHub gitHubService,
                       GitLab gitLabService,
                       BitBucket bitBucketService,
+                      Gitea giteaService,
+                      Gogs gogsService,
                       Configuration cfg) {
 
         this.diskService = diskService;
@@ -69,6 +73,12 @@ public class GRSManager {
 
         this.bitBucketService = bitBucketService;
         this.bitBucketService.init(this, diskService);
+
+        this.giteaService = giteaService;
+        this.giteaService.init(this, diskService);
+
+        this.gogsService = gogsService;
+        this.gogsService.init(this, diskService);
 
         this.cfg = cfg;
 
@@ -139,6 +149,14 @@ public class GRSManager {
             case BitBucket.TYPE:
                 log.debug("getService: matching BitBucket");
                 service = bitBucketService;
+                break;
+            case Gitea.TYPE:
+                log.debug("getService: matching Gitea");
+                service = giteaService;
+                break;
+            case Gogs.TYPE:
+                log.debug("getService: matching Gogs");
+                service = gogsService;
                 break;
             default:
                 log.debug("getService: defaulting GitHub");

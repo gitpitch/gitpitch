@@ -58,6 +58,8 @@ public class Module extends AbstractModule {
         bind(GitHub.class).asEagerSingleton();
         bind(GitLab.class).asEagerSingleton();
         bind(BitBucket.class).asEagerSingleton();
+        bind(Gitea.class).asEagerSingleton();
+        bind(Gogs.class).asEagerSingleton();
         bind(FrontEndThreads.class).asEagerSingleton();
         bind(BackEndThreads.class).asEagerSingleton();
         bind(Dependencies.class).asEagerSingleton();
