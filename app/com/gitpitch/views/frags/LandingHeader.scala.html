@@ -47,11 +47,9 @@
 
                     } else {
                     <li style="font-size:1.2em; color:white"><a href="@rndr.orgHub()">@rndr.user()</a></li>
-                    <li style="font-size:1.2em; color:white" class="hidden-sd hidden-xs"><p class="navbar-text"
-                                                                                            style="color:white">/</p></li>
+                    <li style="font-size:1.2em; color:white" class="hidden-sd hidden-xs"><p class="navbar-text" style="color:white">/</p></li>
                     <li style="font-size:1.2em; color:white"><a href="@rndr.repoHub()">@rndr.repo()</a></li>
-                    <li><a href="#" style="font-size:1.2em;color:gray" class="hidden-sd hidden-xs">{
-                        @rndr.displayLangOrBranch() }</a></li>
+                    <li><a href="#" style="font-size:1.2em;color:gray" class="hidden-sd hidden-xs">{ @rndr.displayLangOrBranch() }</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="visible-lg visible-md" style="font-size:1.1em; color:white"><a href="@rndr.starHub()"><span
@@ -61,8 +59,16 @@
                     <li style="font-size:1.2em; color:white"><a href="@rndr.repoHub()">
                         @if(rndr.params().grs.equals("github")) {
                         <span class="mega-octicon octicon-mark-github" style="font-size:1.3em"></span>
-                        } else {
-                        <span class="fa fa-@rndr.params().grs" aria-hidden="true" style="font-size:1.4em"></span>
+                        }
+                        @if(rndr.params().grs.equals("gitlab")) {
+                        <span class="fa fa-gitlab" aria-hidden="true" style="font-size:1.4em"></span>
+                        }
+                        @if(rndr.params().grs.equals("bitbucket")) {
+                        <span class="fa fa-bitbucket" aria-hidden="true" style="font-size:1.4em"></span>
+                        }
+                        @if(rndr.params().grs.equals("gitea") ||
+                         rndr.params().grs.equals("gogs")) {
+                        <span class="fa fa-git-square" aria-hidden="true" style="font-size:1.4em"></span>
                         }
                     </a></li>
                     }

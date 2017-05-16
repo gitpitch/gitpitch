@@ -51,14 +51,24 @@
         @if(ssm.hasFootnote()) {
         <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.fetchFootnote()</span>
         } else {
-        @if(ssm.params().grs.equals("github")) {
-        <span class="octicon octicon-mark-github"
-              style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
-        } else {
-        <i class="fa fa-@ssm.params().grs" aria-hidden="true"
-              style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></i>
-        }
-        <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
+            @if(ssm.params().grs.equals("github")) {
+            <span class="octicon octicon-mark-github"
+                  style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></span>
+            }
+            @if(ssm.params().grs.equals("gitlab")) {
+            <i class="fa fa-gitlab" aria-hidden="true"
+                  style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></i>
+            }
+            @if(ssm.params().grs.equals("bitbucket")) {
+            <i class="fa fa-bitbucket" aria-hidden="true"
+                  style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></i>
+            }
+            @if(ssm.params().grs.equals("gitea") ||
+                ssm.params().grs.equals("gogs")) {
+            <i class="fa fa-git-square" aria-hidden="true"
+                  style="font-size:0.9em; color: @ssm.fetchThemeFontColorInverse()"></i>
+            }
+            <span style="color:@ssm.fetchThemeFontColorInverse(); font-size:0.8em; font-family: @ssm.fetchThemeFont();">@ssm.params().asLogo()</span>
         }
     </div>
 
