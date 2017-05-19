@@ -101,6 +101,8 @@ public class MarkdownModel implements Markdown {
 
                     consumed = stream.map(md -> {
                         return process(md, pp, yOpts, gitRawBase);
+                    }).map(md -> {
+                        return processAnchors(md);
                     }).collect(Collectors.joining("\n"));
 
                     consumed = postProcess(consumed, pp, yOpts, gitRawBase);
@@ -460,6 +462,56 @@ public class MarkdownModel implements Markdown {
         return null;
     }
 
+    /*
+     * Ensure all regular Markdown links are upgraded to
+     * HTML anchors with target=_blank in order to
+     * open from within embedded GitPitch iFrame.
+     */
+    private String processAnchors(String md) {
+        try {
+            boolean moreAnchors = md.contains(MD_ANCHOR_OPEN);
+            while(moreAnchors) {
+
+                if(md.contains(MD_ANCHOR_OPEN)) {
+
+                    int anchorStart = md.indexOf(MD_ANCHOR_OPEN);
+                    int anchorDelim = md.indexOf(MD_LINK_DELIM, anchorStart);
+
+                    // Regular Markdown Link not Markdown Image Link.
+                    if(anchorDelim != -1 &&
+                        (anchorStart == 0 || !md.substring(anchorStart-1)
+                                                .startsWith(MD_LINK_OPEN))) {
+
+                        int anchorEnd = md.indexOf(MD_LINK_BRCKT, anchorDelim);
+
+                        String title = md.substring(anchorStart+1, anchorDelim);
+                        String link = md.substring(anchorDelim+2, anchorEnd);
+
+                        String anchor =
+                            new StringBuffer(HTML_ANCHOR_OPEN)
+                            .append(link)
+                            .append(HTML_ANCHOR_MID)
+                            .append(title)
+                            .append(HTML_ANCHOR_CLOSE)
+                            .toString();
+
+                        String mdLeft = md.substring(0, anchorStart);
+                        String mdRight = md.substring(anchorEnd + 1);
+                        md = mdLeft + anchor + mdRight;
+
+                    } else {
+                        moreAnchors = false;
+                    }
+                } else {
+                    moreAnchors = false;
+                }
+            }
+        } catch(Exception tex) {
+            return md;
+        }
+        return md;
+    }
+
     private String postProcess(String md,
                                       PitchParams pp,
                                       YAMLOptions yOpts,
@@ -599,6 +651,7 @@ public class MarkdownModel implements Markdown {
     public static final String VSLIDE_DELIM_BACK_COMPAT = "#VSLIDE";
 
     public static final String MD_LINK_OPEN = "![";
+    public static final String MD_ANCHOR_OPEN = "[";
     public static final String MD_IMAGE_OPEN =
             "<!-- .slide: data-background-image=\"";
     public static final String MD_VIDEO_OPEN =
@@ -630,6 +683,10 @@ public class MarkdownModel implements Markdown {
     private static final String MD_LINK_BRCKT = ")";
     private static final String MD_LINK_MP4 = "mp4";
     private static final String DATA_GIST_ATTR = "data-gist=";
+    private static final String HTML_ANCHOR_OPEN =
+            "<a target=\"_blank\" href=\"";
+    private static final String HTML_ANCHOR_MID = "\">";
+    private static final String HTML_ANCHOR_CLOSE = "</a>";
     private static final int NOT_FOUND = -1;
     /*
      * Model prefix identifier for cache key generator.
