@@ -469,47 +469,61 @@ public class MarkdownModel implements Markdown {
      */
     private String processAnchors(String md) {
         try {
-            boolean moreAnchors = md.contains(MD_ANCHOR_OPEN);
-            while(moreAnchors) {
 
-                if(md.contains(MD_ANCHOR_OPEN)) {
+            if(linkAbsolute(md)) {
+                return buildAnchor(md.trim(), md.trim());
+            } else {
 
-                    int anchorStart = md.indexOf(MD_ANCHOR_OPEN);
-                    int anchorDelim = md.indexOf(MD_LINK_DELIM, anchorStart);
+                boolean moreAnchors = md.contains(MD_ANCHOR_OPEN);
+                while(moreAnchors) {
 
-                    // Regular Markdown Link not Markdown Image Link.
-                    if(anchorDelim != -1 &&
-                        (anchorStart == 0 || !md.substring(anchorStart-1)
+                    if(md.contains(MD_ANCHOR_OPEN)) {
+
+                        int anchorStart = md.indexOf(MD_ANCHOR_OPEN);
+                        int anchorDelim =
+                            md.indexOf(MD_LINK_DELIM, anchorStart);
+
+                        // Regular Markdown Link not Markdown Image Link.
+                        if(anchorDelim != -1 &&
+                            (anchorStart == 0 ||
+                                !md.substring(anchorStart-1)
                                                 .startsWith(MD_LINK_OPEN))) {
 
-                        int anchorEnd = md.indexOf(MD_LINK_BRCKT, anchorDelim);
+                            int anchorEnd =
+                                md.indexOf(MD_LINK_BRCKT, anchorDelim);
 
-                        String title = md.substring(anchorStart+1, anchorDelim);
-                        String link = md.substring(anchorDelim+2, anchorEnd);
+                            String title =
+                                md.substring(anchorStart+1, anchorDelim);
+                            String link =
+                                md.substring(anchorDelim+2, anchorEnd);
 
-                        String anchor =
-                            new StringBuffer(HTML_ANCHOR_OPEN)
-                            .append(link)
-                            .append(HTML_ANCHOR_MID)
-                            .append(title)
-                            .append(HTML_ANCHOR_CLOSE)
-                            .toString();
+                            String anchor = buildAnchor(title, link);
 
-                        String mdLeft = md.substring(0, anchorStart);
-                        String mdRight = md.substring(anchorEnd + 1);
-                        md = mdLeft + anchor + mdRight;
+                            String mdLeft = md.substring(0, anchorStart);
+                            String mdRight = md.substring(anchorEnd + 1);
+                            md = mdLeft + anchor + mdRight;
 
+                        } else {
+                            moreAnchors = false;
+                        }
                     } else {
                         moreAnchors = false;
                     }
-                } else {
-                    moreAnchors = false;
                 }
             }
         } catch(Exception tex) {
             return md;
         }
         return md;
+    }
+
+    private String buildAnchor(String title, String link) {
+        return new StringBuffer(HTML_ANCHOR_OPEN)
+                .append(link)
+                .append(HTML_ANCHOR_MID)
+                .append(title)
+                .append(HTML_ANCHOR_CLOSE)
+                .toString();
     }
 
     private String postProcess(String md,
