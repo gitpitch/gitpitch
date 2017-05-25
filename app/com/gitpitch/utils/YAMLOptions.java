@@ -195,6 +195,10 @@ public final class YAMLOptions {
         return fetchBooleanOption(pp, LOOP_OPTION);
     }
 
+    public Boolean fetchRemoteControl(PitchParams pp) {
+        return fetchBooleanOption(pp, REMOTE_CONTROL_OPTION);
+    }
+
     public Boolean fetchRTL(PitchParams pp) {
         return fetchBooleanOption(pp, RTL_OPTION);
     }
@@ -352,6 +356,7 @@ public final class YAMLOptions {
     private static final String TRANSITION_OPTION = "transition";
     private static final String AUTOSLIDE_OPTION = "autoslide";
     private static final String LOOP_OPTION = "loop";
+    private static final String REMOTE_CONTROL_OPTION = "remote-control";
     private static final String RTL_OPTION = "rtl";
     private static final String SHUFFLE_OPTION = "shuffle";
     private static final String MOUSE_WHEEL_OPTION = "mousewheel";

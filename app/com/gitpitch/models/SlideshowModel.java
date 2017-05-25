@@ -297,6 +297,13 @@ public class SlideshowModel {
     }
 
     /*
+     * Return "remote-control" defined in PITCHME.yaml.
+     */
+    public boolean remoteControlEnabled() {
+        return (_yOpts != null) ? _yOpts.fetchRemoteControl(params()) : false;
+    }
+
+    /*
      * Return "rtl" defined in PITCHME.yaml.
      */
     public boolean fetchRTL() {

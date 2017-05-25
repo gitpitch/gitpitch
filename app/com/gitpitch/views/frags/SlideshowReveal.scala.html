@@ -75,3 +75,14 @@
         };
 
     </script>
+
+    @if(ssm.remoteControlEnabled()) {
+    <script>
+        Reveal.configure({
+            keyboard: {
+                37: 'prev',
+                39: 'next'
+            }
+        });
+    </script>
+    }
