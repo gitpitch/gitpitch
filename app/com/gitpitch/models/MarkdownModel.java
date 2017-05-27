@@ -28,6 +28,7 @@ import com.gitpitch.utils.*;
 import com.gitpitch.services.ImageService;
 import com.gitpitch.services.VideoService;
 import com.gitpitch.services.GISTService;
+import com.gitpitch.services.CodeService;
 import com.gitpitch.services.ShortcutsService;
 import org.apache.commons.io.FilenameUtils;
 import com.google.inject.assistedinject.Assisted;
@@ -53,6 +54,7 @@ public class MarkdownModel implements Markdown {
     private final ImageService imageService;
     private final VideoService videoService;
     private final GISTService  gistService;
+    private final CodeService  codeService;
     private final ShortcutsService shortcutsService;
     private final MarkdownRenderer mrndr;
     private final String markdown;
@@ -63,12 +65,14 @@ public class MarkdownModel implements Markdown {
     public MarkdownModel(ImageService imageService,
                          VideoService videoService,
                          GISTService  gistService,
+                         CodeService  codeService,
                          ShortcutsService  shortcutsService,
                          @Nullable @Assisted MarkdownRenderer mrndr) {
 
         this.imageService = imageService;
         this.videoService = videoService;
         this.gistService  = gistService;
+        this.codeService  = codeService;
         this.shortcutsService = shortcutsService;
         this.mrndr = mrndr;
 
@@ -122,7 +126,7 @@ public class MarkdownModel implements Markdown {
     }
 
     /*
-     * Process text, image, video and gist content
+     * Process text, image, video, gist, and code content
      * in PITCHME.md for online viewing.
      */
     private String process(String md,
@@ -175,11 +179,9 @@ public class MarkdownModel implements Markdown {
                         .toString();
 
             } else if (gistDelimFound(md)) {
-
-                String gist = new StringBuffer(gistService.build(md,
-                                                pp, yOpts, this)).toString();
-                return gist;
-
+                return gistService.build(md, pp, yOpts, this);
+            } else if(codeDelimFound(md)) {
+                return codeService.build(md, pp, yOpts, gitRawBase, this);
             }
 
             if (yOpts != null && yOpts.hasImageBg()) {
@@ -253,8 +255,10 @@ public class MarkdownModel implements Markdown {
                 String absTagLink = gitRawBase + tagLink;
                 return md.replace(tagLink, absTagLink);
             }
-        } else if(shortcutsService.fragmentFound(md)) {
-            return shortcutsService.expandFragment(md);
+        } else if(shortcutsService.listFragmentFound(md)) {
+            return shortcutsService.expandListFragment(md);
+        } else if(shortcutsService.codeFragmentFound(md)) {
+            return shortcutsService.expandCodeFragment(md);
         } else {
 
             /*
@@ -269,7 +273,7 @@ public class MarkdownModel implements Markdown {
     }
 
     /*
-     * Process text, image, video and gist content
+     * Process text, image, video, gist, and code content
      * in PITCHME.md for offline viewing.
      */
     public String offline(String md) {
@@ -400,6 +404,10 @@ public class MarkdownModel implements Markdown {
 
     private boolean gistDelimFound(String md) {
         return md.startsWith(horizGISTDelim()) || md.startsWith(vertGISTDelim());
+    }
+
+    private boolean codeDelimFound(String md) {
+        return md.startsWith(horizCodeDelim()) || md.startsWith(vertCodeDelim());
     }
 
     private String delimiter(String md) {
@@ -579,6 +587,10 @@ public class MarkdownModel implements Markdown {
         return isHorizontal(md) ? horizGISTDelim() : vertGISTDelim();
     }
 
+    public String extractCodeDelim(String md) {
+        return isHorizontal(md) ? horizCodeDelim() : vertCodeDelim();
+    }
+
     /*
      * Generate a key for querying the cache for matching MarkdownModel.
      */
@@ -629,6 +641,14 @@ public class MarkdownModel implements Markdown {
         return vertDelim() + MD_VSLIDE_GIST;
     }
 
+    public String horizCodeDelim() {
+        return horizDelim() + MD_HSLIDE_CODE;
+    }
+
+    public String vertCodeDelim() {
+        return vertDelim() + MD_VSLIDE_CODE;
+    }
+
     /*
      * The initial releases of GitPitch used #HSLIDE and #VSLIDE
      * as default delimiters. To provide backwards compatability
@@ -677,8 +697,14 @@ public class MarkdownModel implements Markdown {
     public static final String MD_CLOSER = "\" -->";
     public static final String MD_SPACER = "\n";
     public static final String DATA_IMAGE_ATTR = "data-background-image=";
-    public static final String MD_FRAG_OPEN = "- ";
-    public static final String MD_FRAG_CLOSE = "|";
+    public static final String MD_LIST_FRAG_OPEN = "- ";
+    public static final String MD_LIST_FRAG_CLOSE = "|";
+    public static final String MD_CODE_FRAG_OPEN = "@[";
+    public static final String MD_CODE_FRAG_CLOSE = "]";
+    public static final String MD_CODE_FRAG_NOTE_OPEN = "(";
+    public static final String MD_CODE_FRAG_NOTE_CLOSE = ")";
+    public static final String MD_CODE_BLOCK_OPEN = "```";
+    public static final String MD_CODE_BLOCK_CLOSE = "```";
 
     private static final String MD_HSLIDE_IMAGE = "?image=";
     private static final String MD_VSLIDE_IMAGE = "?image=";
@@ -686,6 +712,8 @@ public class MarkdownModel implements Markdown {
     private static final String MD_VSLIDE_VIDEO = "?video=";
     private static final String MD_HSLIDE_GIST = "?gist=";
     private static final String MD_VSLIDE_GIST = "?gist=";
+    private static final String MD_HSLIDE_CODE = "?code=";
+    private static final String MD_VSLIDE_CODE = "?code=";
 
     private static final String SLASH = "/";
     private static final String PARAM_BRANCH = "?b=";

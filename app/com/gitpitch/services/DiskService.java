@@ -92,6 +92,19 @@ public class DiskService {
     }
 
     /*
+     * Return text contents for file within PitchParams branch working directory.
+     */
+    public String asText(PitchParams pp,
+                         String filename) {
+        String text = "";
+        try {
+            Path filePath = asPath(pp, filename);
+            text = new String(Files.readAllBytes(filePath));
+        } catch(Exception tex) {}
+        return text;
+    }
+
+    /*
      * Ensure PitchParams branch working directory exists.
      */
     public Path ensure(PitchParams pp) {

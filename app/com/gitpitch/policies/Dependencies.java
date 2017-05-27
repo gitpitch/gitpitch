@@ -40,6 +40,7 @@ public final class Dependencies {
     private final String fontawesomeVersion;
     private final String octiconsVersion;
     private final String highlightjsVersion;
+    private final Boolean highlightPluginEnabled;
 
     @Inject
     public Dependencies(Configuration cfg) {
@@ -51,6 +52,8 @@ public final class Dependencies {
         this.fontawesomeVersion = cfg.getString("gitpitch.dependency.fontawesome");
         this.octiconsVersion = cfg.getString("gitpitch.dependency.octicons");
         this.highlightjsVersion = cfg.getString("gitpitch.dependency.highlightjs");
+        this.highlightPluginEnabled =
+            cfg.getBoolean("gitpitch.dependency.highlight.plugin", false);
     }
 
     public String revealjs(boolean offline, String versionOverride) {
@@ -84,6 +87,10 @@ public final class Dependencies {
 
     public String gitpitchimg(boolean offline) {
         return build(offline, GIPITCHIMG);
+    }
+
+    public Boolean highlightPluginEnabled() {
+        return highlightPluginEnabled;
     }
 
     private String build(boolean offline, String libName) {

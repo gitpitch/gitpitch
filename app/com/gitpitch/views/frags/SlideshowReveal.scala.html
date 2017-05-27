@@ -34,7 +34,16 @@
                 @if(offline) {
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
                 }
+                @if(deps.highlightPluginEnabled()) {
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                } else {
+                { src: '@deps.highlightjs(offline)/highlight.js' },
+                { src: '@deps.highlightjs(offline)/reveal-code-focus.js',
+                  callback: function() {
+                    RevealCodeFocus();
+                  }
+                },
+                }
                 @if(ssm.mathEnabled()) {
                     { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/math/math.js", async: true }
                 }
