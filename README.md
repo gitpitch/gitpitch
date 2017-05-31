@@ -10,6 +10,7 @@
 - [Compelling Presentations](#gitpitch-slideshow-presentations-are-compelling)
 - [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
 - [Modular Presentations](#gitpitch-slideshow-presentations-are-modular)
+- [Code-Aware Presentations](#gitpitch-slideshow-presentations-are-code-aware)
 - [Social Presentations](#gitpitch-slideshow-presentations-are-social)
 - [Speaker-Ready Presentations](#gitpitch-slideshow-presentations-are-speaker-ready)
 - [Presentations That Just Work](#gitpitch-slideshow-presentations-just-work)
@@ -70,6 +71,11 @@ Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wi
 ## GitPitch slideshow presentations are modular
 
 Create and deliver content and course materials as a series of slideshow presentations using [modular markdown](https://github.com/gitpitch/gitpitch/wiki/Modular-Markdown) and [shared assets](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) (css, images, etc.) in a single git repo.
+
+
+## GitPitch slideshow presentations are code-aware
+
+Step-through static-code blocks or the complete source-code from any file in the repo, line-by-line or section-by-section, from directly within any slideshow presentation using [code-presenting](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting).
 
 ## GitPitch slideshow presentations are social
 
