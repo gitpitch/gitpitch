@@ -75,6 +75,8 @@ Create and deliver content and course materials as a series of slideshow present
 
 ## GitPitch slideshow presentations are code-aware
 
+![CODE-PRESENTING](images/gp-code-presenting-preview.gif)
+
 Step-through static-code blocks or the complete source-code from any file in the repo, line-by-line or section-by-section, from directly within any slideshow presentation using [code-presenting](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting).
 
 ## GitPitch slideshow presentations are social
