@@ -96,12 +96,6 @@ public class CodeService {
             String delim = mdm.extractCodeDelim(md);
             codePath = md.substring(delim.length());
 
-            if (!mdm.linkAbsolute(codePath)) {
-                codePath =
-                    new StringBuffer(gitRawBase).append(codePath)
-                                                .toString();
-            }
-
         } catch (Exception pex) {
             log.warn("extractCodePath: ex={}", pex);
         }
