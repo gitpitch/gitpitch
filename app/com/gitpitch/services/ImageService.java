@@ -49,11 +49,14 @@ public class ImageService {
     public String buildBackground(PitchParams pp,
                                          String imageBgUrl, String imageBgSize) {
 
+        String bgSize = getSizeOptionFromUrl(imageBgUrl, imageBgSize);
+        String bgUrl  = cleanOptionsFromUrl(imageBgUrl);
+
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_IMAGE_OPEN)
-                .append(imageBgUrl)
+                .append(bgUrl)
                 .append(MarkdownModel.MD_IMAGE_SIZE)
-                .append(imageBgSize)
+                .append(bgSize)
                 .append(MarkdownModel.MD_CLOSER)
                 .append(MarkdownModel.MD_SPACER)
                 .toString();
@@ -151,6 +154,33 @@ public class ImageService {
         return tagLink;
     }
 
+    private String getSizeOptionFromUrl(String url, String defaultSize) {
+        String extractedSize = defaultSize;
+        try {
+            int sizeOptIdx = url.indexOf(IMG_CUSTOM_SIZE_OPTION);
+            if(sizeOptIdx != -1) {
+                int sizeOffset = sizeOptIdx + IMG_CUSTOM_SIZE_OPTION.length();
+                extractedSize = url.substring(sizeOffset);
+            }
+
+        } catch(Exception ex) {}
+        return extractedSize;
+    }
+
+    private String cleanOptionsFromUrl(String url) {
+
+        String cleanedUrl = url;
+        try {
+            int sizeOptIdx = url.indexOf(IMG_CUSTOM_SIZE_OPTION);
+            if(sizeOptIdx != -1) {
+                cleanedUrl = url.substring(0, sizeOptIdx);
+            }
+
+
+        } catch(Exception cex) {}
+        return cleanedUrl;
+    }
+
     private static final String IMG_OFFLINE_DIR = "./assets/md/assets/";
     private static final String IMG_INLINE_OPEN = "![Image](" + IMG_OFFLINE_DIR;
     private static final String IMG_INLINE_CLOSE = ")";
@@ -158,4 +188,5 @@ public class ImageService {
     private static final String IMG_TAG_SRC_OPEN = "src=\"";
     private static final String IMG_TAG_SRC_CLOSE = "\"";
     private static final String IMG_TAG_LINK_UNKNOWN = "#";
+    private static final String IMG_CUSTOM_SIZE_OPTION = "&size=";
 }
