@@ -67,6 +67,9 @@ public class CodeService {
 
             String codePath = extractCodePath(md, gitRawBase, mdm);
 
+            String langHint = getLangHintOptionFromPath(codePath);
+            codePath  = cleanOptionsFromPath(codePath);
+
             GRS grs = grsManager.get(pp);
             GRSService grsService = grsManager.getService(grs);
 
@@ -75,7 +78,7 @@ public class CodeService {
 
             if(downStatus == 0) {
                 String code = diskService.asText(pp, SOURCE_CODE);
-                return buildCodeBlock(mdm.extractCodeDelim(md), code);
+                return buildCodeBlock(mdm.extractCodeDelim(md), code, langHint);
             } else {
                 return buildCodeBlockError(mdm.extractCodeDelim(md),
                                             extractPath(md, mdm));
@@ -114,10 +117,11 @@ public class CodeService {
         return path;
     }
 
-    private String buildCodeBlock(String delim, String code) {
+    private String buildCodeBlock(String delim, String code, String langHint) {
         return new StringBuffer(delim)
                                 .append(MarkdownModel.MD_SPACER)
                                 .append(MarkdownModel.MD_CODE_BLOCK_OPEN)
+                                .append(langHint)
                                 .append(MarkdownModel.MD_SPACER)
                                 .append(code)
                                 .append(MarkdownModel.MD_SPACER)
@@ -138,10 +142,38 @@ public class CodeService {
                                 .toString();
    }
 
+    private String getLangHintOptionFromPath(String codePath) {
+        String extractedHint = NO_LANG_HINT;
+        try {
+            int hintOptIdx = codePath.indexOf(LANG_HINT_OPTION);
+            if(hintOptIdx != -1) {
+                int hintOffset = hintOptIdx + LANG_HINT_OPTION.length();
+                extractedHint = codePath.substring(hintOffset);
+            }
+
+        } catch(Exception ex) {}
+        return extractedHint;
+    }
+
+    private String cleanOptionsFromPath(String codePath) {
+        String cleanedPath = codePath;
+        try {
+            int hintOptIdx = codePath.indexOf(LANG_HINT_OPTION);
+            if(hintOptIdx != -1) {
+                cleanedPath = codePath.substring(0, hintOptIdx);
+            }
+
+
+        } catch(Exception cex) {}
+        return cleanedPath;
+    }
+
     private static final String SOURCE_CODE = "PITCHME.code";
     private static final String SOURCE_CODE_DELIMITER =
         "### Code Block Delimiter";
     private static final String SOURCE_CODE_NOT_FOUND =
         "### Source File Not Found";
+    private static final String LANG_HINT_OPTION = "&lang=";
+    private static final String NO_LANG_HINT = "";
 
 }
