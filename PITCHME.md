@@ -6,7 +6,7 @@
 <br>
 <span style="color:gray">on</span>
 <br>
-<span style="color:gray">GitHub, GitLab and Bitbucket</span>
+<span style="color:gray">GitHub, GitLab, Bitbucket, Gitea, and Gogs</span>
 
 ---
 
