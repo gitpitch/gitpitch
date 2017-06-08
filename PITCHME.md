@@ -35,7 +35,7 @@ Create GitPitch slideshow content using GitHub flavored Markdown in your favorit
 
 ![TERMINAL](https://d1z75bzl1vljy2.cloudfront.net/hello-world/terminal.png)
 
-Git-commit on any branch and push your PITCHME.md to GitHub, GitLab or Bitbucket.
+Git-commit on any branch and push your PITCHME.md to GitHub, GitLab, Bitbucket, Gitea, or Gogs.
 
 ---
 
@@ -67,7 +67,7 @@ Instantly use your GitPitch slideshow URL to promote, pitch or present absolutel
 <span style="color: #e49436">GIT</span>PITCH FEATURE RICH SLIDESHOWS
 
 - GitHub Flavored Markdown +
-- Code Block and GIST Slides
+- Code Presenting for Blocks, Files, and GISTs
 - Image and Video Slides
 - Custom Logos and Backgrounds
 - Multiple Themes And More
