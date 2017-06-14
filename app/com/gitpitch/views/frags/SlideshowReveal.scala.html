@@ -84,6 +84,14 @@
             Reveal.togglePause();
         };
 
+        function enableEvents() {
+            Reveal.addEventListeners();
+        };
+
+        function disableEvents() {
+            Reveal.removeEventListeners();
+        };
+
     </script>
 
     @if(ssm.remoteControlEnabled()) {

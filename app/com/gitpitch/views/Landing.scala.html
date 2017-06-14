@@ -125,6 +125,20 @@
             iframes[0].contentWindow.enterBlackout();
         }
     };
+
+    function enableEvents() {
+        var iframes = $("#slideshow");
+        if(iframes.length > 0) {
+            iframes[0].contentWindow.enableEvents();
+        }
+    };
+
+    function disableEvents() {
+        var iframes = $("#slideshow");
+        if(iframes.length > 0) {
+            iframes[0].contentWindow.disableEvents();
+        }
+    };
     </script>
 </body>
 </html>
