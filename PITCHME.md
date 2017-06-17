@@ -6,7 +6,7 @@
 <br>
 <span style="color:gray">on</span>
 <br>
-<span style="color:gray">GitHub, GitLab, Bitbucket, Gitea, and Gogs</span>
+<span style="color:gray">GitHub, GitLab, Bitbucket, Gitea, Gogs, and GitBucket</span>
 
 ---
 
@@ -35,7 +35,7 @@ Create GitPitch slideshow content using GitHub flavored Markdown in your favorit
 
 ![TERMINAL](https://d1z75bzl1vljy2.cloudfront.net/hello-world/terminal.png)
 
-Git-commit on any branch and push your PITCHME.md to GitHub, GitLab, Bitbucket, Gitea, or Gogs.
+Git-commit on any branch and push your PITCHME.md to GitHub, GitLab, Bitbucket, Gitea, Gogs, or GitBucket.
 
 ---
 
