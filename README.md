@@ -1,6 +1,6 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
-# Markdown Presentations For Everyone on GitHub, GitLab, Bitbucket, Gitea, and Gogs
+# Markdown Presentations For Everyone on GitHub, GitLab, Bitbucket, Gitea, Gogs, and GitBucket
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
@@ -20,7 +20,7 @@
 
 GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online and offline, interactive slideshows. You can use it to promote, pitch or present anything from designs and best practices, to code snippets and complete frameworks.
 
-Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public [GitHub, GitLab, Bitbucket, Gitea, or Gogs](https://github.com/gitpitch/gitpitch/wiki/Git-Repo-Services) repo.
+Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public [GitHub, GitLab, Bitbucket, Gitea, Gogs, or GitBucket](https://github.com/gitpitch/gitpitch/wiki/Git-Repo-Services) repo.
 
 ![URL](images/gp-url.jpg)
 
@@ -38,11 +38,11 @@ Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch
 
 ## How does GitPitch work?
 
-GitPitch presentations are powered by the amazing [reveal.js](https://github.com/hakimel/reveal.js) presentation framework. But with GitPitch there is nothing to download. All you need is your favorite text editor. And an account on GitHub, GitLab, Bitbucket, Gitea, or Gogs.
+GitPitch presentations are powered by the amazing [reveal.js](https://github.com/hakimel/reveal.js) presentation framework. But with GitPitch there is nothing to download. All you need is your favorite text editor. And an account on GitHub, GitLab, or Bitbucket. Or your instance of GitHub Enterprise, Gitea, Gogs, or GitBucket.
 
 ![TERMINAL](images/gp-terminal.png)
 
-No more Keynote. No more PowerPoint. Just Markdown. Then git-commit on any branch within a public GitHub, GitLab, Bitbucket, Gitea, or Gogs repo.
+No more Keynote. No more PowerPoint. Just Markdown. Then git-commit on any branch within a public GitHub, GitLab, Bitbucket, or a private Gitea, Gogs, GitBucket repo.
 
 ## GitPitch slideshow presentations are compelling
 
