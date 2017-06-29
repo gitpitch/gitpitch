@@ -98,7 +98,7 @@ public class CacheTimeout {
      * Long Lived cache timeouts (sec) for GitPitch-owned repos.
      */
     private static final int LL_MASTER_TIMEOUT = 60 * 60;
-    private static final int LL_BRANCH_TIMEOUT = 20;
+    private static final int LL_BRANCH_TIMEOUT = 15;
     /*
      * GitRepoModel cache timeouts (sec) for GitHub repo meta-data.
      */
@@ -107,8 +107,8 @@ public class CacheTimeout {
     /*
      * SlideshowModel cache timeouts (sec) for PITCHME.[css|jpg].
      */
-    private static final int SSM_MASTER_TIMEOUT = 60 * 3;
-    private static final int SSM_BRANCH_TIMEOUT = 20;
+    private static final int SSM_MASTER_TIMEOUT = 15;
+    private static final int SSM_BRANCH_TIMEOUT = 15;
     /*
      * MarkdownModel cache timeouts (sec) for PITCHME.md.
      */
