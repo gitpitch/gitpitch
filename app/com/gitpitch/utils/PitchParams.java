@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -227,13 +227,20 @@ public class PitchParams {
         return DEFAULT_THEMES.contains(themeName);
     }
 
+    public boolean isValidPosition(String logoPosition) {
+        return LOGO_POSITIONS.contains(logoPosition);
+    }
+
     public static final String PITCHME_MD = "PITCHME.md";
     public static final String PITCHME_YAML = "PITCHME.yaml";
     public static final String PITCHME_PDF = "PITCHME.pdf";
     public static final String DEFAULT_THEME = "white";
     public static final String DEFAULT_THEME_CSS = "white.css";
+    public static final String DEFAULT_LOGO_POSITION = "top-left";
+    private static final List<String> LOGO_POSITIONS =
+            Arrays.asList("top-left", "top-right", "bottom-left", "bottom-right");
     private static final List<String> DARK_THEMES =
-            Arrays.asList("black", "moon", "night");
+                    Arrays.asList("black", "moon", "night");
     private static final List<String> LIGHT_THEMES =
             Arrays.asList("beige", "sky", "white");
     private static final List<String> DEFAULT_THEMES =

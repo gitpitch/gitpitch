@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -147,6 +147,16 @@ public final class YAMLOptions {
         } else {
             return grsService.raw(pp, logoPath);
         }
+    }
+
+    public boolean hasLogoPosition() {
+        return (_yProps.get(LOGO_POSITION_OPTION) != null);
+    }
+
+    public String fetchLogoPosition(PitchParams pp) {
+
+        String logoPosition = _yProps.get(LOGO_POSITION_OPTION);
+        return pp.isValidPosition(logoPosition) ? logoPosition : pp.DEFAULT_LOGO_POSITION;
     }
 
     public boolean hasImageBg() {
@@ -351,6 +361,7 @@ public final class YAMLOptions {
     private static final String THEME_OVERRIDE_OPTION = "theme-override";
     private static final String VERTICAL_CENTER = "vertical-center";
     private static final String LOGO_OPTION = "logo";
+    private static final String LOGO_POSITION_OPTION = "logo-position";
     private static final String IMAGE_BG_OPTION = "background";
     private static final String IMAGE_BG_SIZE_OPTION = "background-size";
     private static final String TRANSITION_OPTION = "transition";
