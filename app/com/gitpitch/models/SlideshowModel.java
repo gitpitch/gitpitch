@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -231,6 +231,22 @@ public class SlideshowModel {
         return (_yOpts != null) ?
                 FilenameUtils.getName(_yOpts.fetchLogo(params())) : "#";
     }
+
+    /*
+     * Return "logo-position" defined in PITCHME.yaml.
+     */
+    public boolean hasLogoPosition() {
+        return (_yOpts != null) ? _yOpts.hasLogoPosition() : false;
+    }
+
+    /*
+     * Return "logo-position" defined in PITCHME.yaml.
+     */
+    public String fetchLogoPosition() {
+        String position = _yOpts.fetchLogoPosition(params());
+        return LOGO_POSITIONS.get(position);
+    }
+
 
     /*
      * Return true if "footnote" defined in PITCHME.yaml.
@@ -482,6 +498,15 @@ public class SlideshowModel {
                     put("beige", "Lato, sans-serif");
                     put("sky", "Open Sans, sans-serif");
                     put("white", "Source Sans Pro, Helvetica, sans-serif");
+                }
+            });
+    private static Map<String, String> LOGO_POSITIONS =
+            Collections.unmodifiableMap(new HashMap<String, String>() {
+                {
+                    put("top-left", "position: fixed; top: 20px; left: 20px; z-index: 999");
+                    put("top-right", "position: fixed; top: 20px; right: 20px; z-index: 999");
+                    put("bottom-left", "position: fixed; bottom: 20px; left: 20px; z-index: 999");
+                    put("bottom-right", "position: fixed; bottom: 20px; right: 20px; z-index: 999");
                 }
             });
 }
