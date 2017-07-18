@@ -10,6 +10,10 @@
     <title>@ssm.params().asTitle()</title>
     <meta content="Markdown Presentation powered by GitPitch." name="description">
     <meta content="GitHub, GitLab, Bitbucket, Markdown, Slideshow, Presentation, Developers, PITCHME" name="keywords">
+    @if(offline) {
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    }
     <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
     <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/reveal.css" rel="stylesheet" type="text/css"/>
     <link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css"/>

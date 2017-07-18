@@ -20,6 +20,10 @@
     <meta property="og:description" content="@rndr.pageDescription()" />
     <meta property="og:url" content="@rndr.landingAbs()" />
     <meta property="og:image" content="https://d1z75bzl1vljy2.cloudfront.net/img/gp-promo.png" />
+    @if(offline) {
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    }
     <link rel="icon" href="@deps.gitpitchimg(offline)/favicon.ico"/>
     <link href="@deps.bootstrap(offline)/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
