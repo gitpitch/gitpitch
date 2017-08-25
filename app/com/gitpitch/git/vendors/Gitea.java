@@ -55,7 +55,7 @@ public class Gitea extends GRSService {
                 .append(SLASH)
                 .append(pp.repo)
                 .append(GITEA_RAW)
-                .append(pp.branch)
+                .append(grs.compoundBranch(pp.branch))
                 .append(SLASH)
                 .toString();
     }

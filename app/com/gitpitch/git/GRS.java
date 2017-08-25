@@ -39,6 +39,7 @@ public class GRS {
     private final String apiToken;
     private final String apiTokenHeader;
     private final String rawBase;
+    private final String branchDelim;
     private final boolean isDefault;
 
     private GRS(String name,
@@ -48,6 +49,7 @@ public class GRS {
                 String apiToken,
                 String apiTokenHeader,
                 String rawBase,
+                String branchDelim,
                 boolean isDefault) {
 
         this.name = name;
@@ -57,6 +59,7 @@ public class GRS {
         this.apiToken = apiToken;
         this.apiTokenHeader = apiTokenHeader;
         this.rawBase = rawBase;
+        this.branchDelim = branchDelim;
         this.isDefault = isDefault;
     }
 
@@ -69,12 +72,13 @@ public class GRS {
         String apiToken = grsCfg.get("apitoken");
         String apiTokenHeader = grsCfg.get("apitokenheader");
         String rawBase = grsCfg.get("rawbase");
+        String branchDelim = grsCfg.get("branchdelim");
         boolean isDefault = Boolean.parseBoolean(grsCfg.get("default"));
 
         if(name != null && type != null && site != null &&
                 apiBase != null && rawBase != null) {
             return new GRS(name, type, site, apiBase, apiToken,
-                    apiTokenHeader, rawBase, isDefault);
+                    apiTokenHeader, rawBase, branchDelim, isDefault);
         } else {
             return null;
         }
@@ -87,6 +91,13 @@ public class GRS {
     public String getApiToken() { return apiToken; }
     public String getApiTokenHeader() { return apiTokenHeader; }
     public String getRawBase() { return rawBase; }
+    public String compoundBranch(String branch) {
+        if(branch != null && branchDelim != null) {
+            return branch.replaceAll(branchDelim, COMPOUNDED_BRANCH);
+        } else {
+            return branch;
+        }
+    }
     public boolean isDefault() { return isDefault; }
 
     public Map<String,String> getHeaders() {
@@ -100,5 +111,7 @@ public class GRS {
     public String toString() {
         return "GRS[ " + name + " ][ " + type + " ]";
     }
+
+    private static final String COMPOUNDED_BRANCH = "/";
 
 }

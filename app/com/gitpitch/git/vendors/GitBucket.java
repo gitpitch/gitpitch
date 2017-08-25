@@ -49,7 +49,7 @@ public class GitBucket extends GitHub {
                 .append(pp.repo)
                 .append(SLASH)
                 .append(GITBUCKET_RAW_API)
-                .append(pp.branch)
+                .append(grs.compoundBranch(pp.branch))
                 .append(SLASH)
                 .toString();
     }
