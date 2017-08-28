@@ -55,7 +55,7 @@ public class GitHub extends GRSService {
                 .append(SLASH)
                 .append(pp.repo)
                 .append(SLASH)
-                .append(pp.branch)
+                .append(grs.compoundBranch(pp.branch))
                 .append(SLASH)
                 .toString();
     }

@@ -55,7 +55,7 @@ public class GitLab extends GRSService {
                 .append(SLASH)
                 .append(pp.repo)
                 .append(GITLAB_RAW)
-                .append(pp.branch)
+                .append(grs.compoundBranch(pp.branch))
                 .append(SLASH)
                 .toString();
     }
