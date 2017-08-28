@@ -32,7 +32,7 @@
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/Chart.min.js"},
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/csv2chart.js"},
                 }
-                @if(offline) {
+                @if(deps.cdnDisabled() || offline) {
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
                 }
                 @if(deps.highlightPluginEnabled()) {

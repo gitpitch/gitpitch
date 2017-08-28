@@ -93,6 +93,10 @@ public final class Dependencies {
         return highlightPluginEnabled;
     }
 
+    public Boolean cdnDisabled() {
+      return cdn == null;
+    }
+
     private String build(boolean offline, String libName) {
 
         if(offline) {
