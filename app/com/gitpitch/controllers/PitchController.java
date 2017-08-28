@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -361,7 +361,7 @@ public class PitchController extends Controller {
                                            String theme,
                                            String pitchme,
                                            String notes) {
-                                          
+
 
         PitchParams pp =
             PitchParams.build(grsOnCall(grs),
@@ -405,6 +405,39 @@ public class PitchController extends Controller {
     public Result gist(String gid) {
         return ok(com.gitpitch.views.html.Gist.render(gid, deps));
     } // gist action
+
+    /*
+     * Raw returns file content identified by path.
+     */
+    public CompletionStage<Result> raw(String grs,
+                                       String user,
+                                       String repo,
+                                       String branch,
+                                       String path) {
+
+        PitchParams pp =
+            PitchParams.build(grsOnCall(grs), user, repo, branch);
+        log.debug("raw: pp={}, path={}", pp, path);
+
+        String offline = request().getQueryString("offline");
+        log.debug("raw: pp={}, path={}, offline={}", pp, path, offline != null);
+
+        Optional<File> fileo = pitchService.raw(pp, path);
+
+        if (fileo.isPresent()) {
+
+            log.debug("raw: pp={}, path={} file is found.");
+            File file = fileo.get();
+            return CompletableFuture.completedFuture(ok(file));
+
+        } else {
+
+            log.debug("raw: pp={}, path={} file not found.");
+            return CompletableFuture.completedFuture(notFound());
+
+        }
+
+    } // raw action
 
     /*
      * Determine GRS on call, explicitly defined or default.
