@@ -94,7 +94,7 @@ Support for these social features can be found in the Web page footer of each sl
 
 ## GitPitch slideshow presentations are speaker-ready
 
-GitPitch supports a [speaker notes window](https://github.com/gitpitch/gitpitch/wiki/Speaker-Notes-Window) that can be opened for any GitPitch [offline presentation](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline). The speaker notes window shows the current slide, provides a preview of the upcoming slide, and also includes a timer that helps keep track of time once you launch the presentation.
+GitPitch supports a [speaker notes window](https://github.com/gitpitch/gitpitch/wiki/Speaker-Notes-Window) that can be opened for any GitPitch online or [offline](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline) presentation. The speaker notes window shows the current slide, provides a preview of the upcoming slide, and also includes a timer that helps keep track of time once you launch the presentation.
 
 ![SPEAKER-NOTES](images/gp-speaker-notes.png)
 
