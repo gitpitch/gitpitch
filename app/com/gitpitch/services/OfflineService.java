@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -205,6 +205,9 @@ public class OfflineService {
                 fetchYAMLDependencies(pp, zipRoot);
 
             if (status == STATUS_OK)
+                pruneYAMLDependencies(pp, zipRoot);
+
+            if (status == STATUS_OK)
                 status = buildZip(pp, zipRoot);
 
         } catch (Exception zex) {
@@ -347,7 +350,7 @@ public class OfflineService {
             GRSService grsService =
                 grsManager.getService(grsManager.get(pp));
 
-            MarkdownRenderer mrndr = 
+            MarkdownRenderer mrndr =
                 MarkdownRenderer.build(pp, ssmo, grsService, diskService);
 
             MarkdownModel markdownModel =
@@ -453,6 +456,45 @@ public class OfflineService {
             log.warn("fetchYAMLDependencies: logo ex={}", lex);
         }
 
+    }
+
+    /*
+     * Prune unused PITCHME.yaml dependencies from zip archive.
+     */
+    private void pruneYAMLDependencies(PitchParams pp, Path zipRoot) {
+
+        GRSService grsService =
+                grsManager.getService(grsManager.get(pp));
+        YAMLOptions yOpts = YAMLOptions.build(pp, grsService, diskService);
+        log.debug("pruneYAMLDependencies: yOpts={}", yOpts);
+        Path destPath = zipRoot.resolve(ZIP_ASSETS_DIR);
+        String liveRevealVersion =
+          configuration.getString("gitpitch.dependency.revealjs");
+        if(yOpts != null && yOpts.fetchRevealVersion(pp) != null) {
+            liveRevealVersion = yOpts.fetchRevealVersion(pp);
+        }
+
+        try {
+
+            /*
+             * Strip Reveal.js distributions (X.y.z) unused by GitPitch.
+             */
+            for(String distroVersion : REVEALJS_DISTRO_VERSIONS) {
+
+                if(!distroVersion.equals(liveRevealVersion)) {
+
+                    Path distroPath =
+                      buildLibraryPath(destPath, "reveal.js", distroVersion);
+                    log.debug("pruneYAMLDependencies: removing distro={}",
+                            distroPath);
+
+                    diskService.deepDelete(distroPath.toFile());
+                }
+            }
+
+        } catch (Exception mex) {
+            log.warn("pruneYAMLDependencies: unused plugin assets ex={}", mex);
+        }
 
         try {
 
@@ -462,22 +504,66 @@ public class OfflineService {
              */
             if (yOpts == null || !yOpts.mathEnabled(pp)) {
 
-                Path destPath = zipRoot.resolve(ZIP_ASSETS_DIR);
-                String revealVersion =
-                    configuration.getString("gitpitch.dependency.revealjs");
-                Path mathPluginPath = Paths.get(destPath.toString(),
-                                                "reveal.js",
-                                                revealVersion,
-                                                "plugin/math");
-                log.debug("fetchYAMLDependencies: removing mathPlugin={}",
+                Path mathPluginPath =
+                    buildLibraryPath(destPath,
+                                     "reveal.js",
+                                     liveRevealVersion,
+                                     "plugin/math");
+                log.debug("pruneYAMLDependencies: removing mathPlugin={}",
                         mathPluginPath);
 
                 diskService.deepDelete(mathPluginPath.toFile());
             }
 
         } catch (Exception mex) {
-            log.warn("fetchYAMLDependencies: math config assets ex={}", mex);
+            log.warn("pruneYAMLDependencies: math config assets ex={}", mex);
         }
+
+        try {
+
+            /*
+             * If Chart slides not enabled within PITCHME.yaml, strip
+             * Reveal.js charts plugin file dependencies from zip.
+             */
+            if (yOpts == null || !yOpts.fetchCharts(pp)) {
+
+                Path chartPluginPath =
+                    buildLibraryPath(destPath,
+                                     "reveal.js",
+                                     liveRevealVersion,
+                                     "plugin/chart");
+                log.debug("pruneYAMLDependencies: removing chartPlugin={}",
+                        chartPluginPath);
+
+                diskService.deepDelete(chartPluginPath.toFile());
+            }
+
+        } catch (Exception mex) {
+            log.warn("pruneYAMLDependencies: math config assets ex={}", mex);
+        }
+
+        try {
+
+            /*
+             * Strip Reveal.js standard dist plugins unused by GitPitch.
+             */
+            for(String pluginName : OFFLINE_UNUSED_PLUGINS) {
+
+                Path unusedPath =
+                    buildLibraryPath(destPath,
+                                     "reveal.js",
+                                     liveRevealVersion,
+                                     "plugin/"+ pluginName);
+                log.debug("pruneYAMLDependencies: removing unused={}",
+                        unusedPath);
+
+                diskService.deepDelete(unusedPath.toFile());
+            }
+
+        } catch (Exception mex) {
+            log.warn("pruneYAMLDependencies: unused plugin assets ex={}", mex);
+        }
+
     }
 
     /*
@@ -524,6 +610,22 @@ public class OfflineService {
         return Paths.get(jarAssets);
     }
 
+    private Path buildLibraryPath(Path basePath,
+                                  String libName,
+                                  String libVersion) {
+        return buildLibraryPath(basePath, libName, libVersion, null);
+    }
+
+    private Path buildLibraryPath(Path basePath,
+                                  String libName,
+                                  String libVersion,
+                                  String dirName) {
+        if(dirName != null)
+            return Paths.get(basePath.toString(), libName, libVersion, dirName);
+        else
+            return Paths.get(basePath.toString(), libName, libVersion);
+    }
+
     private static final String ZIP_ROOT_DIR = "PITCHME";
     private static final String ZIP_MD_DIR = "assets/md";
     private static final String ZIP_MD_ASSETS_DIR = "assets/md/assets";
@@ -546,6 +648,16 @@ public class OfflineService {
     private static final String ENABLED   = "true";
     private static final int STATUS_OK = 0;
     private static final int STATUS_UNDEF = 999;
+
+    private static final List<String> REVEALJS_DISTRO_VERSIONS =
+      java.util.Arrays.asList("3.3.1", "3.4.1", "3.5.0");
+
+    private static final List<String> OFFLINE_UNUSED_PLUGINS =
+      java.util.Arrays.asList("multiplex",
+                              "notes-server",
+                              "search",
+                              "zoom-js",
+                              "print-pdf");
     private final ConcurrentHashMap<String, CountDownLatch> zipLatchMap =
             new ConcurrentHashMap();
 }
