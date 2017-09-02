@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,6 +29,7 @@ import com.gitpitch.git.GRSService;
 import com.gitpitch.git.GRSManager;
 import com.gitpitch.services.DiskService;
 import com.gitpitch.utils.PitchParams;
+import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
 import java.util.*;
 import java.nio.file.*;
@@ -56,19 +57,17 @@ public class CodeService {
     }
 
     public String build(String md,
+                        DelimParams dp,
                         PitchParams pp,
                         YAMLOptions yOpts,
-                        String gitRawBase,
                         MarkdownModel mdm) {
 
         String codeBlock = mdm.extractCodeDelim(md);
 
         try {
 
-            String codePath = extractCodePath(md, gitRawBase, mdm);
-
-            String langHint = getLangHintOptionFromPath(codePath);
-            codePath  = cleanOptionsFromPath(codePath);
+            String codePath = dp.get(MarkdownModel.DELIM_QUERY_CODE);
+            String langHint = dp.get(MarkdownModel.DELIM_QUERY_LANG);
 
             GRS grs = grsManager.get(pp);
             GRSService grsService = grsManager.getService(grs);
@@ -86,23 +85,6 @@ public class CodeService {
 
         } catch (Exception gex) {}
         return codeBlock;
-    }
-
-    public String extractCodePath(String md,
-                                  String gitRawBase,
-                                  MarkdownModel mdm) {
-
-        String codePath = null;
-
-        try {
-
-            String delim = mdm.extractCodeDelim(md);
-            codePath = md.substring(delim.length());
-
-        } catch (Exception pex) {
-            log.warn("extractCodePath: ex={}", pex);
-        }
-        return codePath;
     }
 
     private String extractPath(String md, MarkdownModel mdm) {
@@ -141,32 +123,6 @@ public class CodeService {
                                 .append(MarkdownModel.MD_SPACER)
                                 .toString();
    }
-
-    private String getLangHintOptionFromPath(String codePath) {
-        String extractedHint = NO_LANG_HINT;
-        try {
-            int hintOptIdx = codePath.indexOf(LANG_HINT_OPTION);
-            if(hintOptIdx != -1) {
-                int hintOffset = hintOptIdx + LANG_HINT_OPTION.length();
-                extractedHint = codePath.substring(hintOffset);
-            }
-
-        } catch(Exception ex) {}
-        return extractedHint;
-    }
-
-    private String cleanOptionsFromPath(String codePath) {
-        String cleanedPath = codePath;
-        try {
-            int hintOptIdx = codePath.indexOf(LANG_HINT_OPTION);
-            if(hintOptIdx != -1) {
-                cleanedPath = codePath.substring(0, hintOptIdx);
-            }
-
-
-        } catch(Exception cex) {}
-        return cleanedPath;
-    }
 
     private static final String SOURCE_CODE = "PITCHME.code";
     private static final String SOURCE_CODE_DELIMITER =

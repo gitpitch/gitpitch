@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,6 +30,7 @@ import com.gitpitch.services.VideoService;
 import com.gitpitch.services.GISTService;
 import com.gitpitch.services.CodeService;
 import com.gitpitch.services.ShortcutsService;
+import com.gitpitch.git.GRSManager;
 import org.apache.commons.io.FilenameUtils;
 import com.google.inject.assistedinject.Assisted;
 import javax.annotation.Nullable;
@@ -56,6 +57,7 @@ public class MarkdownModel implements Markdown {
     private final GISTService  gistService;
     private final CodeService  codeService;
     private final ShortcutsService shortcutsService;
+    private final GRSManager grsManager;
     private final MarkdownRenderer mrndr;
     private final String markdown;
     private String hSlideDelim = HSLIDE_DELIM_DEFAULT;
@@ -67,6 +69,7 @@ public class MarkdownModel implements Markdown {
                          GISTService  gistService,
                          CodeService  codeService,
                          ShortcutsService  shortcutsService,
+                         GRSManager grsManager,
                          @Nullable @Assisted MarkdownRenderer mrndr) {
 
         this.imageService = imageService;
@@ -74,6 +77,7 @@ public class MarkdownModel implements Markdown {
         this.gistService  = gistService;
         this.codeService  = codeService;
         this.shortcutsService = shortcutsService;
+        this.grsManager = grsManager;
         this.mrndr = mrndr;
 
         String consumed = null;
@@ -140,12 +144,13 @@ public class MarkdownModel implements Markdown {
 
             /*
              * Clean only delimiter fragments of whitespace
-             * noise before processing. Preserve end-of-line 
+             * noise before processing. Preserve end-of-line
              * characters on all non-delimiter fragments.
              */
             md = md.trim();
+            DelimParams dp = DelimParams.build(md);
 
-            if (videoDelimFound(md)) {
+            if (videoDelimFound(dp)) {
 
                 /*
                  * Inject slide specific video background:
@@ -153,13 +158,12 @@ public class MarkdownModel implements Markdown {
                  * <!-- .slide: data-background-video="vidUrl" -->
                  */
 
-                String videoBgUrl =
-                    videoService.extractBgUrl(md, gitRawBase, this);
                 return new StringBuffer(delimiter(md))
-                        .append(videoService.buildBackground(videoBgUrl))
+                        .append(videoService.buildBackground(md,
+                                dp, pp, this))
                         .toString();
 
-            } else if (imageDelimFound(md)) {
+            } else if (imageDelimFound(dp)) {
 
                 /*
                  * Inject slide specific image background:
@@ -167,21 +171,18 @@ public class MarkdownModel implements Markdown {
                  * <!-- .slide: data-background-image="imgUrl" -->
                  */
 
-                String imageBgUrl =
-                    imageService.extractBgUrl(md, gitRawBase, this);
-
-                String bgSize = (yOpts != null) ?
+                String defaultBgSize = (yOpts != null) ?
                     yOpts.fetchImageBgSize(pp) : YAMLOptions.DEFAULT_BG_SIZE;
 
                 return new StringBuffer(delimiter(md))
-                        .append(imageService.buildBackground(pp,
-                                imageBgUrl, bgSize))
+                        .append(imageService.buildBackground(md,
+                                dp, pp, defaultBgSize, this))
                         .toString();
 
-            } else if (gistDelimFound(md)) {
-                return gistService.build(md, pp, yOpts, this);
-            } else if(codeDelimFound(md)) {
-                return codeService.build(md, pp, yOpts, gitRawBase, this);
+            } else if (gistDelimFound(dp)) {
+                return gistService.build(md, dp, pp, yOpts, this);
+            } else if(codeDelimFound(dp)) {
+                return codeService.build(md, dp, pp, yOpts, this);
             }
 
             if (yOpts != null && yOpts.hasImageBg()) {
@@ -394,20 +395,20 @@ public class MarkdownModel implements Markdown {
         }
     }
 
-    private boolean imageDelimFound(String md) {
-        return md.startsWith(horizImageDelim()) || md.startsWith(vertImageDelim());
+    private boolean imageDelimFound(DelimParams dp) {
+        return dp.get(DELIM_QUERY_IMAGE) != null;
     }
 
-    private boolean videoDelimFound(String md) {
-        return md.startsWith(horizVideoDelim()) || md.startsWith(vertVideoDelim());
+    private boolean videoDelimFound(DelimParams dp) {
+        return dp.get(DELIM_QUERY_VIDEO) != null;
     }
 
-    private boolean gistDelimFound(String md) {
-        return md.startsWith(horizGISTDelim()) || md.startsWith(vertGISTDelim());
+    private boolean gistDelimFound(DelimParams dp) {
+        return dp.get(DELIM_QUERY_GIST) != null;
     }
 
-    private boolean codeDelimFound(String md) {
-        return md.startsWith(horizCodeDelim()) || md.startsWith(vertCodeDelim());
+    private boolean codeDelimFound(DelimParams dp) {
+        return dp.get(DELIM_QUERY_CODE) != null;
     }
 
     private String delimiter(String md) {
@@ -570,9 +571,25 @@ public class MarkdownModel implements Markdown {
     public boolean isHorizontal(String md) {
         return (md.startsWith(horizDelim())) ? true : false;
     }
-    
+
     public boolean linkAbsolute(String link) {
         return link.startsWith(MD_LINK_ABS);
+    }
+
+    public String linkLive(PitchParams pp, String linkBase) {
+      try {
+
+          if (linkAbsolute(linkBase)) {
+              return linkBase;
+          } else {
+              return grsManager.getService(grsManager.get(pp))
+                               .raw(pp, linkBase);
+          }
+
+      } catch (Exception lex) {
+          log.warn("linkLive: ex={}", lex);
+          return "#";
+      }
     }
 
     public String extractImageDelim(String md) {
@@ -683,6 +700,13 @@ public class MarkdownModel implements Markdown {
 
     public static final String HSLIDE_DELIM_BACK_COMPAT = "#HSLIDE";
     public static final String VSLIDE_DELIM_BACK_COMPAT = "#VSLIDE";
+
+    public static final String DELIM_QUERY_IMAGE = "image";
+    public static final String DELIM_QUERY_VIDEO = "video";
+    public static final String DELIM_QUERY_GIST  = "gist";
+    public static final String DELIM_QUERY_CODE  = "code";
+    public static final String DELIM_QUERY_LANG  = "lang";
+    public static final String DELIM_QUERY_SIZE  = "size";
 
     public static final String MD_LINK_OPEN = "![";
     public static final String MD_ANCHOR_OPEN = "[";

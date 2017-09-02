@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,6 +24,8 @@
 package com.gitpitch.services;
 
 import com.gitpitch.models.MarkdownModel;
+import com.gitpitch.utils.PitchParams;
+import com.gitpitch.utils.DelimParams;
 import java.util.*;
 import javax.inject.*;
 import play.Logger;
@@ -118,32 +120,13 @@ public class VideoService {
 
     }
 
-    public String extractBgUrl(String md,
-                               String gitRawBase,
-                               MarkdownModel mdm) {
+    public String buildBackground(String md,
+                                  DelimParams dp,
+                                  PitchParams pp,
+                                  MarkdownModel mdm) {
 
-        try {
-
-            String delim = mdm.extractVideoDelim(md);
-            String videoBgUrl = md.substring(delim.length());
-
-            if (mdm.linkAbsolute(videoBgUrl)) {
-                return videoBgUrl;
-            } else {
-                return new StringBuffer(gitRawBase).append(videoBgUrl)
-                        .toString();
-            }
-
-        } catch (Exception pex) {
-            log.warn("processVideoBg: ex={}", pex);
-            /*
-             * Invalid bg syntax, return clean slide delimiter.
-             */
-            return mdm.isHorizontal(md) ? mdm.horizDelim() : mdm.vertDelim();
-        }
-    }
-
-    public String buildBackground(String bgUrl) {
+        String bgUrl = dp.get(MarkdownModel.DELIM_QUERY_VIDEO, "#");
+        bgUrl = mdm.linkLive(pp, bgUrl);
 
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_SPACER)

@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,6 +25,7 @@ package com.gitpitch.services;
 
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.utils.PitchParams;
+import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
 import org.apache.commons.io.FilenameUtils;
 import java.util.*;
@@ -41,16 +42,24 @@ public class ImageService {
     private final Logger.ALogger log = Logger.of(this.getClass());
 
     public String buildBackground(PitchParams pp,
-                                         YAMLOptions yOpts) {
+                                  YAMLOptions yOpts) {
 
-        return buildBackground(pp, yOpts.fetchImageBg(pp), yOpts.fetchImageBgSize(pp));
+        return buildBackground(yOpts.fetchImageBg(pp), yOpts.fetchImageBgSize(pp));
     }
 
-    public String buildBackground(PitchParams pp,
-                                         String imageBgUrl, String imageBgSize) {
+    public String buildBackground(String md,
+                                  DelimParams dp,
+                                  PitchParams pp,
+                                  String defaultSize,
+                                  MarkdownModel mdm) {
 
-        String bgSize = getSizeOptionFromUrl(imageBgUrl, imageBgSize);
-        String bgUrl  = cleanOptionsFromUrl(imageBgUrl);
+        String bgUrl = dp.get(MarkdownModel.DELIM_QUERY_IMAGE);
+        bgUrl = mdm.linkLive(pp, bgUrl);
+        String bgSize = dp.get(MarkdownModel.DELIM_QUERY_SIZE, defaultSize);
+        return buildBackground(bgUrl, bgSize);
+    }
+
+    private String buildBackground(String bgUrl, String bgSize) {
 
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_IMAGE_OPEN)
@@ -107,31 +116,6 @@ public class ImageService {
         return md.contains(MarkdownModel.DATA_IMAGE_ATTR);
     }
 
-    public String extractBgUrl(String md,
-                               String gitRawBase,
-                               MarkdownModel mdm) {
-
-        try {
-
-            String delim = mdm.extractImageDelim(md);
-            String imageBgUrl = md.substring(delim.length());
-
-            if (mdm.linkAbsolute(imageBgUrl)) {
-                return imageBgUrl;
-            } else {
-                return new StringBuffer(gitRawBase).append(imageBgUrl)
-                        .toString();
-            }
-
-        } catch (Exception pex) {
-            log.warn("extractImageBgUrl: ex={}", pex);
-            /*
-             * Invalid bg syntax, return clean slide delimiter.
-             */
-            return mdm.isHorizontal(md) ? mdm.horizDelim() : mdm.vertDelim();
-        }
-    }
-
     /*
      * Return true is HTML image tag found.
      */
@@ -143,7 +127,7 @@ public class ImageService {
 
         int linkTagStart = md.indexOf(IMG_TAG_SRC_OPEN);
         int linkStart = linkTagStart + IMG_TAG_SRC_OPEN.length();
-        int linkEnd = 
+        int linkEnd =
             md.indexOf(IMG_TAG_SRC_CLOSE, linkStart);
 
         String tagLink = IMG_TAG_LINK_UNKNOWN;
@@ -152,33 +136,6 @@ public class ImageService {
         }
 
         return tagLink;
-    }
-
-    private String getSizeOptionFromUrl(String url, String defaultSize) {
-        String extractedSize = defaultSize;
-        try {
-            int sizeOptIdx = url.indexOf(IMG_CUSTOM_SIZE_OPTION);
-            if(sizeOptIdx != -1) {
-                int sizeOffset = sizeOptIdx + IMG_CUSTOM_SIZE_OPTION.length();
-                extractedSize = url.substring(sizeOffset);
-            }
-
-        } catch(Exception ex) {}
-        return extractedSize;
-    }
-
-    private String cleanOptionsFromUrl(String url) {
-
-        String cleanedUrl = url;
-        try {
-            int sizeOptIdx = url.indexOf(IMG_CUSTOM_SIZE_OPTION);
-            if(sizeOptIdx != -1) {
-                cleanedUrl = url.substring(0, sizeOptIdx);
-            }
-
-
-        } catch(Exception cex) {}
-        return cleanedUrl;
     }
 
     private static final String IMG_OFFLINE_DIR = "./assets/md/assets/";
