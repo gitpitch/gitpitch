@@ -1,6 +1,6 @@
 /*
 
-Darkula color scheme from the JetBrains family of IDEs
+Darcula color scheme from the JetBrains family of IDEs
 
 */
 
@@ -52,7 +52,10 @@ Darkula color scheme from the JetBrains family of IDEs
   color: #b9b9b9;
 }
 
-.hljs-string,
+.hljs-string {
+  color: #6a8759;
+}
+
 .hljs-subst,
 .hljs-type,
 .hljs-built_in,
