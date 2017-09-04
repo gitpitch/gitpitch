@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -39,6 +39,7 @@ public class GRS {
     private final String apiToken;
     private final String apiTokenHeader;
     private final String rawBase;
+    private final String gistBase;
     private final String branchDelim;
     private final boolean isDefault;
 
@@ -49,6 +50,7 @@ public class GRS {
                 String apiToken,
                 String apiTokenHeader,
                 String rawBase,
+                String gistBase,
                 String branchDelim,
                 boolean isDefault) {
 
@@ -59,6 +61,7 @@ public class GRS {
         this.apiToken = apiToken;
         this.apiTokenHeader = apiTokenHeader;
         this.rawBase = rawBase;
+        this.gistBase = gistBase;
         this.branchDelim = branchDelim;
         this.isDefault = isDefault;
     }
@@ -72,13 +75,14 @@ public class GRS {
         String apiToken = grsCfg.get("apitoken");
         String apiTokenHeader = grsCfg.get("apitokenheader");
         String rawBase = grsCfg.get("rawbase");
+        String gistBase = grsCfg.get("gistbase");
         String branchDelim = grsCfg.get("branchdelim");
         boolean isDefault = Boolean.parseBoolean(grsCfg.get("default"));
 
         if(name != null && type != null && site != null &&
                 apiBase != null && rawBase != null) {
             return new GRS(name, type, site, apiBase, apiToken,
-                    apiTokenHeader, rawBase, branchDelim, isDefault);
+                    apiTokenHeader, rawBase, gistBase, branchDelim, isDefault);
         } else {
             return null;
         }
@@ -91,6 +95,7 @@ public class GRS {
     public String getApiToken() { return apiToken; }
     public String getApiTokenHeader() { return apiTokenHeader; }
     public String getRawBase() { return rawBase; }
+    public String getGistBase() { return gistBase; }
     public String compoundBranch(String branch) {
         if(branch != null && branchDelim != null) {
             return branch.replaceAll(branchDelim, COMPOUNDED_BRANCH);

@@ -79,24 +79,11 @@ public class CodeService {
                 String code = diskService.asText(pp, SOURCE_CODE);
                 return buildCodeBlock(mdm.extractCodeDelim(md), code, langHint);
             } else {
-                return buildCodeBlockError(mdm.extractCodeDelim(md),
-                                            extractPath(md, mdm));
+                return buildCodeBlockError(mdm.extractCodeDelim(md), codePath);
             }
 
         } catch (Exception gex) {}
         return codeBlock;
-    }
-
-    private String extractPath(String md, MarkdownModel mdm) {
-        String path = null;
-
-        try {
-            String delim = mdm.extractCodeDelim(md);
-            path = md.substring(delim.length());
-        } catch (Exception pex) {
-            log.warn("extractPath: ex={}", pex);
-        }
-        return path;
     }
 
     private String buildCodeBlock(String delim, String code, String langHint) {
@@ -129,7 +116,5 @@ public class CodeService {
         "### Code Block Delimiter";
     private static final String SOURCE_CODE_NOT_FOUND =
         "### Source File Not Found";
-    private static final String LANG_HINT_OPTION = "&lang=";
-    private static final String NO_LANG_HINT = "";
 
 }

@@ -707,6 +707,7 @@ public class MarkdownModel implements Markdown {
     public static final String DELIM_QUERY_CODE  = "code";
     public static final String DELIM_QUERY_LANG  = "lang";
     public static final String DELIM_QUERY_SIZE  = "size";
+    public static final String DELIM_QUERY_FILE  = "file";
 
     public static final String MD_LINK_OPEN = "![";
     public static final String MD_ANCHOR_OPEN = "[";
