@@ -78,6 +78,7 @@ public class GISTService {
 
               String fileHint = dp.get(MarkdownModel.DELIM_QUERY_FILE);
               String langHint = dp.get(MarkdownModel.DELIM_QUERY_LANG);
+              String slideTitle = dp.get(MarkdownModel.DELIM_QUERY_TITLE);
               String extractedDelim = mdm.extractGISTDelim(md);
 
               GRS grs = grsManager.get(pp);
@@ -92,7 +93,8 @@ public class GISTService {
 
               if(downStatus == 0) {
                   String code = diskService.asText(pp, GIST_CODE);
-                  return buildCodeBlock(extractedDelim, code, langHint);
+                  return buildCodeBlock(extractedDelim,
+                                        code, langHint, slideTitle);
               } else {
                   return buildCodeBlockError(extractedDelim, gid, fileHint);
               }
@@ -114,17 +116,32 @@ public class GISTService {
                 .toString();
     }
 
-    private String buildCodeBlock(String delim, String code, String langHint) {
-        return new StringBuffer(delim)
-                                .append(MarkdownModel.MD_SPACER)
-                                .append(MarkdownModel.MD_CODE_BLOCK_OPEN)
-                                .append(langHint)
-                                .append(MarkdownModel.MD_SPACER)
-                                .append(code)
-                                .append(MarkdownModel.MD_SPACER)
-                                .append(MarkdownModel.MD_CODE_BLOCK_CLOSE)
-                                .append(MarkdownModel.MD_SPACER)
-                                .toString();
+    private String buildCodeBlock(String delim,
+                                  String code,
+                                  String langHint,
+                                  String slideTitle) {
+
+        StringBuffer slide =  new StringBuffer(delim)
+                                  .append(MarkdownModel.MD_SPACER);
+
+        if(slideTitle != null) {
+            slide = slide.append(MarkdownModel.MD_SPACER)
+                         .append(slideTitle)
+                         .append(MarkdownModel.MD_SPACER);
+        }
+
+        slide = slide.append(MarkdownModel.MD_CODE_BLOCK_OPEN);
+
+        if(langHint != null) {
+            slide = slide.append(langHint);
+        }
+
+        return slide.append(MarkdownModel.MD_SPACER)
+                    .append(code)
+                    .append(MarkdownModel.MD_SPACER)
+                    .append(MarkdownModel.MD_CODE_BLOCK_CLOSE)
+                    .append(MarkdownModel.MD_SPACER)
+                    .toString();
    }
 
    private String buildCodeBlockError(String delim,
