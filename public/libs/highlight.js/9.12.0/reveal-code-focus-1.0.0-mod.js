@@ -200,19 +200,41 @@
     var topLineNumber, bottomLineNumber;
 
     forEach(lines.split(','), function(line) {
-      lines = line.split('-');
-      if (lines.length == 1) {
-        focusLine(lines[0]);
-      } else {
-        var i = lines[0] - 1, j = lines[1];
-
-        while (++i <= j) {
-          focusLine(i);
-        }
-      }
+      var parsed = parseDataCodeFocus(line);
+      forEach(parsed, function(line) {
+        focusLine(line);
+      });
     });
 
     updateCodeOpacity();
+
+    function parseDataCodeFocus(dataCodeFocus) {
+      //
+      // Parse data-code-focus attribute data:
+      //
+      // Examples:
+      // [1], [1, 2], [1-2], [1-3, 5], [6, 9-11]
+      //
+      var parsed = new Array();
+      try {
+        var dcfParts = dataCodeFocus.split(",");
+        forEach(dcfParts, function(dcfPart) {
+          var frag = dcfPart.split('-');
+          if(frag.length == 1) {
+            parsed.push(frag);
+          } else {
+            var i = frag[0] - 1, j = frag[1];
+            while (++i <= j) {
+              parsed.push(i);
+            }
+          }
+        });
+      } catch(ex) {
+        // Ignore bad data-code-focus syntax
+      }
+
+      return parsed;
+    }
 
     function focusLine(lineNumber) {
       // Convert from 1-based index to 0-based index.
