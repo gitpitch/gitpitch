@@ -48,7 +48,7 @@ public class GitLab extends GRSService {
 
     public String raw(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getRawBase())
                 .append(pp.user)
@@ -62,7 +62,7 @@ public class GitLab extends GRSService {
 
     public String repo(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getApiBase())
                 .append(GITLAB_PROJECTS_API)

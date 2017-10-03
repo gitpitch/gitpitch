@@ -1,6 +1,6 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
-# Markdown Presentations For Everyone on GitHub, GitLab, Bitbucket, Gitea, Gogs, and GitBucket
+# Markdown Presentations For Everyone on GitHub, GitLab, Bitbucket, GitBucket, Gitea, and Gogs.
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
@@ -9,18 +9,18 @@
 - [How does GitPitch work?](#how-does-gitpitch-work)
 - [Compelling Presentations](#gitpitch-slideshow-presentations-are-compelling)
 - [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
-- [Modular Presentations](#gitpitch-slideshow-presentations-are-modular)
-- [Code-Aware Presentations](#gitpitch-slideshow-presentations-are-code-aware)
-- [Social Presentations](#gitpitch-slideshow-presentations-are-social)
+- [Code-Ready Presentations](#gitpitch-slideshow-presentations-speak-code-fluently)
 - [Speaker-Ready Presentations](#gitpitch-slideshow-presentations-are-speaker-ready)
+- [Modular Presentations](#gitpitch-slideshow-presentations-are-modular)
+- [Social Presentations](#gitpitch-slideshow-presentations-are-social)
 - [Presentations That Just Work](#gitpitch-slideshow-presentations-just-work)
 - [An Open Source Project](#gitpitch---an-open-source-project)
 
 ## What is GitPitch?
 
-GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online and offline, interactive slideshows. You can use it to promote, pitch or present anything from designs and best practices, to code snippets and complete frameworks.
+GitPitch is a service that turns **[PITCHME.md](https://gitpitch.com/#gitpitch-pitchme-markdown)** markdown into online and offline, interactive slideshows. You can use it to promote, pitch or present absolutely anything.
 
-Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public [GitHub, GitLab, Bitbucket, Gitea, Gogs, or GitBucket](https://github.com/gitpitch/gitpitch/wiki/Git-Repo-Services) repo.
+Each slideshow presentation is made instantly available online just as soon as you git-commit and push **PITCHME.md** on any branch within a public [GitHub, GitLab, Bitbucket, GitBucket, Gitea, or Gogs](https://github.com/gitpitch/gitpitch/wiki/Git-Repo-Services) repo.
 
 ![URL](images/gp-url.jpg)
 
@@ -28,25 +28,25 @@ GitPitch is an open source project so you can fork, clone, and modify the source
 
 ## Is GitPitch for you?
 
-If you ever find yourself needing to present a concept, design, library, integration, framework, or even course work:
+If you ever find yourself needing to present a concept, design, library, framework, product, service, or even course work:
 
 - To colleagues, clients or customers
-- To students
-- Or at meetups or conferences
+- At meetups or conferences
+- Or to student classes
 
 Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch automatically turn those ideas into compelling, responsive, online and offline slideshow presentations.
 
 ## How does GitPitch work?
 
-GitPitch presentations are powered by the amazing [reveal.js](https://github.com/hakimel/reveal.js) presentation framework. But with GitPitch there is nothing to download. All you need is your favorite text editor. And an account on GitHub, GitLab, or Bitbucket. Or your instance of GitHub Enterprise, Gitea, Gogs, or GitBucket.
+GitPitch presentations are powered by the amazing [reveal.js](https://github.com/hakimel/reveal.js) presentation framework. But with GitPitch there is nothing to download. Nothing to install. All you need is your favorite text editor. And an account on GitHub, GitLab, or Bitbucket. Or your instance of GitHub Enterprise, GitLab CE, GitBucket, Gitea, or Gogs.
 
 ![TERMINAL](images/gp-terminal.png)
 
-No more Keynote. No more PowerPoint. Just Markdown. Then git-commit on any branch within a public GitHub, GitLab, Bitbucket, or a private Gitea, Gogs, GitBucket repo.
+No more Keynote. No more PowerPoint. Just Markdown. Then git-commit on any branch within a public GitHub, GitLab, Bitbucket, GitBucket, Gitea, or Gogs repo.
 
 ## GitPitch slideshow presentations are compelling
 
-![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-theme-style.png)
+![SLIDESHOW](images/gp-slideshow-master.png)
 
 Each slideshow presentation is beautifully rendered, fully responsive, and highly interactive with a rich set of features including:
 
@@ -62,22 +62,27 @@ See the [Kitchen Sink Slideshow Presentation](https://gitpitch.com/gitpitch/kitc
 
 Choose between six distinct [visual themes](https://github.com/gitpitch/gitpitch/wiki/Theme-Setting):
 
-![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-night-style.png)
+![SLIDESHOW](images/gp-slideshow-night.png)
 
 Or further [customize the look and feel](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings) of your slideshow presentations using background images, your own logo and even [custom css](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS).
 
-![SLIDESHOW](http://res.cloudinary.com/gitpitch/image/upload/github-integration/gp-slideshow-bg-style.png)
+![SLIDESHOW](images/gp-slideshow-room.png)
+
+## GitPitch slideshow presentations speak code fluently
+
+![CODE-PRESENTING](images/gp-code-presenting-series.gif)
+
+Step-through static-code blocks or the complete source-code from any file in the repo, line-by-line or section-by-section, from directly within any slideshow presentation using [code-presenting](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting).
+
+## GitPitch slideshow presentations are speaker-ready
+
+GitPitch supports a [speaker notes window](https://github.com/gitpitch/gitpitch/wiki/Speaker-Notes-Window) that can be opened for any GitPitch online or [offline](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline) presentation. The speaker notes window shows the current slide, provides a preview of the upcoming slide, and also includes a timer that helps keep track of time once you launch the presentation.
+
+![SPEAKER-NOTES](images/gp-speaker-notes.png)
 
 ## GitPitch slideshow presentations are modular
 
 Create and deliver content and course materials as a series of slideshow presentations using [modular markdown](https://github.com/gitpitch/gitpitch/wiki/Modular-Markdown) and [shared assets](https://github.com/gitpitch/gitpitch/wiki/Asset-Sharing) (css, images, etc.) in a single git repo.
-
-
-## GitPitch slideshow presentations are code-aware
-
-![CODE-PRESENTING](images/gp-code-presenting-preview.gif)
-
-Step-through static-code blocks or the complete source-code from any file in the repo, line-by-line or section-by-section, from directly within any slideshow presentation using [code-presenting](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting).
 
 ## GitPitch slideshow presentations are social
 
@@ -90,13 +95,7 @@ GitPitch slideshow presentations are designed for sharing. You can:
 - [Print](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Printing) any GitPitch presentation as PDF document
 - [Download and present](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline) any GitPitch presentation offline
 
-Support for these social features can be found in the Web page footer of each slideshow presentation.
-
-## GitPitch slideshow presentations are speaker-ready
-
-GitPitch supports a [speaker notes window](https://github.com/gitpitch/gitpitch/wiki/Speaker-Notes-Window) that can be opened for any GitPitch online or [offline](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Offline) presentation. The speaker notes window shows the current slide, provides a preview of the upcoming slide, and also includes a timer that helps keep track of time once you launch the presentation.
-
-![SPEAKER-NOTES](images/gp-speaker-notes.png)
+Support for these social features can be found in the presentation menus.
 
 ## GitPitch slideshow presentations just work
 

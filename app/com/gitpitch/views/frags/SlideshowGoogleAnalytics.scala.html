@@ -1,0 +1,8 @@
+@(ssm: com.gitpitch.models.SlideshowModel, offline: Boolean, serverPrinting: Boolean)
+@if(!offline) {
+    @if(!serverPrinting) {
+        @if(ssm.hasGAToken()) {
+            @GoogleAnalytics(ssm.fetchGAToken())
+        }
+    }
+}

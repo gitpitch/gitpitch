@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,7 +36,7 @@ import play.Logger;
 import play.Logger.ALogger;
 
 /*
- * Rendering model for views.Landing.scala.html.
+ * Rendering model for views.Slideshow.scala.html.
  */
 public class GitRepoRenderer {
 
@@ -49,8 +49,7 @@ public class GitRepoRenderer {
     /*
      * Relative URLs for view components.
      */
-    private String _landingBase;
-    private String _landingURL;
+    private String _slideshowBase;
     private String _slideshowURL;
     private String _markdownURL;
     /*
@@ -82,30 +81,22 @@ public class GitRepoRenderer {
              * data returned on GitHub API as GitRepoModel, if exists.
              */
 
-            this._landingURL = com.gitpitch.controllers.routes.PitchController
-                    .landing(_grm.owner(),
-                            _grm.name(),
-                            _pp.branch,
-                            _pp.grs,
-                            _pp.theme,
-                            _pp.pitchme,
-                            _pp.notes, null).toString();
-
-            this._slideshowURL = com.gitpitch.controllers.routes.PitchController
-                    .slideshow(_pp.grs,
-                            _grm.owner(),
-                            _grm.name(),
-                            _pp.branch,
-                            _pp.theme,
-                            _pp.pitchme,
-                            _pp.notes, null, null, null).toString();
+            this._slideshowURL =
+                com.gitpitch.controllers.routes.PitchController
+                    .slideshow(_grm.owner(),
+                    _grm.name(),
+                    _pp.branch,
+                    _pp.grs,
+                    _pp.theme,
+                    _pp.pitchme,
+                    _pp.notes, null, null, null).toString();
 
             this._markdownURL = com.gitpitch.controllers.routes.PitchController
                     .markdown(_pp.grs,
-                            _grm.owner(),
-                            _grm.name(),
-                            _pp.branch,
-                            _pp.pitchme).toString();
+                    _grm.owner(),
+                    _grm.name(),
+                    _pp.branch,
+                    _pp.pitchme).toString();
 
             Optional<GRS> grso =
                     this._grsServices.stream()
@@ -182,8 +173,7 @@ public class GitRepoRenderer {
              * repository data is not available.
              */
 
-            this._landingBase = HTTP_HASH;
-            this._landingURL = HTTP_HASH;
+            this._slideshowBase = HTTP_HASH;
             this._slideshowURL = HTTP_HASH;
             this._orgHub = HTTP_HASH;
             this._repoHub = HTTP_HASH;
@@ -236,10 +226,25 @@ public class GitRepoRenderer {
     }
 
     /*
+     * Return GitHub {pitchme} path.
+     */
+    public String pitchme() {
+        return (_pp.pitchme != null) ?
+            _pp.pitchme.replaceAll("/", ".") : PITCHME;
+    }
+
+    /*
      * Return pitch slideshow theme.
      */
     public String theme() {
         return _pp.theme;
+    }
+
+    /*
+     * Return pitch slideshow grs.
+     */
+    public String grs() {
+        return _pp.grs;
     }
 
     /*
@@ -257,45 +262,40 @@ public class GitRepoRenderer {
     }
 
     /*
-     * Return relative URL to landing view.
+     * Return relative URL to slideshow.
      */
-    public String landingURL() {
-        return _landingURL;
+    public String slideshowURL() {
+        return _slideshowURL;
     }
 
     /*
-     * Return relative URL to landing view.
+     * Return relative URL to slideshow.
      */
-    public String landingURL(String theme) {
-        return com.gitpitch.controllers.routes.PitchController.landing(_grm.owner(),
+    public String slideshowURL(String theme) {
+        return com.gitpitch.controllers.routes.PitchController
+                .slideshow(_grm.owner(),
                 _grm.name(),
                 _pp.branch,
                 _pp.grs,
                 theme,
                 _pp.pitchme,
-                _pp.notes, null).toString();
+                _pp.notes, null, null, null).toString();
     }
 
     /*
-     * Return relative URL to landing view.
+     * Return absolute URL to slideshow.
      */
-    public String landingAbs() {
+    public String slideshowAbs() {
 
-        return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
+        return com.gitpitch.controllers.routes.PitchController
+                .slideshow(_pp.user,
                 _pp.repo,
                 _pp.branch,
                 _pp.grs,
                 _pp.theme,
                 _pp.pitchme,
-                _pp.notes, null).absoluteURL(isEncrypted(),
+                _pp.notes, null, null, null).absoluteURL(isEncrypted(),
                             hostname());
-    }
-
-    /*
-     * Return relative URL to slideshow view.
-     */
-    public String slideshowURL() {
-        return _slideshowURL;
     }
 
     /*
@@ -306,17 +306,42 @@ public class GitRepoRenderer {
     }
 
     /*
-     * Return https://github.com/{user}.
+     * Return https://{grs}/{user}.
      */
     public String orgHub() {
         return _orgHub;
     }
 
     /*
-     * Return https://github.com/{user}/{repo}.
+     * Return https://{grs}/{user}/{repo}.
      */
     public String repoHub() {
         return _repoHub;
+    }
+
+    /*
+     * Return https://{grs}/{user}/{repo}/tree/{branch}
+     */
+    public String branchHub(PitchParams pp) {
+      if(GRS_BITBUCKET.equals(pp.grs))
+        return "#";
+      else
+        return _repoHub + GIT_TREE + pp.branch;
+    }
+
+    /*
+     * Return https://{grs}/{user}/{repo}/blob/{branch}/{pitchme}
+     */
+    public String pitchHub(PitchParams pp) {
+      if(GRS_BITBUCKET.equals(pp.grs)) {
+        return "#";
+      } else {
+        if(pp.pitchme != null)
+            return _repoHub + GIT_BLOB + pp.branch + "/" + pp.pitchme + DEFAULT_PITCHME;
+        else
+            return _repoHub + GIT_BLOB + pp.branch + DEFAULT_PITCHME;
+      }
+
     }
 
     /*
@@ -372,7 +397,7 @@ public class GitRepoRenderer {
 
     /*
      * Return the "best fit" repo language or branch
-     * name when rendering the landing page.
+     * name when rendering the presentation.
      */
     public String displayLangOrBranch() {
 
@@ -398,36 +423,39 @@ public class GitRepoRenderer {
         grs = (grs != null) ? grs : _pp.grs;
 
         if (absolute)
-            return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
+            return com.gitpitch.controllers.routes.PitchController
+                    .slideshow(_pp.user,
                     _pp.repo,
                     _pp.branch,
                     grs,
                     _pp.theme,
                     _pp.pitchme,
                     _pp.notes,
-                    null)
+                    null, null, null)
                     .absoluteURL(isEncrypted(),
                             hostname());
         else
-            return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
+            return com.gitpitch.controllers.routes.PitchController
+                    .slideshow(_pp.user,
                     _pp.repo,
                     _pp.branch,
                     grs,
                     _pp.theme,
                     _pp.pitchme,
-                    _pp.notes, null).toString();
+                    _pp.notes, null, null, null).toString();
     }
 
     public String pageLinkWithTheme(String theme) {
 
-        return com.gitpitch.controllers.routes.PitchController.landing(_pp.user,
+        return com.gitpitch.controllers.routes.PitchController
+                .slideshow(_pp.user,
                 _pp.repo,
                 _pp.branch,
                 _pp.grs,
                 theme,
                 _pp.pitchme,
                 _pp.notes,
-                null).toString();
+                null, null, null).toString();
     }
 
     public String printLink() {
@@ -443,15 +471,16 @@ public class GitRepoRenderer {
 
     public String printBrowserLink() {
 
-        return com.gitpitch.controllers.routes.PitchController.slideshow(_pp.grs,
-                _pp.user,
+        return com.gitpitch.controllers.routes.PitchController
+                .slideshow(_pp.user,
                 _pp.repo,
                 _pp.branch,
+                _pp.grs,
                 _pp.theme,
                 _pp.pitchme,
                 _pp.notes,
-                "false",
                 null,
+                "false",
                 "true").toString();
     }
 
@@ -464,6 +493,30 @@ public class GitRepoRenderer {
                 _pp.theme,
                 _pp.pitchme,
                 _pp.notes).toString();
+    }
+
+    public String twitterLink() {
+
+      return new StringBuffer("http://twitter.com/share?text=")
+                  .append("GitPitch presentation...")
+                  .append("&url=")
+                  .append(pageLink(true, null))
+                  .append("&hashtags=gitpitch")
+                  .toString();
+
+    }
+
+    public String linkedInLink() {
+
+      return new StringBuffer("https://www.linkedin.com/shareArticle")
+                  .append("?source=gitpitch")
+                  .append("&mini=true")
+                  .append("&summary=GitPitch%20presentation...")
+                  .append("&title=GitPitch")
+                  .append("&url=")
+                  .append(pageLink(true, null))
+                  .toString();
+
     }
 
     public String pageEmbed() {
@@ -496,6 +549,33 @@ public class GitRepoRenderer {
         return _grsServices;
     }
 
+    public String getGRSIcon(PitchParams pp) {
+
+        String icon = GIT_DEFAULT_ICON;
+
+        switch(pp.grs) {
+
+            case "github":
+                icon = GITHUB_ICON;
+                break;
+            case "gitlab":
+                icon = GITLAB_ICON;
+                break;
+            case "bitbucket":
+                icon = BITBUCKET_ICON;
+                break;
+        }
+
+        return icon;
+    }
+
+    public List<String> listThemes() {
+      List<String> themesList = _cfg.getStringList("gitpitch.revealjs.themes");
+      if(themesList == null || themesList.isEmpty()) {
+          themesList = DEPLOY_THEMES;
+      }
+      return themesList;
+    }
 
     public String pageDescription() {
         if(model() != null && model().description() != null) {
@@ -509,7 +589,7 @@ public class GitRepoRenderer {
      * Return string representation of ViewModel.
      */
     public String toString() {
-        return _landingURL;
+        return _slideshowURL;
     }
 
     private boolean isEncrypted() {
@@ -521,8 +601,9 @@ public class GitRepoRenderer {
     }
 
     private static final String GIT_MASTER = "master";
+    private static final String GIT_TREE   = "/tree/";
+    private static final String GIT_BLOB   = "/blob/";
     private static final String CSS = ".css";
-    private static final String SLIDESHOW = "/pitchme/slideshow/";
     private static final String MARKDOWN = "/pitchme/markdown/";
     private static final String SLASH = "/";
     private static final String QMARK_BRANCH = "?b=";
@@ -535,6 +616,8 @@ public class GitRepoRenderer {
     private static final String BADGE_OPEN =
             "[![GitPitch](https://gitpitch.com/assets/badge.svg)](";
     private static final String BADGE_CLOSE = ")";
+    private static final String PITCHME = "PITCHME.md";
+    private static final String DEFAULT_PITCHME = "/PITCHME.md";
     private static final String DEFAULT_THEME = "white";
     private static final List<String> THEMES = Arrays.asList(DEFAULT_THEME,
             "beige", "black", "moon", "night", "sky", "white");
@@ -547,6 +630,20 @@ public class GitRepoRenderer {
     private static final String GRS_BITBUCKET_STARS = "commits/all";
     private static final String GRS_BITBUCKET_FORKS = "branches";
 
+    private static final String GITHUB_ICON =
+        "<span class='octicon octicon-mark-github'></span>";
+    private static final String GITLAB_ICON =
+        "<i class='fa fa-gitlab' aria-hidden='true'></i>";
+    private static final String BITBUCKET_ICON =
+        "<i class='fa fa-bitbucket' aria-hidden='true'></i>";
+    private static final String GIT_DEFAULT_ICON =
+        "<i class='fa fa-git-square' aria-hidden='true'></i>";
+
+    private static final String GRS_BITBUCKET = "bitbucket";
+
     private static final String AS_DESCR =
         "Markdown Presentation powered by GitPitch.";
+
+    private static final List<String> DEPLOY_THEMES =
+            Arrays.asList("black", "moon", "night", "beige", "sky", "white");
 }

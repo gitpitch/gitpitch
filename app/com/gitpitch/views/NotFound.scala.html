@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+    body {
+      height: 100vh;
+      min-height: 100vh;
+      background-image: url(https://gitpitch.com/gp-splash.svg);
+      background-position: center;
+      background-size: 60%;
+      background-color: black;
+      background-repeat: no-repeat;
+    }
+    div.not-found {
+      color: white;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      font-size: 1.2em;
+      font-family: 'Roboto', sans-serif;
+    }
+    div.top {
+      top: 40px;
+      text-transform: uppercase;
+    }
+    div.bottom {
+      bottom: 40px;
+    }
+    div.byline {
+      padding-top: 8px;
+    }
+    div.gray {
+      color: #b3b3be;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="not-found top">Presentation Not Found
+      <div class="byline gray">Invalid URL</div>
+    </div>
+    <div class="not-found bottom gray">Valid Presentation URL Format
+      <div class="byline gray">https://gitpitch.com/$user/$repo/$branch</div>
+    </div>
+  </body>
+</html>

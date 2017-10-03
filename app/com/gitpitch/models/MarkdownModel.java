@@ -256,6 +256,8 @@ public class MarkdownModel implements Markdown {
                 String absTagLink = gitRawBase + tagLink;
                 return md.replace(tagLink, absTagLink);
             }
+        } else if(shortcutsService.titleHintFound(md)) {
+            return shortcutsService.expandTitleHint(md);
         } else if(shortcutsService.listFragmentFound(md)) {
             return shortcutsService.expandListFragment(md);
         } else if(shortcutsService.codeFragmentFound(md)) {
@@ -561,6 +563,7 @@ public class MarkdownModel implements Markdown {
                 md = slimMd;
             }
         }
+
         return md;
     }
 
@@ -592,20 +595,8 @@ public class MarkdownModel implements Markdown {
       }
     }
 
-    public String extractImageDelim(String md) {
-        return isHorizontal(md) ? horizImageDelim() : vertImageDelim();
-    }
-
-    public String extractVideoDelim(String md) {
-        return isHorizontal(md) ? horizVideoDelim() : vertVideoDelim();
-    }
-
-    public String extractGISTDelim(String md) {
-        return isHorizontal(md) ? horizGISTDelim() : vertGISTDelim();
-    }
-
-    public String extractCodeDelim(String md) {
-        return isHorizontal(md) ? horizCodeDelim() : vertCodeDelim();
+    public String extractDelim(String md) {
+        return isHorizontal(md) ? horizDelim() : vertDelim();
     }
 
     /*
@@ -731,6 +722,8 @@ public class MarkdownModel implements Markdown {
     public static final String MD_CODE_FRAG_NOTE_CLOSE = ")";
     public static final String MD_CODE_BLOCK_OPEN = "```";
     public static final String MD_CODE_BLOCK_CLOSE = "```";
+    public static final String MD_TITLE_HINT_OPEN = "@title[";
+    public static final String MD_TITLE_HINT_CLOSE = "]";
 
     private static final String MD_HSLIDE_IMAGE = "?image=";
     private static final String MD_VSLIDE_IMAGE = "?image=";

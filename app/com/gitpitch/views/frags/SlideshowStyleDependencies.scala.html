@@ -1,0 +1,15 @@
+@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, offline: Boolean, webPrinting: Boolean)
+<link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/reveal.css" rel="stylesheet" type="text/css"/>
+<link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/theme/@ssm.fetchThemeCSS()" rel="stylesheet" type="text/css" id="theme"/>
+<link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/title-footer/title-footer-mod.css" rel="stylesheet" type="text/css" id="theme"/>
+@if(webPrinting) {
+<link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/print/pdf.css" rel="stylesheet" type="text/css"/>
+} else {
+<link href="@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/css/print/paper.css" rel="stylesheet" type="text/css"/>
+}
+<link href="@deps.highlightjs(offline)/@ssm.fetchHighlightCSS()" rel="stylesheet" type="text/css"/>
+<link href="@deps.octicons(offline)/octicons.css" rel="stylesheet" type="text/css"/>
+<link href="@deps.fontawesome(offline)/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+@if(!offline) {
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+}

@@ -28,6 +28,7 @@ import com.gitpitch.git.GRS;
 import com.gitpitch.git.GRSService;
 import com.gitpitch.git.GRSManager;
 import com.gitpitch.services.DiskService;
+import com.gitpitch.services.SlideService;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
@@ -47,13 +48,15 @@ public class CodeService {
 
     private final GRSManager grsManager;
     private final DiskService diskService;
+    private final SlideService slideService;
 
     @Inject
     public CodeService(GRSManager grsManager,
-                       DiskService diskService) {
-
+                       DiskService diskService,
+                       SlideService slideService) {
         this.grsManager = grsManager;
         this.diskService = diskService;
+        this.slideService = slideService;
     }
 
     public String build(String md,
@@ -62,7 +65,7 @@ public class CodeService {
                         YAMLOptions yOpts,
                         MarkdownModel mdm) {
 
-        String codeBlock = mdm.extractCodeDelim(md);
+        String codeBlock = mdm.extractDelim(md);
 
         try {
 
@@ -76,15 +79,23 @@ public class CodeService {
             int downStatus =
                 grsService.download(pp, SOURCE_CODE, codePath);
 
+            String theStructure = slideService.build(md, dp, pp, yOpts, mdm);
+            String theContent = null;
+
             if(downStatus == 0) {
                 String code = diskService.asText(pp, SOURCE_CODE);
-                return buildCodeBlock(mdm.extractCodeDelim(md),
+                theContent = buildCodeBlock(mdm.extractDelim(md),
                                       code, langHint, slideTitle);
             } else {
-                return buildCodeBlockError(mdm.extractCodeDelim(md), codePath);
+                theContent = buildCodeBlockError(mdm.extractDelim(md), codePath);
             }
 
-        } catch (Exception gex) {}
+            return new StringBuffer(theStructure).append(theContent)
+                                                 .toString();
+
+        } catch (Exception ex) {
+          log.warn("build: ex={}", ex);
+        }
         return codeBlock;
     }
 
@@ -93,13 +104,16 @@ public class CodeService {
                                   String langHint,
                                   String slideTitle) {
 
-        StringBuffer slide =  new StringBuffer(delim)
-                                  .append(MarkdownModel.MD_SPACER);
+        StringBuffer slide =  new StringBuffer();
 
         if(slideTitle != null) {
           slide = slide.append(MarkdownModel.MD_SPACER)
-                       .append(slideTitle)
-                       .append(MarkdownModel.MD_SPACER);
+                      .append("<span class='menu-title' style='display: none'>")
+                      .append(slideTitle)
+                      .append("</span>")
+                      .append(MarkdownModel.MD_SPACER)
+                      .append(slideTitle)
+                      .append(MarkdownModel.MD_SPACER);
         }
 
         slide = slide.append(MarkdownModel.MD_CODE_BLOCK_OPEN);
@@ -117,9 +131,7 @@ public class CodeService {
    }
 
    private String buildCodeBlockError(String delim, String codePath) {
-        return new StringBuffer(delim)
-                                .append(MarkdownModel.MD_SPACER)
-                                .append(SOURCE_CODE_DELIMITER)
+        return new StringBuffer(SOURCE_CODE_DELIMITER)
                                 .append(MarkdownModel.MD_SPACER)
                                 .append(codePath)
                                 .append(MarkdownModel.MD_SPACER)
@@ -128,10 +140,9 @@ public class CodeService {
                                 .toString();
    }
 
-    private static final String SOURCE_CODE = "PITCHME.code";
-    private static final String SOURCE_CODE_DELIMITER =
-        "### Code Block Delimiter";
-    private static final String SOURCE_CODE_NOT_FOUND =
-        "### Source File Not Found";
-
+   private static final String SOURCE_CODE = "PITCHME.code";
+   private static final String SOURCE_CODE_DELIMITER =
+      "### Code Block Delimiter";
+   private static final String SOURCE_CODE_NOT_FOUND =
+      "### Source File Not Found";
 }

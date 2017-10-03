@@ -1428,7 +1428,7 @@
 	 * target element.
 	 *
 	 * remaining height = [ configured parent height ] - [ current parent height ]
-	 * 
+	 *
 	 * @param {HTMLElement} element
 	 * @param {number} [height]
 	 */
@@ -3902,7 +3902,7 @@
 			// If there are media elements with data-autoplay,
 			// automatically set the autoSlide duration to the
 			// length of that media. Not applicable if the slide
-			// is divided up into fragments. 
+			// is divided up into fragments.
 			// playbackRate is accounted for in the duration.
 			if( currentSlide.querySelectorAll( '.fragment' ).length === 0 ) {
 				toArray( currentSlide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
@@ -4207,7 +4207,7 @@
 		// keyboard modifier key is present
 		// if( activeElementIsCE || activeElementIsInput || activeElementIsNotes || (event.shiftKey && event.keyCode !== 32) || event.altKey || event.ctrlKey || event.metaKey ) return;
         if( activeElementIsCE || activeElementIsInput || (event.shiftKey && event.keyCode === 191) || event.altKey || event.ctrlKey || event.metaKey) return;
-  
+
 
 		// While paused only allow resume keyboard events; 'b', 'v', '.'
 		var resumeKeyCodes = [66,86,190,191];

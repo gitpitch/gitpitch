@@ -193,10 +193,10 @@ public class OfflineService {
                 status = processMarkdown(pp, zipRoot, ssmo);
 
             if (status == STATUS_OK)
-                status = fetchLandingHTML(pp, zipRoot);
+                status = fetchSlideshowHTML(pp, zipRoot);
 
             if (status == STATUS_OK)
-                status = fetchSlideshowHTML(pp, zipRoot);
+                status = fetchMenuHTML(pp, zipRoot);
 
             if (status == STATUS_OK)
                 fetchFixedDependencies(pp, zipRoot);
@@ -251,27 +251,27 @@ public class OfflineService {
                         pp.pitchme)
                         .absoluteURL(isEncrypted(), hostname());
 
-        Path zipMdPath =
-                diskService.ensure(zipRoot.resolve(ZIP_MD_DIR));
-        return diskService.download(pp,
-                zipMdPath, murl, PITCHME_ONLINE_MD,
-                grsManager.get(pp).getHeaders());
-    }
+      Path zipMdPath =
+              diskService.ensure(zipRoot.resolve(ZIP_MD_DIR));
+      return diskService.download(pp,
+              zipMdPath, murl, PITCHME_ONLINE_MD,
+              grsManager.get(pp).getHeaders());
+  }
 
-    /*
-     * Fetch Landing.html.
-     */
-    private int fetchLandingHTML(PitchParams pp, Path zipRoot) {
+  /*
+   * Fetch Slideshow.html.
+   */
+  private int fetchSlideshowHTML(PitchParams pp, Path zipRoot) {
 
-        String lurl =
-                com.gitpitch.controllers.routes.PitchController.landing(pp.user,
+      String lurl =
+          com.gitpitch.controllers.routes.PitchController.slideshow(pp.user,
                         pp.repo,
                         pp.branch,
                         pp.grs,
                         pp.theme,
                         pp.pitchme,
                         pp.notes,
-                        ENABLED)
+                        ENABLED, null, null)
                         .absoluteURL(isEncrypted(), hostname());
 
         return diskService.download(pp, zipRoot,
@@ -279,25 +279,22 @@ public class OfflineService {
     }
 
     /*
-     * Fetch Slideshow.html.
+     * Fetch Menu.html.
      */
-    private int fetchSlideshowHTML(PitchParams pp, Path zipRoot) {
+    private int fetchMenuHTML(PitchParams pp, Path zipRoot) {
 
         String surl =
-                com.gitpitch.controllers.routes.PitchController.slideshow(pp.grs,
+                com.gitpitch.controllers.routes.PitchController.home(pp.grs,
                         pp.user,
                         pp.repo,
                         pp.branch,
                         pp.theme,
                         pp.pitchme,
-                        pp.notes,
-                        ENABLED,
-                        ENABLED,
-                        null)
+                        ENABLED)
                         .absoluteURL(isEncrypted(), hostname());
 
         return diskService.download(pp, zipRoot,
-                surl, SLIDESHOW_HTML, grsManager.get(pp).getHeaders());
+                surl, MENU_HTML, grsManager.get(pp).getHeaders());
     }
 
     /*
@@ -640,6 +637,7 @@ public class OfflineService {
     private static final String PITCHME_CSS = "PITCHME.css";
     private static final String INDEX_HTML  = "index.html";
     private static final String SLIDESHOW_HTML = "pitchme.html";
+    private static final String MENU_HTML = "menu.html";
     private static final String FIXED_ASSETS = "/public/libs";
     private static final String FIXED_ASSETS_MATH = "/public/libs-math";
     private static final String ZIP_CMD   = "zip";

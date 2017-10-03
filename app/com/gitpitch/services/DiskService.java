@@ -50,7 +50,6 @@ public class DiskService {
 
     private final String storage;
     private final String decktape;
-    private final String rawAuthToken;
     private final ShellService shellService;
     private final Configuration configuration;
     private final WebService ws;
@@ -65,7 +64,6 @@ public class DiskService {
         this.ws = ws;
         this.storage = configuration.getString("gitpitch.storage.home");
         this.decktape = configuration.getString("gitpitch.decktape.home");
-        this.rawAuthToken = configuration.getString("gitpitch.raw.auth.token");
     }
 
     /*
@@ -166,7 +164,7 @@ public class DiskService {
                         fetched.length, destPath, source);
 
             } else {
-                log.debug("download: pp={}, failed to download and write " +
+                log.warn("download: pp={}, failed to download and write " +
                         "from source={}", pp, source);
             }
         } catch(Exception dex) {
@@ -284,10 +282,6 @@ public class DiskService {
      */
     public String decktape() {
         return decktape;
-    }
-
-    public String rawAuthToken() {
-        return rawAuthToken;
     }
 
     private static final Integer STATUS_OK = 0;

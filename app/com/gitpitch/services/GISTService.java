@@ -25,10 +25,11 @@ package com.gitpitch.services;
 
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.services.DiskService;
-import com.gitpitch.services.ImageService;
+import com.gitpitch.services.SlideService;
 import com.gitpitch.git.GRS;
 import com.gitpitch.git.GRSService;
 import com.gitpitch.git.GRSManager;
+import com.gitpitch.git.vendors.GitHub;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
@@ -48,16 +49,15 @@ public class GISTService {
 
     private final GRSManager grsManager;
     private final DiskService diskService;
-    private final ImageService imageService;
+    private final SlideService slideService;
 
     @Inject
     public GISTService(GRSManager grsManager,
                        DiskService diskService,
-                       ImageService imageService) {
-
+                       SlideService slideService) {
         this.grsManager = grsManager;
         this.diskService = diskService;
-        this.imageService = imageService;
+        this.slideService = slideService;
     }
 
     public String build(String md,
@@ -79,33 +79,39 @@ public class GISTService {
               String fileHint = dp.get(MarkdownModel.DELIM_QUERY_FILE);
               String langHint = dp.get(MarkdownModel.DELIM_QUERY_LANG);
               String slideTitle = dp.get(MarkdownModel.DELIM_QUERY_TITLE);
-              String extractedDelim = mdm.extractGISTDelim(md);
+              String extractedDelim = mdm.extractDelim(md);
 
-              GRS grs = grsManager.get(pp);
+              /*
+               * GIST is a GitHub specific service so override
+               * active-GRS to ensure communiction with GitHub.
+               */
+              GRS grs = grsManager.get(GitHub.TYPE);
               GRSService grsService = grsManager.getService(grs);
               Path branchPath = diskService.ensure(pp);
               String gistLink = grsService.gist(pp, gid, fileHint);
-              log.debug("build: generated gistLink={}", gistLink);
 
               int downStatus =
                   diskService.download(pp, branchPath, gistLink,
                                        GIST_CODE, grs.getHeaders());
 
+              String theStructure = slideService.build(md, dp, pp, yOpts, mdm);
+              String theContent = null;
               if(downStatus == 0) {
                   String code = diskService.asText(pp, GIST_CODE);
-                  return buildCodeBlock(extractedDelim,
+                  theContent = buildCodeBlock(extractedDelim,
                                         code, langHint, slideTitle);
               } else {
-                  return buildCodeBlockError(extractedDelim, gid, fileHint);
+                  theContent =
+                      buildCodeBlockError(extractedDelim, gid, fileHint);
               }
 
+              return new StringBuffer(theStructure).append(theContent)
+                                                   .toString();
             }
 
-        } catch (Exception gex) {
-            /*
-             * Invalid GIST syntax, return clean slide delimiter.
-             */
-            return mdm.extractGISTDelim(md);
+        } catch (Exception ex) {
+            log.warn("build: ex={}", ex);
+            return slideService.build(md, dp, pp, yOpts, mdm);
         }
 
     }
@@ -121,11 +127,18 @@ public class GISTService {
                                   String langHint,
                                   String slideTitle) {
 
-        StringBuffer slide =  new StringBuffer(delim)
-                                  .append(MarkdownModel.MD_SPACER);
+        log.debug("buildCodeBlock: delim={}, langHint={}, slideTitle={}",
+                delim, langHint, slideTitle);
+
+        StringBuffer slide =  new StringBuffer();
 
         if(slideTitle != null) {
+
             slide = slide.append(MarkdownModel.MD_SPACER)
+                         .append("<span class='menu-title' style='display: none'>")
+                         .append(slideTitle)
+                         .append("</span>")
+                         .append(MarkdownModel.MD_SPACER)
                          .append(slideTitle)
                          .append(MarkdownModel.MD_SPACER);
         }
@@ -148,11 +161,12 @@ public class GISTService {
                                       String codePath,
                                       String fileHint) {
 
+        log.debug("buildCodeBlockError: delim={}, codePath={}, fileHint={}",
+                delim, codePath, fileHint);
+
         String filePath = fileHint != null ? fileHint : GIST_DEFAULT_FILE;
         filePath = "[ " + filePath + " ]";
-        return new StringBuffer(delim)
-                                .append(MarkdownModel.MD_SPACER)
-                                .append(GIST_DELIMITER)
+        return new StringBuffer(GIST_DELIMITER)
                                 .append(MarkdownModel.MD_SPACER)
                                 .append(codePath)
                                 .append(MarkdownModel.MD_SPACER)
@@ -186,26 +200,9 @@ public class GISTService {
                     com.gitpitch.controllers.routes.PitchController.gist(gid)
                                                                    .url();
 
-            String slideType = mdm.isHorizontal(md) ?
-                    mdm.horizDelim() : mdm.vertDelim();
-
-            String yamlBg = null;
-            if (yOpts != null && yOpts.hasImageBg()) {
-                /*
-                 * GIST slides need PITCHME.yaml bg injected.
-                 */
-                yamlBg = imageService.buildBackground(pp, yOpts);
-            }
-
-            StringBuffer gistBuf =
-                    new StringBuffer(slideType).append(MarkdownModel.MD_SPACER);
-
-            if (yamlBg != null) {
-                gistBuf = gistBuf.append(yamlBg)
-                        .append(MarkdownModel.MD_SPACER);
-            }
-
-            return gistBuf.append(GIST_DIV_OPEN)
+            String theStructure = slideService.build(md, dp, pp, yOpts, mdm);
+            return new StringBuffer(theStructure)
+                    .append(GIST_DIV_OPEN)
                     .append(GIST_DIV_CLASS)
                     .append(GIST_IFR_OPEN)
                     .append(gistCallback)
@@ -214,14 +211,12 @@ public class GISTService {
                     .append(MarkdownModel.MD_SPACER)
                     .toString();
 
-        } catch (Exception gex) {
-            /*
-             * Invalid GIST syntax, return clean slide delimiter.
-             */
-            return mdm.extractGISTDelim(md);
+        } catch (Exception ex) {
+            log.warn("buildBackCompat: ex={}", ex);
+            return slideService.build(md, dp, pp, yOpts, mdm);
         }
 
-    }
+      }
 
     private static final String GIST_CODE = "PITCHME.gist";
     private static final String GIST_DELIMITER = "### GIST Delimiter";

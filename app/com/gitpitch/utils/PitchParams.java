@@ -181,14 +181,24 @@ public class PitchParams {
     }
 
     public String pretty() {
-        return new StringBuffer(SLASH).append(grs)
-                .append(SLASH)
-                .append(user)
-                .append(SLASH)
-                .append(repo)
-                .append(SLASH)
-                .append(branch)
-                .toString();
+
+      StringBuffer pretty =
+          new StringBuffer(SLASH).append(grs)
+                                 .append(SLASH)
+                                 .append(user)
+                                 .append(SLASH)
+                                 .append(repo);
+
+      if(!branch.equals(GIT_MASTER)) {
+          pretty.append(SLASH).append(branch);
+      }
+
+      return pretty.toString();
+    }
+
+    public String atPretty() {
+      String pretty = pretty().substring(1);
+      return new StringBuffer(AT).append(pretty).toString();
     }
 
     public String toString() {

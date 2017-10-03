@@ -48,7 +48,7 @@ public class GitHub extends GRSService {
 
     public String raw(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getRawBase())
                 .append(pp.user)
@@ -62,7 +62,7 @@ public class GitHub extends GRSService {
 
     public String repo(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getApiBase())
                 .append(GITHUB_REPO_API)
@@ -74,7 +74,7 @@ public class GitHub extends GRSService {
 
     public String gist(PitchParams pp, String gid, String fid) {
 
-      GRS grs = grsManager.get(pp);
+      GRS grs = grsManager.get(TYPE);
 
       StringBuffer gistLink = new StringBuffer(grs.getGistBase())
                                               .append(gid)

@@ -1,45 +1,63 @@
-![LOGO](https://d1z75bzl1vljy2.cloudfront.net/img/gp-logo.png)
+@title[Introduction]
+# Git<span style="color: #e49436">Pitch</span>
 
-#### Get the word out
+#### Markdown Presentations For Everyone on Git.*
 <br>
-<span style="color:gray">Markdown Presentations For Everyone</span>
 <br>
-<span style="color:gray">on</span>
-<br>
-<span style="color:gray">GitHub, GitLab, Bitbucket, Gitea, Gogs, and GitBucket</span>
+<span style="color: #bbb; font-size: 80%">[ GitHub, GitLab, Bitbucket, GitBucket, Gitea, Gogs ]</span>
 
 ---
+@title[PITCHME.md]
 
-### GitPitch turns <span style="color: #e49436; text-transform: none">PITCHME.md</span> into interactive, online slideshows.
+#### GitPitch turns <span style="color: #e49436; text-transform: none">PITCHME.md</span> into
+#### interactive,
+#### online and offline slideshows.
 <br>
 <span style="color:gray; font-size:0.6em;">[ JUST LIKE THIS ONE ]</span>
 
 ---
 
-### No more <span style="color: #666666">Keynote.</span>
-### No more <span style="color: #666666">Powerpoint.</span>
+#### No more <span style="color: gray">Keynote.</span>
+#### No more <span style="color: gray">Powerpoint.</span>
 <br>
-### Just <span style="color: #e49436">Markdown</span>. Then <span style="color: #e49436">Git-Commit</span>.
+#### Just <span style="color: #e49436">Markdown</span>.
+#### Then <span style="color: #e49436">Git-Commit</span>.
 
 ---
+@title[Step 1. Create 'PITCHME.md']
 
-<span style="color: #e49436">STEP 1. PITCHME.md</span>
+### <span style="color: #e49436">STEP 1. Create 'PITCHME.md'</span>
+<br>
 
-![MARKDOWN](https://d1z75bzl1vljy2.cloudfront.net/hello-world/markdown.png)
+#### Create GitPitch slideshow content using GitHub Flavored Markdown in your favorite editor.
 
-Create GitPitch slideshow content using GitHub flavored Markdown in your favorite editor.
-
----
-
-<span style="color: #e49436">STEP 2. GIT-COMMIT</span>
-
-![TERMINAL](https://d1z75bzl1vljy2.cloudfront.net/hello-world/terminal.png)
-
-Git-commit on any branch and push your PITCHME.md to GitHub, GitLab, Bitbucket, Gitea, Gogs, or GitBucket.
+<br>
+<span style="color:gray; font-size:0.6em;">[ AS EASY AS README.md ]</span>
 
 ---
+@title[Step 2. Git-Commit]
 
-<span style="color: #e49436">STEP 3. GET THE WORD OUT!</span>
+### <span style="color: #e49436">STEP 2. GIT-COMMIT</span>
+<br>
+
+```shell
+$ git add PITCHME.md
+$ git commit -m "New slideshow content."
+$ git push
+
+Done!
+
+```
+
+@[1](Add your PITCHME.md slideshow content file.)
+@[2](Commit PITCHME.md to your local repo.)
+@[3](Push PITCHME.md to your public repo and you're done!)
+@[4](Supports GitHub, GitLab, Bitbucket, GitBucket, Gitea, and Gogs.)
+
+---
+@title[Step 3. Done!]
+
+### <span style="color: #e49436">STEP 3. GET THE WORD OUT!</span>
 
 <br>
 
@@ -47,36 +65,36 @@ Git-commit on any branch and push your PITCHME.md to GitHub, GitLab, Bitbucket, 
 
 <br>
 
-Instantly use your GitPitch slideshow URL to promote, pitch or present absolutely anything.
+#### Instantly use your GitPitch slideshow URL to promote, pitch or present absolutely anything.
+
+---
+@title[Slide Rich]
+
+### <span style="color: #e49436">Slide Rich</span>
+
+#### Code Presenting for Blocks, Files, and GISTs
+#### Image, Video, Chart, and Math Slides
+#### Multiple Themes With Easy Customization
+<br>
+#### <span style="color: #e49436">Plus collaboration is built-in...</span>
+#### Your Slideshow Is Part Of Your Project
+#### Under Git Version Control Within Your Git Repo
 
 ---
 
-<span style="color: #e49436">GIT</span>PITCH DESIGNED FOR SHARING
+@title[Feature Rich]
 
-![SOCIAL](https://d1z75bzl1vljy2.cloudfront.net/hello-world/gp-social.jpg)
+### <span style="color: #e49436">Feature Rich</span>
 
-- View any slideshow at its public URL
-- Promote any slideshow using a GitHub badge
-- Embed any slideshow within a blog or website
-- Share any slideshow on Twitter, LinkedIn, etc
-- Print any slideshow as a PDF document
-- Download and present any slideshow offline
-
----
-
-<span style="color: #e49436">GIT</span>PITCH FEATURE RICH SLIDESHOWS
-
-- GitHub Flavored Markdown +
-- Code Presenting for Blocks, Files, and GISTs
-- Image and Video Slides
-- Custom Logos and Backgrounds
-- Multiple Themes And More
-- <span style="color: #e49436">Plus...</span>
-- Your Slideshow Is Part Of Your Project
-- Under Git Version Control Within Your Git Repo
-
+#### Present Online or Offline
+#### With Speaker Notes Support
+#### Print Presentation as PDF
+#### Auto-Generated Table-of-Contents
+#### Share Presentation on Twitter or LinkedIn
 
 ---
 
 ### Go for it.
 ### Just add <span style="color: #e49436; text-transform: none">PITCHME.md</span> ;)
+<br>
+<a style="font-size:0.6em;" href="https://github.com/gitpitch/gitpitch/wiki">[ Click To Learn More On Wiki ]</a>

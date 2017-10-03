@@ -23,8 +23,10 @@
  */
 package com.gitpitch.git.vendors;
 
-import com.gitpitch.git.GRS;
+import com.gitpitch.git.*;
+import com.gitpitch.models.*;
 import com.gitpitch.utils.PitchParams;
+import com.fasterxml.jackson.databind.JsonNode;
 import play.Logger;
 import play.Logger.ALogger;
 
@@ -34,16 +36,20 @@ import javax.inject.Singleton;
  * GitBucket API Service.
  */
 @Singleton
-public class GitBucket extends GitHub {
+public class GitBucket extends GRSService {
 
     private final ALogger log = Logger.of(this.getClass());
 
+    public GitRepoModel model(PitchParams pp, JsonNode json) {
+        return GitHubRepoModel.build(pp, json);
+    }
+
     public String raw(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getApiBase())
-                .append(GITBUCKET_REPOS_API)
+                .append(GITBUCKET_REPO_API)
                 .append(pp.user)
                 .append(SLASH)
                 .append(pp.repo)
@@ -54,11 +60,23 @@ public class GitBucket extends GitHub {
                 .toString();
     }
 
+    public String repo(PitchParams pp) {
+
+        GRS grs = grsManager.get(TYPE);
+
+        return new StringBuffer(grs.getApiBase())
+                .append(GITBUCKET_REPO_API)
+                .append(pp.user)
+                .append(SLASH)
+                .append(pp.repo)
+                .toString();
+    }
+
     public String gist(PitchParams pp, String gid, String fid) {
       return NOT_FOUND;
     }
 
     public static final String TYPE = "gitbucket";
-    private static final String GITBUCKET_REPOS_API = "repos/";
+    private static final String GITBUCKET_REPO_API = "repos/";
     private static final String GITBUCKET_RAW_API = "raw/";
 }

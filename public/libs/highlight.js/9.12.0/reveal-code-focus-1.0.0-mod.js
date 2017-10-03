@@ -170,6 +170,15 @@
   }
 
   function focusFragment(fragment) {
+
+    if(fragment != undefined) {
+      linesOfCode = currentSlide.querySelectorAll('pre code .line');
+      if(linesOfCode != undefined && linesOfCode.length != 0) {
+        var fidx = indexOf(currentFragments, fragment) + 1;
+        pushCodePresentingStepNotification(fidx, currentFragments.length);
+      }
+    }
+
     clearPreviousFocus();
     if (!fragment) {
       resetCodeOpacity();

@@ -2,17 +2,17 @@
  * MIT License
  *
  * Copyright (c) 2016 David Russell
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -153,15 +153,15 @@ public class PrintService {
         String filePath = diskService.asFile(pp, pp.PDF()).toString();
 
         String slideshowUrl =
-                com.gitpitch.controllers.routes.PitchController.slideshow(pp.grs,
-                        pp.user,
+            com.gitpitch.controllers.routes.PitchController.slideshow(pp.user,
                         pp.repo,
                         pp.branch,
+                        pp.grs,
                         pp.theme,
                         pp.pitchme,
                         pp.notes,
-                        PRINT_NO_FRAGS,
                         null,
+                        PRINT_NO_FRAGS,
                         null)
                         .absoluteURL(isEncrypted(),
                                 hostname());
@@ -200,5 +200,5 @@ public class PrintService {
 
     private final ConcurrentHashMap<String, CountDownLatch> pdfLatchMap =
             new ConcurrentHashMap();
-            
+
 }

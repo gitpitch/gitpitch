@@ -48,7 +48,7 @@ public class BitBucket extends GRSService {
 
     public String raw(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getRawBase())
                 .append(pp.user)
@@ -62,7 +62,7 @@ public class BitBucket extends GRSService {
 
     public String repo(PitchParams pp) {
 
-        GRS grs = grsManager.get(pp);
+        GRS grs = grsManager.get(TYPE);
 
         return new StringBuffer(grs.getApiBase())
                 .append(BITBUCKET_REPO_API)

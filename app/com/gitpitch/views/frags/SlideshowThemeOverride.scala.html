@@ -1,0 +1,6 @@
+@(ssm: com.gitpitch.models.SlideshowModel)
+@if(ssm.hasThemeOverride()) {
+<style>
+@Html(ssm.fetchThemeOverride())
+</style>
+}

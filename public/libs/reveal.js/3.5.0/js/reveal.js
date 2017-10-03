@@ -273,7 +273,7 @@
 			'B':				'Blackout',
 			'F':					'Fullscreen',
 			'ESC, O':				'Slide overview',
-			'X':		`Select Code Block`,
+			'X':		'Select Code Block',
 
 		};
 

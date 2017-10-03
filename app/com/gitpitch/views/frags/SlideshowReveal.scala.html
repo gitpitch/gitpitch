@@ -1,19 +1,25 @@
-@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, printing: Boolean, offline: Boolean)
+@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, offline:Boolean, serverPrinting: Boolean, webPrinting: Boolean)
 
     <script>
         Reveal.initialize({
+            controls: true,
+            progress: true,
             embedded: true,
             margin: 0.0,
             showNotes: @ssm.showNotes(),
             transition: '@ssm.fetchTransition()',
             backgroundTransition: '@ssm.fetchTransition()',
-            autoSlide: @ssm.fetchAutoSlide(printing),
+            autoSlide: 0, // autoSlide: @ssm.fetchAutoSlide(false),
             loop: @ssm.fetchLoop(),
             center: @ssm.fetchVerticalCenter(),
             rtl: @ssm.fetchRTL(),
             shuffle: @ssm.fetchShuffle(),
             mouseWheel: @ssm.fetchMouseWheel(),
-            slideNumber: @ssm.fetchSlideNumber(),
+            @if(!(serverPrinting || webPrinting)) {
+              slideNumber: 'c/t', // slideNumber: @ssm.fetchSlideNumber(),
+            } else {
+              slideNumber: false,
+            }
             history: @ssm.fetchHistory(),
             @if(ssm.mathEnabled()) {
                 math: {
@@ -25,30 +31,89 @@
                     config: '@ssm.fetchMathConfig()'
                 },
             }
+            @if(!(serverPrinting || webPrinting)) {
+            menu: {
+              custom: [
+                @if(offline) {
+                { title: 'Home', active: true,
+                  icon: '<i class="fa fa-bookmark">',
+                  src: 'menu.html' }
+                } else {
+                { title: 'Home', active: true,
+                  icon: '<i class="fa fa-bookmark">',
+                  src: '@ssm.homePanel()' },
+                { title: 'Themes',
+                  icon: '<i class="fa fa-code-fork">',
+                  src: '@ssm.gitPanel()' },
+                { title: 'GRS',
+                  icon: '<i class="fa fa-image">',
+                  src: '@ssm.themesPanel()' }
+                }
+              ],
+              path : "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/menu",
+              themes : false,
+              transitions:  false,
+              markers: true,
+              sticky: true,
+              autoOpen: true
+            },
+            }
             dependencies: [
-                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/marked.js"},
-                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/markdown.js"},
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/marked.js",
+                  condition: function() {
+                    return !!document.querySelector( '[data-markdown]' );
+                  }},
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/markdown/markdown.js",
+                condition: function() {
+                  return !!document.querySelector( '[data-markdown]' );
+                }},
+                @if(!(serverPrinting || webPrinting)) {
+                { src:"@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/menu/menu-mod.js",
+                  async: true},
+                }
                 @if(ssm.chartsEnabled()) {
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/Chart.min.js"},
                 { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/chart/csv2chart.js"},
                 }
                 @if(deps.cdnDisabled() || offline) {
-                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js", async: true },
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/notes/notes.js",
+                  async: true },
                 }
                 @if(deps.highlightPluginEnabled()) {
-                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/highlight/highlight.js",
+                  async: true, callback: function() {
+                    hljs.initHighlightingOnLoad();
+                  } },
                 } else {
-                { src: '@deps.highlightjs(offline)/highlight.js' },
+                { src: '@deps.highlightjs(offline)/highlight.js', async: true },
                 { src: '@deps.highlightjs(offline)/reveal-code-focus-1.0.0-mod.js',
+                  async: true,
                   callback: function() {
                     RevealCodeFocus();
                   }
                 },
                 }
                 @if(ssm.mathEnabled()) {
-                    { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/math/math.js", async: true }
+                    { src: "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/math/math.js",
+                      async: true }
                 }
             ]
+        });
+
+        Reveal.addEventListener('ready', function(evt) {
+          if (evt.indexh === 0 && evt.indexv === 0) {
+            pushHelpNotification();
+          } else {
+            pushFootnoteNotification();
+          }
+        });
+
+        Reveal.addEventListener('slidechanged', function(evt) {
+          if (evt.indexh === 0 && evt.indexv === 0) {
+            pushHelpNotification();
+          } else {
+            pushFootnoteNotification();
+          }
         });
 
         Reveal.configure({
@@ -83,6 +148,10 @@
         function enterBlackout() {
             Reveal.togglePause();
         };
+
+        function enterHelp() {
+          Reveal.toggleHelp();
+        }
 
         function enableEvents() {
             Reveal.addEventListeners();

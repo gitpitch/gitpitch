@@ -209,6 +209,10 @@ public class SlideshowModel {
                 THEME_LIGHT_COLOR_INVERSE;
     }
 
+    public boolean isDarkTheme() {
+      return PitchParams.isDarkTheme(fetchTheme());
+    }
+
     /*
      * Return true if "logo" defined in PITCHME.yaml.
      */
@@ -457,6 +461,12 @@ public class SlideshowModel {
             _yOpts.fetchRevealVersion(params()) : null;
     }
 
+    /*
+     * Return presentation Help message.
+     */
+    public String fetchHelp() {
+        return HELP;
+    }
 
     public String toString() {
         return _pretty;
@@ -464,6 +474,36 @@ public class SlideshowModel {
 
     public String key() {
         return _cacheKey;
+    }
+
+    public String homePanel() {
+        return com.gitpitch.controllers.routes.PitchController.home(_pp.grs,
+                _pp.user,
+                _pp.repo,
+                _pp.branch,
+                _pp.theme,
+                _pp.pitchme,
+                "false").toString();
+    }
+
+    public String gitPanel() {
+        return com.gitpitch.controllers.routes.PitchController.git(_pp.grs,
+                _pp.user,
+                _pp.repo,
+                _pp.branch,
+                _pp.theme,
+                _pp.pitchme,
+                null).toString();
+    }
+
+    public String themesPanel() {
+        return com.gitpitch.controllers.routes.PitchController.themes(_pp.grs,
+                _pp.user,
+                _pp.repo,
+                _pp.branch,
+                _pp.theme,
+                _pp.pitchme,
+                null).toString();
     }
 
     private String buildSlideDelim(String pattern) {
@@ -503,10 +543,19 @@ public class SlideshowModel {
     private static Map<String, String> LOGO_POSITIONS =
             Collections.unmodifiableMap(new HashMap<String, String>() {
                 {
-                    put("top-left", "position: fixed; top: 20px; left: 20px; z-index: 999");
-                    put("top-right", "position: fixed; top: 20px; right: 20px; z-index: 999");
-                    put("bottom-left", "position: fixed; bottom: 20px; left: 20px; z-index: 999");
-                    put("bottom-right", "position: fixed; bottom: 20px; right: 20px; z-index: 999");
+                    put("top-left", "position: fixed; top: 20px; left: 20px; z-index: 1");
+                    put("top-right", "position: fixed; top: 20px; right: 20px; z-index: 1");
+                    put("bottom-left", "position: fixed; bottom: 20px; left: 20px; z-index: 1");
+                    put("bottom-right", "position: fixed; bottom: 20px; right: 20px; z-index: 1");
                 }
             });
+
+    private static final String HELP =
+        "Navigate : Space / Arrow Keys | " +
+        "<a href='#' onclick='RevealMenu.toggle()'>M</a> - Menu | " +
+        "<a href='#' onclick='enterFullscreen()'>F</a> - Fullscreen | " +
+        "<a href='#' onclick='enterOverview()'>O</a> - Overview | " +
+        "<a href='#' onclick='enterBlackout()'>B</a> - Blackout | " +
+        "<a href='#' onclick='RevealNotes.open()'>S</a> - Speaker | " +
+        "<a href='#' onclick='enterHelp()'>?</a> - Help";
 }
