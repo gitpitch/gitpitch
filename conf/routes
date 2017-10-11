@@ -5,6 +5,9 @@
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
 
+# Serve GitPitch oEmbed provider responses.
+GET     /pitchme/oembed com.gitpitch.controllers.PitchController.oembed(url:String, format:String ?= null, width:String ?= null, height:String ?= null, maxwidth:String ?= null, maxheight:String ?= null, referrer:String ?= null)
+
 # Serve GitPitch raw file content.
 GET     /pitchme/raw/:grs/:user/:repo/:b/*path com.gitpitch.controllers.PitchController.raw(grs: String, user: String, repo: String, b: String, path: String)
 

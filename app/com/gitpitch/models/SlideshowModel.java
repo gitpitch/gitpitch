@@ -464,8 +464,8 @@ public class SlideshowModel {
     /*
      * Return presentation Help message.
      */
-    public String fetchHelp() {
-        return HELP;
+    public String fetchHelp(boolean smallScreen) {
+        return smallScreen ? SMALL_HELP : HELP;
     }
 
     public String toString() {
@@ -558,4 +558,12 @@ public class SlideshowModel {
         "<a href='#' onclick='enterBlackout()'>B</a> - Blackout | " +
         "<a href='#' onclick='RevealNotes.open()'>S</a> - Speaker | " +
         "<a href='#' onclick='enterHelp()'>?</a> - Help";
+
+    private static final String SMALL_HELP =
+        "<a href='#' onclick='RevealMenu.toggle()'>Menu</a> | " +
+        "<a href='#' onclick='enterFullscreen()'>Fullscreen</a> | " +
+        "<a href='#' onclick='enterOverview()'>Overview</a> | " +
+        "<a href='#' onclick='enterBlackout()'>Blackout</a> | " +
+        "<a href='#' onclick='RevealNotes.open()'>Speaker</a> | " +
+        "<a href='#' onclick='enterHelp()'>Help</a>";
 }

@@ -59,12 +59,18 @@ public class DelimParams {
 
     public String get(String param, String defaultValue) {
 
-        Optional<NameValuePair> match =
-            params.stream()
-                  .filter(nvp -> nvp.getName().equals(param))
-                  .findFirst();
+        if(params != null) {
 
-        return match.isPresent() ? match.get().getValue() : defaultValue;
+            Optional<NameValuePair> match =
+                params.stream()
+                      .filter(nvp -> nvp.getName().equals(param))
+                      .findFirst();
+
+            return match.isPresent() ? match.get().getValue() : defaultValue;
+
+        } else {
+            return defaultValue;
+        }
     }
 
     public static final String QUERY_ON_DELIM = "?";

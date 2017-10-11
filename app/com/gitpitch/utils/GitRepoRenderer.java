@@ -53,7 +53,7 @@ public class GitRepoRenderer {
     private String _slideshowURL;
     private String _markdownURL;
     /*
-     * Absolute URLs for GitHub page links.
+     * Absolute URLs for Git page links.
      */
     private String _orgHub;
     private String _repoHub;
@@ -77,8 +77,8 @@ public class GitRepoRenderer {
         if (grm != null) {
 
             /*
-             * Initialize properties based on valid GitHub repository
-             * data returned on GitHub API as GitRepoModel, if exists.
+             * Initialize properties based on valid repository
+             * data returned on Git Git API as GitRepoModel, if exists.
              */
 
             this._slideshowURL =
@@ -169,7 +169,7 @@ public class GitRepoRenderer {
         } else {
 
             /*
-             * Initialize properties to non-null defaults as valid GitHub
+             * Initialize properties to non-null defaults as valid Git
              * repository data is not available.
              */
 
@@ -205,28 +205,28 @@ public class GitRepoRenderer {
     }
 
     /*
-     * Return GitHub {user} name.
+     * Return Git {user} name.
      */
     public String user() {
         return _pp.user;
     }
 
     /*
-     * Return GitHub {repo} name.
+     * Return Git {repo} name.
      */
     public String repo() {
         return _pp.repo;
     }
 
     /*
-     * Return GitHub {branch} name.
+     * Return Git {branch} name.
      */
     public String branch() {
         return _pp.branch;
     }
 
     /*
-     * Return GitHub {pitchme} path.
+     * Return Git {pitchme} path.
      */
     public String pitchme() {
         return (_pp.pitchme != null) ?
@@ -299,6 +299,17 @@ public class GitRepoRenderer {
     }
 
     /*
+     * Return URL to oEmbed discovery link for slideshow.
+     */
+    public String oembed(String url, String format) {
+
+        log.debug("oembed: [ {}, {} ]", url, format);
+        return com.gitpitch.controllers.routes.PitchController.oembed(url,
+                format, null, null, null, null, null)
+                .absoluteURL(isEncrypted(), hostname());
+    }
+
+    /*
      * Return relative URL to PITCHME.md markdown.
      */
     public String markdownURL() {
@@ -359,21 +370,21 @@ public class GitRepoRenderer {
     }
 
     /*
-     * Return number of GitHub repository stargazers.
+     * Return number of Git repository stargazers.
      */
     public int stargazers() {
         return (_grm != null) ? _grm.stargazers() : 0;
     }
 
     /*
-     * Return number of GitHub repository forks.
+     * Return number of Git repository forks.
      */
     public int forks() {
         return (_grm != null) ? _grm.forks() : 0;
     }
 
     /*
-     * Return GitHub repository language.
+     * Return Git repository language.
      */
     public String repoLang() {
 
@@ -389,7 +400,7 @@ public class GitRepoRenderer {
 
     /*
      * Return true if ViewModel represents a valid
-     * repository on GitHub.
+     * repository on Git.
      */
     public boolean isValid() {
         return _grm != null;

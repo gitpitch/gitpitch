@@ -1,6 +1,9 @@
-@(ssm: com.gitpitch.models.SlideshowModel, offline: Boolean, serverPrinting: Boolean)
+@(ssm: com.gitpitch.models.SlideshowModel, offline: Boolean, serverPrinting: Boolean, gpToken: String)
 @if(!offline) {
     @if(!serverPrinting) {
+        @if(gpToken) {
+            @GoogleAnalytics(gpToken)
+        }
         @if(ssm.hasGAToken()) {
             @GoogleAnalytics(ssm.fetchGAToken())
         }

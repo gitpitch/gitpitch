@@ -12,7 +12,10 @@
     };
 
     function pushHelpNotification() {
-      pushNotification("@Html(ssm.fetchHelp())");
+      if(window.innerWidth < 700)
+        pushNotification("@Html(ssm.fetchHelp(true))");
+      else
+        pushNotification("@Html(ssm.fetchHelp(false))");
     }
 
     function pushFootnoteNotification() {

@@ -1,6 +1,12 @@
 @import com.gitpitch.views.html.frags._
 
-@(ssm: com.gitpitch.models.SlideshowModel, deps: com.gitpitch.policies.Dependencies, offline: Boolean, serverPrinting: Boolean, webPrinting: Boolean)
+@(ssm: com.gitpitch.models.SlideshowModel,
+  rndr: com.gitpitch.utils.GitRepoRenderer,
+  deps: com.gitpitch.policies.Dependencies,
+  gpToken: String,
+  offline: Boolean,
+  serverPrinting: Boolean,
+  webPrinting: Boolean)
 
 <!DOCTYPE html>
 <html>
@@ -10,13 +16,14 @@
     <title>@ssm.params().asTitle()</title>
     <meta content="Markdown Presentation powered by GitPitch." name="description">
     <meta content="GitHub, GitLab, Bitbucket, Markdown, Slideshow, Presentation, Developers, PITCHME" name="keywords">
+    @SlideshowOEmbedDiscovery(rndr)
     @SlideshowStyleDependencies(ssm, deps, offline, webPrinting)
     @SlideshowRevealCoreOverrides()
     @SlideshowMenuStyle(offline)
     @SlideshowNotificationBarStyle(ssm)
     @SlideshowCodeFragHighlightStyle()
     @SlideshowThemeOverride(ssm)
-    @SlideshowGoogleAnalytics(ssm, offline, serverPrinting)
+    @SlideshowGoogleAnalytics(ssm, offline, serverPrinting, gpToken)
 </head>
 <body>
     @SlideshowLogo(ssm, offline)

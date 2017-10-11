@@ -30,25 +30,25 @@
       <table>
         <tr>
           <td class="git-label">User:</td>
-          <td><a href="@rndr.orgHub()">
+          <td><a href="@rndr.orgHub()" target="_blank">
             <div class="short-link">@rndr.user()</div>
           </a></td>
         </tr>
         <tr>
           <td class="git-label">Repo:</td>
-          <td><a href="@rndr.repoHub()">
+          <td><a href="@rndr.repoHub()" target="_blank">
             <div class="short-link">@rndr.repo()</div>
           </a></td>
         </tr>
         <tr>
           <td class="git-label">Branch:</td>
-          <td><a href="@rndr.branchHub(rndr.params())">
+          <td><a href="@rndr.branchHub(rndr.params())" target="_blank">
             <div class="short-link">@rndr.branch()</div>
           </a></td>
         </tr>
         <tr>
           <td class="git-label">Slides:</td>
-          <td><a href="@rndr.pitchHub(rndr.params())">
+          <td><a href="@rndr.pitchHub(rndr.params())" target="_blank">
             <div class="short-link">@rndr.pitchme()</div>
           </a></td>
         </tr>
@@ -80,22 +80,27 @@
           </i> Offline Version (.zip)</a>
         </li>
         <li class="slideshow"
-            title="Print GitPitch presentation as PDF document.">
+            title="Convert GitPitch presentation to PDF doc for printing.">
           <a href="@rndr.printLink()" target="_blank">
           <i class="fa fa-external-link" aria-hidden="true">
           </i> Print Version (.pdf)</a>
         </li>
-        <li class="slideshow"
-            title="Share link to GitPitch presentation on Twitter.">
-          <a href="@rndr.twitterLink()" target="_blank">
+        <li class="slideshow">
+          <a href="@rndr.twitterLink()" target="_blank"
+             title="Share link to GitPitch presentation on Twitter."
+             style="padding-left: 0px; padding-right:10px">
           <i class="fa fa-twitter" aria-hidden="true">
-          </i> Share Link on Twitter</a>
+          </i> Twitter</a>
+          <a href="@rndr.linkedInLink()" target="_blank"
+             title="Share link to GitPitch presentation on LinkedIn.">
+          <i class="fa fa-linkedin-square" aria-hidden="true">
+          </i> LinkedIn</a>
         </li>
         <li class="slideshow"
-            title="Share link to GitPitch presentation on LinkedIn.">
-          <a href="@rndr.linkedInLink()" target="_blank">
-          <i class="fa fa-linkedin-square" aria-hidden="true">
-          </i> Share Link on LinkedIn</a>
+            title="Open the GitPitch Wiki for detailed How-To help.">
+          <a href="https://github.com/gitpitch/gitpitch/wiki" target="_blank">
+          <i class="fa fa-question-circle" aria-hidden="true">
+          </i> Help</a>
         </li>
       </ul>
       }

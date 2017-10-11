@@ -746,13 +746,19 @@ var RevealMenu = window.RevealMenu || (function(){
 				}
 
 				/*
-				 * The menu should only be opened by default on the main
-				 * presentation window.
+				 * The menu should be opened by default only when the
+				 * following set conditions are met:
 				 *
-				 * Receiver on window.location indicates the speaker-notes
-				 * window. The menu should be closed for this speaker window.
+				 * 1. Presentation not open in speaker notes window.
+				 * 2. Presentation not embedded within an iFrame.
+				 * 1. Presentation displayed within window.width > 1023px.
+				 *
+				 * Note, "receiver" on window.location indicates the
+				 * presentation is open in the speaker-notes window.
 				 */
-				if(!window.location.search.match(/receiver/gi)) {
+				if(!window.location.search.match(/receiver/gi) &&
+					(window.top === window.self) &&
+					(window.innerWidth > 1023)) {
 					openMenu();
 				}
 

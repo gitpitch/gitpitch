@@ -116,8 +116,8 @@ public class FunctionalTest {
                         ws.url(UNSUPPORTED_ENDPOINT).get();
                 WSResponse response = completionStage.toCompletableFuture().get();
                 ws.close();
-                assertEquals(SEE_OTHER, response.getStatus());
-                assertEquals(CONTENT_TYPE_UNDEF, response.getHeader(CONTENT_TYPE));
+                assertEquals(OK, response.getStatus());
+                assertEquals(CONTENT_TYPE_HTML, response.getHeader(CONTENT_TYPE));
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
             }
