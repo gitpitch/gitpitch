@@ -11,4 +11,7 @@
   <html>@pembed.html</html>
   <width type="integer">@pembed.width</width>
   <height type="integer">@pembed.height</height>
+  <thumbnail_url>@pembed.thumbnail_url</thumbnail_url>
+  <thumbnail_width>@pembed.thumbnail_width</thumbnail_width>
+  <thumbnail_height>@pembed.thumbnail_height</thumbnail_height>
 </oembed>

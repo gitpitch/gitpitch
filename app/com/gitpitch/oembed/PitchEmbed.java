@@ -47,9 +47,9 @@ public class PitchEmbed {
     public String width = DEFAULT_WIDTH;
     public String height = DEFAULT_HEIGHT;
     public String author_url;
-    public String thumbnail_url;
-    public int    thumbnail_width;
-    public int    thumbnail_height;
+    public String thumbnail_url = DEFAULT_THUMB;
+    public String thumbnail_width;
+    public String thumbnail_height;
 
     public static PitchEmbed build(GRSManager grsManager,
                                       String url) {
@@ -96,6 +96,8 @@ public class PitchEmbed {
         this.author_url = authorUrl;
         this.width = buildWidth(width, maxWidth, maxHeight);
         this.height = buildHeight(height, maxWidth, maxHeight);
+        this.thumbnail_width = this.width;
+        this.thumbnail_height = this.height;
         this.html = buildHTML(pl.url, this.width, this.height);
     }
 
@@ -160,6 +162,8 @@ public class PitchEmbed {
     private final static String CACHE = "180";
     private final static String DEFAULT_WIDTH = "960";
     private final static String DEFAULT_HEIGHT = "700";
+    private final static String DEFAULT_THUMB =
+        "https://gitpitch.com/gitpitch-icon-black.jpg";
 
     private final static String HTML_OPEN = "<iframe ";
     private final static String HTML_WIDTH = "width=\"";
