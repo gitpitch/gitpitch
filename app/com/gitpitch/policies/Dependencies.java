@@ -23,7 +23,7 @@
  */
 package com.gitpitch.policies;
 
-import play.Configuration;
+import com.gitpitch.policies.Runtime;
 import javax.inject.*;
 
 /*
@@ -32,7 +32,7 @@ import javax.inject.*;
 @Singleton
 public final class Dependencies {
 
-    private final Configuration cfg;
+    private final Runtime runtime;
     private final String cdn;
     private final String revealjsVersion;
     private final String bootstrapVersion;
@@ -43,17 +43,17 @@ public final class Dependencies {
     private final Boolean highlightPluginEnabled;
 
     @Inject
-    public Dependencies(Configuration cfg) {
-        this.cfg = cfg;
-        this.cdn = cfg.getString("gitpitch.dependency.cdn");
-        this.revealjsVersion = cfg.getString("gitpitch.dependency.revealjs");
-        this.bootstrapVersion = cfg.getString("gitpitch.dependency.bootstrap");
-        this.jqueryVersion = cfg.getString("gitpitch.dependency.jquery");
-        this.fontawesomeVersion = cfg.getString("gitpitch.dependency.fontawesome");
-        this.octiconsVersion = cfg.getString("gitpitch.dependency.octicons");
-        this.highlightjsVersion = cfg.getString("gitpitch.dependency.highlightjs");
+    public Dependencies(Runtime runtime) {
+        this.runtime = runtime;
+        this.cdn = runtime.config("gitpitch.dependency.cdn");
+        this.revealjsVersion = runtime.config("gitpitch.dependency.revealjs");
+        this.bootstrapVersion = runtime.config("gitpitch.dependency.bootstrap");
+        this.jqueryVersion = runtime.config("gitpitch.dependency.jquery");
+        this.fontawesomeVersion = runtime.config("gitpitch.dependency.fontawesome");
+        this.octiconsVersion = runtime.config("gitpitch.dependency.octicons");
+        this.highlightjsVersion = runtime.config("gitpitch.dependency.highlightjs");
         this.highlightPluginEnabled =
-            cfg.getBoolean("gitpitch.dependency.highlight.plugin", false);
+            runtime.configBool("gitpitch.dependency.highlight.plugin", false);
     }
 
     public String revealjs(boolean offline, String versionOverride) {

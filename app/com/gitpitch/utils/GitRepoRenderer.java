@@ -26,8 +26,8 @@ package com.gitpitch.utils;
 import com.gitpitch.git.GRS;
 import com.gitpitch.git.vendors.*;
 import com.gitpitch.models.GitRepoModel;
+import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.PitchParams;
-import play.Configuration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +44,7 @@ public class GitRepoRenderer {
 
     private final PitchParams _pp;
     private final GitRepoModel _grm;
-    private Configuration _cfg;
+    private final Runtime runtime;
     private List<GRS> _grsServices;
     /*
      * Relative URLs for view components.
@@ -66,12 +66,12 @@ public class GitRepoRenderer {
 
     private GitRepoRenderer(PitchParams pp,
                             GitRepoModel grm,
-                            Configuration cfg,
+                            Runtime runtime,
                             List<GRS> grsServices) {
 
         this._pp = pp;
         this._grm = grm;
-        this._cfg = cfg;
+        this.runtime = runtime;
         this._grsServices = grsServices;
 
         if (grm != null) {
@@ -184,10 +184,10 @@ public class GitRepoRenderer {
 
     public static GitRepoRenderer build(PitchParams pp,
                                         GitRepoModel grm,
-                                        Configuration cfg,
+                                        Runtime runtime,
                                         List<GRS> grsServices) {
 
-        return new GitRepoRenderer(pp, grm, cfg, grsServices);
+        return new GitRepoRenderer(pp, grm, runtime, grsServices);
     }
 
     /*
@@ -581,7 +581,8 @@ public class GitRepoRenderer {
     }
 
     public List<String> listThemes() {
-      List<String> themesList = _cfg.getStringList("gitpitch.revealjs.themes");
+      List<String> themesList =
+        runtime.configStringList("gitpitch.revealjs.themes");
       if(themesList == null || themesList.isEmpty()) {
           themesList = DEPLOY_THEMES;
       }
@@ -604,11 +605,11 @@ public class GitRepoRenderer {
     }
 
     private boolean isEncrypted() {
-        return _cfg.getBoolean("gitpitch.https");
+        return runtime.configBool("gitpitch.https");
     }
 
     private String hostname() {
-        return _cfg.getString("gitpitch.hostname");
+        return runtime.config("gitpitch.hostname");
     }
 
     private static final String GIT_MASTER = "master";

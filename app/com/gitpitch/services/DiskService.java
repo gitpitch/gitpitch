@@ -27,9 +27,9 @@ import com.gitpitch.git.GRS;
 import com.gitpitch.git.GRSService;
 import com.gitpitch.git.GRSManager;
 import com.gitpitch.services.WebService;
+import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.PitchParams;
 import org.apache.commons.io.FileUtils;
-import play.Configuration;
 import play.Logger;
 
 import javax.inject.*;
@@ -51,19 +51,19 @@ public class DiskService {
     private final String storage;
     private final String decktape;
     private final ShellService shellService;
-    private final Configuration configuration;
+    private final Runtime runtime;
     private final WebService ws;
 
     @Inject
     public DiskService(ShellService shellService,
-                       Configuration configuration,
+                       Runtime runtime,
                        WebService ws) {
 
         this.shellService = shellService;
-        this.configuration = configuration;
+        this.runtime = runtime;
         this.ws = ws;
-        this.storage = configuration.getString("gitpitch.storage.home");
-        this.decktape = configuration.getString("gitpitch.decktape.home");
+        this.storage = runtime.config("gitpitch.storage.home");
+        this.decktape = runtime.config("gitpitch.decktape.home");
     }
 
     /*

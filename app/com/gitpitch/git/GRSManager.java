@@ -25,11 +25,11 @@ package com.gitpitch.git;
 
 import com.gitpitch.git.vendors.*;
 import com.gitpitch.services.DiskService;
+import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.PitchParams;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.inject.*;
-import play.Configuration;
 import play.Logger;
 import play.Logger.ALogger;
 
@@ -45,13 +45,13 @@ public class GRSManager {
     private final Logger.ALogger log = Logger.of(this.getClass());
 
     private final DiskService diskService;
+    private final Runtime runtime;
     private final GitHub gitHubService;
     private final GitLab gitLabService;
     private final BitBucket bitBucketService;
     private final Gitea giteaService;
     private final Gogs gogsService;
     private final GitBucket gitBucketService;
-    private final Configuration cfg;
     private final Map<String,GRS> grsStore = new HashMap<String,GRS>();
     private GRS grsDefault;
 
@@ -63,7 +63,7 @@ public class GRSManager {
                       Gitea giteaService,
                       Gogs gogsService,
                       GitBucket gitBucketService,
-                      Configuration cfg) {
+                      Runtime runtime) {
 
         this.diskService = diskService;
 
@@ -85,9 +85,9 @@ public class GRSManager {
         this.gitBucketService = gitBucketService;
         this.gitBucketService.init(this, diskService);
 
-        this.cfg = cfg;
+        this.runtime = runtime;
 
-        List grsCfg = cfg.getList("gitpitch.git.repo.services");
+        List grsCfg = runtime.configList("gitpitch.git.repo.services");
         List<HashMap<String,String>> grsCfgList = (List<HashMap<String,String>>) grsCfg;
 
         GRS fallback = GRS.build(GRS_FALLBACK);

@@ -26,7 +26,7 @@ package com.gitpitch.services;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.executors.BackEndThreads;
 import com.gitpitch.utils.PitchParams;
-import play.Configuration;
+import com.gitpitch.policies.Runtime;
 import play.Logger;
 
 import javax.inject.*;
@@ -47,18 +47,18 @@ public class PrintService {
     private DiskService diskService;
     private ShellService shellService;
     private BackEndThreads backEndThreads;
-    private Configuration configuration;
+    private Runtime runtime;
 
     @Inject
     public PrintService(DiskService diskService,
                         ShellService shellService,
                         BackEndThreads backEndThreads,
-                        Configuration configuration) {
+                        Runtime runtime) {
 
         this.diskService = diskService;
         this.shellService = shellService;
         this.backEndThreads = backEndThreads;
-        this.configuration = configuration;
+        this.runtime = runtime;
     }
 
     /*
@@ -183,11 +183,11 @@ public class PrintService {
     }
 
     public boolean isEncrypted() {
-        return configuration.getBoolean("gitpitch.https");
+        return runtime.configBool("gitpitch.https");
     }
 
     public String hostname() {
-        return configuration.getString("gitpitch.hostname");
+        return runtime.config("gitpitch.hostname");
     }
 
     private static final String PDF_PHANTOM = "./bin/phantomjs";

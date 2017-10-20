@@ -32,11 +32,10 @@ import com.gitpitch.models.SlideshowModel;
 import com.gitpitch.services.PitchService;
 import com.gitpitch.oembed.PitchEmbed;
 import com.gitpitch.policies.Dependencies;
+import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.GitRepoRenderer;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.RFE;
-import play.Configuration;
-import play.Environment;
 import play.Logger;
 import play.Logger.ALogger;
 import play.libs.Json;
@@ -60,29 +59,21 @@ public class PitchController extends Controller {
     private final PitchService pitchService;
     private final FrontEndThreads frontEndThreads;
     private final Dependencies deps;
+    private final Runtime runtime;
     private final GRSManager grsManager;
-    private final Configuration cfg;
-    private final WSClient ws;
-    private final Environment env;
-    private final String gaToken;
 
     @Inject
     public PitchController(PitchService pitchService,
                            FrontEndThreads frontEndThreads,
                            Dependencies deps,
-                           GRSManager grsManager,
-                           Configuration cfg,
-                           WSClient ws,
-                           Environment env) {
+                           Runtime runtime,
+                           GRSManager grsManager) {
 
         this.pitchService = pitchService;
         this.frontEndThreads = frontEndThreads;
         this.deps = deps;
+        this.runtime = runtime;
         this.grsManager = grsManager;
-        this.cfg = cfg;
-        this.ws = ws;
-        this.env = env;
-        this.gaToken = cfg.getString("gitpitch.google.analytics.token");
     }
 
     /*
@@ -138,7 +129,7 @@ public class PitchController extends Controller {
 
             GitRepoModel grm = grmo.get();
             GitRepoRenderer rndr =
-                GitRepoRenderer.build(pp, grm, cfg, grsManager.listGRS());
+                GitRepoRenderer.build(pp, grm, runtime, grsManager.listGRS());
             SlideshowModel ssm = ssmo.get();
             /*
              * Clone cached SlideshowModel in order to adjust for any
@@ -148,7 +139,7 @@ public class PitchController extends Controller {
 
             return CompletableFuture.completedFuture(
                     ok(com.gitpitch.views.html.Slideshow.render(ssm, rndr, deps,
-                        gaToken, isOffline, serverPrinting, webPrinting)));
+                        gaToken(), isOffline, serverPrinting, webPrinting)));
         } else {
 
             return CompletableFuture.supplyAsync(() -> {
@@ -159,7 +150,7 @@ public class PitchController extends Controller {
                     .thenApply(repoFetched -> {
 
                         GitRepoRenderer rndr =
-                            GitRepoRenderer.build(pp, repoFetched, cfg,
+                            GitRepoRenderer.build(pp, repoFetched, runtime,
                                     grsManager.listGRS());
 
                         if (ssmo.isPresent()) {
@@ -179,7 +170,7 @@ public class PitchController extends Controller {
                              */
                             ssm = ssm.clone(pp);
                             return ok(com.gitpitch.views.html.Slideshow.render(ssm,
-                                rndr, deps, gaToken,
+                                rndr, deps, gaToken(),
                                 isOffline, serverPrinting, webPrinting));
 
                         } else {
@@ -195,7 +186,7 @@ public class PitchController extends Controller {
                                 log.info("slideshow: [ yaml, fetchd, online ] {}", pp);
 
                             return ok(com.gitpitch.views.html.Slideshow.render(ssm,
-                                rndr, deps, gaToken,
+                                rndr, deps, gaToken(),
                                 isOffline, serverPrinting, webPrinting));
                         }
 
@@ -274,7 +265,7 @@ public class PitchController extends Controller {
 
         GitRepoModel grm = grmo.orElse(null);
         GitRepoRenderer rndr =
-                GitRepoRenderer.build(pp, grm, cfg, grsManager.listGRS());
+                GitRepoRenderer.build(pp, grm, runtime, grsManager.listGRS());
 
         return CompletableFuture.completedFuture(
                 ok(com.gitpitch.views.html.Home.render(rndr,
@@ -305,7 +296,7 @@ public class PitchController extends Controller {
 
         GitRepoModel grm = grmo.orElse(null);
         GitRepoRenderer rndr =
-                GitRepoRenderer.build(pp, grm, cfg, grsManager.listGRS());
+                GitRepoRenderer.build(pp, grm, runtime, grsManager.listGRS());
 
         return CompletableFuture.completedFuture(
                 ok(com.gitpitch.views.html.Git.render(rndr, deps, isOffline)));
@@ -335,7 +326,7 @@ public class PitchController extends Controller {
 
         GitRepoModel grm = grmo.orElse(null);
         GitRepoRenderer rndr =
-                GitRepoRenderer.build(pp, grm, cfg, grsManager.listGRS());
+                GitRepoRenderer.build(pp, grm, runtime, grsManager.listGRS());
         String fixedTheme = null;
         if(ssmo.isPresent()) {
           fixedTheme = ssmo.get().fixedTheme() ? ssmo.get().fetchTheme() : null;
@@ -529,6 +520,10 @@ public class PitchController extends Controller {
 
         } catch(Exception ex) {}
         return isChrome;
+    }
+
+    private String gaToken() {
+        return runtime.config("gitpitch.google.analytics.token");
     }
 
     private static final String PITCHME_PRINT_ERROR =

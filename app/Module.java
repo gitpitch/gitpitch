@@ -30,6 +30,7 @@ import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.services.*;
 import com.gitpitch.policies.CacheTimeout;
 import com.gitpitch.policies.Dependencies;
+import com.gitpitch.policies.Runtime;
 import com.gitpitch.executors.FrontEndThreads;
 import com.gitpitch.executors.BackEndThreads;
 import com.google.inject.AbstractModule;
@@ -67,6 +68,7 @@ public class Module extends AbstractModule {
         bind(BackEndThreads.class).asEagerSingleton();
         bind(Dependencies.class).asEagerSingleton();
         bind(CacheTimeout.class).asEagerSingleton();
+        bind(Runtime.class).asEagerSingleton();
         install(new FactoryModuleBuilder().implement(Markdown.class, MarkdownModel.class)
                                           .build(MarkdownModelFactory.class));
     }

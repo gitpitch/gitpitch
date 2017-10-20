@@ -28,12 +28,11 @@ import com.gitpitch.git.*;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.models.SlideshowModel;
 import com.gitpitch.executors.BackEndThreads;
+import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.YAMLOptions;
 import com.gitpitch.utils.MarkdownRenderer;
 import org.apache.commons.io.FilenameUtils;
-import play.Configuration;
-import play.Environment;
 import play.Logger;
 
 import javax.inject.*;
@@ -66,8 +65,7 @@ public class OfflineService {
     private final ShellService shellService;
     private final MarkdownModelFactory markdownModelFactory;
     private final BackEndThreads backEndThreads;
-    private final Configuration configuration;
-    private final Environment env;
+    private final Runtime runtime;
 
     @Inject
     public OfflineService(GRSManager grsManager,
@@ -75,16 +73,14 @@ public class OfflineService {
                           ShellService shellService,
                           MarkdownModelFactory markdownModelFactory,
                           BackEndThreads backEndThreads,
-                          Configuration configuration,
-                          Environment env) {
+                          Runtime runtime) {
 
         this.grsManager = grsManager;
         this.diskService = diskService;
         this.shellService = shellService;
         this.markdownModelFactory = markdownModelFactory;
         this.backEndThreads = backEndThreads;
-        this.configuration = configuration;
-        this.env = env;
+        this.runtime = runtime;
     }
 
     /*
@@ -306,7 +302,7 @@ public class OfflineService {
         Path destPath =
             diskService.ensure(zipRoot.resolve(ZIP_ASSETS_DIR));
 
-        if(env.isProd()) {
+        if(runtime.isProd()) {
 
             Path jarPath = prodModeDependenciesJar();
             if(jarPath.toFile().exists()) {
@@ -466,7 +462,7 @@ public class OfflineService {
         log.debug("pruneYAMLDependencies: yOpts={}", yOpts);
         Path destPath = zipRoot.resolve(ZIP_ASSETS_DIR);
         String liveRevealVersion =
-          configuration.getString("gitpitch.dependency.revealjs");
+          runtime.config("gitpitch.dependency.revealjs");
         if(yOpts != null && yOpts.fetchRevealVersion(pp) != null) {
             liveRevealVersion = yOpts.fetchRevealVersion(pp);
         }
@@ -588,22 +584,22 @@ public class OfflineService {
     }
 
     public boolean isEncrypted() {
-        return configuration.getBoolean("gitpitch.https");
+        return runtime.configBool("gitpitch.https");
     }
 
     public String hostname() {
-        return configuration.getString("gitpitch.hostname");
+        return runtime.config("gitpitch.hostname");
     }
 
     public Path devModeFixedDependencies() {
         String fixedAssets =
-            configuration.getString("gitpitch.offline.dev.fixed.assets.home");
+            runtime.config("gitpitch.offline.dev.fixed.assets.home");
         return Paths.get(fixedAssets);
     }
 
     public Path prodModeDependenciesJar() {
         String jarAssets =
-            configuration.getString("gitpitch.offline.prod.fixed.assets.home");
+            runtime.config("gitpitch.offline.prod.fixed.assets.home");
         return Paths.get(jarAssets);
     }
 
