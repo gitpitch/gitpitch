@@ -52,50 +52,32 @@ public class GitHubRepoModel extends GitRepoModel {
 
         this._pp = pp;
 
-        this._pretty = new StringBuffer(SLASH)
-                .append(this._pp.user)
-                .append(SLASH)
-                .append(this._pp.repo)
-                .toString();
-
-        this._cacheKey = genKey(pp);
+        if(pp != null) {
+            this._pretty = new StringBuffer(SLASH)
+                    .append(this._pp.user)
+                    .append(SLASH)
+                    .append(this._pp.repo)
+                    .toString();
+            this._cacheKey = genKey(pp);
+        }
 
         /*
          * Generate derived data on instance only if the GitHub
          * API JSON is available for processing.
          */
         if (json != null) {
-
-            JsonNode ownerNode = json.findPath("owner");
-            this._type = ownerNode.findPath("type").textValue();
-
-            this._desc = json.findPath("description").textValue();
-            this._created = json.findPath("created_at").textValue();
-            this._updated = json.findPath("updated_at").textValue();
-            this._lang = json.findPath("language").textValue();
-
-            this._stars = json.findPath("stargazers_count").asInt();
-            this._forks = json.findPath("forks_count").asInt();
-            this._issues = json.findPath("open_issues").asInt();
-
-            this._hasWiki = json.findPath("has_wiki").asBoolean();
-            this._hasPages = json.findPath("has_pages").asBoolean();
-
-        } else {
-
-            this._type = null;
-
-            this._desc = null;
-            this._created = null;
-            this._updated = null;
-            this._lang = null;
-
-            this._stars = 0;
-            this._forks = 0;
-            this._issues = 0;
-
-            this._hasWiki = false;
-            this._hasPages = false;
+            JsonNode ownerNode = json.findPath(OWNER);
+            this._type = ownerNode.findPath(TYPE).textValue();
+            this._desc = json.findPath(DESCRIPTION).textValue();
+            this._created = json.findPath(CREATED_AT).textValue();
+            this._updated = json.findPath(UPDATED_AT).textValue();
+            this._lang = json.findPath(LANGUAGE).textValue();
+            this._stars = json.findPath(STARGAZERS_COUNT).asInt();
+            this._forks = json.findPath(FORKS_COUNT).asInt();
+            this._issues = json.findPath(OPEN_ISSUES).asInt();
+            this._hasWiki = json.findPath(HAS_WIKI).asBoolean();
+            this._hasPages = json.findPath(HAS_PAGES).asBoolean();
+            this._private = json.findPath(PRIVATE).asBoolean();
         }
 
     }
@@ -108,39 +90,4 @@ public class GitHubRepoModel extends GitRepoModel {
         return new GitHubRepoModel(pp, json);
     }
 
-    public String owner() {
-        return _pp.user;
-    }
-
-    public String name() {
-        return _pp.repo;
-    }
-
-    public String description() {
-        return _desc;
-    }
-
-    public String lang() {
-        return _lang;
-    }
-
-    public boolean byOrg() {
-        return GIT_TYPE_ORG.equals(_type);
-    }
-
-    public int stargazers() {
-        return _stars;
-    }
-
-    public int forks() {
-        return _forks;
-    }
-
-    public String toString() {
-        return _pretty;
-    }
-
-    public String key() {
-        return _cacheKey;
-    }
 }

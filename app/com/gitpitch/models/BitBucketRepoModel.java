@@ -52,50 +52,32 @@ public class BitBucketRepoModel extends GitRepoModel {
 
         this._pp = pp;
 
-        this._pretty = new StringBuffer(SLASH)
-                .append(this._pp.user)
-                .append(SLASH)
-                .append(this._pp.repo)
-                .toString();
-
-        this._cacheKey = genKey(pp);
+        if(pp != null) {
+            this._pretty = new StringBuffer(SLASH)
+                    .append(this._pp.user)
+                    .append(SLASH)
+                    .append(this._pp.repo)
+                    .toString();
+            this._cacheKey = genKey(pp);
+        }
 
         /*
          * Generate derived data on instance only if the BitBucket
          * API JSON is available for processing.
          */
         if (json != null) {
-
-            JsonNode ownerNode = json.findPath("owner");
-            this._type = ownerNode.findPath("type").textValue();
-
-            this._desc = json.findPath("description").textValue();
-            this._created = json.findPath("created_on").textValue();
-            this._updated = json.findPath("updated_on").textValue();
-            this._lang = json.findPath("language").textValue();
-
+            JsonNode ownerNode = json.findPath(OWNER);
+            this._type = ownerNode.findPath(TYPE).textValue();
+            this._desc = json.findPath(DESCRIPTION).textValue();
+            this._created = json.findPath(CREATED_ON).textValue();
+            this._updated = json.findPath(UPDATED_ON).textValue();
+            this._lang = json.findPath(LANGUAGE).textValue();
             this._stars = 0;
             this._forks = 0;
             this._issues = 0;
-
-            this._hasWiki = json.findPath("has_wiki").asBoolean();
+            this._hasWiki = json.findPath(HAS_WIKI).asBoolean();
             this._hasPages = false;
-
-        } else {
-
-            this._type = null;
-
-            this._desc = null;
-            this._created = null;
-            this._updated = null;
-            this._lang = null;
-
-            this._stars = 0;
-            this._forks = 0;
-            this._issues = 0;
-
-            this._hasWiki = false;
-            this._hasPages = false;
+            this._private = json.findPath(IS_PRIVATE).asBoolean();
         }
 
     }
@@ -108,39 +90,4 @@ public class BitBucketRepoModel extends GitRepoModel {
         return new BitBucketRepoModel(pp, json);
     }
 
-    public String owner() {
-        return _pp.user;
-    }
-
-    public String name() {
-        return _pp.repo;
-    }
-
-    public String description() {
-        return _desc;
-    }
-
-    public String lang() {
-        return _lang;
-    }
-
-    public boolean byOrg() {
-        return GIT_TYPE_ORG.equals(_type);
-    }
-
-    public int stargazers() {
-        return _stars;
-    }
-
-    public int forks() {
-        return _forks;
-    }
-
-    public String toString() {
-        return _pretty;
-    }
-
-    public String key() {
-        return _cacheKey;
-    }
 }

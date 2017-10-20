@@ -52,52 +52,34 @@ public class GitLabRepoModel extends GitRepoModel {
 
         this._pp = pp;
 
-        this._pretty = new StringBuffer(SLASH)
-                .append(this._pp.user)
-                .append(SLASH)
-                .append(this._pp.repo)
-                .toString();
-
-        this._cacheKey = genKey(pp);
+        if(pp != null) {
+            this._pretty = new StringBuffer(SLASH)
+                    .append(this._pp.user)
+                    .append(SLASH)
+                    .append(this._pp.repo)
+                    .toString();
+            this._cacheKey = genKey(pp);
+        }
 
         /*
          * Generate derived data on instance only if the GitLab
          * API JSON is available for processing.
          */
         if (json != null) {
-
             this._type = USER_TYPE;
-            this._desc = json.findPath("description").textValue();
+            this._desc = json.findPath(DESCRIPTION).textValue();
             this._lang = null;
-
-            JsonNode namespaceNode = json.findPath("namespace");
+            JsonNode namespaceNode = json.findPath(NAMESPACE);
             if(namespaceNode != null) {
-                this._created = namespaceNode.findPath("created_at").textValue();
-                this._updated = namespaceNode.findPath("updated_at").textValue();
+                this._created = namespaceNode.findPath(CREATED_AT).textValue();
+                this._updated = namespaceNode.findPath(UPDATED_AT).textValue();
             }
-
-            this._stars = json.findPath("star_count").asInt();
-            this._forks = json.findPath("forks_count").asInt();
-            this._issues = json.findPath("open_issues_count").asInt();
-
-            this._hasWiki = json.findPath("wiki_enabled").asBoolean();
+            this._stars = json.findPath(STAR_COUNT).asInt();
+            this._forks = json.findPath(FORKS_COUNT).asInt();
+            this._issues = json.findPath(OPEN_ISSUES_COUNT).asInt();
+            this._hasWiki = json.findPath(WIKI_ENABLED).asBoolean();
             this._hasPages = false;
-
-        } else {
-
-            this._type = null;
-
-            this._desc = null;
-            this._created = null;
-            this._updated = null;
-            this._lang = null;
-
-            this._stars = 0;
-            this._forks = 0;
-            this._issues = 0;
-
-            this._hasWiki = false;
-            this._hasPages = false;
+            this._private = json.findPath(VISIBILITY).textValue() != PUBLIC;
         }
 
     }
@@ -108,42 +90,6 @@ public class GitLabRepoModel extends GitRepoModel {
 
     public static GitRepoModel build(PitchParams pp, JsonNode json) {
         return new GitLabRepoModel(pp, json);
-    }
-
-    public String owner() {
-        return _pp.user;
-    }
-
-    public String name() {
-        return _pp.repo;
-    }
-
-    public String description() {
-        return _desc;
-    }
-
-    public String lang() {
-        return _lang;
-    }
-
-    public boolean byOrg() {
-        return GIT_TYPE_ORG.equals(_type);
-    }
-
-    public int stargazers() {
-        return _stars;
-    }
-
-    public int forks() {
-        return _forks;
-    }
-
-    public String toString() {
-        return _pretty;
-    }
-
-    public String key() {
-        return _cacheKey;
     }
 
     private static final String USER_TYPE = "User";

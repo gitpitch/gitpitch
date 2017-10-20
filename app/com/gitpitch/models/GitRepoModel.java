@@ -85,6 +85,10 @@ public abstract class GitRepoModel {
      */
     protected String _pretty;
     protected String _cacheKey;
+    /*
+     * Git repo visibility.
+     */
+    protected boolean _private;
 
     /*
      * Generate a key for querying the cache for matching GitRepoModel.
@@ -100,40 +104,33 @@ public abstract class GitRepoModel {
                 .toString();
     }
 
-    /*
-     * Return Git repository owner.
-     */
-    public abstract String owner();
+    public String owner() {
+        return _pp.user;
+    }
 
-    /*
-     * Return Git repository name.
-     */
-    public abstract String name();
+    public String name() {
+        return _pp.repo;
+    }
 
-    /*
-     * Return Git repository description.
-     */
-    public abstract String description();
+    public String description() {
+        return _desc;
+    }
 
-    /*
-     * Return Git repository language.
-     */
-    public abstract String lang();
+    public String lang() {
+        return _lang;
+    }
 
-    /*
-     * Return true if Git repository owner is an organization.
-     */
-    public abstract boolean byOrg();
+    public boolean byOrg() {
+        return GIT_TYPE_ORG.equals(_type);
+    }
 
-    /*
-     * Return number of Git repository stargazers.
-     */
-    public abstract int stargazers();
+    public int stargazers() {
+        return _stars;
+    }
 
-    /*
-     * Return number of Git repository forks.
-     */
-    public abstract int forks();
+    public int forks() {
+        return _forks;
+    }
 
     public String toString() {
         return _pretty;
@@ -142,6 +139,31 @@ public abstract class GitRepoModel {
     public String key() {
         return _cacheKey;
     }
+
+    /*
+     * Repo API JSON response property names.
+     */
+    protected static final String OWNER = "owner";
+    protected static final String TYPE  = "type";
+    protected static final String DESCRIPTION = "description";
+    protected static final String CREATED_AT = "created_at";
+    protected static final String UPDATED_AT = "updated_at";
+    protected static final String CREATED_ON = "created_on";
+    protected static final String UPDATED_ON = "updated_on";
+    protected static final String LANGUAGE   = "language";
+    protected static final String STARGAZERS_COUNT = "stargazers_count";
+    protected static final String STAR_COUNT = "star_count";
+    protected static final String FORKS_COUNT = "forks_count";
+    protected static final String OPEN_ISSUES = "open_issues";
+    protected static final String OPEN_ISSUES_COUNT = "open_issues_count";
+    protected static final String HAS_WIKI  = "has_wiki";
+    protected static final String WIKI_ENABLED  = "wiki_enabled";
+    protected static final String HAS_PAGES = "has_pages";
+    protected static final String PUBLIC  = "public";
+    protected static final String PRIVATE = "private";
+    protected static final String IS_PRIVATE = "is_private";
+    protected static final String NAMESPACE = "namespace";
+    protected static final String VISIBILITY = "visiblity";
 
     protected static final String GIT_TYPE_ORG = "Organization";
     protected static final String SLASH = "/";
