@@ -2,10 +2,10 @@
 @if(!offline) {
     @if(!serverPrinting) {
         @if(gpToken) {
-            @GoogleAnalytics(gpToken)
+            @GoogleAnalytics(gpToken, false)
         }
         @if(ssm.hasGAToken()) {
-            @GoogleAnalytics(ssm.fetchGAToken())
+            @GoogleAnalytics(ssm.fetchGAToken(), true)
         }
     }
 }
