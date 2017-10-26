@@ -24,7 +24,7 @@
 #### Then <span style="color: #e49436">Git-Commit</span>.
 
 ---
-@title[Step 1. Create 'PITCHME.md']
+@title[Step 1. PITCHME.md]
 
 ### <span style="color: #e49436">STEP 1. Create 'PITCHME.md'</span>
 <br>
@@ -32,7 +32,7 @@
 #### Create GitPitch slideshow content using GitHub Flavored Markdown in your favorite editor.
 
 <br>
-<span style="color:gray; font-size:0.6em;">[ AS EASY AS README.md ]</span>
+<span style="color:gray; font-size:0.6em;">[ AS EASY AS README.md WITH SIMPLE --- SLIDE DELIMITER ]</span>
 
 ---
 @title[Step 2. Git-Commit]
