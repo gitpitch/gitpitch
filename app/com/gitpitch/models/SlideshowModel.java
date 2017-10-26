@@ -394,6 +394,14 @@ public class SlideshowModel {
         }
     }
 
+    /*
+     * Return true if "published" set to true in PITCHME.yaml.
+     */
+    public boolean published() {
+
+        return (_yOpts != null) ? _yOpts.published(_pp) : false;
+    }
+
     public String fetchHorzDelim() {
 
         String delim = null;

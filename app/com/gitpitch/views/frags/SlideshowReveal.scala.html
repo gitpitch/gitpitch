@@ -42,12 +42,14 @@
                 { title: 'Home', active: true,
                   icon: '<i class="fa fa-bookmark">',
                   src: '@ssm.homePanel()' },
+                @if(!ssm.published()) {
                 { title: 'Themes',
                   icon: '<i class="fa fa-code-fork">',
                   src: '@ssm.gitPanel()' },
                 { title: 'GRS',
                   icon: '<i class="fa fa-image">',
                   src: '@ssm.themesPanel()' }
+                }
                 }
               ],
               path : "@deps.revealjs(offline, ssm.fetchRevealVersionOverride())/plugin/menu",

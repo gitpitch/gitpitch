@@ -300,6 +300,10 @@ public final class YAMLOptions {
         return _yProps.get(REVEALJS_VERSION);
     }
 
+    public Boolean published(PitchParams pp) {
+        return fetchBooleanOption(pp, PUBLISHED_OPTION);
+    }
+
     private Boolean fetchBooleanOption(PitchParams pp, String option) {
         return fetchBooleanOption(pp, option, false);
     }
@@ -379,6 +383,7 @@ public final class YAMLOptions {
     private static final String HISTORY_OPTION = "history";
     private static final String SLIDE_NUMBER_OPTION = "slide-number";
     private static final String REVEALJS_VERSION = "revealjs-version";
+    private static final String PUBLISHED_OPTION = "published";
 
     private static final String HSLIDE_DELIM = "horz-delim";
     private static final String VSLIDE_DELIM = "vert-delim";
