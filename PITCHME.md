@@ -17,8 +17,8 @@
 
 ---
 
-#### No more <span style="color: gray">Keynote.</span>
-#### No more <span style="color: gray">Powerpoint.</span>
+#### No more <span style="color: gray">Keynote</span>.
+#### No more <span style="color: gray">Powerpoint</span>.
 <br>
 #### Just <span style="color: #e49436">Markdown</span>.
 #### Then <span style="color: #e49436">Git-Commit</span>.
