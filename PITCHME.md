@@ -13,7 +13,7 @@
 #### interactive,
 #### online and offline slideshows.
 <br>
-<span style="color:gray; font-size:0.6em;">[ JUST LIKE THIS ONE ]</span>
+<span style="color: #bbb; font-size:0.6em;">(Just like this one...)</span>
 
 ---
 
