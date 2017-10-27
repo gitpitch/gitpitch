@@ -61,7 +61,7 @@ Done!
 
 <br>
 
-<span style="font-size: 1.3em;"><span style="color:white">htt</span><span style="color:white">ps://git</span><span style="color: #e49436">pitch</span><span style="color: white">.com/<span style="color: #e49436">user</span>/<span style="color: #e49436">repo</span>/<span style="color: #e49436">branch</span></span>
+<span style="font-size: 1em; font-family: monospace; color: white"><span>htt</span><span>ps://gitpitch.com/</span><span style="color: #e49436">user</span>/<span style="color: #e49436">repo</span>/<span style="color: #e49436">branch</span></span>
 
 <br>
 
