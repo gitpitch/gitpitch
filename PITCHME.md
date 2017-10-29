@@ -61,7 +61,7 @@ Done!
 
 <br>
 
-![GitPitch Slideshow URLs](images/gitpitch-slideshow-urls.png)
+![GitPitch Slideshow URLs](images/gp-slideshow-urls.png)
 
 <br>
 
