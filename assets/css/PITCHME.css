@@ -1,0 +1,35 @@
+.gold {
+  color: #e49436;
+}
+
+.gray {
+  color: gray;
+}
+
+span.byline, span.aside {
+  color: #bbb;
+}
+
+span.byline {
+  font-size: 80%;
+}
+
+span.aside {
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.reveal section img {
+  border: 0;
+  box-shadow: none;
+  background: none;
+}
+
+.reveal section a {
+  color: #e49436;
+  text-decoration: underline;
+}
+
+.reveal section a:hover {
+  color: #e7ad52;
+}
