@@ -32,7 +32,7 @@
 #### Create GitPitch slideshow content using GitHub Flavored Markdown in your favorite editor.
 
 <br>
-<span style="color: #bbb; font-size: 0.7em; font-style: italic">It's as easy as README.md, just with simple slide-delimeters (---)</span>
+<span style="color: #bbb; font-size: 0.7em; font-style: italic">It's as easy as README.md with simple slide-delimeters (---)</span>
 
 ---
 @title[Step 2. Git-Commit]
@@ -61,7 +61,7 @@ Done!
 
 <br>
 
-<span style="font-size: 1em; font-family: monospace; color: white"><span>htt</span><span>ps://gitpitch.com/</span><span style="color: #e49436">user</span>/<span style="color: #e49436">repo</span>/<span style="color: #e49436">branch</span></span>
+![GitPitch Slideshow URLs](images/gitpitch-slideshow-urls.png)
 
 <br>
 
