@@ -103,11 +103,16 @@
         });
 
         Reveal.addEventListener('ready', function(evt) {
+
           if (evt.indexh === 0 && evt.indexv === 0) {
             pushHelpNotification();
           } else {
             pushFootnoteNotification();
           }
+        });
+
+        Reveal.addEventListener('menu-ready', function(evt) {
+            manageMenuPolicy();
         });
 
         Reveal.addEventListener('slidechanged', function(evt) {
@@ -162,6 +167,14 @@
         function disableEvents() {
             Reveal.removeEventListeners();
         };
+
+        function manageMenuPolicy() {
+            @if(ssm.published()) {
+            if(RevealMenu && RevealMenu.isOpen()) {
+                RevealMenu.toggle();
+            }
+            }
+        }
 
     </script>
 
