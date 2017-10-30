@@ -468,39 +468,6 @@ public class PitchController extends Controller {
     } // oembed action
 
     /*
-     * Raw returns file content identified by path.
-     */
-    public CompletionStage<Result> raw(String grs,
-                                       String user,
-                                       String repo,
-                                       String branch,
-                                       String path) {
-
-        PitchParams pp =
-            PitchParams.build(grsOnCall(grs), user, repo, branch);
-        log.debug("raw: pp={}, path={}", pp, path);
-
-        String offline = request().getQueryString("offline");
-        log.debug("raw: pp={}, path={}, offline={}", pp, path, offline != null);
-
-        Optional<File> fileo = pitchService.raw(pp, path);
-
-        if (fileo.isPresent()) {
-
-            log.debug("raw: pp={}, path={} file is found.");
-            File file = fileo.get();
-            return CompletableFuture.completedFuture(ok(file));
-
-        } else {
-
-            log.debug("raw: pp={}, path={} file not found.");
-            return CompletableFuture.completedFuture(notFound());
-
-        }
-
-    } // raw action
-
-    /*
      * Determine GRS on call, explicitly defined or default.
      */
     private String grsOnCall(String grsParam) {
