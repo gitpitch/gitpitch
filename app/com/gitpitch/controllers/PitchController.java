@@ -26,7 +26,7 @@ package com.gitpitch.controllers;
 import com.gitpitch.git.GRS;
 import com.gitpitch.git.GRSManager;
 import com.gitpitch.models.GitRepoModel;
-import com.gitpitch.models.MarkdownModel;
+import com.gitpitch.models.Markdown;
 import com.gitpitch.executors.FrontEndThreads;
 import com.gitpitch.models.SlideshowModel;
 import com.gitpitch.services.PitchService;
@@ -207,11 +207,11 @@ public class PitchController extends Controller {
         PitchParams pp =
             PitchParams.build(grsOnCall(grs),
                     user, repo, branch, null, pitchme);
-        Optional<MarkdownModel> mdmo = pitchService.cachedMarkdown(pp);
+        Optional<Markdown> mdmo = pitchService.cachedMarkdown(pp);
 
         if (mdmo.isPresent()) {
 
-            MarkdownModel mdm = mdmo.get();
+            Markdown mdm = mdmo.get();
             log.info("markdown:  [ mdwn, cached, online ] {}", pp);
             return CompletableFuture.completedFuture(ok(mdm.produce())
                     .as("text/markdown"));

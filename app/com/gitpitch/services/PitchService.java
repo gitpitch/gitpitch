@@ -24,6 +24,7 @@
 package com.gitpitch.services;
 
 import com.gitpitch.models.GitRepoModel;
+import com.gitpitch.models.Markdown;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.models.SlideshowModel;
 import com.gitpitch.policies.CacheTimeout;
@@ -150,7 +151,7 @@ public class PitchService {
     /*
      * Return cached MarkdownModel, else Optional.empty.
      */
-    public Optional<MarkdownModel> cachedMarkdown(PitchParams pp) {
+    public Optional<Markdown> cachedMarkdown(PitchParams pp) {
 
         String mdmKey = MarkdownModel.genKey(pp);
         return Optional.ofNullable(pitchCache.get(mdmKey));
@@ -159,7 +160,7 @@ public class PitchService {
     /*
      * Return RepoModel.
      */
-    public MarkdownModel fetchMarkdown(PitchParams pp) {
+    public Markdown fetchMarkdown(PitchParams pp) {
 
         log.debug("fetchMarkdown: pp={}", pp);
         CountDownLatch markdownLatch = gitService.fetchMarkdown(pp);
@@ -177,8 +178,8 @@ public class PitchService {
             log.warn("fetchMarkdown: pp={}, markdownLatch.await ex={}", pp, ex);
         }
 
-        Optional<MarkdownModel> mdmo = cachedMarkdown(pp);
-        MarkdownModel mdm = mdmo.orElse(null);
+        Optional<Markdown> mdmo = cachedMarkdown(pp);
+        Markdown mdm = mdmo.orElse(null);
         log.debug("fetchMarkdown: pp={}, returning mdm={}", pp, mdm);
 
         return mdm;
