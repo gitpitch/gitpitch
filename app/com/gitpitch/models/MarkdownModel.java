@@ -109,8 +109,6 @@ public class MarkdownModel implements Markdown {
 
                     consumed = stream.map(md -> {
                         return process(md, pp, yOpts, gitRawBase);
-                    }).map(md -> {
-                        return processAnchors(md);
                     }).collect(Collectors.joining("\n"));
 
                     consumed = postProcess(consumed, pp, yOpts, gitRawBase);
@@ -471,70 +469,6 @@ public class MarkdownModel implements Markdown {
         }
 
         return null;
-    }
-
-    /*
-     * Ensure all regular Markdown links are upgraded to
-     * HTML anchors with target=_blank in order to
-     * open from within embedded GitPitch iFrame.
-     */
-    private String processAnchors(String md) {
-        try {
-
-            if(linkAbsolute(md)) {
-                return buildAnchor(md.trim(), md.trim());
-            } else {
-
-                boolean moreAnchors = md.contains(MD_ANCHOR_OPEN);
-                while(moreAnchors) {
-
-                    if(md.contains(MD_ANCHOR_OPEN)) {
-
-                        int anchorStart = md.indexOf(MD_ANCHOR_OPEN);
-                        int anchorDelim =
-                            md.indexOf(MD_LINK_DELIM, anchorStart);
-
-                        // Regular Markdown Link not Markdown Image Link.
-                        if(anchorDelim != -1 &&
-                            (anchorStart == 0 ||
-                                !md.substring(anchorStart-1)
-                                                .startsWith(MD_LINK_OPEN))) {
-
-                            int anchorEnd =
-                                md.indexOf(MD_LINK_BRCKT, anchorDelim);
-
-                            String title =
-                                md.substring(anchorStart+1, anchorDelim);
-                            String link =
-                                md.substring(anchorDelim+2, anchorEnd);
-
-                            String anchor = buildAnchor(title, link);
-
-                            String mdLeft = md.substring(0, anchorStart);
-                            String mdRight = md.substring(anchorEnd + 1);
-                            md = mdLeft + anchor + mdRight;
-
-                        } else {
-                            moreAnchors = false;
-                        }
-                    } else {
-                        moreAnchors = false;
-                    }
-                }
-            }
-        } catch(Exception tex) {
-            return md;
-        }
-        return md;
-    }
-
-    private String buildAnchor(String title, String link) {
-        return new StringBuffer(HTML_ANCHOR_OPEN)
-                .append(link)
-                .append(HTML_ANCHOR_MID)
-                .append(title)
-                .append(HTML_ANCHOR_CLOSE)
-                .toString();
     }
 
     private String postProcess(String md,

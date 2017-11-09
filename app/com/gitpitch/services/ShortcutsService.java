@@ -55,8 +55,7 @@ public class ShortcutsService {
     public boolean codeFragmentFound(String md) {
         boolean found = false;
         if(md != null) {
-            String trimmed = md.trim();
-            if(trimmed.startsWith(MarkdownModel.MD_CODE_FRAG_OPEN)) {
+            if(md.startsWith(MarkdownModel.MD_CODE_FRAG_OPEN)) {
                 found = true;
             }
         }
@@ -66,8 +65,7 @@ public class ShortcutsService {
     public boolean titleHintFound(String md) {
       boolean found = false;
       if(md != null) {
-          String trimmed = md.trim();
-          if(trimmed.startsWith(MarkdownModel.MD_TITLE_HINT_OPEN)) {
+          if(md.startsWith(MarkdownModel.MD_TITLE_HINT_OPEN)) {
               found = true;
           }
       }
@@ -139,11 +137,9 @@ public class ShortcutsService {
 
             if(hintEnd > hintStart) {
                 String hint = md.substring(hintStart, hintEnd);
-                md =  new StringBuffer(MarkdownModel.MD_SPACER)
-                          .append(TITLE_HINT_SPAN_OPEN)
+                md =  new StringBuffer(TITLE_HINT_SPAN_OPEN)
                           .append(hint)
                           .append(TITLE_HINT_SPAN_CLOSE)
-                          .append(MarkdownModel.MD_SPACER)
                           .toString();
             }
 

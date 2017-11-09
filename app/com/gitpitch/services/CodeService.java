@@ -34,6 +34,8 @@ import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
 import java.util.*;
 import java.nio.file.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.inject.*;
 import play.Logger;
 import play.Logger.ALogger;
@@ -84,6 +86,9 @@ public class CodeService {
 
             if(downStatus == 0) {
                 String code = diskService.asText(pp, SOURCE_CODE);
+                if(isMarkdown(codePath)) {
+                    code = prepMarkdown(code);
+                }
                 theContent = buildCodeBlock(mdm.extractDelim(md),
                                       code, langHint, slideTitle);
             } else {
@@ -140,9 +145,42 @@ public class CodeService {
                                 .toString();
    }
 
+   private boolean isMarkdown(String codePath) {
+       return (codePath != null) &&
+        codePath.endsWith(MARKDOWN_EXTENSION);
+   }
+
+   /*
+    * To prevent MD code being treated as presentation content
+    * do the following on code-delimiter injection:
+    *
+    * 1. Auto-indent code.
+    * 2. Replace inline code block tripple-ticks with double-ticks
+    * to prevent nested code-block parser and rendering errors.
+    */
+   private String prepMarkdown(String md) {
+       try {
+           md = Stream.of(lineByLine(md)).map(mdline -> {
+               return mdline.startsWith(MARKDOWN_CODE_TICKS) ?
+                mdline.substring(1) : mdline;
+           }).map(mdline -> {
+               return MARKDOWN_INDENT + mdline;
+           }).collect(Collectors.joining(MarkdownModel.MD_SPACER));
+       } catch(Exception ex) {}
+       return md;
+   }
+
+   private String[] lineByLine(String md) {
+       return md.split("\\r?\\n");
+   }
+
    private static final String SOURCE_CODE = "PITCHME.code";
    private static final String SOURCE_CODE_DELIMITER =
       "### Code Block Delimiter";
    private static final String SOURCE_CODE_NOT_FOUND =
       "### Source File Not Found";
+   private static final String MARKDOWN_EXTENSION = ".md";
+   private static final String MARKDOWN_INDENT = " ";
+   private static final String MARKDOWN_NEWLINE = "\n";
+   private static final String MARKDOWN_CODE_TICKS = "```";
 }
