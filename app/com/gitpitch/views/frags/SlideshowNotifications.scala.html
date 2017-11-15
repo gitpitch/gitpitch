@@ -1,13 +1,19 @@
 @(ssm: com.gitpitch.models.SlideshowModel)
 <script>
     function pushNotification(msg, fade) {
+      var footer = document.getElementById('title-footer')
       var notification = document.getElementById('notification')
-      if(fade) {
-        notification.className = "footer-fade";
-        notification.innerHTML = msg;
+      if(window.innerWidth < 700) {
+        footer.className = "footer-hidden";
       } else {
-        notification.className = "footer-hard";
-        notification.innerHTML = msg;
+          footer.className = "footer-visible";
+          if(fade) {
+            notification.className = "footer-fade";
+            notification.innerHTML = msg;
+          } else {
+            notification.className = "footer-hard";
+            notification.innerHTML = msg;
+          }
       }
     };
 
