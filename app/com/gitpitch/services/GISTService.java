@@ -139,7 +139,9 @@ public class GISTService {
                          .append(slideTitle)
                          .append("</span>")
                          .append(MarkdownModel.MD_SPACER)
+                         .append("<span class='slide-title'>")
                          .append(slideTitle)
+                         .append("</span>")
                          .append(MarkdownModel.MD_SPACER);
         }
 
