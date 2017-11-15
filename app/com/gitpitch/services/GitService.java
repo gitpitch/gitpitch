@@ -249,7 +249,23 @@ public class GitService {
                         int downYAML = grsService.download(pp,
                                 PitchParams.PITCHME_YAML, pp.YAML());
                         boolean downOk = downYAML == STATUS_OK;
-                        log.debug("fetchYAML: pp={}, downloaded YAML={}", pp, downYAML);
+                        log.debug("fetchYAML: pp={}, colocated YAML={}",
+                                                            pp, downYAML);
+
+                        /*
+                         * If PITCHME.yaml not found at pp.pitchme path
+                         * try locate file using GitPitch convention
+                         * default by looking in repo root directory.
+                         */
+                        if(!downOk && pp.pitchme != null) {
+                            downYAML =
+                                grsService.download(pp,
+                                                    PitchParams.PITCHME_YAML,
+                                                    PitchParams.PITCHME_YAML);
+                                downOk = downYAML == STATUS_OK;
+                                log.debug("fetchYAML: pp={}, fallback YAML={}",
+                                                                pp, downYAML);
+                        }
 
                         /*
                          * Update pitchCache with new SlideshowModel.
