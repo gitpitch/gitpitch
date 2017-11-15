@@ -244,10 +244,7 @@ public final class YAMLOptions {
     }
 
     public Boolean highlightEnabled(PitchParams pp) {
-        String highlight = _yProps.get(HIGHLIGHT_OPTION);
-        if (highlight != null)
-            highlight = highlight.toLowerCase();
-        return HIGHLIGHT_CONFIGS.contains(highlight);
+        return (_yProps.get(HIGHLIGHT_OPTION) != null) ? true : false;
     }
 
     public String fetchHighlight(PitchParams pp) {
@@ -402,39 +399,6 @@ public final class YAMLOptions {
                     "MML_HTMLorMML", "AM_CHTML", "AM_SVG",
                     "AM_HTMLorMML", "TeX-AMS-MML_SVG",
                     "Accessible");
-    private static final List<String> HIGHLIGHT_CONFIGS =
-            Arrays.asList("github-gist", "github", "default",
-                    "agate", "androidstudio", "arduino-light",
-                    "arta", "ascetic",
-                    "atelier-cave-dark", "atelier-cave-light",
-                    "atelier-dune-dark", "atelier-dune-light",
-                    "atelier-estuary-dark", "atelier-estuary-dark",
-                    "atelier-forest-dark", "atelier-forest-dark",
-                    "atelier-health-dark", "atelier-health-dark",
-                    "atelier-lakeside-dark", "atelier-lakeside-dark",
-                    "atelier-plateau-light", "atelier-plateau-light",
-                    "atelier-savanna-light", "atelier-savanna-light",
-                    "atelier-seaside-light", "atelier-seaside-light",
-                    "atelier-sulphurpool-light", "atelier-sulphurpool-light",
-                    "brown-paper", "brown-papersq",
-                    "codepen-embed", "color-brewer",
-                    "dark", "darkula", "docco",
-                    "dracula", "far", "foundation",
-                    "googlecode", "grayscale",
-                    "gruvbox-dark", "gruvbox-light",
-                    "hopscotch", "hybrid", "idea", "ir-black",
-                    "kimble.dark", "kimble.light",
-                    "magula", "mono-blue", "monokai-sublime",
-                    "monokai", "obsidian", "ocean",
-                    "paraiso-dark", "paraiso-light",
-                    "pojoaque", "purebasic",
-                    "qtcreateor_dark", "qtcreateor_light",
-                    "railscasts", "rainbow", "school-book",
-                    "solarized-dark", "solarized-light",
-                    "sunburst", "tomorrow-night-blue",
-                    "tomorrow-night-bright",
-                    "tomorrow-night-eighties", "tomorrow-night",
-                    "tomorrow", "vs", "xcode", "xt256", "zenburn");
     private static final String ABS_HTTP = "http";
     private static final String DOT_CSS = ".css";
 }
