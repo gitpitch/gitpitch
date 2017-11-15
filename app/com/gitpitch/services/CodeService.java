@@ -86,7 +86,7 @@ public class CodeService {
 
             if(downStatus == 0) {
                 String code = diskService.asText(pp, SOURCE_CODE);
-                if(isMarkdown(codePath)) {
+                if(isMarkdown(codePath, langHint)) {
                     code = prepMarkdown(code);
                 }
                 theContent = buildCodeBlock(mdm.extractDelim(md),
@@ -147,9 +147,9 @@ public class CodeService {
                                 .toString();
    }
 
-   private boolean isMarkdown(String codePath) {
-       return (codePath != null) &&
-        codePath.endsWith(MARKDOWN_EXTENSION);
+   private boolean isMarkdown(String codePath, String langHint) {
+       return ((codePath != null) && codePath.endsWith(MARKDOWN_EXTENSION)) ||
+        (langHint != null && langHint.toLowerCase().equals("markdown"));
    }
 
    /*
