@@ -2,7 +2,11 @@
 
     <script>
         Reveal.initialize({
+            @if(!(serverPrinting || webPrinting)) {
             controls: true,
+            } else {
+            controls: false,
+            }
             progress: true,
             embedded: true,
             margin: 0.0,
