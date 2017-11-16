@@ -1,4 +1,5 @@
-@(ssm: com.gitpitch.models.SlideshowModel)
+@(ssm: com.gitpitch.models.SlideshowModel, serverPrinting: Boolean, webPrinting: Boolean)
+@if(!(serverPrinting || webPrinting)) {
 <script>
     function pushNotification(msg, fade) {
       var footer = document.getElementById('title-footer')
@@ -36,3 +37,11 @@
       pushNotification("Code Presenting - Step " + step + " / " + frags, true);
     }
 </script>
+} else {
+<script>
+function pushNotification(msg, fade) {};
+function pushHelpNotification() {}
+function pushFootnoteNotification() {}
+function pushCodePresentingStepNotification(step, frags) {}
+</script>
+}
