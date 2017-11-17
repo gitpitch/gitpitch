@@ -40,6 +40,22 @@ public class ShortcutsService {
 
     private final Logger.ALogger log = Logger.of(this.getClass());
 
+    public String process(String md, PitchParams pp, YAMLOptions yOpts) {
+
+        String processed = md;
+
+        try {
+            int faCycles = 5; // Prevent infinite loop.
+            while(fontAwesomeFound(processed) && faCycles > 0) {
+                String expanded = expandFontAwesome(processed);
+                faCycles = processed.equals(expanded) ? 0 : (faCycles-1);
+                processed = expanded;
+            }
+        } catch(Exception ex) {}
+
+        return processed;
+    }
+
     public boolean listFragmentFound(String md) {
         boolean found = false;
         if(md != null) {
@@ -70,6 +86,16 @@ public class ShortcutsService {
           }
       }
       return found;
+    }
+
+    public boolean fontAwesomeFound(String md) {
+        boolean found = false;
+        if(md != null) {
+            if(md.contains(MarkdownModel.MD_FA_OPEN)) {
+                found = true;
+            }
+        }
+        return found;
     }
 
     /*
@@ -150,6 +176,53 @@ public class ShortcutsService {
     }
 
     /*
+     * Expand shortcut syntax for font-awesome with fully expanded
+     * HTML span syntax with optional text.
+     */
+    public String expandFontAwesome(String md) {
+
+        String mdLeft = "";
+        String faName = "";
+        String faNote = "";
+        String mdRight = "";
+        String expandedFA = "";
+
+        try {
+            int faOpen = md.indexOf(MarkdownModel.MD_FA_OPEN);
+            int faClose = md.indexOf(MarkdownModel.MD_FA_CLOSE);
+
+            if(faClose > faOpen) { /* faName exists */
+
+                mdLeft = md.substring(0, faOpen);
+                faName =
+                    md.substring(faOpen + MarkdownModel.MD_FA_OPEN.length(),
+                                 faClose);
+
+                String rmd = md.substring(faClose + 1);
+
+                int faNoteOpen = rmd.indexOf(MarkdownModel.MD_FA_NOTE_OPEN);
+                int faNoteClose = rmd.indexOf(MarkdownModel.MD_FA_NOTE_CLOSE);
+
+                if(faNoteOpen == 0) { /* faNote immediately follows faName */
+
+                    faNote =
+                        rmd.substring(MarkdownModel.MD_FA_NOTE_OPEN.length(),
+                            faNoteClose);
+                    mdRight = rmd.substring(faNoteClose + 1);
+                } else {
+                    mdRight = rmd;
+                }
+
+                expandedFA = buildFontAwesome(faName, faNote);
+            }
+
+        } catch(Exception ex) {
+        } finally {
+            return mdLeft + expandedFA + mdRight;
+        }
+    }
+
+    /*
      * Construct a HTML fragment for a code fragment based on the
      * reveal-code-focus plugin syntax:
      * <span class="fragment current-only" data-code-focus="1-9">Note</span>
@@ -161,6 +234,19 @@ public class ShortcutsService {
                 .append(HTML_CODE_FRAG_CLOSE)
                 .append(note)
                 .append(HTML_CODE_FRAG_NOTE_CLOSE)
+                .toString();
+    }
+
+    /*
+     * Construct a HTML fragment for an FA icon.
+     */
+    private String buildFontAwesome(String font, String text) {
+        if(text == null) text = "";
+        return new StringBuffer(HTML_FONT_FRAG_OPEN)
+                .append(font)
+                .append(HTML_FONT_FRAG_CLOSE)
+                .append(text)
+                .append(HTML_FONT_FRAG_TEXT_CLOSE)
                 .toString();
     }
 
@@ -178,4 +264,8 @@ public class ShortcutsService {
     private static final String TITLE_HINT_SPAN_OPEN =
         "<span class=\"menu-title\" style=\"display: none\">";
     private static final String TITLE_HINT_SPAN_CLOSE = "</span>";
+    private static final String HTML_FONT_FRAG_OPEN = "<i class=\"fa fa-";
+    private static final String HTML_FONT_FRAG_CLOSE = "\" aria-hidden=\"true\"> ";
+    private static final String HTML_FONT_FRAG_TEXT_CLOSE = "</i>";
+
 }

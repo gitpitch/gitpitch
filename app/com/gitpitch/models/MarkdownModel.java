@@ -109,6 +109,8 @@ public class MarkdownModel implements Markdown {
 
                     consumed = stream.map(md -> {
                         return process(md, pp, yOpts, gitRawBase);
+                    }).map(md -> {
+                        return shortcutsService.process(md, pp, yOpts);
                     }).collect(Collectors.joining("\n"));
 
                     consumed = postProcess(consumed, pp, yOpts, gitRawBase);
@@ -658,6 +660,10 @@ public class MarkdownModel implements Markdown {
     public static final String MD_CODE_BLOCK_CLOSE = "```";
     public static final String MD_TITLE_HINT_OPEN = "@title[";
     public static final String MD_TITLE_HINT_CLOSE = "]";
+    public static final String MD_FA_OPEN = "@fa[";
+    public static final String MD_FA_CLOSE = "]";
+    public static final String MD_FA_NOTE_OPEN = "(";
+    public static final String MD_FA_NOTE_CLOSE = ")";
 
     private static final String MD_HSLIDE_IMAGE = "?image=";
     private static final String MD_VSLIDE_IMAGE = "?image=";
