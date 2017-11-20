@@ -25,14 +25,11 @@
 #### Just <span class="gold">Markdown</span>.
 #### Then <span class="gold">Git-Commit</span>.
 
----
+---?code=assets/md/hello.md&title=Step 1. PITCHME.md
 
-@title[Step 1. PITCHME.md]
+<br>
+#### Create slideshow content using GitHub Flavored Markdown in your favorite editor.
 
-### <span class="gold">STEP 1. Create 'PITCHME.md'</span>
-<br>
-#### Create GitPitch slideshow content using GitHub Flavored Markdown in your favorite editor.
-<br>
 <span class="aside">It's as easy as README.md with simple slide-delimeters (---)</span>
 
 ---
@@ -97,4 +94,4 @@ Done!
 ### Go for it.
 ### Just add <span class="gold">PITCHME.md</span> ;)
 <br>
-[Click here to learn more...](https://github.com/gitpitch/gitpitch/wiki)
+[Click here to learn more @fa[external-link fa-pad-left]](https://github.com/gitpitch/gitpitch/wiki)
