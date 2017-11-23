@@ -135,11 +135,7 @@ public class GISTService {
         if(slideTitle != null) {
 
             slide = slide.append(MarkdownModel.MD_SPACER)
-                         .append("<span class='menu-title' style='display: none'>")
-                         .append(slideTitle)
-                         .append("</span>")
-                         .append(MarkdownModel.MD_SPACER)
-                         .append("<span class='slide-title'>")
+                         .append("<span class='menu-title slide-title'>")
                          .append(slideTitle)
                          .append("</span>")
                          .append(MarkdownModel.MD_SPACER);
