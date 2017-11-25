@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "decktape": "^2.3.0",
+    "phantomjs": "^2.1.7"
+  }
+}

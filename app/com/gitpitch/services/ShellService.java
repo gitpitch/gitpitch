@@ -51,8 +51,8 @@ public class ShellService {
                     .start();
 
             resp = cmdProc.waitFor();
-            log.debug("exec: op={}, pp={}, time taken={}", op, pp,
-                    (System.currentTimeMillis() - startProc));
+            log.debug("exec: op={}, pp={}, time taken={}, cmd={}", op, pp,
+                    (System.currentTimeMillis() - startProc), cmd);
 
 
         } catch (IOException ioex) {

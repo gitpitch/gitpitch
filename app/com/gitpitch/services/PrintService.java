@@ -166,7 +166,7 @@ public class PrintService {
                         .absoluteURL(isEncrypted(),
                                 hostname());
 
-        String[] cmd = {PDF_PHANTOM,
+        String[] cmd = {
                 PDF_DECKTAPE,
                 PDF_COMMAND,
                 slideshowUrl,
@@ -190,8 +190,7 @@ public class PrintService {
         return runtime.config("gitpitch.hostname");
     }
 
-    private static final String PDF_PHANTOM = "./bin/phantomjs";
-    private static final String PDF_DECKTAPE = "decktape.js";
+    private static final String PDF_DECKTAPE = "decktape";
     private static final String PDF_COMMAND = "reveal";
     private static final String PITCHME_PDF = "PITCHME.pdf";
     private static final String PRINT_NO_FRAGS = "false";
