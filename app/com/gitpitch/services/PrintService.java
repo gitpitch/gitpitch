@@ -152,6 +152,9 @@ public class PrintService {
         diskService.delete(pp, pp.PDF());
         String filePath = diskService.asFile(pp, pp.PDF()).toString();
 
+        String decktapeArgs = runtime.config("gitpitch.decktape.optionalArgs");
+        log.debug("Passing the following additional arguments to decktape: {}", decktapeArgs);
+
         String slideshowUrl =
             com.gitpitch.controllers.routes.PitchController.slideshow(pp.user,
                         pp.repo,
@@ -167,7 +170,7 @@ public class PrintService {
                                 hostname());
 
         String deckTape = diskService.decktape();
-        String[] cmd = { deckTape, REVEAL, slideshowUrl, filePath};
+        String[] cmd = { deckTape, REVEAL, slideshowUrl, filePath, decktapeArgs};
         int generated = shellService.exec(GIT_PDF, pp, branchPath, cmd);
 
         if (generated != STATUS_OK) {
