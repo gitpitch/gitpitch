@@ -167,7 +167,8 @@ public class PrintService {
                                 hostname());
 
         String deckTape = diskService.decktape();
-        String[] cmd = { deckTape, REVEAL, slideshowUrl, filePath};
+        String[] cmd =
+            { deckTape, REVEAL, slideshowUrl, filePath, decktapeArgs()};
         int generated = shellService.exec(GIT_PDF, pp, branchPath, cmd);
 
         if (generated != STATUS_OK) {
@@ -183,6 +184,11 @@ public class PrintService {
 
     public String hostname() {
         return runtime.config("gitpitch.hostname");
+    }
+
+    private String decktapeArgs() {
+        String args = runtime.config("gitpitch.decktape.args");
+        return (args != null) ? args : "";
     }
 
     private static final String REVEAL = "reveal";
