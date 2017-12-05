@@ -108,6 +108,8 @@
 
         Reveal.addEventListener('ready', function(evt) {
 
+          upgradeAnchors();
+
           if (evt.indexh === 0 && evt.indexv === 0) {
             pushHelpNotification();
           } else {
@@ -178,6 +180,14 @@
                 RevealMenu.toggle();
             }
             }
+        }
+
+        function upgradeAnchors() {
+            Array.from(document.getElementsByTagName('a')).forEach($link => {
+              if ($link.hostname !== window.location.hostname) {
+                $link.setAttribute('target', '_blank');
+              }
+            });
         }
 
     </script>
