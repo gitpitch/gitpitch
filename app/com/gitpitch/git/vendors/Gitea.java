@@ -78,5 +78,5 @@ public class Gitea extends GRSService {
 
     public static final String TYPE = "gitea";
     private static final String GITEA_REPO_API = "repos/";
-    private static final String GITEA_RAW = "/raw/";
+    private static final String GITEA_RAW = "/raw/branch/";
 }

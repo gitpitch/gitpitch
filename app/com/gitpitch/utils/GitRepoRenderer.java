@@ -334,25 +334,54 @@ public class GitRepoRenderer {
      * Return https://{grs}/{user}/{repo}/tree/{branch}
      */
     public String branchHub(PitchParams pp) {
-      if(GRS_BITBUCKET.equals(pp.grs))
-        return "#";
-      else
-        return _repoHub + GIT_TREE + pp.branch;
+
+        String branchHub = "#";
+
+        switch(pp.grs) {
+            case GRS_GITHUB:
+            case GRS_GITLAB:
+            case GRS_GITBUCKET:
+                branchHub = _repoHub + GIT_TREE + pp.branch;
+                break;
+            case GRS_BITBUCKET:
+                branchHub = _repoHub + GIT_SRC + pp.branch;
+                break;
+            case GRS_GITEA:
+                branchHub = _repoHub + GIT_SRC_BRANCH + pp.branch;
+                break;
+            case GRS_GOGS:
+                branchHub = _repoHub + GIT_SRC + pp.branch;
+                break;
+        }
+        return branchHub;
     }
 
     /*
      * Return https://{grs}/{user}/{repo}/blob/{branch}/{pitchme}
      */
     public String pitchHub(PitchParams pp) {
-      if(GRS_BITBUCKET.equals(pp.grs)) {
-        return "#";
-      } else {
-        if(pp.pitchme != null)
-            return _repoHub + GIT_BLOB + pp.branch + "/" + pp.pitchme + DEFAULT_PITCHME;
-        else
-            return _repoHub + GIT_BLOB + pp.branch + DEFAULT_PITCHME;
-      }
 
+        String pitchPath =
+            (pp.pitchme != null) ? (pp.branch + SLASH + pp.pitchme) : pp.branch;
+        String pitchHub = "#";
+
+        switch(pp.grs) {
+            case GRS_GITHUB:
+            case GRS_GITLAB:
+            case GRS_GITBUCKET:
+                pitchHub = _repoHub + GIT_BLOB + pitchPath + DEFAULT_PITCHME;
+                break;
+            case GRS_BITBUCKET:
+                pitchHub = _repoHub + GIT_SRC + pitchPath + DEFAULT_PITCHME;
+                break;
+            case GRS_GITEA:
+                pitchHub = _repoHub + GIT_SRC_BRANCH + pitchPath + DEFAULT_PITCHME;
+                break;
+            case GRS_GOGS:
+                pitchHub = _repoHub + GIT_SRC + pitchPath + DEFAULT_PITCHME;
+                break;
+        }
+        return pitchHub;
     }
 
     /*
@@ -615,6 +644,8 @@ public class GitRepoRenderer {
     private static final String GIT_MASTER = "master";
     private static final String GIT_TREE   = "/tree/";
     private static final String GIT_BLOB   = "/blob/";
+    private static final String GIT_SRC    = "/src/";
+    private static final String GIT_SRC_BRANCH = "/src/branch/";
     private static final String CSS = ".css";
     private static final String MARKDOWN = "/pitchme/markdown/";
     private static final String SLASH = "/";
@@ -651,7 +682,12 @@ public class GitRepoRenderer {
     private static final String GIT_DEFAULT_ICON =
         "<i class='fa fa-git-square' aria-hidden='true'></i>";
 
+    private static final String GRS_GITHUB = "github";
+    private static final String GRS_GITLAB = "gitlab";
     private static final String GRS_BITBUCKET = "bitbucket";
+    private static final String GRS_GITBUCKET = "gitbucket";
+    private static final String GRS_GITEA = "gitea";
+    private static final String GRS_GOGS = "gogs";
 
     private static final String AS_DESCR =
         "Markdown Presentation powered by GitPitch.";
