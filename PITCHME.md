@@ -91,6 +91,26 @@ Done!
 
 ---
 
+### <span class="gold">GitPitch Pro - Coming Soon!</span>
+
+<br>
+<div class="left">
+    <i class="fa fa-user-secret fa-5x" aria-hidden="true"> </i><br>
+    <a href="https://gitpitch.com/pro-features.html" class="pro-link">
+    More details here.</a>
+</div>
+<div class="right">
+    <ul>
+        <li>Private Repos</li>
+        <li>Private URLs</li>
+        <li>Password-Protection</li>
+        <li>Image Opacity</li>
+        <li>SVG Image Support</li>
+    </ul>
+</div>
+
+---
+
 ### Go for it.
 ### Just add <span class="gold">PITCHME.md</span> ;)
 <br>
