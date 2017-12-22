@@ -467,6 +467,13 @@ public class PitchController extends Controller {
         return result;
     } // oembed action
 
+    public Result template(String template) {
+        String target = (template != null) ? template : TEMPLATE_UNDEF;
+        String targetArchive = TEMPLATE_REPO + target + TEMPLATE_ZIP;
+        log.info("template: downloading {}", target);
+        return redirect(targetArchive);
+    }
+
     /*
      * Determine GRS on call, explicitly defined or default.
      */
@@ -500,4 +507,9 @@ public class PitchController extends Controller {
 
     private static final String OEMBED_JSON = "json";
     private static final String OEMBED_XML  = "xml";
+
+    private static final String TEMPLATE_REPO =
+        "https://github.com/gitpitch/templates/archive/";
+    private static final String TEMPLATE_ZIP = ".zip";
+    private static final String TEMPLATE_UNDEF = "UNDEFINED";
 }
