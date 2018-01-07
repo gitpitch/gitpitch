@@ -1,0 +1,327 @@
+.gp-menu .slide-menu {
+	background-color: #000000;
+	z-index: 200;
+	position: fixed;
+	top: 0;
+	width: 300px;
+	height: 100%;
+	border-right: 1px solid gray;
+	transition: transform 0.3s;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+/*
+ * Slides menu
+ */
+
+.gp-menu .slide-menu-items {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	border-bottom: solid 1px #222;
+	font-size: 1em;
+	font-family: 'Roboto', sans-serif;
+}
+
+.gp-menu .slide-menu-item,
+.gp-menu .slide-menu-item-vertical {
+	display: block;
+	text-align: left;
+	padding: 10px 18px;
+	color: #b3b3b3;
+	font-size: 1em !important;
+	cursor: pointer;
+}
+
+.gp-menu .slide-menu-item-vertical {
+	padding-left: 30px;
+}
+
+.gp-menu .active-menu-panel li.selected {
+	background-color: #222;
+	font-size: 1em !important;
+	color: white;
+}
+
+.gp-menu .active-menu-panel li.fixed-theme {
+	border-top: solid 1px #1a1a1a;
+}
+
+.gp-menu .active-menu-panel li.disabled-theme {
+	text-decoration: line-through;
+	opacity: 0.8;
+	color: white;
+	background-color: black;
+}
+
+.gp-menu .active-menu-panel li.active {
+	color: #e48436;
+}
+
+.gp-menu .active-menu-panel a.active {
+    color: #e48436;
+}
+
+.gp-menu .slide-menu-item.no-title .slide-menu-item-title,
+.gp-menu .slide-menu-item-vertical.no-title .slide-menu-item-title {
+	font-style: italic;
+	font-size: 1em;
+}
+
+.gp-menu .slide-menu-item-number {
+	color: #999;
+	padding-right:6px;
+}
+
+.gp-menu .slide-menu-item i.fa,
+.gp-menu .slide-menu-item-vertical i.fa {
+	padding-right: 12px;
+	display: none;
+}
+
+.gp-menu .slide-menu-item.past i.fa.past,
+.gp-menu .slide-menu-item-vertical.past i.fa.past,
+.gp-menu .slide-menu-item.active i.fa.active,
+.gp-menu .slide-menu-item-vertical.active i.fa.active,
+.gp-menu .slide-menu-item.future i.fa.future,
+.gp-menu .slide-menu-item-vertical.future i.fa.future {
+	display: inline-block;
+}
+
+.gp-menu .slide-menu-item i.fa,
+.gp-menu .slide-menu-item-vertical i.fa {
+	opacity: 1;
+}
+
+.gp-menu .slide-menu--left {
+  left: 0;
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px);
+}
+
+.gp-menu .slide-menu--left.active {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.gp-menu .slide-menu--right {
+  right: 0;
+  -webkit-transform: translateX(300px);
+  -ms-transform: translateX(300px);
+  transform: translateX(300px);
+}
+
+.gp-menu .slide-menu--right.active {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.gp-menu {
+	transition: transform 0.3s;
+}
+
+
+/*
+ * Toolbar
+ */
+.gp-menu .slide-menu-toolbar {
+	height: 60px;
+	width: 100%;
+	font-size: 1.8em;
+	display: table;
+	table-layout: fixed; /* ensures equal width */
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 1px #222;
+}
+
+.gp-menu .slide-menu-toolbar > li {
+	display: table-cell;
+	line-height: 150%;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #aaa;
+	border-radius: 3px;
+}
+
+.gp-menu .slide-menu-toolbar > li.active-toolbar-button {
+	color: #e49436;
+	text-shadow: 0 1px black;
+}
+
+.slide-menu-toolbar > li:hover {
+	color: white;
+}
+
+/*
+ * Panels
+ */
+.gp-menu .slide-menu-panel {
+	position: absolute;
+	width: calc(100% - 20px);
+	padding-left: 10px;
+	padding-right: 10px;
+	visibility: hidden;
+	height: calc(100% - 60px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	color: #AAA;
+}
+
+.gp-menu .slide-menu-panel.active-menu-panel {
+	visibility: visible;
+}
+
+.gp-menu .slide-menu-panel h1,
+.gp-menu .slide-menu-panel h2,
+.gp-menu .slide-menu-panel h3,
+.gp-menu .slide-menu-panel h4,
+.gp-menu .slide-menu-panel h5,
+.gp-menu .slide-menu-panel h6 {
+	margin: 20px 0 10px 0;
+	color: #FFF;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-shadow: none;
+}
+
+.gp-menu .slide-menu-panel h1 {
+	font-size: 1.6em;
+}
+.gp-menu .slide-menu-panel h2 {
+	font-size: 1.4em;
+}
+.gp-menu .slide-menu-panel h3 {
+	font-size: 1.3em;
+}
+.gp-menu .slide-menu-panel h4 {
+	font-size: 1.1em;
+}
+.gp-menu .slide-menu-panel h5 {
+	font-size: 1em;
+}
+.gp-menu .slide-menu-panel h6 {
+	font-size: 0.9em;
+}
+
+.gp-menu .slide-menu-panel p {
+	margin: 2px 0 8px 0;
+	font-size: 0.95em;
+  font-family: 'Roboto', sans-serif;
+}
+
+.gp-menu .slide-menu-panel a {
+	color: #CCC;
+	text-decoration: underline;
+}
+
+.gp-menu .slide-menu-panel a:hover {
+	color: white;
+}
+
+.gp-menu .slide-menu-item a {
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+}
+
+.gp-menu .slide-menu-custom-panel {
+	width: calc(100% - 20px);
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.gp-menu .slide-menu-custom-panel .slide-menu-items {
+	width: calc(100% + 20px);
+	margin-left: -10px;
+	margin-right: 10px;
+}
+
+
+/*
+ * Theme and Transitions buttons
+ */
+
+.gp-menu div[data-panel="Themes"] li,
+.gp-menu div[data-panel="Transitions"] li {
+	display: block;
+	text-align: left;
+	cursor: pointer;
+	color: #848484;
+}
+
+/*
+ * Menu controls
+ */
+.gp-menu .slide-menu-button {
+	position: fixed;
+	left: 30px;
+	bottom: 40px;
+	z-index: 30;
+	font-size: 24px;
+}
+
+/*
+ * Menu overlay
+ */
+
+.gp-menu .slide-menu-overlay {
+  position: fixed;
+  z-index: 199;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+
+.gp-menu .slide-menu-overlay.active {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * Custom Panel List Item (Boxed Width)
+ */
+.gp-menu .slide-menu-custom-panel .slide-menu-boxed {
+		width: 100% !important;
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+}
+
+/*
+ * Custom Panel Table-of-Contents (TOC) Title
+ */
+div.toc-title {
+	color: gray;
+	font-size: 1.1em;
+	text-align: center;
+	padding: 0px;
+	padding-top: 40px;
+	margin: 0px;
+}
+
+div.tagline-box {
+	padding-top: 16px;
+	margin: 0;
+}
+
+div.tagline-box p {
+	padding: 0px;
+	margin: 0 !important;
+	letter-spacing: 0;
+	font-size: 1em;
+	color: gray;
+}
+
+img.logo-shifted {
+	position: relative;
+	left: -2px;
+}

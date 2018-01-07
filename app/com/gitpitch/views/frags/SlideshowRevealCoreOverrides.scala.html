@@ -1,3 +1,4 @@
+@(ssm: com.gitpitch.models.SlideshowModel)
 <style>
   .centered {
       display: flex;
@@ -10,9 +11,12 @@
       max-height: 3.5em;
       max-width: none;
   }
+  @if(ssm.options() != null &&
+    ssm.options().fetchRevealVersion(ssm.params()) == "3.5.0") {
   .reveal .speaker-notes {
       background-color: black;
       opacity : 0.8;
+  }
   }
   .reveal .controls {
     bottom: 20px;
