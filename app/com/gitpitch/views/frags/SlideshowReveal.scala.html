@@ -13,7 +13,7 @@
             showNotes: @ssm.showNotes(),
             transition: '@ssm.fetchTransition()',
             backgroundTransition: '@ssm.fetchTransition()',
-            autoSlide: 0, // autoSlide: @ssm.fetchAutoSlide(false),
+            autoSlide: @ssm.fetchAutoSlide(false),
             loop: @ssm.fetchLoop(),
             center: @ssm.fetchVerticalCenter(),
             rtl: @ssm.fetchRTL(),
@@ -35,7 +35,8 @@
                     config: '@ssm.fetchMathConfig()'
                 },
             }
-            @if(!(serverPrinting || webPrinting)) {
+            @if(!(serverPrinting || webPrinting ||
+                ssm.fetchAutoSlide(false) > 0)) {
             menu: {
               custom: [
                 @if(offline) {
@@ -197,8 +198,8 @@
     <script>
         Reveal.configure({
             keyboard: {
-                37: 'prev',
-                39: 'next'
+                @ssm.remoteControlPrevKey(): 'prev',
+                @ssm.remoteControlNextKey(): 'next'
             }
         });
     </script>

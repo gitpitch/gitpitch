@@ -324,6 +324,28 @@ public class SlideshowModel {
     }
 
     /*
+     * Return "remote-control-prevkey" defined in PITCHME.yaml.
+     */
+    public int remoteControlPrevKey() {
+        int prevKeyCode = DEFAULT_PREV_KEYCODE;
+        if(_yOpts != null) {
+            prevKeyCode = _yOpts.fetchRemoteControlPrevKey(params());
+        }
+        return prevKeyCode != 0 ? prevKeyCode : DEFAULT_PREV_KEYCODE;
+    }
+
+    /*
+     * Return "remote-control-nextkey" defined in PITCHME.yaml.
+     */
+    public int remoteControlNextKey() {
+        int nextKeyCode = DEFAULT_NEXT_KEYCODE;
+        if(_yOpts != null) {
+            nextKeyCode = _yOpts.fetchRemoteControlNextKey(params());
+        }
+        return nextKeyCode != 0 ? nextKeyCode : DEFAULT_NEXT_KEYCODE;
+    }
+
+    /*
      * Return "rtl" defined in PITCHME.yaml.
      */
     public boolean fetchRTL() {
@@ -533,6 +555,8 @@ public class SlideshowModel {
      * Model prefix identifier for cache key generator.
      */
     private static final String MODEL_ID = "SSM:";
+    private static final Integer DEFAULT_PREV_KEYCODE = 37;
+    private static final Integer DEFAULT_NEXT_KEYCODE = 39;
     private static final String THEME_FONT_DEFAULT =
             "Source Sans Pro, Helvetica, sans-serif";
     private static final String THEME_DARK_COLOR_INVERSE = "white";
