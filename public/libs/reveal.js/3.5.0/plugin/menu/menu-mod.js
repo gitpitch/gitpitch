@@ -745,23 +745,6 @@ var RevealMenu = window.RevealMenu || (function(){
 					});
 				}
 
-				/*
-				 * The menu should be opened by default only when the
-				 * following set conditions are met:
-				 *
-				 * 1. Presentation not open in speaker notes window.
-				 * 2. Presentation not embedded within an iFrame.
-				 * 1. Presentation displayed within window.width > 1023px.
-				 *
-				 * Note, "receiver" on window.location indicates the
-				 * presentation is open in the speaker-notes window.
-				 */
-				if(!window.location.search.match(/receiver/gi) &&
-					(window.top === window.self) &&
-					(window.innerWidth > 1023)) {
-					openMenu();
-				}
-
 				initialised = true;
 			}
 
