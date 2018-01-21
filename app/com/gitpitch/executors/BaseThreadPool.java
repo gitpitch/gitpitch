@@ -25,10 +25,8 @@ package com.gitpitch.executors;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import play.Logger;
-import play.Logger.ALogger;
 import play.inject.ApplicationLifecycle;
 
-import javax.inject.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

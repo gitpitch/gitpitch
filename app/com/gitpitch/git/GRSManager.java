@@ -27,14 +27,12 @@ import com.gitpitch.git.vendors.*;
 import com.gitpitch.services.DiskService;
 import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.PitchParams;
-import java.util.*;
+
 import java.util.stream.Collectors;
 import javax.inject.*;
 import play.Logger;
-import play.Logger.ALogger;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /*
  * Git Repository Service manager.

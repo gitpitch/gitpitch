@@ -31,8 +31,6 @@ import com.gitpitch.models.MarkdownModel;
 import play.Logger;
 
 import javax.inject.*;
-import java.net.HttpURLConnection;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Arrays;
 import java.util.List;

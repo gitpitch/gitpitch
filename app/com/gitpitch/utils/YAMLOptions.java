@@ -27,7 +27,6 @@ import com.gitpitch.git.GRSService;
 import com.gitpitch.services.DiskService;
 import org.yaml.snakeyaml.Yaml;
 import play.Logger;
-import play.Logger.ALogger;
 
 import java.io.File;
 import java.io.FileReader;

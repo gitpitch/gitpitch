@@ -31,7 +31,6 @@ import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicInteger;
 import com.fasterxml.jackson.databind.JsonNode;
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * Git Respository Service common interface.

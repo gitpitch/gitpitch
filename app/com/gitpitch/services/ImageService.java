@@ -28,10 +28,9 @@ import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
 import org.apache.commons.io.FilenameUtils;
-import java.util.*;
+
 import javax.inject.*;
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * PITCHME.md image support service.

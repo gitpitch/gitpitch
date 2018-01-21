@@ -23,9 +23,6 @@
  */
 package com.gitpitch.services;
 
-import com.gitpitch.git.GRS;
-import com.gitpitch.git.GRSService;
-import com.gitpitch.git.GRSManager;
 import com.gitpitch.services.WebService;
 import com.gitpitch.policies.Runtime;
 import com.gitpitch.utils.PitchParams;
@@ -35,7 +32,6 @@ import play.Logger;
 import javax.inject.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Map;

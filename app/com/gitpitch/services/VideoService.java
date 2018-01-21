@@ -26,10 +26,9 @@ package com.gitpitch.services;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.DelimParams;
-import java.util.*;
+
 import javax.inject.*;
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * PITCHME.md video support service.

@@ -33,11 +33,10 @@ import com.gitpitch.git.vendors.GitHub;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
-import java.util.*;
+
 import java.nio.file.*;
 import javax.inject.*;
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * PITCHME.md GIST support service.

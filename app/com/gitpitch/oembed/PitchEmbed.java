@@ -26,7 +26,6 @@ package com.gitpitch.oembed;
 import com.gitpitch.utils.PitchLink;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.git.GRSManager;
-import com.gitpitch.git.GRSService;
 
 /*
  * GitPitch oEmbed Provider.

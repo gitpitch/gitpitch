@@ -38,7 +38,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * Rendering model for views.Slideshow.scala.html.
