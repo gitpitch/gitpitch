@@ -91,7 +91,7 @@ Done!
 
 ---
 
-### <span class="gold">GitPitch Pro - Coming Soon!</span>
+### <span class="gold">GitPitch Pro - Now Live!</span>
 
 <br>
 <div class="left">
