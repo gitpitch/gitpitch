@@ -173,10 +173,12 @@ public class MarkdownModel implements Markdown {
 
                 String defaultBgSize = (yOpts != null) ?
                     yOpts.fetchImageBgSize(pp) : YAMLOptions.DEFAULT_BG_SIZE;
+                String defaultBgColor = (yOpts != null) ?
+                    yOpts.fetchImageBgColor(pp) : YAMLOptions.DEFAULT_BG_COLOR;
 
                 return new StringBuffer(delimiter(md))
                         .append(imageService.buildBackground(md,
-                                dp, pp, defaultBgSize, this))
+                                dp, pp, defaultBgSize, defaultBgColor, this))
                         .toString();
 
             } else if (gistDelimFound(dp)) {
@@ -634,6 +636,7 @@ public class MarkdownModel implements Markdown {
     public static final String DELIM_QUERY_CODE  = "code";
     public static final String DELIM_QUERY_LANG  = "lang";
     public static final String DELIM_QUERY_SIZE  = "size";
+    public static final String DELIM_QUERY_COLOR = "color";
     public static final String DELIM_QUERY_FILE  = "file";
     public static final String DELIM_QUERY_TITLE = "title";
 
@@ -647,6 +650,8 @@ public class MarkdownModel implements Markdown {
             "<!-- .slide: data-background-iframe=\"";
     public static final String MD_IMAGE_SIZE =
             "\" data-background-size=\"";
+    public static final String MD_IMAGE_COLOR =
+            "\" data-background-color=\"";
     public static final String MD_CLOSER = "\" -->";
     public static final String MD_SPACER = "\n";
     public static final String DATA_IMAGE_ATTR = "data-background-image=";

@@ -44,28 +44,36 @@ public class ImageService {
     public String buildBackground(PitchParams pp,
                                   YAMLOptions yOpts) {
 
-        return buildBackground(yOpts.fetchImageBg(pp), yOpts.fetchImageBgSize(pp));
+        return buildBackground(yOpts.fetchImageBg(pp),
+                               yOpts.fetchImageBgSize(pp),
+                               yOpts.fetchImageBgColor(pp));
     }
 
     public String buildBackground(String md,
                                   DelimParams dp,
                                   PitchParams pp,
                                   String defaultSize,
+                                  String defaultColor,
                                   MarkdownModel mdm) {
 
         String bgUrl = dp.get(MarkdownModel.DELIM_QUERY_IMAGE);
         bgUrl = mdm.linkLive(pp, bgUrl);
         String bgSize = dp.get(MarkdownModel.DELIM_QUERY_SIZE, defaultSize);
-        return buildBackground(bgUrl, bgSize);
+        String bgColor = dp.get(MarkdownModel.DELIM_QUERY_COLOR, defaultColor);
+        return buildBackground(bgUrl, bgSize, bgColor);
     }
 
-    private String buildBackground(String bgUrl, String bgSize) {
+    private String buildBackground(String bgUrl,
+                                   String bgSize,
+                                   String bgColor) {
 
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_IMAGE_OPEN)
                 .append(bgUrl)
                 .append(MarkdownModel.MD_IMAGE_SIZE)
                 .append(bgSize)
+                .append(MarkdownModel.MD_IMAGE_COLOR)
+                .append(bgColor)
                 .append(MarkdownModel.MD_CLOSER)
                 .append(MarkdownModel.MD_SPACER)
                 .toString();
