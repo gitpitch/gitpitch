@@ -214,6 +214,20 @@ public class SlideshowModel {
     }
 
     /*
+     * Return true if "layout" in *-left.
+     */
+    public boolean isLeftLayout() {
+        return (_yOpts != null) ? _yOpts.isLeftLayout(params()) : false;
+    }
+
+    /*
+     * Return true if "layout" in *-right.
+     */
+    public boolean isRightLayout() {
+        return (_yOpts != null) ? _yOpts.isRightLayout(params()) : false;
+    }
+
+    /*
      * Return true if "logo" defined in PITCHME.yaml.
      */
     public boolean hasLogo() {
@@ -305,8 +319,18 @@ public class SlideshowModel {
      * Return "vertical-center" defined in PITCHME.yaml.
      */
     public boolean fetchVerticalCenter() {
-        return (_yOpts != null) ?
-                _yOpts.fetchVerticalCenter(params()) : true;
+
+        boolean vc = true;
+
+        if(_yOpts == null) {
+            vc = true;
+        } else
+        if(_yOpts.isTopLayout(params())) {
+            vc = false;
+        } else {
+            vc = _yOpts.fetchVerticalCenter(params());
+        }
+        return vc;
     }
 
     /*

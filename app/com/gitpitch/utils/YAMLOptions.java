@@ -113,6 +113,27 @@ public final class YAMLOptions {
         return pp.isValidTheme(theme) ? theme : pp.theme;
     }
 
+    public String fetchLayout(PitchParams pp) {
+        String layout = _yProps.get(LAYOUT_OPTION);
+        return isValidLayout(layout) ? layout : DEFAULT_LAYOUT;
+    }
+
+    private boolean isValidLayout(String layoutName) {
+        return DEFAULT_LAYOUTS.contains(layoutName);
+    }
+
+    public boolean isLeftLayout(PitchParams pp) {
+        return fetchLayout(pp).contains(LEFT);
+    }
+
+    public boolean isRightLayout(PitchParams pp) {
+        return fetchLayout(pp).contains(RIGHT);
+    }
+
+    public boolean isTopLayout(PitchParams pp) {
+        return fetchLayout(pp).contains(TOP);
+    }
+
     public String fetchThemeCSS(PitchParams pp) {
 
         return new StringBuffer(fetchTheme(pp)).append(DOT_CSS)
@@ -424,4 +445,12 @@ public final class YAMLOptions {
                     "Accessible");
     private static final String ABS_HTTP = "http";
     private static final String DOT_CSS = ".css";
+
+    private static final String LAYOUT_OPTION = "layout";
+    private static final String DEFAULT_LAYOUT = "center";
+    private static final List<String> DEFAULT_LAYOUTS =
+        Arrays.asList("center", "center-left", "center-right", "top", "top-left", "top-right");
+    private static final String LEFT = "left";
+    private static final String RIGHT = "right";
+    private static final String TOP = "top";
 }
