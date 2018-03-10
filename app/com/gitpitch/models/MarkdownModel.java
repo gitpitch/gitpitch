@@ -30,6 +30,7 @@ import com.gitpitch.services.VideoService;
 import com.gitpitch.services.GISTService;
 import com.gitpitch.services.CodeService;
 import com.gitpitch.services.ShortcutsService;
+import com.gitpitch.services.SlideService;
 import com.gitpitch.git.GRSManager;
 import org.apache.commons.io.FilenameUtils;
 import com.google.inject.assistedinject.Assisted;
@@ -57,6 +58,7 @@ public class MarkdownModel implements Markdown {
     private final GISTService  gistService;
     private final CodeService  codeService;
     private final ShortcutsService shortcutsService;
+    private final SlideService slideService;
     private final GRSManager grsManager;
     private final MarkdownRenderer mrndr;
     private final String markdown;
@@ -69,6 +71,7 @@ public class MarkdownModel implements Markdown {
                          GISTService  gistService,
                          CodeService  codeService,
                          ShortcutsService  shortcutsService,
+                         SlideService  slideService,
                          GRSManager grsManager,
                          @Nullable @Assisted MarkdownRenderer mrndr) {
 
@@ -77,6 +80,7 @@ public class MarkdownModel implements Markdown {
         this.gistService  = gistService;
         this.codeService  = codeService;
         this.shortcutsService = shortcutsService;
+        this.slideService = slideService;
         this.grsManager = grsManager;
         this.mrndr = mrndr;
 
@@ -185,6 +189,8 @@ public class MarkdownModel implements Markdown {
                 return gistService.build(md, dp, pp, yOpts, this);
             } else if(codeDelimFound(dp)) {
                 return codeService.build(md, dp, pp, yOpts, this);
+            } else if(colorDelimFound(dp)) {
+                return slideService.buildColorBackground(md, dp, pp, yOpts, this);
             }
 
             if (yOpts != null && yOpts.hasImageBg()) {
@@ -413,6 +419,10 @@ public class MarkdownModel implements Markdown {
 
     private boolean codeDelimFound(DelimParams dp) {
         return dp.get(DELIM_QUERY_CODE) != null;
+    }
+
+    private boolean colorDelimFound(DelimParams dp) {
+        return dp.get(DELIM_QUERY_COLOR) != null;
     }
 
     private String delimiter(String md) {
@@ -652,6 +662,8 @@ public class MarkdownModel implements Markdown {
             "\" data-background-size=\"";
     public static final String MD_IMAGE_COLOR =
             "\" data-background-color=\"";
+    public static final String MD_BG_COLOR =
+            "<!-- .slide: data-background=\"";
     public static final String MD_CLOSER = "\" -->";
     public static final String MD_SPACER = "\n";
     public static final String DATA_IMAGE_ATTR = "data-background-image=";

@@ -48,39 +48,75 @@ public class SlideService {
         this.imageService = imageService;
     }
 
-   /*
-    * Build basic slide structure including:
-    *
-    * 1. Clean delimiter and
-    * 2. Optionally slide bg-image based on YAMLOptions.hasImageBg.
-    */
-   public String build(String md,
-                       DelimParams dp,
-                       PitchParams pp,
-                       YAMLOptions yOpts,
-                       MarkdownModel mdm) {
+    /*
+     * Build basic slide structure including:
+     *
+     * 1. Clean delimiter and
+     * 2. Optionally slide bg-image based on YAMLOptions.hasImageBg.
+     * 3. Or slide color delimiter.
+     */
+     public String build(String md,
+                         DelimParams dp,
+                         PitchParams pp,
+                         YAMLOptions yOpts,
+                         MarkdownModel mdm) {
 
-    StringBuffer structure = new StringBuffer(mdm.extractDelim(md));
-    try {
+        StringBuffer structure = new StringBuffer(mdm.extractDelim(md));
 
-        String slideType = mdm.isHorizontal(md) ?
-               mdm.horizDelim() : mdm.vertDelim();
+        try {
 
-        structure = new StringBuffer(mdm.extractDelim(md))
-                       .append(MarkdownModel.MD_SPACER);
+            structure = new StringBuffer(mdm.extractDelim(md))
+                            .append(MarkdownModel.MD_SPACER);
 
-        String yamlBg = null;
-        if (yOpts != null && yOpts.hasImageBg()) {
-           yamlBg = imageService.buildBackground(pp, yOpts);
+            if (yOpts != null && yOpts.hasImageBg()) {
+                String yamlBg = imageService.buildBackground(pp, yOpts);
+                structure.append(yamlBg).append(MarkdownModel.MD_SPACER);
+            } else {
+                String cbg = buildColorMarkdown(dp);
+                if(cbg != null) {
+                    structure.append(cbg).append(MarkdownModel.MD_SPACER);
+                }
+            }
+
+        } catch(Exception ex) {
+            log.warn("build: ex={}", ex);
         }
 
-        if (yamlBg != null) {
-           structure.append(yamlBg).append(MarkdownModel.MD_SPACER);
-        }
-    } catch(Exception ex) {
-     log.warn("build: ex={}", ex);
+        log.debug("build: returning structure={}", structure.toString());
+
+        return structure.toString();
     }
-    return structure.toString();
-   }
+
+    public String buildColorBackground(String md,
+                                       DelimParams dp,
+                                       PitchParams pp,
+                                       YAMLOptions yOpts,
+                                       MarkdownModel mdm) {
+
+        StringBuffer structure = new StringBuffer(mdm.extractDelim(md));
+
+        try {
+
+            structure = new StringBuffer(mdm.extractDelim(md))
+                            .append(MarkdownModel.MD_SPACER);
+
+            String bg = buildColorMarkdown(dp);
+            if(bg != null) {
+                structure.append(bg).append(MarkdownModel.MD_SPACER);
+            }
+
+        } catch(Exception ex) {
+            log.warn("buildColorDelim: ex={}", ex);
+        }
+
+        log.debug("buildColorDelim: returning structure={}", structure.toString());
+        return structure.toString();
+    }
+
+    private String buildColorMarkdown(DelimParams dp) {
+        String bgColor = dp.get(MarkdownModel.DELIM_QUERY_COLOR, null);
+        String bg = MarkdownModel.MD_BG_COLOR + bgColor + MarkdownModel.MD_CLOSER;
+        return bgColor != null ? bg : null;
+    }
 
 }
