@@ -179,11 +179,17 @@ public class MarkdownModel implements Markdown {
                     yOpts.fetchImageBgSize(pp) : YAMLOptions.DEFAULT_BG_SIZE;
                 String defaultBgColor = (yOpts != null) ?
                     yOpts.fetchImageBgColor(pp) : YAMLOptions.DEFAULT_BG_COLOR;
+                String defaultBgPosition = (yOpts != null) ?
+                    yOpts.fetchImageBgPosition(pp) : YAMLOptions.DEFAULT_BG_POSITION;
 
                 return new StringBuffer(delimiter(md))
                         .append(imageService.buildBackground(md,
-                                dp, pp, defaultBgSize, defaultBgColor, this))
-                        .toString();
+                                                             dp,
+                                                             pp,
+                                                             defaultBgSize,
+                                                             defaultBgColor,
+                                                             defaultBgPosition,
+                                                             this)).toString();
 
             } else if (gistDelimFound(dp)) {
                 return gistService.build(md, dp, pp, yOpts, this);
@@ -647,6 +653,7 @@ public class MarkdownModel implements Markdown {
     public static final String DELIM_QUERY_LANG  = "lang";
     public static final String DELIM_QUERY_SIZE  = "size";
     public static final String DELIM_QUERY_COLOR = "color";
+    public static final String DELIM_QUERY_POSITION = "position";
     public static final String DELIM_QUERY_FILE  = "file";
     public static final String DELIM_QUERY_TITLE = "title";
 
@@ -662,6 +669,8 @@ public class MarkdownModel implements Markdown {
             "\" data-background-size=\"";
     public static final String MD_IMAGE_COLOR =
             "\" data-background-color=\"";
+    public static final String MD_IMAGE_POSITION =
+            "\" data-background-position=\"";
     public static final String MD_BG_COLOR =
             "<!-- .slide: data-background=\"";
     public static final String MD_CLOSER = "\" -->";

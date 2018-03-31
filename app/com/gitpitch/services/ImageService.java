@@ -46,7 +46,8 @@ public class ImageService {
 
         return buildBackground(yOpts.fetchImageBg(pp),
                                yOpts.fetchImageBgSize(pp),
-                               yOpts.fetchImageBgColor(pp));
+                               yOpts.fetchImageBgColor(pp),
+                               yOpts.fetchImageBgPosition(pp));
     }
 
     public String buildBackground(String md,
@@ -54,18 +55,21 @@ public class ImageService {
                                   PitchParams pp,
                                   String defaultSize,
                                   String defaultColor,
+                                  String defaultPos,
                                   MarkdownModel mdm) {
 
         String bgUrl = dp.get(MarkdownModel.DELIM_QUERY_IMAGE);
         bgUrl = mdm.linkLive(pp, bgUrl);
         String bgSize = dp.get(MarkdownModel.DELIM_QUERY_SIZE, defaultSize);
         String bgColor = dp.get(MarkdownModel.DELIM_QUERY_COLOR, defaultColor);
-        return buildBackground(bgUrl, bgSize, bgColor);
+        String bgPos = dp.get(MarkdownModel.DELIM_QUERY_POSITION, defaultPos);
+        return buildBackground(bgUrl, bgSize, bgColor, bgPos);
     }
 
     private String buildBackground(String bgUrl,
                                    String bgSize,
-                                   String bgColor) {
+                                   String bgColor,
+                                   String bgPosition) {
 
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_IMAGE_OPEN)
@@ -74,6 +78,8 @@ public class ImageService {
                 .append(bgSize)
                 .append(MarkdownModel.MD_IMAGE_COLOR)
                 .append(bgColor)
+                .append(MarkdownModel.MD_IMAGE_POSITION)
+                .append(bgPosition)
                 .append(MarkdownModel.MD_CLOSER)
                 .append(MarkdownModel.MD_SPACER)
                 .toString();
