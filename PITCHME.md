@@ -1,117 +1,207 @@
+---?image=assets/images/lets-get-started.jpg&size=auto 90%&color=black
 @title[Introduction]
 
-# Git<span class="gold">Pitch</span>
+---?image=assets/images/face.jpg&position=left&size=55% 100%&color=#020203
+@title[Get Ready]
 
-#### Markdown Presentations For Everyone on Git
+#### @size[0.6em](Get ready for some)
+
 <br>
+
+## @color[#e49436](Git)Pitch
+#### Presentation @fa[magic] @color[#e49436](Magic)
+
+---?image=assets/images/git.svg&opacity=10
+@title[Enhanced GFM]
+
+#### @size[0.6em](Using enhanced)
+
 <br>
-<span class="byline">[ GitHub, GitLab, Bitbucket, GitBucket, Gitea, Gogs ]</span>
+
+## @fa[github fa-1x](GitHub)
+#### Flavored @color[#e49436](Markdown)
+
+---?color=#e49436
+@title[For Everyone on Git]
+
+#### @size[0.8em](Available to @color[black](everyone) on)
+
+<br>
+
+### @fa[github fa-3x], @fa[gitlab fa-3x], and @fa[bitbucket fa-3x].
+
+<br>
 
 ---
+@title[Rich Content Slides]
 
-@title[PITCHME.md]
+#### Enjoy Rich Content Slides
 
-#### GitPitch turns <span class="gold">PITCHME.md</span> into
-#### interactive,
-#### online and offline slideshows.
-<br>
-<span class="aside">Just like this one...</span>
+@div[left-50]
+![](assets/images/de-los-muertos.jpg)
+@divend
 
----
-
-#### No more <span class="gray">Keynote</span>.
-#### No more <span class="gray">Powerpoint</span>.
-<br>
-#### Just <span class="gold">Markdown</span>.
-#### Then <span class="gold">Git-Commit</span>.
-
----?code=assets/md/hello.md&title=Step 1. PITCHME.md
-
-<br>
-#### Create slideshow content using GitHub Flavored Markdown in your favorite editor.
-
-<span class="aside">It's as easy as README.md with simple slide-delimeters (---)</span>
+@div[right-50]
+![](assets/images/daftpunkocat.gif)
+@divend
 
 ---
+@title[Ideas Step-by-Step]
 
-@title[Step 2. Git-Commit]
+#### Present Your Ideas Step-by-Step
 
-### <span class="gold">STEP 2. GIT-COMMIT</span>
-<br>
+@div[left-50]
 
-```shell
-$ git add PITCHME.md
-$ git commit -m "New slideshow content."
-$ git push
+<br><br>
 
-Done!
-```
+@ul
+- There are
+- Many reasons
+- To @fa[heart]
+- [GitPitch](https://gitpitch.com)
+- Presentations
+@ulend
 
-@[1](Add your PITCHME.md slideshow content file.)
-@[2](Commit PITCHME.md to your local repo.)
-@[3](Push PITCHME.md to your public repo and you're done!)
-@[5](Supports GitHub, GitLab, Bitbucket, GitBucket, Gitea, and Gogs.)
+@divend
 
----
+@div[right-50]
 
-@title[Step 3. Done!]
+![](assets/images/daftpunkocat.gif)
 
-### <span class="gold">STEP 3. GET THE WORD OUT!</span>
-<br>
-![GitPitch Slideshow URLs](assets/images/gp-slideshow-urls.png)
-<br>
-<br>
-#### Instantly use your GitPitch slideshow URL to promote, pitch or present absolutely anything.
+@divend
 
----
+---?image=assets/images/stormtroopers.jpg&size=55% 55%
+@title[Size & Scale Images]
 
-@title[Slide Rich]
+@css[title-top-right](Size & Scale Image Backgrounds)
 
-### <span class="gold">Slide Rich</span>
+---?image=assets/images/stormtroopers.jpg&size=35% 35%&color=#297EA3
+@title[Color Backgrounds]
 
-#### Code Presenting for Blocks, Files, and GISTs
-#### Image, Video, Chart, and Math Slides
-#### Multiple Themes with Easy Customization
-<br>
-#### <span class="gold">Plus collaboration is built-in...</span>
-#### Your Slideshow is Part of Your Project
-#### Under Git Version Control within Your Git Repo
+@css[title-top-right](Add Color Backgrounds)
 
----
+---?image=assets/images/sunset.jpg
+@title[Image Backgrounds]
 
-@title[Feature Rich]
+@css[title-top-right](Or Go FullScreen)
 
-### <span class="gold">Feature Rich</span>
+---?image=assets/images/sunset.jpg&opacity=40
+@title[Image Opacity]
 
-#### Present Online or Offline
-#### With Speaker Notes Support
-#### Print Presentation as PDF
-#### Auto-Generated Table-of-Contents
-#### Share Presentation on Twitter or LinkedIn
+@css[title-top-right](With Optional Opacity)
 
 ---
+@title[Embed Video]
 
-### <span class="gold">GitPitch Pro - Now Live!</span>
+@css[title-top-right](Embed Video)
 
-<br>
-<div class="left">
-    <i class="fa fa-user-secret fa-5x" aria-hidden="true"> </i><br>
-    <a href="https://gitpitch.com/pro-features" class="pro-link">
-    More details here.</a>
-</div>
-<div class="right">
-    <ul>
-        <li>Private Repos</li>
-        <li>Private URLs</li>
-        <li>Password-Protection</li>
-        <li>Image Opacity</li>
-        <li>SVG Image Support</li>
-    </ul>
-</div>
+![Gravity](https://player.vimeo.com/video/125471012)
+
+---?video=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
+@title[Fullscreen Video]
+
+@css[title-top-right](Use Theatre Mode)
+
+---?image=assets/images/css.jpg&opacity=20
+@title[Code Talking]
+
+### Let your
+## @css[shoutout](Code)
+#### Do The Talking
+
+---?code=src/go/server.go&lang=golang&color=black&title=Live Code Presenting
+@title[Live Code Presenting]
+
+@[1](Step through source code as if you were still inside your IDE.)
+@[3-6](Without ever leaving your slideshow.)
+@[9-13](Using GitPitch code-presenting with (optional) annotations.)
+@[19-28](With support for markdown code blocks, repository source files, and GitHub GISTS.)
 
 ---
+@title[Stunning Charts]
 
-### Go for it.
-### Just add <span class="gold">PITCHME.md</span> ;)
+@css[title-top-right](Add Stunning Charts)
+
 <br>
-[Click here to learn more @fa[external-link fa-pad-left]](https://github.com/gitpitch/gitpitch/wiki)
+
+<canvas data-chart="line">
+<!--
+{
+ "data": {
+  "labels": ["January"," February"," March"," April"," May"," June"," July"],
+  "datasets": [
+   {
+    "data":[65,59,80,81,56,55,40],
+    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[28,48,40,19,86,27,90],
+    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ },
+ "options": { "responsive": "true" }
+}
+-->
+</canvas>
+
+---
+@title[Beautiful Math]
+
+@css[title-top-right](And Beautiful Math)
+
+`\[
+\left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
+ \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+\]`
+
+---?image=assets/images/demand-more.jpg
+@title[You want MORE?]
+
+@css[title-top-right](MORE! You want MORE?)
+
+---?color=#e49436
+@title[GitPitch Pro]
+
+# @size[3.5em](OK)
+
+---?image=assets/images/think-type-see.png
+@title[Think-Type-See-It]
+
+---?image=assets/images/go-pro-desktop.jpg
+@title[GitPitch Desktop]
+
+[@size[0.4em](click here to learn more)](https://gitpitch.com/desktop)
+<br><br>
+
+---?image=assets/images/go-pro-security.jpg
+@title[GitPitch Security]
+
+[@size[0.4em](click here to learn more)](https://gitpitch.com/security)
+<br><br>
+
+---?image=assets/images/go-pro-surveys.jpg
+@title[GitPitch Surveys]
+
+[@size[0.4em](click here to learn more)](https://gitpitch.com/surveys)
+<br><br>
+
+---?image=assets/images/css.jpg&opacity=20
+@title[GitPitch Tutorial]
+
+#### @size[0.5em](@color[gray](click to view a very short tutorial))
+### [GitPitch In-60-Seconds](https://github.com/gitpitch/gitpitch/wiki)
+
+---?image=assets/images/css.jpg&opacity=20
+@title[GitPitch Wiki]
+
+#### @size[0.5em](@color[gray](click to learn how-to on))
+### [The GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki)
+
+---?image=assets/images/css.jpg&opacity=20
+@title[Your Ideas to Presentation]
+
+#### @size[0.5em](@color[gray](for more visit @))
+## git@css[gold](pitch).com
+
+#### The Fastest Way from Idea to Presentation

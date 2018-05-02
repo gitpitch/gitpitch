@@ -1,69 +1,78 @@
+/*
+ * GitPitch Custom CSS Styling
+ *
+ * For details, visit Wiki:
+ * https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS
+ */
+
+.title-top-right {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    margin: 0 0 20px 0 !important;
+    color: #eee !important;
+    font-weight: normal !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.03em !important;
+    font-family: "Montserrat", Impact, sans-serif !important;
+}
+
+.reveal p span.slide-title {
+  padding: 4px 15px;
+  border-radius: 15px;
+  color: #eee !important;
+  font-weight: normal !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+  font-family: "Montserrat", Impact, sans-serif !important;
+}
+
+.reveal .slides section .code-presenting-annotation {
+  color: white !important;
+  background: #1f1c18;
+  padding: 1px 15px;
+  border-radius: 15px;
+  opacity: 0.75 !important;
+  font-size: 50% !important;
+}
+
+/*
+ul {
+  list-style-type: disc !important;
+  list-style-position: inside !important;
+}
+
+li {
+   margin:0 0 10px 0;
+}
+*/
+
+#gp-logo img {
+  max-height: 1.5em;
+  max-width: none;
+}
+
 .gold {
   color: #e49436;
 }
 
-.gray {
+.shoutout {
+  color: #e49436;
+  font-size: 1.5em !important;
+}
+
+.reveal pre {
+  width: 100%;
+  box-shadow : none;
+}
+
+.reveal pre code {
+  font-size: 1.2em;
+  line-height: 1.2;
+  border-radius: 10px;
+}
+
+.reveal .slides section .code-presenting-annotation {
   color: gray;
 }
 
-span.byline, span.aside {
-  color: #bbb;
-}
-
-span.byline {
-  font-size: 80%;
-}
-
-span.aside {
-  font-size: 0.7em;
-  font-style: italic;
-}
-
-.reveal section img {
-  border: 0;
-  box-shadow: none;
-  background: none;
-}
-
-.reveal section a {
-  color: #e49436;
-  text-decoration: underline;
-}
-
-.reveal section a:hover {
-  color: #e7ad52;
-}
-
-.fa-pad-left {
-  margin-left: 10px;
-}
-
-.reveal p span.slide-title {
-  color: #e49436;
-  font-size: 1.55em;
-  margin: 0 0 60px 0;
-  font-family: "Montserrat", Impact, sans-serif;
-  font-weight: normal;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  text-transform: none;
-  text-shadow: none;
-  word-wrap: break-word;
-  display: block;
-}
-
-.reveal div.left {
-    float: left;
-    z-index: -10;
-    width: 45%;
-}
-
-.reveal div.right {
-    float: right;
-    z-index: -10;
-    width: 55%;
-}
-
-.reveal a.pro-link {
-    font-size: 0.5em;
-}
