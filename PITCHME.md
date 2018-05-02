@@ -109,7 +109,7 @@
 ## @css[shoutout](Code)
 #### Do The Talking
 
----?code=src/go/server.go&lang=golang&color=black&title=Live Code Presenting
+---?code=assets/go/server.go&lang=golang&color=black&title=Live Code Presenting
 @title[Live Code Presenting]
 
 @[1](Step through source code as if you were still inside your IDE.)
