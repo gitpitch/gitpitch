@@ -47,7 +47,9 @@ public class ImageService {
         return buildBackground(yOpts.fetchImageBg(pp),
                                yOpts.fetchImageBgSize(pp),
                                yOpts.fetchImageBgColor(pp),
-                               yOpts.fetchImageBgPosition(pp));
+                               yOpts.fetchImageBgPosition(pp),
+                               yOpts.fetchImageBgRepeat(pp),
+                               yOpts.fetchTransition(pp));
     }
 
     public String buildBackground(String md,
@@ -56,6 +58,8 @@ public class ImageService {
                                   String defaultSize,
                                   String defaultColor,
                                   String defaultPos,
+                                  String defaultRepeat,
+                                  String defaultTransition,
                                   MarkdownModel mdm) {
 
         String bgUrl = dp.get(MarkdownModel.DELIM_QUERY_IMAGE);
@@ -63,13 +67,19 @@ public class ImageService {
         String bgSize = dp.get(MarkdownModel.DELIM_QUERY_SIZE, defaultSize);
         String bgColor = dp.get(MarkdownModel.DELIM_QUERY_COLOR, defaultColor);
         String bgPos = dp.get(MarkdownModel.DELIM_QUERY_POSITION, defaultPos);
-        return buildBackground(bgUrl, bgSize, bgColor, bgPos);
+        String bgRepeat =
+            dp.get(MarkdownModel.DELIM_QUERY_REPEAT, defaultRepeat);
+        String bgTransition =
+            dp.get(MarkdownModel.DELIM_QUERY_TRANSITION, defaultTransition);
+        return buildBackground(bgUrl, bgSize, bgColor, bgPos, bgRepeat, bgTransition);
     }
 
     private String buildBackground(String bgUrl,
                                    String bgSize,
                                    String bgColor,
-                                   String bgPosition) {
+                                   String bgPosition,
+                                   String bgRepeat,
+                                   String bgTransition) {
 
         return new StringBuffer(MarkdownModel.MD_SPACER)
                 .append(MarkdownModel.MD_IMAGE_OPEN)
@@ -80,6 +90,10 @@ public class ImageService {
                 .append(bgColor)
                 .append(MarkdownModel.MD_IMAGE_POSITION)
                 .append(bgPosition)
+                .append(MarkdownModel.MD_IMAGE_REPEAT)
+                .append(bgRepeat)
+                .append(MarkdownModel.MD_IMAGE_TRANSITION)
+                .append(bgTransition)
                 .append(MarkdownModel.MD_CLOSER)
                 .append(MarkdownModel.MD_SPACER)
                 .toString();

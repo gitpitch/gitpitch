@@ -181,6 +181,10 @@ public class MarkdownModel implements Markdown {
                     yOpts.fetchImageBgColor(pp) : YAMLOptions.DEFAULT_BG_COLOR;
                 String defaultBgPosition = (yOpts != null) ?
                     yOpts.fetchImageBgPosition(pp) : YAMLOptions.DEFAULT_BG_POSITION;
+                String defaultBgRepeat = (yOpts != null) ?
+                    yOpts.fetchImageBgRepeat(pp) : YAMLOptions.DEFAULT_BG_REPEAT;
+                String defaultBgTransition = (yOpts != null) ?
+                    yOpts.fetchTransition(pp) : YAMLOptions.DEFAULT_TRANSITION;
 
                 return new StringBuffer(delimiter(md))
                         .append(imageService.buildBackground(md,
@@ -189,6 +193,8 @@ public class MarkdownModel implements Markdown {
                                                              defaultBgSize,
                                                              defaultBgColor,
                                                              defaultBgPosition,
+                                                             defaultBgRepeat,
+                                                             defaultBgTransition,
                                                              this)).toString();
 
             } else if (gistDelimFound(dp)) {
@@ -654,6 +660,8 @@ public class MarkdownModel implements Markdown {
     public static final String DELIM_QUERY_SIZE  = "size";
     public static final String DELIM_QUERY_COLOR = "color";
     public static final String DELIM_QUERY_POSITION = "position";
+    public static final String DELIM_QUERY_REPEAT = "repeat";
+    public static final String DELIM_QUERY_TRANSITION = "transition";
     public static final String DELIM_QUERY_FILE  = "file";
     public static final String DELIM_QUERY_TITLE = "title";
 
@@ -671,6 +679,10 @@ public class MarkdownModel implements Markdown {
             "\" data-background-color=\"";
     public static final String MD_IMAGE_POSITION =
             "\" data-background-position=\"";
+    public static final String MD_IMAGE_REPEAT =
+            "\" data-background-repeat=\"";
+    public static final String MD_IMAGE_TRANSITION =
+            "\" data-background-transition=\"";
     public static final String MD_BG_COLOR =
             "<!-- .slide: data-background=\"";
     public static final String MD_CLOSER = "\" -->";
