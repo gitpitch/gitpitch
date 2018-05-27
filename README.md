@@ -73,6 +73,8 @@ GitPitch presentations are powered by the amazing [reveal.js](https://github.com
 No more Keynote. No more PowerPoint. Just Markdown. Then git-commit and push on
 any branch within a public GitHub, GitLab, Bitbucket, GitBucket, Gitea, or Gogs repo.
 
+If you want to avoid the `git-push-preview` cycle during development, consider activating a GitPitch Pro subscription that will give you access to [GitPitch Desktop](https://gitpitch.com/desktop). GitPitch Desktop supports local development, live previews, and presenting directly on your Linux, Windows, or OSX desktop. Desktop works offline so you can too. Which is prefect for long-haul flights, or when you take the stage for live presentations.
+
 ## GitPitch slideshow presentations are compelling
 
 ![SLIDESHOW](images/gp-slideshow-master.png)
