@@ -26,13 +26,10 @@ package com.gitpitch.git.vendors;
 import com.gitpitch.git.*;
 import com.gitpitch.models.*;
 import com.gitpitch.utils.PitchParams;
-import com.gitpitch.services.DiskService;
 import com.fasterxml.jackson.databind.JsonNode;
-import java.nio.file.Path;
-import java.util.*;
+
 import javax.inject.*;
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * BitBucket API Service.

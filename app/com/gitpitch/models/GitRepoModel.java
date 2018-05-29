@@ -25,9 +25,6 @@ package com.gitpitch.models;
 
 import com.gitpitch.utils.PitchParams;
 import play.Logger;
-import play.Logger.ALogger;
-
-import java.util.*;
 
 /*
  * Rendering model for views.Slideshow.scala.html.

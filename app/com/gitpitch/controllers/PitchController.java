@@ -23,7 +23,6 @@
  */
 package com.gitpitch.controllers;
 
-import com.gitpitch.git.GRS;
 import com.gitpitch.git.GRSManager;
 import com.gitpitch.models.GitRepoModel;
 import com.gitpitch.models.Markdown;
@@ -37,11 +36,8 @@ import com.gitpitch.utils.GitRepoRenderer;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.RFE;
 import play.Logger;
-import play.Logger.ALogger;
 import play.libs.Json;
-import play.libs.ws.*;
 import play.mvc.*;
-import views.html.*;
 
 import javax.inject.*;
 import java.io.File;

@@ -32,13 +32,11 @@ import com.gitpitch.services.SlideService;
 import com.gitpitch.utils.PitchParams;
 import com.gitpitch.utils.DelimParams;
 import com.gitpitch.utils.YAMLOptions;
-import java.util.*;
-import java.nio.file.*;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.inject.*;
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * PITCHME.md code support service.

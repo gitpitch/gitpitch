@@ -23,7 +23,6 @@
  */
 package com.gitpitch.git;
 
-import com.gitpitch.utils.PitchParams;
 import java.util.Map;
 import java.util.HashMap;
 

@@ -25,7 +25,6 @@ package com.gitpitch.utils;
 
 import com.gitpitch.git.GRS;
 import com.gitpitch.utils.PitchParams;
-import java.util.StringJoiner;
 
 /*
  * GitHub RFE issue support utility.

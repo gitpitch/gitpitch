@@ -31,7 +31,6 @@ import com.gitpitch.policies.CacheTimeout;
 import com.gitpitch.utils.PitchParams;
 import play.Logger;
 import play.cache.*;
-import play.libs.ws.*;
 
 import javax.inject.*;
 import java.io.File;

@@ -24,8 +24,6 @@
 package com.gitpitch.utils;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 
 /*
  * GitPitch URL utility parser.

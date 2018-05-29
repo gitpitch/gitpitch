@@ -33,7 +33,6 @@ import java.util.List;
 import java.util.Optional;
 
 import play.Logger;
-import play.Logger.ALogger;
 
 /*
  * Rendering model for views.Slideshow.scala.html.
