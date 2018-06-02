@@ -242,12 +242,15 @@ public class ShortcutsService {
      */
     private String buildFontAwesome(String font, String text) {
         if(text == null) text = "";
-        return new StringBuffer(HTML_FONT_FRAG_OPEN)
-                .append(font)
-                .append(HTML_FONT_FRAG_CLOSE)
-                .append(text)
-                .append(HTML_FONT_FRAG_TEXT_CLOSE)
-                .toString();
+        StringBuffer buffer = new StringBuffer(HTML_FONT_FRAG_OPEN);
+        for (String f: font.split(",")){
+            buffer.append(HTML_FONT_FRAG_INTERMEDIATE)
+                  .append(f);
+        }        
+        return buffer.append(HTML_FONT_FRAG_CLOSE)
+                     .append(text)
+                     .append(HTML_FONT_FRAG_TEXT_CLOSE)
+                     .toString();
     }
 
     /*
@@ -264,7 +267,8 @@ public class ShortcutsService {
     private static final String TITLE_HINT_SPAN_OPEN =
         "<span class=\"menu-title\" style=\"display: none\">";
     private static final String TITLE_HINT_SPAN_CLOSE = "</span>";
-    private static final String HTML_FONT_FRAG_OPEN = "<i class=\"fa fa-";
+    private static final String HTML_FONT_FRAG_OPEN = "<i class=\"fa";
+    private static final String HTML_FONT_FRAG_INTERMEDIATE " fa-";
     private static final String HTML_FONT_FRAG_CLOSE = "\" aria-hidden=\"true\"> ";
     private static final String HTML_FONT_FRAG_TEXT_CLOSE = "</i>";
 
