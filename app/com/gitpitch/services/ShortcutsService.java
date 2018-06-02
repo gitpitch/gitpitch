@@ -267,8 +267,8 @@ public class ShortcutsService {
     private static final String TITLE_HINT_SPAN_OPEN =
         "<span class=\"menu-title\" style=\"display: none\">";
     private static final String TITLE_HINT_SPAN_CLOSE = "</span>";
-    private static final String HTML_FONT_FRAG_OPEN = "<i class=\"fa ";
-    private static final String HTML_FONT_FRAG_INTERMEDIATE "fa-";
+    private static final String HTML_FONT_FRAG_OPEN = "<i class=\"fa";
+    private static final String HTML_FONT_FRAG_INTERMEDIATE " fa-";
     private static final String HTML_FONT_FRAG_CLOSE = "\" aria-hidden=\"true\"> ";
     private static final String HTML_FONT_FRAG_TEXT_CLOSE = "</i>";
 
