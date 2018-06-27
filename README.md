@@ -116,7 +116,7 @@ Create and deliver content and course materials as a series of slideshow present
 
 ## GitPitch slideshow presentations are social
 
-GitPitch slideshow presentations are designed for instant sharing online.
+GitPitch slideshow presentations are designed for instant [sharing online](https://gitpitch.com/docs/foundation-features/online).
 
 ## GitPitch slideshow presentations just work
 
