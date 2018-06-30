@@ -241,6 +241,16 @@ public final class YAMLOptions {
             return DEFAULT_TRANSITION;
     }
 
+    public String fetchControlsLayout(PitchParams pp) {
+
+        String layout = _yProps.get(CONTROLS_LAYOUT_OPTION);
+
+        if (CONTROL_LAYOUTS.contains(layout))
+            return layout;
+        else
+            return DEFAULT_CONTROLS_LAYOUT;
+    }
+
     public Integer fetchAutoSlide(PitchParams pp) {
         return fetchIntegerOption(pp, AUTOSLIDE_OPTION);
     }
@@ -411,6 +421,8 @@ public final class YAMLOptions {
     public static final String DEFAULT_BG_POSITION = "center";
     public static final String DEFAULT_BG_REPEAT = " ";
     public static final String DEFAULT_TRANSITION = "slide";
+    public static final String DEFAULT_CONTROLS_LAYOUT = "bottom-right";
+    public static final String EDGES_CONTROLS_LAYOUT = "edges";
     public static final String MATHJAX_DEFAULT = "TeX-MML-AM_CHTML";
     public static final String HIGHLIGHT_DARK_DEFAULT = "github-gist.css";
     public static final String HIGHLIGHT_LIGHT_DEFAULT = "hybrid.css";
@@ -428,6 +440,7 @@ public final class YAMLOptions {
     private static final String IMAGE_BG_POSITION_OPTION = "background-position";
     private static final String IMAGE_BG_REPEAT_OPTION = "background-repeat";
     private static final String TRANSITION_OPTION = "transition";
+    private static final String CONTROLS_LAYOUT_OPTION = "controls-layout";
     private static final String AUTOSLIDE_OPTION = "autoslide";
     private static final String LOOP_OPTION = "loop";
     private static final String REMOTE_CONTROL_OPTION = "remote-control";
@@ -456,6 +469,8 @@ public final class YAMLOptions {
     private static final List<String> TRANSITIONS =
             Arrays.asList("default", "none", "fade", "slide",
                     "convex", "conconcave", "zoom");
+    private static final List<String> CONTROL_LAYOUTS =
+            Arrays.asList("bottom-left", "edges");
     private static final List<String> MATHJAX_CONFIGS =
             Arrays.asList("default",
                     "TeX-MML-AM_CHTML", "TeX-MML-AM_HTMLorMML",

@@ -265,7 +265,6 @@ public class SlideshowModel {
         return LOGO_POSITIONS.get(position);
     }
 
-
     /*
      * Return true if "footnote" defined in PITCHME.yaml.
      */
@@ -302,6 +301,25 @@ public class SlideshowModel {
     public String fetchTransition() {
         return (_yOpts != null) ? _yOpts.fetchTransition(params()) :
                 YAMLOptions.DEFAULT_TRANSITION;
+    }
+
+    /*
+     * Return "controls-layout" defined in PITCHME.yaml.
+     */
+    public String fetchControlsLayout() {
+
+        String layout = (_yOpts != null) ?
+                _yOpts.fetchControlsLayout(params()) :
+                YAMLOptions.DEFAULT_CONTROLS_LAYOUT;
+
+        // Auto-relocate controls to 'edges' if logo-position is bottom-right.
+        if(_yOpts != null && hasLogoPosition()) {
+            String position = _yOpts.fetchLogoPosition(params());
+            if(YAMLOptions.DEFAULT_CONTROLS_LAYOUT.equals(position)) {
+                layout = YAMLOptions.EDGES_CONTROLS_LAYOUT;
+            }
+        }
+        return layout;
     }
 
     /*
