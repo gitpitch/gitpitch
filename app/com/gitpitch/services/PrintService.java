@@ -26,6 +26,7 @@ package com.gitpitch.services;
 import com.gitpitch.models.MarkdownModel;
 import com.gitpitch.executors.BackEndThreads;
 import com.gitpitch.utils.PitchParams;
+import com.gitpitch.utils.YAMLOptions;
 import com.gitpitch.policies.Runtime;
 import play.Logger;
 
@@ -152,6 +153,12 @@ public class PrintService {
         diskService.delete(pp, pp.PDF());
         String filePath = diskService.asFile(pp, pp.PDF()).toString();
 
+        boolean printFrags = false;
+        try {
+            printFrags =
+                YAMLOptions.build(pp, null, diskService).printFrags(pp);
+        } catch(Exception ex) {}
+
         String slideshowUrl =
             com.gitpitch.controllers.routes.PitchController.slideshow(pp.user,
                         pp.repo,
@@ -161,7 +168,7 @@ public class PrintService {
                         pp.pitchme,
                         pp.notes,
                         null,
-                        PRINT_NO_FRAGS,
+                        Boolean.toString(printFrags),
                         null)
                         .absoluteURL(isEncrypted(),
                                 hostname());
@@ -193,7 +200,6 @@ public class PrintService {
 
     private static final String REVEAL = "reveal";
     private static final String PITCHME_PDF = "PITCHME.pdf";
-    private static final String PRINT_NO_FRAGS = "false";
     private static final String GIT_PDF = "pdf";
     private static final int STATUS_OK = 0;
 

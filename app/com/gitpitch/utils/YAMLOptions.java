@@ -367,6 +367,10 @@ public final class YAMLOptions {
         return fetchBooleanOption(pp, PUBLISHED_OPTION);
     }
 
+    public Boolean printFrags(PitchParams pp) {
+        return fetchBooleanOption(pp, PRINT_FRAGS_OPTIONS);
+    }
+
     private Boolean fetchBooleanOption(PitchParams pp, String option) {
         return fetchBooleanOption(pp, option, false);
     }
@@ -460,6 +464,7 @@ public final class YAMLOptions {
     private static final String SLIDE_NUMBER_OPTION = "slide-number";
     private static final String REVEALJS_VERSION = "revealjs-version";
     private static final String PUBLISHED_OPTION = "published";
+    private static final String PRINT_FRAGS_OPTIONS = "print-frags";
 
     private static final String HSLIDE_DELIM = "horz-delim";
     private static final String VSLIDE_DELIM = "vert-delim";
