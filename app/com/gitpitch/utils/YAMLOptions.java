@@ -464,7 +464,7 @@ public final class YAMLOptions {
     private static final String SLIDE_NUMBER_OPTION = "slide-number";
     private static final String REVEALJS_VERSION = "revealjs-version";
     private static final String PUBLISHED_OPTION = "published";
-    private static final String PRINT_FRAGS_OPTIONS = "print-frags";
+    private static final String PRINT_FRAGS_OPTIONS = "print-fragments";
 
     private static final String HSLIDE_DELIM = "horz-delim";
     private static final String VSLIDE_DELIM = "vert-delim";
