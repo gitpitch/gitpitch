@@ -193,7 +193,7 @@
 ### [GitPitch In-60-Seconds](https://gitpitch.com/docs/getting-started/tutorial)
 
 ---?image=assets/images/css.jpg&opacity=20
-@title[GitPitch Wiki]
+@title[GitPitch Docs]
 
 #### @size[0.5em](@color[gray](click to learn how-to on))
 ### [The GitPitch Docs](https://gitpitch.com/docs)
