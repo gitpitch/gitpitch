@@ -190,13 +190,13 @@
 @title[GitPitch Tutorial]
 
 #### @size[0.5em](@color[gray](click to view a very short tutorial))
-### [GitPitch In-60-Seconds](https://github.com/gitpitch/gitpitch/wiki)
+### [GitPitch In-60-Seconds](https://gitpitch.com/docs/getting-started/tutorial)
 
 ---?image=assets/images/css.jpg&opacity=20
 @title[GitPitch Wiki]
 
 #### @size[0.5em](@color[gray](click to learn how-to on))
-### [The GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki)
+### [The GitPitch Docs](https://gitpitch.com/docs)
 
 ---?image=assets/images/css.jpg&opacity=20
 @title[Your Ideas to Presentation]
