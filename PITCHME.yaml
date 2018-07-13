@@ -18,3 +18,5 @@ charts : true
 mathjax : TeX-AMS_HTML-full
 
 published : true
+
+footnote : GitPitch - The Fastest Way From Idea To Presentation
