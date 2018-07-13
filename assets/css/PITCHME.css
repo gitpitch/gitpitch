@@ -5,18 +5,6 @@
  * https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS
  */
 
-.title-top-right {
-    position: fixed;
-    top: 70px;
-    right: 10px;
-    margin: 0 0 20px 0 !important;
-    color: #eee !important;
-    font-weight: normal !important;
-    line-height: 1.2 !important;
-    letter-spacing: -0.03em !important;
-    font-family: "Montserrat", Impact, sans-serif !important;
-}
-
 .reveal p span.slide-title {
   padding: 4px 15px;
   border-radius: 15px;
@@ -36,31 +24,6 @@
   font-size: 50% !important;
 }
 
-/*
-ul {
-  list-style-type: disc !important;
-  list-style-position: inside !important;
-}
-
-li {
-   margin:0 0 10px 0;
-}
-*/
-
-#gp-logo img {
-  max-height: 1.5em;
-  max-width: none;
-}
-
-.gold {
-  color: #e49436;
-}
-
-.shoutout {
-  color: #e49436;
-  font-size: 1.5em !important;
-}
-
 .reveal pre {
   width: 100%;
   box-shadow : none;
@@ -74,5 +37,15 @@ li {
 
 .reveal .slides section .code-presenting-annotation {
   color: gray;
+}
+
+#gp-logo img {
+  max-height: 1.5em;
+  max-width: none;
+}
+
+.shoutout {
+  color: #e49436;
+  font-size: 1.5em !important;
 }
 

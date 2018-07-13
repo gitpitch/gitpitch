@@ -11,48 +11,67 @@
 ## @color[#e49436](Git)Pitch
 #### Presentation @fa[magic] @color[#e49436](Magic)
 
----?image=assets/images/git.svg&opacity=10
+---?image=assets/images/git.svg
 @title[Enhanced GFM]
 
-#### @size[0.6em](Using enhanced)
+@snap[north-east]
+@size[0.6em](Using enhanced)
+@snapend
 
 <br>
 
-## @fa[github fa-1x](GitHub)
-#### Flavored @color[#e49436](Markdown)
+@snap[south]
+<h2>@fa[github fa-1x](GitHub)</h2>
+<h4>Flavored @color[#e49436](Markdown)</h4>
+@snapend
 
 ---?color=#e49436
 @title[For Everyone on Git]
 
-#### @size[0.8em](Available to @color[black](everyone) on)
-
+@snap[north]
 <br>
+<h4>@size[0.9em](For absolutely @color[black](everyone) on)</h4>
+@snapend
 
-### @fa[github fa-3x], @fa[gitlab fa-3x], and @fa[bitbucket fa-3x].
+@snap[west]
+@fa[gitlab fa-4x]
+@snapend
 
-<br>
+@snap[east]
+@fa[bitbucket fa-4x]
+@snapend
+
+@snap[south]
+@fa[github fa-4x]
+@snapend
+
+@snap[midpoint fragment]
+@color[black](@fa[git fa-4x])
+@snapend
 
 ---
 @title[Rich Content Slides]
 
-#### Enjoy Rich Content Slides
+@snap[north-east]
+<h4>Create Rich Content Slides</h4>
+@snapend
 
-@div[left-50]
+@snap[west]
 ![](assets/images/de-los-muertos.jpg)
-@divend
+@snapend
 
-@div[right-50]
+@snap[east fragment]
 ![](assets/images/daftpunkocat.gif)
-@divend
+@snapend
 
 ---
 @title[Ideas Step-by-Step]
 
-#### Present Your Ideas Step-by-Step
+@snap[north]
+<h4>Present Step-by-Step</h4>
+@snapend
 
-@div[left-50]
-
-<br><br>
+@snap[west]
 
 @ul
 - There are
@@ -62,45 +81,45 @@
 - Presentations
 @ulend
 
-@divend
+@snapend
 
-@div[right-50]
+@snap[east]
 
 ![](assets/images/daftpunkocat.gif)
 
-@divend
+@snapend
 
 ---?image=assets/images/stormtroopers.jpg&size=55% 55%
 @title[Size & Scale Images]
 
-@css[title-top-right](Size & Scale Image Backgrounds)
+@snap[north-east]
+<h4>Size & Scale Image Backgrounds</h4>
+@snapend
 
 ---?image=assets/images/stormtroopers.jpg&size=35% 35%&color=#297EA3
 @title[Color Backgrounds]
 
-@css[title-top-right](Add Color Backgrounds)
+@snap[north]
+<h4>Add Color Backgrounds</h4>
+@snapend
 
 ---?image=assets/images/sunset.jpg
 @title[Image Backgrounds]
 
-@css[title-top-right](Or Go FullScreen)
+@snap[north-east]
+<h4>Go FullScreen</h4>
+@snapend
 
 ---?image=assets/images/sunset.jpg&opacity=40
 @title[Image Opacity]
 
-@css[title-top-right](With Optional Opacity)
+@snap[north]
+<h4>With Optional Opacity</h4>
+@snapend
 
----
-@title[Embed Video]
-
-@css[title-top-right](Embed Video)
-
-![Gravity](https://player.vimeo.com/video/125471012)
-
----?video=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-@title[Fullscreen Video]
-
-@css[title-top-right](Use Theatre Mode)
+@snap[midpoint]
+<h3>Which Can Help To Emphasize Text On Slides</h3>
+@snapend
 
 ---?image=assets/images/css.jpg&opacity=20
 @title[Code Talking]
@@ -109,8 +128,12 @@
 ## @css[shoutout](Code)
 #### Do The Talking
 
----?code=assets/go/server.go&lang=golang&color=black&title=Live Code Presenting
+---?code=assets/go/server.go&lang=golang&color=black
 @title[Live Code Presenting]
+
+@snap[north-east]
+<h4>Live Code Presenting</h4>
+@snapend
 
 @[1](Step through source code as if you were still inside your IDE.)
 @[3-6](Without ever leaving your slideshow.)
@@ -120,7 +143,9 @@
 ---
 @title[Stunning Charts]
 
-@css[title-top-right](Add Stunning Charts)
+@snap[north]
+<h4>Add Stunning Charts</h4>
+@snapend
 
 <br>
 
@@ -148,17 +173,37 @@
 ---
 @title[Beautiful Math]
 
-@css[title-top-right](And Beautiful Math)
+@snap[north-east]
+<h4>And Beautiful Math</h4>
+@snapend
 
 `\[
 \left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
  \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
 \]`
 
+---
+@title[Embed Video]
+
+@snap[north]
+<h4>Embed Video</h4>
+@snapend
+
+![Gravity](https://player.vimeo.com/video/125471012)
+
+---?video=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
+@title[Fullscreen Video]
+
+@snap[north-east]
+<h4>Or Use Theatre Mode</h4>
+@snapend
+
 ---?image=assets/images/demand-more.jpg
 @title[You want MORE?]
 
-@css[title-top-right](MORE! You want MORE?)
+@snap[south]
+<h3>You want MORE?</h3>
+@snapend
 
 ---?color=#e49436
 @title[GitPitch Pro]
@@ -171,37 +216,49 @@
 ---?image=assets/images/go-pro-desktop.jpg
 @title[GitPitch Desktop]
 
+@snap[north-east]
 [@size[0.4em](click here to learn more)](https://gitpitch.com/desktop)
-<br><br>
+@snapend
 
 ---?image=assets/images/go-pro-security.jpg
 @title[GitPitch Security]
 
+@snap[north-east]
 [@size[0.4em](click here to learn more)](https://gitpitch.com/security)
-<br><br>
+@snapend
 
 ---?image=assets/images/go-pro-surveys.jpg
 @title[GitPitch Surveys]
 
+@snap[north-east]
 [@size[0.4em](click here to learn more)](https://gitpitch.com/surveys)
-<br><br>
+@snapend
 
 ---?image=assets/images/css.jpg&opacity=20
 @title[GitPitch Tutorial]
 
-#### @size[0.5em](@color[gray](click to view a very short tutorial))
+@snap[north-east]
+<h4>@size[0.5em](@color[gray](click on link below to launch the tutorial))</h4>
+@snapend
+
 ### [GitPitch In-60-Seconds](https://gitpitch.com/docs/getting-started/tutorial)
 
 ---?image=assets/images/css.jpg&opacity=20
 @title[GitPitch Docs]
 
-#### @size[0.5em](@color[gray](click to learn how-to on))
+@snap[north-east]
+<h4>@size[0.5em](@color[gray](click on link below to open the docs))</h4>
+@snapend
+
 ### [The GitPitch Docs](https://gitpitch.com/docs)
 
 ---?image=assets/images/css.jpg&opacity=20
 @title[Your Ideas to Presentation]
 
-#### @size[0.5em](@color[gray](for more visit @))
-## git@css[gold](pitch).com
+@snap[north-east]
+<h4>@size[0.5em](@color[gray](for more visit @))</h4>
+@snapend
+
+## git@color[#e49436](pitch).com
 
 #### The Fastest Way from Idea to Presentation
