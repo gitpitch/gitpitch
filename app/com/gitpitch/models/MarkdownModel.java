@@ -542,6 +542,7 @@ public class MarkdownModel implements Markdown {
     public String linkLive(PitchParams pp, String linkBase) {
       try {
 
+          linkBase = linkBase.replaceAll(MD_LINK_SPACE, ENCODED_SPACE);
           if (linkAbsolute(linkBase)) {
               return linkBase;
           } else {
@@ -727,6 +728,7 @@ public class MarkdownModel implements Markdown {
     private static final String HTML_ANCHOR_MID = "\">";
     private static final String HTML_ANCHOR_CLOSE = "</a>";
     private static final int NOT_FOUND = -1;
+    private static final String ENCODED_SPACE = "%20";
     /*
      * Model prefix identifier for cache key generator.
      */
