@@ -86,7 +86,6 @@ Each slideshow presentation is beautifully rendered, fully responsive, and highl
 - [Image](https://gitpitch.com/docs/image-features) Slides
 - [Video + Math Formulas + Charts + Icons](https://gitpitch.com/docs/rich-media-features)
 
-See the [Kitchen Sink Slideshow Presentation](https://gitpitch.com/gitpitch/kitchen-sink) for a live demonstration of GitPitch slideshow features.
 
 ## GitPitch slideshow presentations are customizable
 
@@ -123,6 +122,12 @@ GitPitch slideshow presentations are designed for instant [sharing online](https
 GitPitch requires no sign-up. And no configuration. Just add **PITCHME.md** ;)
 
 The [GitPitch Docs](https://gitpitch.com/docs) provide a detailed `How-To` that walks you through getting started, building, customizing, and sharing your GitPitch slideshow presentations.
+
+## GitPitch Kitchen Sink - A Live Feature Tour
+
+![KITCHEN-SINK](assets/images/kitchen-sink.jpg)
+
+See the [GitPitch Kitchen Sink](https://gitpitch.com/gitpitch/kitchen-sink) for a live demonstration of GitPitch slideshow features.
 
 ## GitPitch - An Open Source Project
 
