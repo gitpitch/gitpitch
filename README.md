@@ -7,6 +7,7 @@
 - [What is GitPitch?](#what-is-gitpitch)
 - [What is GitPitch Pro?](#what-is-gitpitch-pro)
 - [Is GitPitch for you?](#is-gitpitch-for-you)
+- [Live Feature Tour](#gitpitch-kitchen-sink---a-live-feature-tour)
 - [How does GitPitch work?](#how-does-gitpitch-work)
 - [Compelling Presentations](#gitpitch-slideshow-presentations-are-compelling)
 - [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
@@ -63,6 +64,12 @@ If you ever find yourself needing to present a concept, design, library, framewo
 - At training events or teaching sessions
 
 Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch automatically turn those ideas into compelling, responsive, online and offline slideshow presentations.
+
+## GitPitch Kitchen Sink - A Live Feature Tour
+
+![KITCHEN-SINK](assets/images/kitchen-sink.jpg)
+
+See the [GitPitch Kitchen Sink](https://gitpitch.com/gitpitch/kitchen-sink) for a live demonstration of GitPitch slideshow features.
 
 ## How does GitPitch work?
 
@@ -122,12 +129,6 @@ GitPitch slideshow presentations are designed for instant [sharing online](https
 GitPitch requires no sign-up. And no configuration. Just add **PITCHME.md** ;)
 
 The [GitPitch Docs](https://gitpitch.com/docs) provide a detailed `How-To` that walks you through getting started, building, customizing, and sharing your GitPitch slideshow presentations.
-
-## GitPitch Kitchen Sink - A Live Feature Tour
-
-![KITCHEN-SINK](assets/images/kitchen-sink.jpg)
-
-See the [GitPitch Kitchen Sink](https://gitpitch.com/gitpitch/kitchen-sink) for a live demonstration of GitPitch slideshow features.
 
 ## GitPitch - An Open Source Project
 
