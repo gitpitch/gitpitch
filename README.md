@@ -20,7 +20,7 @@
 
 ## What is GitPitch?
 
-https://gitpitch.com
+https://gitpitch.com/docs
 
 GitPitch is a markdown presentation service for everyone on Git. You can use it
 to promote, pitch or present absolutely anything using the tools you already
