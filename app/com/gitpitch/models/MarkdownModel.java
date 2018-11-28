@@ -655,6 +655,8 @@ public class MarkdownModel implements Markdown {
 
     public static final String DELIM_QUERY_IMAGE = "image";
     public static final String DELIM_QUERY_VIDEO = "video";
+    public static final String DELIM_QUERY_LOOP = "loop";
+    public static final String DELIM_QUERY_MUTED = "muted";
     public static final String DELIM_QUERY_GIST  = "gist";
     public static final String DELIM_QUERY_CODE  = "code";
     public static final String DELIM_QUERY_LANG  = "lang";
@@ -672,6 +674,12 @@ public class MarkdownModel implements Markdown {
             "<!-- .slide: data-background-image=\"";
     public static final String MD_VIDEO_OPEN =
             "<!-- .slide: data-background-video=\"";
+    public static final String MD_VIDEO_OPEN_END = "\" ";
+    public static final String MD_VIDEO_LOOP =
+            "  data-background-video-loop=\"true\" ";
+    public static final String MD_VIDEO_MUTED =
+            "  data-background-video-muted=\"true\" ";
+    public static final String MD_VIDEO_CLOSE = " -->";
     public static final String MD_IFRAME_OPEN =
             "<!-- .slide: data-background-iframe=\"";
     public static final String MD_IMAGE_SIZE =

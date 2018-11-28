@@ -127,14 +127,27 @@ public class VideoService {
 
         String bgUrl = dp.get(MarkdownModel.DELIM_QUERY_VIDEO, "#");
         bgUrl = mdm.linkLive(pp, bgUrl);
+        String loop = dp.get(MarkdownModel.DELIM_QUERY_LOOP);
+        String muted = dp.get(MarkdownModel.DELIM_QUERY_MUTED);
 
-        return new StringBuffer(MarkdownModel.MD_SPACER)
-                .append(MarkdownModel.MD_SPACER)
-                .append(MarkdownModel.MD_VIDEO_OPEN)
-                .append(bgUrl)
-                .append(MarkdownModel.MD_CLOSER)
-                .append(MarkdownModel.MD_SPACER)
-                .toString();
+        StringBuffer buf = new StringBuffer(MarkdownModel.MD_SPACER)
+                            .append(MarkdownModel.MD_SPACER)
+                            .append(MarkdownModel.MD_VIDEO_OPEN)
+                            .append(bgUrl)
+                            .append(MarkdownModel.MD_VIDEO_OPEN_END);
+
+        if(Boolean.parseBoolean(loop)) {
+            buf.append(MarkdownModel.MD_VIDEO_LOOP);
+        }
+
+        if(Boolean.parseBoolean(muted)) {
+            buf.append(MarkdownModel.MD_VIDEO_MUTED);
+        }
+
+        buf.append(MarkdownModel.MD_VIDEO_CLOSE)
+           .append(MarkdownModel.MD_SPACER);
+
+        return buf.toString();
     }
 
     public boolean found(String md) {
