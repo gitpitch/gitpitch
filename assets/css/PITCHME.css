@@ -1,3 +1,9 @@
+
+/* Welcome Slide Text Styles */
+.faded {
+  color: #CE7731;
+}
+
 /* Pro Features Detailed Text Styles */
 .pro-feature-details {
   color: #36454F !important;
@@ -64,6 +70,12 @@ sup {
 }
 .raleway-medium,
 .raleway-medium * {
+  text-shadow: none !important;
+  text-transform: none !important;
+  font-family: "Raleway Medium", sans-serif !important;
+}
+
+.reveal h3 {
   text-shadow: none !important;
   text-transform: none !important;
   font-family: "Raleway Medium", sans-serif !important;

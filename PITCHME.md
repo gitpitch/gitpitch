@@ -5,7 +5,15 @@
 @snapend
 
 @snap[west montserrat-heavy heading-white]
-# GitPitch
+# GitPitch@css[faded fs-05](.com)
+@snapend
+
+---?image=assets/img/audience.png&size=100% 40%
+
+### What can GitPitch do for you?
+
+@snap[north text-gray fs-04 span-100]
+*Conference Speakers. Consultants. Educators. Training Instructors. Pssst...*
 @snapend
 
 ---?image=assets/img/audience.png&size=100% 40%
@@ -229,7 +237,7 @@ The Template is a collection of high-utility slide designs available out-of-the-
 @snapend
 
 @snap[west raleway-medium]
-#### The Fastest Way From @color[white](Idea) To @color[white](Presentation)
+#### The Fastest Way From @css[text-white fs-13](Idea) To @css[text-white fs-15](Presentation)
 @snapend
 
 @snap[south-west raleway-medium text-white fs-05]
