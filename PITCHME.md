@@ -1,264 +1,237 @@
----?image=assets/images/lets-get-started.jpg&size=auto 90%&color=black
-@title[Introduction]
+---?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 40%
 
----?image=assets/images/face.jpg&position=left&size=55% 100%&color=#020203
-@title[Get Ready]
-
-#### @size[0.6em](Get ready for some)
-
-<br>
-
-## @color[#e49436](Git)Pitch
-#### Presentation @fa[magic] @color[#e49436](Magic)
-
----?image=assets/images/git.svg
-@title[Enhanced GFM]
-
-@snap[north-east]
-@size[0.6em](Using enhanced)
+@snap[north-west raleway-medium]
+#### The Markdown Presentation Service on Git
 @snapend
 
-<br>
-
-@snap[south]
-<h2>@fa[github fa-1x](GitHub)</h2>
-<h4>Flavored @color[#e49436](Markdown)</h4>
+@snap[west montserrat-heavy heading-white]
+# GitPitch
 @snapend
 
----?color=#e49436
-@title[For Everyone on Git]
+---?image=assets/img/audience.png&size=100% 40%
 
-@snap[north]
-<br>
-<h4>@size[0.9em](For absolutely @color[black](everyone) on)</h4>
+@snap[north-east raleway-medium span-55]
+#### GitPitch Desktop
+[Pro Desktop Docs](https://gitpitch.com/docs/pro-features/desktop)
 @snapend
 
-@snap[west]
-@fa[gitlab fa-4x]
+@snap[east span-50]
+![](assets/img/features-desktop.png)
 @snapend
 
-@snap[east]
-@fa[bitbucket fa-4x]
+@snap[west span-40 pro-feature-details]
+@fa[quote-left] Enjoy a dedicated desktop tool on Linux, OSX, and Windows<sup>1</sup> for developing and presenting offline. See local changes to your presentation instantly reflected in a live preview in your browser.
 @snapend
 
-@snap[south]
-@fa[github fa-4x]
+@snap[south-west fs-03]
+1. Windows 10 Pro + Enterprise Editions
 @snapend
 
-@snap[midpoint fragment]
-@color[black](@fa[git fa-4x])
+---?image=assets/img/audience.png&size=100% 40%
+
+@snap[north-east raleway-medium span-55]
+#### GitPitch Security
+[Pro Security Docs](https://gitpitch.com/docs/pro-features/security)
+@snapend
+
+@snap[east span-50]
+![](assets/img/features-security.jpg)
+@snapend
+
+@snap[west span-40 pro-feature-details]
+@fa[quote-left] Activate public, private, and password-protected slideshow presentations powered by private Git repositories. Use GitPitch to secure your content and manage your slideshow audience in the cloud.
+@snapend
+
+---?image=assets/img/audience.png&size=100% 40%
+
+@snap[north-east raleway-medium span-55]
+#### GitPitch Surveys
+[Pro Surveys Docs](https://gitpitch.com/docs/pro-features/surveys)
+@snapend
+
+@snap[east span-50]
+![](assets/img/features-surveys.jpg)
+@snapend
+
+@snap[west span-40 pro-feature-details]
+@fa[quote-left] Turn any slideshow into a two-way conversation. Deliver your message using a GitPitch slide deck. Then gather feedback from your audience long after you leave the stage using rich, professional surveys.
+@snapend
+
+---?image=assets/img/audience.png&size=100% 40%
+
+@snap[north-east raleway-medium span-55]
+#### GitPitch Pro Bonus
+[Pro Bonus Docs](https://gitpitch.com/docs/pro-features/bonus)
+@snapend
+
+@snap[east span-50]
+![](assets/img/features-pro-bonuses.jpg)
+@snapend
+
+@snap[west span-40 pro-feature-details]
+@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro users enjoy powerful slideshow features including image opacity controls, offline video streaming, Google Web Fonts, and Emojis @emoji[heart_eyes]
+@snapend     
+
+---
+
+@snap[north raleway-medium span-80]
+### Markdown Shortcuts
+[Markdown Shortcuts Docs](https://gitpitch.com/docs/markdown-features)
+@snapend
+
+@snap[midpoint span-50]
+![](assets/img/features-markdown-shortcuts.gif)
+@snapend
+
+@snap[south span-100 feature-details]
+Use GitPitch markdown syntax shortcuts to control the appearance of slide content, and effortlessly generate rich visual slide components aka. GitPitch Markdown Widgets @fa[quote-right]
 @snapend
 
 ---
-@title[Rich Content Slides]
 
-@snap[north-east]
-<h4>Create Rich Content Slides</h4>
+@snap[north raleway-medium span-80]
+### Snap Layouts
+[Snap Layouts Docs](https://gitpitch.com/docs/layout-features)
 @snapend
 
-@snap[west]
-![](assets/images/de-los-muertos.jpg)
+@snap[midpoint span-50]
+![](assets/img/features-snap-layouts.png)
 @snapend
 
-@snap[east fragment]
-![](assets/images/daftpunkocat.gif)
-@snapend
+@snap[south span-100 feature-details]
+Use GitPitch snap-layouts syntax to control the placement of content on any slide. Override automatic layout controls and enjoy the power to create unique layouts for your slide decks @fa[quote-right]
+@snapend     
 
 ---
-@title[Ideas Step-by-Step]
 
-@snap[north]
-<h4>Present Step-by-Step</h4>
+@snap[north raleway-medium span-80]
+### Live Code Presenting
+[Code Presenting Docs](https://gitpitch.com/docs/code-features)
 @snapend
 
-@snap[west]
-
-@ul
-- There are
-- Many reasons
-- To @fa[heart]
-- [GitPitch](https://gitpitch.com)
-- Presentations
-@ulend
-
+@snap[midpoint span-50]
+![](assets/img/features-live-code-presenting.gif)
 @snapend
 
-@snap[east]
-
-![](assets/images/daftpunkocat.gif)
-
-@snapend
-
----?image=assets/images/stormtroopers.jpg&size=55% 55%
-@title[Size & Scale Images]
-
-@snap[north-east]
-<h4>Size & Scale Image Backgrounds</h4>
-@snapend
-
----?image=assets/images/stormtroopers.jpg&size=35% 35%&color=#297EA3
-@title[Color Backgrounds]
-
-@snap[north]
-<h4>Add Color Backgrounds</h4>
-@snapend
-
----?image=assets/images/sunset.jpg
-@title[Image Backgrounds]
-
-@snap[north-east]
-<h4>Go FullScreen</h4>
-@snapend
-
----?image=assets/images/sunset.jpg&opacity=40
-@title[Image Opacity]
-
-@snap[north]
-<h4>With Optional Opacity</h4>
-@snapend
-
-@snap[midpoint]
-<h3>Which Can Help To Emphasize Text On Slides</h3>
-@snapend
-
----?image=assets/images/css.jpg&opacity=20
-@title[Code Talking]
-
-### Let your
-## @css[shoutout](Code)
-#### Do The Talking
-
----?code=assets/go/server.go&lang=golang&color=black
-@title[Live Code Presenting]
-
-@snap[north-east]
-<h4>Live Code Presenting</h4>
-@snapend
-
-@[1](Step through source code as if you were still inside your IDE.)
-@[3-6](Without ever leaving your slideshow.)
-@[9-13](Using GitPitch code-presenting with (optional) annotations.)
-@[19-28](With support for markdown code blocks, repository source files, and GitHub GISTS.)
+@snap[south span-100 feature-details]
+Present any fenced code-block, repository source file, or GitHub GIST. Focus-on and step-through specific code snippets, loops, functions, output, etc. from directly within your slide deck @fa[quote-right]
+@snapend     
 
 ---
-@title[Stunning Charts]
 
-@snap[north]
-<h4>Add Stunning Charts</h4>
+@snap[north raleway-medium span-80]
+### Image Magic
+[Image Magic Docs](https://gitpitch.com/docs/image-features)
 @snapend
 
-<br>
+@snap[midpoint span-50]
+![](assets/img/features-image-magic.jpg)
+@snapend
 
-<canvas data-chart="line">
-<!--
-{
- "data": {
-  "labels": ["January"," February"," March"," April"," May"," June"," July"],
-  "datasets": [
-   {
-    "data":[65,59,80,81,56,55,40],
-    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
-   },
-   {
-    "data":[28,48,40,19,86,27,90],
-    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
-   }
-  ]
- },
- "options": { "responsive": "true" }
-}
--->
-</canvas>
+@snap[south span-100 feature-details]
+Enjoy extensive support for inline and background images on any slide. Images can be automatically sized, scaled, positioned, repeated, and even styled using custom CSS @fa[quote-right]
+@snapend     
 
 ---
-@title[Beautiful Math]
 
-@snap[north-east]
-<h4>And Beautiful Math</h4>
+@snap[north raleway-medium span-80]
+### Rich Media
+[Rich Media Docs](https://gitpitch.com/docs/rich-media-features)
 @snapend
 
-`\[
-\left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
- \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
-\]`
+@snap[midpoint span-50]
+![](assets/img/features-rich-media.jpg)
+@snapend
+
+@snap[south span-100 feature-details]
+Enhance your slide decks by adding rich visual content, including charts, MathJax formulas, inline and background videos, FontAwesome icons, solid color and gradient backgrounds @fa[quote-right]
+@snapend     
 
 ---
-@title[Embed Video]
 
-@snap[north]
-<h4>Embed Video</h4>
+@snap[north raleway-medium span-80]
+### Speaker Support
+[Speaker Support Docs](https://gitpitch.com/docs/speaker-features)
 @snapend
 
-![Gravity](https://player.vimeo.com/video/125471012)
-
----?video=http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-@title[Fullscreen Video]
-
-@snap[north-east]
-<h4>Or Use Theatre Mode</h4>
+@snap[midpoint span-50]
+![](assets/img/features-speaker-support.jpg)
 @snapend
 
----?image=assets/images/demand-more.jpg
-@title[You want MORE?]
+@snap[south span-100 feature-details]
+Enjoy great features tailored specifically for conference speakers and training instructors. Including speaker notes, a dedicated speaker window, and support for remote control devices @fa[quote-right]
+@snapend     
 
-@snap[south]
-<h3>You want MORE?</h3>
+---
+
+@snap[north raleway-medium span-80]
+### Theme Customization
+[Theme Customization Docs](https://gitpitch.com/docs/themes)
 @snapend
 
----?color=#e49436
-@title[GitPitch Pro]
-
-# @size[3.5em](OK)
-
----?image=assets/images/think-type-see.png
-@title[Think-Type-See-It]
-
----?image=assets/images/go-pro-desktop.jpg
-@title[GitPitch Desktop]
-
-@snap[north-east]
-[@size[0.4em](click here to learn more)](https://gitpitch.com/desktop)
+@snap[midpoint span-50]
+![](assets/img/features-theme-customization.jpg)
 @snapend
 
----?image=assets/images/go-pro-security.jpg
-@title[GitPitch Security]
+@snap[south span-100 feature-details]
+Embrace or extend one of the built-in slideshow themes to create a look-n-feel to fit your business or brand. You have unlimited control over the appearance of your slide decks using CSS @fa[quote-right]
+@snapend     
 
-@snap[north-east]
-[@size[0.4em](click here to learn more)](https://gitpitch.com/security)
+---
+
+@snap[north raleway-medium span-80]
+### Do More With Git
+[Do More With Git Docs](https://gitpitch.com/docs/git)
 @snapend
 
----?image=assets/images/go-pro-surveys.jpg
-@title[GitPitch Surveys]
-
-@snap[north-east]
-[@size[0.4em](click here to learn more)](https://gitpitch.com/surveys)
+@snap[midpoint span-50]
+![](assets/img/features-do-more-with-git.jpg)
 @snapend
 
----?image=assets/images/css.jpg&opacity=20
-@title[GitPitch Tutorial]
+@snap[south span-100 feature-details]
+Use your preferred Git flow to develop your slideshow presentation content. Collaborate with your existing Git organizations and teams. Use one or more branches. Publish unlimited decks @fa[quote-right]
+@snapend     
 
-@snap[north-east]
-<h4>@size[0.5em](@color[gray](click on link below to launch the tutorial))</h4>
+---
+
+@snap[north raleway-medium span-80]
+### Modular Slideshows
+[Modular Slideshows Docs](https://gitpitch.com/docs/git/branch-modular-slideshows)
 @snapend
 
-### [GitPitch In-60-Seconds](https://gitpitch.com/docs/getting-started/tutorial)
-
----?image=assets/images/css.jpg&opacity=20
-@title[GitPitch Docs]
-
-@snap[north-east]
-<h4>@size[0.5em](@color[gray](click on link below to open the docs))</h4>
+@snap[midpoint span-45]
+![](assets/img/features-modular-slideshows.jpg)
 @snapend
 
-### [The GitPitch Docs](https://gitpitch.com/docs)
+@snap[south span-100 feature-details]
+Thanks to first-class support for modular markdown you can develop and publish modular slideshows. Share the complete slide deck. Or share select mini-decks with your audience @fa[quote-right]
+@snapend     
 
----?image=assets/images/css.jpg&opacity=20
-@title[Your Ideas to Presentation]
+---
 
-@snap[north-east]
-<h4>@size[0.5em](@color[gray](for more visit @))</h4>
+@snap[north raleway-medium span-80]
+### The Quickstart Template
+[Quickstart Template Docs](https://gitpitch.com/docs/the-template)
 @snapend
 
-## git@color[#e49436](pitch).com
+@snap[midpoint span-50]
+![](assets/img/features-the-template.jpg)
+@snapend
 
-#### The Fastest Way from Idea to Presentation
+@snap[south span-100 feature-details]
+The Template is a collection of high-utility slide designs available out-of-the-box to GitPitch presentation authors. Developed using markdown. Customizable using CSS @fa[quote-right]
+@snapend     
+
+---?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 40%
+
+@snap[north-west montserrat-heavy heading-white]
+### GitPitch
+@snapend
+
+@snap[west raleway-medium]
+#### The Fastest Way From @color[white](Idea) To @color[white](Presentation)
+@snapend
+
+@snap[south-west raleway-medium text-white fs-05]
+For everyone on GitHub @fa[github fa-font], GitLab @fa[gitlab fa-font], and Bitbucket @fa[bitbucket fa-font]
+@snapend

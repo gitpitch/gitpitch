@@ -1,22 +1,67 @@
+#
+# GitPitch - The Markdown Presentation Service on GitHub
+#
 
-theme : night
+#
+# Theme Setting
+# Doc: https://gitpitch.com/docs/settings/theme
+#
+theme : simple
 
-layout : center-right
+#
+# Theme-Override Setting
+# Doc: https://gitpitch.com/docs/settings/custom-theme
+#
+theme-override: assets/css/PITCHME.css
 
-logo : assets/images/logo.png
+#
+# [Global] Background Settings
+# Doc: https://gitpitch.com/docs/settings/background
+#
+background : assets/img/audience.png
+background-opacity : 5
+background-position : bottom
+background-size : 100% 60%
 
-theme-override : assets/css/PITCHME.css
+#
+# Logo Setting
+# https://gitpitch.com/docs/settings/logo
+#
+logo : assets/img/logo.png
+logo-postion : top-left
 
-transition : none
+#
+# Layout Setting
+# Doc: https://gitpitch.com/docs/settings/layout
+#
+layout : center
 
-highlight : ir-black
+#
+# Title Setting
+# Doc: https://gitpitch.com/docs/settings/title
+#
+title : "GitPitch - The Markdown Presentation Service on Git"
 
-code-line-numbers : true
+#
+# Description Setting
+# Doc: https://gitpitch.com/docs/settings/description
+#
+description : "The Fastest Way from Idea to Presentation for everyone on GitHub, GitLab, and Bitbucket."
 
-charts : true
+#
+# Thumbnail Setting
+# Doc: https://gitpitch.com/docs/settings/thumbnail
+#
+thumbnail : assets/img/thumbnail.png
 
-mathjax : TeX-AMS_HTML-full
-
-published : true
-
+#
+# Footnote Setting
+# Doc: https://gitpitch.com/docs/settings/footnote
+#
 footnote : "GitPitch - The Fastest Way From Idea To Presentation"
+
+#
+# Published Setting
+# Doc: https://gitpitch.com/docs/settings/published
+#
+published : true
