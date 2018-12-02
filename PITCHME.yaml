@@ -37,22 +37,12 @@ logo-postion : top-left
 layout : center
 
 #
-# Title Setting
-# Doc: https://gitpitch.com/docs/settings/title
+# Twitter Card Settings
+# Doc: https://gitpitch.com/docs/settings/twitter-card
 #
 title : "GitPitch - The Markdown Presentation Service on Git"
-
-#
-# Description Setting
-# Doc: https://gitpitch.com/docs/settings/description
-#
 description : "The Fastest Way from Idea to Presentation for everyone on GitHub, GitLab, and Bitbucket."
-
-#
-# Thumbnail Setting
-# Doc: https://gitpitch.com/docs/settings/thumbnail
-#
-thumbnail : assets/img/thumbnail.png
+# thumbnail : assets/img/thumbnail.png
 
 #
 # Footnote Setting
