@@ -1,4 +1,5 @@
 ---?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 40%
+@title[Introduction]
 
 @snap[north-west raleway-medium]
 #### The Markdown Presentation Service on Git
@@ -231,6 +232,7 @@ The Template is a collection of high-utility slide designs available out-of-the-
 @snapend     
 
 ---?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 40%
+@title[Now It's Your Turn]
 
 @snap[north-west montserrat-heavy heading-white]
 ### GitPitch
