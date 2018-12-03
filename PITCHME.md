@@ -13,7 +13,7 @@
 
 ### What can GitPitch do for you?
 
-@snap[north text-gray fs-04 span-100]
+@snap[north text-gray fs-05 span-100]
 *Conference Speakers. Consultants. Educators. Training Instructors. Pssst...*
 @snapend
 
@@ -21,7 +21,7 @@
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Desktop
-[Pro Desktop Docs](https://gitpitch.com/docs/pro-features/desktop)
+[Pro Desktop Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/desktop)
 @snapend
 
 @snap[east span-50]
@@ -40,7 +40,7 @@
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Security
-[Pro Security Docs](https://gitpitch.com/docs/pro-features/security)
+[Pro Security Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/security)
 @snapend
 
 @snap[east span-50]
@@ -55,7 +55,7 @@
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Surveys
-[Pro Surveys Docs](https://gitpitch.com/docs/pro-features/surveys)
+[Pro Surveys Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/surveys)
 @snapend
 
 @snap[east span-50]
@@ -70,7 +70,7 @@
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Pro Bonus
-[Pro Bonus Docs](https://gitpitch.com/docs/pro-features/bonus)
+[Pro Bonus Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/bonus)
 @snapend
 
 @snap[east span-50]
@@ -85,7 +85,7 @@
 
 @snap[north raleway-medium span-80]
 ### Markdown Shortcuts
-[Markdown Shortcuts Docs](https://gitpitch.com/docs/markdown-features)
+[Markdown Shortcuts Docs @fa[external-link fa-font]](https://gitpitch.com/docs/markdown-features)
 @snapend
 
 @snap[midpoint span-50]
@@ -100,7 +100,7 @@ Use GitPitch markdown syntax shortcuts to control the appearance of slide conten
 
 @snap[north raleway-medium span-80]
 ### Snap Layouts
-[Snap Layouts Docs](https://gitpitch.com/docs/layout-features)
+[Snap Layouts Docs @fa[external-link fa-font]](https://gitpitch.com/docs/layout-features)
 @snapend
 
 @snap[midpoint span-50]
@@ -115,7 +115,7 @@ Use GitPitch snap-layouts syntax to control the placement of content on any slid
 
 @snap[north raleway-medium span-80]
 ### Live Code Presenting
-[Code Presenting Docs](https://gitpitch.com/docs/code-features)
+[Code Presenting Docs @fa[external-link fa-font]](https://gitpitch.com/docs/code-features)
 @snapend
 
 @snap[midpoint span-50]
@@ -130,7 +130,7 @@ Present any fenced code-block, repository source file, or GitHub GIST. Focus-on 
 
 @snap[north raleway-medium span-80]
 ### Image Magic
-[Image Magic Docs](https://gitpitch.com/docs/image-features)
+[Image Magic Docs @fa[external-link fa-font]](https://gitpitch.com/docs/image-features)
 @snapend
 
 @snap[midpoint span-50]
@@ -145,7 +145,7 @@ Enjoy extensive support for inline and background images on any slide. Images ca
 
 @snap[north raleway-medium span-80]
 ### Rich Media
-[Rich Media Docs](https://gitpitch.com/docs/rich-media-features)
+[Rich Media Docs @fa[external-link fa-font]](https://gitpitch.com/docs/rich-media-features)
 @snapend
 
 @snap[midpoint span-50]
@@ -160,7 +160,7 @@ Enhance your slide decks by adding rich visual content, including charts, MathJa
 
 @snap[north raleway-medium span-80]
 ### Speaker Support
-[Speaker Support Docs](https://gitpitch.com/docs/speaker-features)
+[Speaker Support Docs @fa[external-link fa-font]](https://gitpitch.com/docs/speaker-features)
 @snapend
 
 @snap[midpoint span-50]
@@ -175,7 +175,7 @@ Enjoy great features tailored specifically for conference speakers and training 
 
 @snap[north raleway-medium span-80]
 ### Theme Customization
-[Theme Customization Docs](https://gitpitch.com/docs/themes)
+[Theme Customization Docs @fa[external-link fa-font]](https://gitpitch.com/docs/themes)
 @snapend
 
 @snap[midpoint span-50]
@@ -190,7 +190,7 @@ Embrace or extend one of the built-in slideshow themes to create a look-n-feel t
 
 @snap[north raleway-medium span-80]
 ### Do More With Git
-[Do More With Git Docs](https://gitpitch.com/docs/git)
+[Do More With Git Docs @fa[external-link fa-font]](https://gitpitch.com/docs/git)
 @snapend
 
 @snap[midpoint span-50]
@@ -205,7 +205,7 @@ Use your preferred Git flow to develop your slideshow presentation content. Coll
 
 @snap[north raleway-medium span-80]
 ### Modular Slideshows
-[Modular Slideshows Docs](https://gitpitch.com/docs/git/branch-modular-slideshows)
+[Modular Slideshows Docs @fa[external-link fa-font]](https://gitpitch.com/docs/git/branch-modular-slideshows)
 @snapend
 
 @snap[midpoint span-45]
@@ -220,7 +220,7 @@ Thanks to first-class support for modular markdown you can develop and publish m
 
 @snap[north raleway-medium span-80]
 ### The Quickstart Template
-[Quickstart Template Docs](https://gitpitch.com/docs/the-template)
+[Quickstart Template Docs @fa[external-link fa-font]](https://gitpitch.com/docs/the-template)
 @snapend
 
 @snap[midpoint span-50]
