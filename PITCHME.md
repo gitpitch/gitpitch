@@ -6,14 +6,14 @@
 @snapend
 
 @snap[west montserrat-heavy heading-white]
-# GitPitch@css[faded fs-05](.com)
+# GitPitch@css[faded text-05](.com)
 @snapend
 
 ---?image=assets/img/audience.png&size=100% 40%
 
 ### What can GitPitch do for you?
 
-@snap[north text-gray fs-05 span-100]
+@snap[north text-gray text-05 span-100]
 *Conference Speakers. Consultants. Educators. Training Instructors. Pssst...*
 @snapend
 
@@ -32,7 +32,7 @@
 @fa[quote-left] Enjoy a dedicated desktop tool on Linux, OSX, and Windows<sup>1</sup> for developing and presenting offline. See local changes to your presentation instantly reflected in a live preview in your browser.
 @snapend
 
-@snap[south-west fs-03]
+@snap[south-west text-03]
 1. Windows 10 Pro + Enterprise Editions
 @snapend
 
@@ -239,9 +239,9 @@ The Template is a collection of high-utility slide designs available out-of-the-
 @snapend
 
 @snap[west raleway-medium]
-#### The Fastest Way From @css[text-white fs-13](Idea) To @css[text-white fs-15](Presentation)
+#### The Fastest Way From @css[text-white text-13](Idea) To @css[text-white text-15](Presentation)
 @snapend
 
-@snap[south-west raleway-medium text-white fs-05]
+@snap[south-west raleway-medium text-white text-05]
 For everyone on GitHub @fa[github fa-font], GitLab @fa[gitlab fa-font], and Bitbucket @fa[bitbucket fa-font]
 @snapend
