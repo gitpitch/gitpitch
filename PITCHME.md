@@ -235,7 +235,7 @@ The Template is a collection of high-utility slide designs available out-of-the-
 @title[Now It's Your Turn]
 
 @snap[north-west montserrat-heavy heading-white]
-### GitPitch
+## GitPitch@css[faded text-05](.com)
 @snapend
 
 @snap[west raleway-medium]
