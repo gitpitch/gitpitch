@@ -231,17 +231,17 @@ Thanks to first-class support for modular markdown you can develop and publish m
 The Template is a collection of high-utility slide designs available out-of-the-box to GitPitch presentation authors. Developed using markdown. Customizable using CSS @fa[quote-right]
 @snapend     
 
----?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 40%
+---?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 55%
 @title[Now It's Your Turn]
 
 @snap[north-west montserrat-heavy heading-white]
 ## GitPitch@css[faded text-05](.com)
 @snapend
 
-@snap[west raleway-medium]
-#### The Fastest Way From @css[text-white text-13](Idea) To @css[text-white text-15](Presentation)
+@snap[west raleway-medium pad-bottom-5]
+#### Modern @css[text-white text-smallcaps text-14](Slide Decks) for @css[text-white text-smallcaps text-16](Developers)
 @snapend
 
-@snap[south-west raleway-medium text-white text-05]
-For everyone on GitHub @fa[github fa-font], GitLab @fa[gitlab fa-font], and Bitbucket @fa[bitbucket fa-font]
+@snap[south-west raleway-medium text-white text-08]
+On GitHub @fa[github fa-font], GitLab @fa[gitlab fa-font], and Bitbucket @fa[bitbucket fa-font]
 @snapend

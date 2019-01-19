@@ -23,9 +23,13 @@
 .heading-white h4 {
     color: white;
 }
+.pad-bottom-5 {
+  padding-bottom: 5em !important;
+}
 sup {
   color: gray;
 }
+
 
 /* Fixed Theme Style Overrides */
 .reveal a:hover {
