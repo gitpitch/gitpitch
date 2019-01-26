@@ -20,7 +20,7 @@
 
 ## What is GitPitch?
 
-https://gitpitch.com/docs
+https://gitpitch.com/gitpitch/what-is-gitpitch
 
 GitPitch is a markdown presentation service for everyone on Git. You can use it
 to promote, pitch or present absolutely anything using the tools you already
@@ -48,7 +48,7 @@ enhanced [subscription](https://gitpitch.com/pro-features) features, including
 [GitPitch Desktop](https://gitpitch.com/desktop) for local development, live
 previews, and presenting directly on your Linux, Windows, or OSX desktop.
 
-![DESKTOP](assets/images/think-type-see.png)
+![DESKTOP](assets/images/gitpitch-desktop.gif)
 
 GitPitch Pro is also available as [GitPitch Enterprise](https://gitpitch.com/docs/about/enterprise)
 for on-premises deployment with seamless integration for GitHub Enterprise,
