@@ -21,7 +21,7 @@
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Desktop
-[Pro Desktop Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/desktop)
+[Pro + Lite Desktop Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/desktop)
 @snapend
 
 @snap[east span-50]
@@ -35,6 +35,24 @@
 @snap[south-west text-03]
 1. Windows 10 Pro + Enterprise Editions
 @snapend
+
+---?image=assets/img/audience.png&size=100% 40%
+
+@snap[north-east raleway-medium span-55]
+#### GitPitch Export
+[Pro + Lite Desktop Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/desktop)
+@snapend
+
+@snap[east span-50]
+![](assets/img/features-export.jpg)
+@snapend
+
+@snap[west span-40 pro-feature-details]
+@fa[quote-left] Use GitPitch Desktop to export any slide deck to Microsoft
+PowerPoint & Office 365, Apple Keynote & Apple iCloud, Google Slides, PDF, and SlideShare.
+@snapend
+
+
 
 ---?image=assets/img/audience.png&size=100% 40%
 
@@ -69,8 +87,8 @@
 ---?image=assets/img/audience.png&size=100% 40%
 
 @snap[north-east raleway-medium span-55]
-#### GitPitch Pro Bonus
-[Pro Bonus Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/bonus)
+#### GitPitch Power
+[Pro + Lite Power Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/bonus)
 @snapend
 
 @snap[east span-50]
@@ -78,8 +96,8 @@
 @snapend
 
 @snap[west span-40 pro-feature-details]
-@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro users enjoy powerful slideshow features including image opacity controls, offline video streaming, Google Web Fonts, and Emojis @emoji[heart_eyes]
-@snapend     
+@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro + Lite users enjoy powerful slideshow features including image opacity controls, offline video streaming, Google Web Fonts, and Emojis @emoji[heart_eyes]
+@snapend
 
 ---
 
@@ -231,15 +249,15 @@ Thanks to first-class support for modular markdown you can develop and publish m
 The Template is a collection of high-utility slide designs available out-of-the-box to GitPitch presentation authors. Developed using markdown. Customizable using CSS @fa[quote-right]
 @snapend     
 
----?image=assets/img/audience.png&opacity=100&color=#E58537&size=100% 55%
+---?image=assets/img/presenter.jpg&opacity=100&size=cover
 @title[Now It's Your Turn]
 
 @snap[north-west montserrat-heavy heading-white]
 ## GitPitch@css[faded text-05](.com)
 @snapend
 
-@snap[west raleway-medium pad-bottom-5]
-#### Modern @css[text-white text-smallcaps text-14](Slide Decks) for @css[text-white text-smallcaps text-16](Developers)
+@snap[west raleway-medium h4-white span-50]
+#### For @css[text-smallcaps text-18](Everyone)
 @snapend
 
 @snap[south-west raleway-medium text-white text-08]
