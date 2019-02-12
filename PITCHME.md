@@ -96,7 +96,7 @@ PowerPoint & Office 365, Apple Keynote & Apple iCloud, Google Slides, PDF, and S
 @snapend
 
 @snap[west span-40 pro-feature-details]
-@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro + Lite users enjoy powerful slideshow features including image opacity controls, offline video streaming, Google Web Fonts, and Emojis @emoji[heart_eyes]
+@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro + Lite users enjoy powerful slideshow features including image opacity, UML diagrams, code zoom, Google Web Fonts, and Emojis @emoji[heart_eyes]
 @snapend
 
 ---
