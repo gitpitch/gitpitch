@@ -2,8 +2,6 @@
 
 # Markdown Presentations For Everyone on GitHub, GitLab, Bitbucket, GitBucket, Gitea, and Gogs.
 
-![DESKTOP](assets/images/gitpitch-desktop.gif)
-
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Docs](https://gitpitch.com/docs) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
 - [What is GitPitch?](#what-is-gitpitch)
@@ -50,7 +48,7 @@ enhanced [subscription](https://gitpitch.com/pro-features) features, including
 [GitPitch Desktop](https://gitpitch.com/desktop) for local development, live
 previews, and presenting directly on your Linux, Windows, or OSX desktop.
 
-![DESKTOP](assets/images/think-type-see.png)
+![DESKTOP](assets/images/gitpitch-desktop.gif)
 
 GitPitch Pro is also available as [GitPitch Enterprise](https://gitpitch.com/docs/about/enterprise)
 for on-premises deployment with seamless integration for GitHub Enterprise,
