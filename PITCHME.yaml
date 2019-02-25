@@ -41,7 +41,7 @@ layout : center
 # Doc: https://gitpitch.com/docs/settings/twitter-card
 #
 title : "GitPitch - The Markdown Presentation Service on Git"
-description : "The Fastest Way from Idea to Presentation for everyone on GitHub, GitLab, and Bitbucket."
+description : "Modern Slide Decks for Developers on Linux, OSX, and Windows."
 # thumbnail : assets/img/thumbnail.png
 
 #
