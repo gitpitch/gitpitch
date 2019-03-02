@@ -41,7 +41,7 @@ layout : center
 # Doc: https://gitpitch.com/docs/settings/twitter-card
 #
 title : "GitPitch - The Markdown Presentation Service on Git"
-description : "Modern Slide Decks for Developers on Linux, OSX, and Windows 10. Preview and present offline. Share online."
+description : "Modern Slide Decks for Developers on Linux, OSX, and Windows 10. Preview and present offline. Publish and share online."
 # thumbnail : assets/img/thumbnail.png
 
 #
