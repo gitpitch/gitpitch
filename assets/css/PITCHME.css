@@ -84,16 +84,3 @@ sup {
   text-transform: none !important;
   font-family: "Raleway Medium", sans-serif !important;
 }
-
-/*
- * FontAwesome Font Style Override.
- * This style rule must appear after GitPitch Pro Fonts imports.
- */
-.fa-font {
-  display: inline-block !important;
-  font: normal normal normal 14px/1 FontAwesome !important;
-  font-size: inherit !important;
-  text-rendering: auto !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-}

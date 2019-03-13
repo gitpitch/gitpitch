@@ -49,7 +49,7 @@
 
 @snap[west span-40 pro-feature-details]
 @fa[quote-left] Use GitPitch Desktop to export any slide deck to Microsoft
-PowerPoint & Office 365, Apple Keynote & Apple iCloud, Google Slides, PDF, and SlideShare.
+PowerPoint & Office 365, LibreOffice, Apple Keynote & Apple iCloud, Google Slides, PDF, and LinkedIn SlideShare.
 @snapend
 
 
@@ -96,7 +96,7 @@ PowerPoint & Office 365, Apple Keynote & Apple iCloud, Google Slides, PDF, and S
 @snapend
 
 @snap[west span-40 pro-feature-details]
-@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro + Lite users enjoy powerful slideshow features including image opacity, UML diagrams, code zoom, Google Web Fonts, and Emojis @emoji[heart_eyes]
+@fa[quote-left] Beyond GitPitch Desktop, Security, and Surveys...Pro + Lite users enjoy *power* features including image opacity controls, UML diagrams, code ZOOM, Google Web Fonts, Emojis @emoji[heart_eyes] and more.
 @snapend
 
 ---
@@ -257,9 +257,9 @@ The Template is a collection of high-utility slide designs available out-of-the-
 @snapend
 
 @snap[west raleway-medium h4-white span-50]
-#### For @css[text-smallcaps text-18](Everyone)
+#### Modern Slide Decks
 @snapend
 
-@snap[south-west raleway-medium text-white text-08]
-On GitHub @fa[github fa-font], GitLab @fa[gitlab fa-font], and Bitbucket @fa[bitbucket fa-font]
+@snap[south-west raleway-medium text-white text-08 span-100]
+For developers on GitHub @fab[github fab-font], GitLab @fab[gitlab fab-font], and Bitbucket @fab[bitbucket fab-font]
 @snapend
