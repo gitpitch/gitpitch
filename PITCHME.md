@@ -87,6 +87,22 @@ PowerPoint & Office 365, LibreOffice, Apple Keynote & Apple iCloud, Google Slide
 ---?image=assets/img/audience.png&size=100% 40%
 
 @snap[north-east raleway-medium span-55]
+#### GitPitch Audio
+[Pro Audio Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/audio)
+@snapend
+
+@snap[east span-50]
+![](assets/img/features-audio.png)
+@snapend
+
+@snap[west span-40 pro-feature-details]
+@fa[quote-left] Activate a voice-over for individual slides and slide fragments, unlocking brand new ways to share knowledge, teach, and deliver training materials.
+@snapend
+
+
+---?image=assets/img/audience.png&size=100% 40%
+
+@snap[north-east raleway-medium span-55]
 #### GitPitch Power
 [Pro + Lite Power Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/bonus)
 @snapend
