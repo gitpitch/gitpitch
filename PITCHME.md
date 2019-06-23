@@ -138,7 +138,7 @@ Use GitPitch markdown syntax shortcuts to control the appearance of slide conten
 @snapend
 
 @snap[midpoint span-50]
-![](assets/img/features-snap-layouts.png)
+![](assets/img/features-snap-layouts.jpg)
 @snapend
 
 @snap[south span-100 feature-details]
