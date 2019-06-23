@@ -217,7 +217,7 @@ Enjoy great features tailored specifically for conference speakers and training 
 @snapend
 
 @snap[south span-100 feature-details]
-Embrace or extend one of the built-in slideshow themes to create a look-n-feel to fit your business or brand. You have unlimited control over the appearance of your slide decks using CSS @fa[quote-right]
+Embrace or extend the built-in theme template to create a look-n-feel to fit your business or brand. Or take full control over the appearance of your slide decks using custom CSS @fa[quote-right]
 @snapend     
 
 ---
