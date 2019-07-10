@@ -75,6 +75,12 @@ learn more about the service at the following links:
 
 <br><br>
 
+![GITPITCH EXPORT TO POWERPOINT](assets/images/gitpitch-export-powerpoint.jpg)
+
+> Click link to view the **The GitPitch Desktop Export Guide**: https://gitpitch.com/docs/pro-features/desktop
+
+<br><br>
+
 ![GITPITCH DOCS](assets/images/gitpitch-docs.jpg)
 
 > Click link to view the **The Complete GitPitch Docs**: https://gitpitch.com/docs
