@@ -1,163 +1,118 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
-# Modern Slide Decks for Developers.
+# Modern Slide Decks for Developers on Git
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Docs](https://gitpitch.com/docs) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
-- [What is GitPitch?](#what-is-gitpitch)
-- [What is GitPitch Pro?](#what-is-gitpitch-pro)
-- [Is GitPitch for you?](#is-gitpitch-for-you)
-- [Live Feature Tour](#gitpitch-kitchen-sink---a-live-feature-tour)
-- [How does GitPitch work?](#how-does-gitpitch-work)
-- [Compelling Presentations](#gitpitch-slideshow-presentations-are-compelling)
-- [Customizable Presentations](#gitpitch-slideshow-presentations-are-customizable)
-- [Code-Ready Presentations](#gitpitch-slideshow-presentations-speak-code-fluently)
-- [Speaker-Ready Presentations](#gitpitch-slideshow-presentations-are-speaker-ready)
-- [Modular Presentations](#gitpitch-slideshow-presentations-are-modular)
-- [Social Presentations](#gitpitch-slideshow-presentations-are-social)
-- [Presentations That Just Work](#gitpitch-slideshow-presentations-just-work)
-- [An Open Source Project](#gitpitch---an-open-source-project)
 
-## What is GitPitch?
+### What is GitPitch?
 
-https://gitpitch.com/gitpitch/what-is-gitpitch
+> Consultants. Conference Speakers. Educators. Training Instructors. Pssst...
 
-GitPitch is a markdown presentation service for everyone on Git. You can use it
-to promote, pitch or present absolutely anything using the tools you already
-know and love - Markdown + Git.
+GitPitch is a modern PowerPoint uniquely adapted for developers on GitHub,
+GitLab, and Bitbucket. Develop, preview, and present offline. Git-push to
+publish and share online. Or one-click export to PowerPoint, Keynote, Google
+Slides, and PDF.
 
-The service introduces a new convention for Git users, called **PITCHME.md**.
-The GitPitch server turns **PITCHME.md** markdown files found within any public
-or private repo into online and offline, interactive slideshows.
+![WHAT IS GITPITCH](assets/images/gitpitch-what-is-gitpitch.jpg)
 
-![STUNNING](assets/images/stunning.png)
+> Click link to view the **What is GitPitch?** slide deck: https://gitpitch.com/gitpitch/what-is-gitpitch
 
-GitPitch is an open source project so you can fork, clone, and modify the source.
-You can find detailed build instructions [here](https://github.com/gitpitch/gitpitch/wiki/Server-Build-Instructions).
-You can also submit bug, feature and pull-requests on this repo. If you like
-this project please show your support with a [GitHub star](https://github.com/gitpitch/gitpitch/stargazers).
+<br>
 
-Your support is much appreciated. Cheers, David :heart:.
+### What is GitPitch.com?
 
-## What is GitPitch Pro?
+GitPitch.com is a modern slide deck solution hosted on
+[gitpitch.com](https://gitpitch.com). The GitPitch slide deck solution is
+powered by the tools you already know and love - Markdown and Git. You can
+learn more about the service at the following links:
 
-GitPitch Pro is the GitPitch service hosted on [gitpitch.com](https://gitpitch.com).
+- [A Modern Slide Deck Solution in the Cloud Free for Everyone](https://gitpitch.com/free-features)
+- [A Modern Slide Deck Solution in the Cloud and on the Desktop for Subscribers](https://gitpitch.com/features)
+- [A Modern Slide Deck Solution for Enterprise Deployment On-Premises](https://gitpitch.com/enterprise)
 
-GitPitch Pro offers a wide range of [free](https://gitpitch.com/features) and
-enhanced [subscription](https://gitpitch.com/pro-features) features, including
-[GitPitch Desktop](https://gitpitch.com/desktop) for local development, live
-previews, and presenting directly on your Linux, Windows, or OSX desktop.
+<br>
 
-![DESKTOP](assets/images/gitpitch-desktop.gif)
+![GITPITCH DEMO DECK](assets/images/gitpitch-demo-deck.jpg)
 
-GitPitch Pro is also available as [GitPitch Enterprise](https://gitpitch.com/docs/about/enterprise)
-for on-premises deployment with seamless integration for GitHub Enterprise,
-GitLab, Bitbucket, GitBucket, Gitea, and Gogs servers.
+> Click link to view the **GitPitch Hello World** slide deck: https://gitpitch.com/gitpitch/demo-deck
 
-GitPitch Enterprise is delivered using Docker, the worlds leading software
-containerization platform.
+<br>
 
-## Is GitPitch for you?
+### What makes GitPitch so Awesome for Developers?
 
-If you ever find yourself needing to present a concept, design, library, framework, product, service, training materials, or educational course work:
+> Its a pretty long list of things but here are a few sample slide decks and docs to capture your imagination...
 
-- To colleagues, clients or customers
-- At meetups or conferences
-- At training events or teaching sessions
+<br>
 
-Then GitPitch is for you. Simply capture your ideas in Markdown and let GitPitch automatically turn those ideas into compelling, responsive, online and offline slideshow presentations.
+![THEME CUSTOMIZATION](assets/images/gitpitch-theme-template.jpg)
 
-## GitPitch Kitchen Sink - A Live Feature Tour
+> Click link to view the **The Theme Template** slide deck: https://gitpitch.com/gitpitch/theme-template-demos
 
-![KITCHEN-SINK](assets/images/kitchen-sink.jpg)
+<br><br>
 
-See the [GitPitch Kitchen Sink](https://gitpitch.com/gitpitch/kitchen-sink) for a live demonstration of GitPitch slideshow features.
+![SNAP LAYOUTS](assets/images/gitpitch-snap-layouts.jpg)
 
-## How does GitPitch work?
+> Click link to view the **Custom Layouts Guide**: https://gitpitch.com/gitpitch/snap-layouts
 
-GitPitch presentations are powered by the amazing [reveal.js](https://github.com/hakimel/reveal.js) presentation framework. But with GitPitch there is nothing to download. Nothing to install. All you need is your favorite text editor. And an account on GitHub, GitLab, or Bitbucket. Or a self-hosted instance of GitHub Enterprise, GitLab CE, GitBucket, Gitea, or Gogs.
+<br><br>
 
-![TERMINAL](images/gp-terminal.png)
+![GITPITCH CODE PRESENTING](assets/images/gitpitch-code-presenting.gif)
 
-No more Keynote. No more PowerPoint. Just Markdown. Then git-commit and push on
-any branch within a public GitHub, GitLab, Bitbucket, GitBucket, Gitea, or Gogs repo.
+> Click link to view the **Live Code Presenting** slide deck: https://gitpitch.com/gitpitch/pro-code-presenting
 
-If you want to avoid the `git-push-preview` cycle during development, consider activating a GitPitch Pro subscription that will give you access to [GitPitch Desktop](https://gitpitch.com/desktop). GitPitch Desktop supports local development, live previews, and presenting directly on your Linux, Windows, or OSX desktop. Desktop works offline so you can too. Which is prefect for long-haul flights, or when you take the stage for live presentations.
+<br><br>
 
-## GitPitch slideshow presentations are compelling
+![GITPITCH SPEAKER SUPPORT](assets/images/gitpitch-speaker-support.jpg)
 
-![SLIDESHOW](images/gp-slideshow-master.png)
+> Click link to view the **Speaker Support Guide** : https://gitpitch.com/docs/speaker-features
 
-Each slideshow presentation is beautifully rendered, fully responsive, and highly interactive with a rich set of features including:
+<br><br>
 
-- [Markdown Magic](https://gitpitch.com/docs/markdown-features) Slides
-- [Code + GIST](https://gitpitch.com/docs/code-features) Slides
-- [Image](https://gitpitch.com/docs/image-features) Slides
-- [Video + Math Formulas + Charts + Icons](https://gitpitch.com/docs/rich-media-features)
+![GITPITCH DESKTOP](assets/images/gitpitch-desktop.gif)
 
+> Click link to view the **The GitPitch Desktop Guide**: https://gitpitch.com/docs/pro-features/desktop
 
-## GitPitch slideshow presentations are customizable
+<br><br>
 
-Choose between six distinct [visual themes](https://gitpitch.com/docs/themes):
+![GITPITCH DOCS](assets/images/gitpitch-docs.jpg)
 
-![SLIDESHOW](images/gp-slideshow-night.png)
+> Click link to view the **The Complete GitPitch Docs**: https://gitpitch.com/docs
 
-Or further [customize the look and feel](https://gitpitch.com/docs/settings) of your slideshow presentations using background images, your own logo and even [custom css](https://gitpitch.com/docs/themes/custom).
+<br><br>
 
-![SLIDESHOW](images/gp-slideshow-room.png)
+### Introducing the PITCHME.md Convention
 
-## GitPitch slideshow presentations speak code fluently
+#### The README.md Convention
 
-![CODE-PRESENTING](images/gp-code-presenting-series.gif)
+If you have ever worked with Git - on GitHub, GitLab, or Bitbucket - you are
+probably already familiar with this convention. It automatically turns any
+README.md file found within a Git repository into nicely rendered documentation.
+This convention gives developers a simple and convenient way to document any
+project.
 
-Step-through static-code blocks or the complete source-code from any file in the repo, line-by-line or section-by-section, from directly within any slideshow presentation using [code-presenting](https://gitpitch.com/docs/code-features/presenting).
+#### The PITCHME.md Convention
 
-## GitPitch slideshow presentations are speaker-ready
+GitPitch introduces a brand new convention for all Git users, the PITCHME.md
+convention. This convention automatically turns any PITCHME.md file found
+within a Git repository into a modern slideshow presentation on
+[gitpitch.com](https://gitpitch.com). This convention gives developers a simple
+and convenient way to promote, pitch or present absolutely anything. Using the
+tools we already know and love - Markdown and Git.
 
-GitPitch supports a [speaker notes window](https://gitpitch.com/docs/speaker-features) that can be opened for any GitPitch online or [offline](https://gitpitch.com/docs/foundation-features/offline) presentation. The speaker notes window shows the current slide, provides a preview of the upcoming slide, and also includes a timer that helps keep track of time once you launch the presentation.
+<br><br>
 
-![SPEAKER-NOTES](images/gp-speaker-notes.png)
+### The GitPitch Backstory
 
-## GitPitch slideshow presentations are modular
+GitPitch began as a personal project back in 2016. The early versions of the
+service were maintained as an open source project in this repository. I now
+work on this project full-time and maintain a wide range of [free, subscriber,
+and enterprise](https://gitpitch.com/pricing) slide deck solutions. You can
+still fork, clone, or modify the original source and open new issues and
+feature requests on this repo.
 
-Create and deliver content and course materials as a series of slideshow presentations using [modular markdown](https://gitpitch.com/docs/git/branch-shared-markdown) and [shared assets](https://gitpitch.com/docs/git/branch-shared-assets) (css, images, etc.) in a single git repo.
+If you like this project please show your support with a
+[GitHub Star](https://github.com/gitpitch/gitpitch/stargazers). Your support is
+much appreciated. Cheers, David :heart:.
 
-## GitPitch slideshow presentations are social
-
-GitPitch slideshow presentations are designed for instant [sharing online](https://gitpitch.com/docs/foundation-features/online).
-
-## GitPitch slideshow presentations just work
-
-GitPitch requires no sign-up. And no configuration. Just add **PITCHME.md** ;)
-
-The [GitPitch Docs](https://gitpitch.com/docs) provide a detailed `How-To` that walks you through getting started, building, customizing, and sharing your GitPitch slideshow presentations.
-
-## GitPitch - An Open Source Project
-
-The GitPitch server is a [Play Framework 2.5.x](https://playframework.com/) Web application open-sourced under an MIT License. This means you can fork, clone, and modify the source and build and test the server on your local machine.
-
-You can find detailed build instructions [here](https://github.com/gitpitch/gitpitch/wiki/Server-Build-Instructions). You can also submit bug, feature and pull-requests on this repo. If you like this project please show your support with a [GitHub star](https://github.com/gitpitch/gitpitch/stargazers). Much appreciated.
-
-GitPitch has been designed to follow standard Play Framework conventions. In order to understand the layout of this project see the following article, [Anatomy of a Play Application](https://playframework.com/documentation/2.5.x/Anatomy).
-
-## MIT License
-
-Copyright (c) 2016 David Russell
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+<br><br>
