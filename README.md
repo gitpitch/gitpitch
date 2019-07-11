@@ -23,13 +23,13 @@ Slides, and PDF.
 ### What is GitPitch.com?
 
 GitPitch.com is a modern slide deck solution hosted on
-[gitpitch.com](https://gitpitch.com). The GitPitch slide deck solution is
-powered by the tools you already know and love - Markdown and Git. You can
-learn more about the service at the following links:
+[gitpitch.com](https://gitpitch.com). GitPitch is powered by the tools you
+already know and love - Markdown and Git. You can learn more about each of
+the available GitPitch services at the following links:
 
-- [A Modern Slide Deck Solution in the Cloud Free for Everyone](https://gitpitch.com/free-features)
-- [A Modern Slide Deck Solution in the Cloud and on the Desktop for Subscribers](https://gitpitch.com/features)
-- [A Modern Slide Deck Solution for Enterprise Deployment On-Premises](https://gitpitch.com/enterprise)
+- [A Modern Slide Deck Service in the Cloud Free for Everyone](https://gitpitch.com/free-features)
+- [A Modern Slide Deck Service in the Cloud and on the Desktop for Subscribers](https://gitpitch.com/features)
+- [A Modern Slide Deck Service for Enterprise Deployment On-Premises](https://gitpitch.com/enterprise)
 
 <br>
 
@@ -39,11 +39,19 @@ learn more about the service at the following links:
 
 <br>
 
-### What makes GitPitch so Awesome for Developers?
+### What makes GitPitch so perfect for Developers?
 
-> Its a pretty long list of things but here are a few sample slide decks and docs to capture your imagination...
+Click on the links below to view sample slide decks and feature guides to
+learn what makes GitPitch a truly unique *developer-native* slide deck solution
+for everyone on GitHub, GitLab, and Bitbucket.
 
-<br>
+<br><br>
+
+![SNAP LAYOUTS](assets/images/gitpitch-modular.jpg)
+
+> Click link to view the **Modular Slide Decks with Git Guide**: https://gitpitch.com/docs/git
+
+<br><br>
 
 ![THEME CUSTOMIZATION](assets/images/gitpitch-theme-template.jpg)
 
@@ -112,10 +120,11 @@ tools we already know and love - Markdown and Git.
 
 GitPitch began as a personal project back in 2016. The early versions of the
 service were maintained as an open source project in this repository. I now
-work on this project full-time and maintain a wide range of [free, subscriber,
-and enterprise](https://gitpitch.com/pricing) slide deck solutions. You can
-still fork, clone, or modify the original source and open new issues and
-feature requests on this repo.
+work on this project full-time and develop a wide range of
+[free, subscriber, and enterprise](https://gitpitch.com/pricing) slide deck
+solutions. You can still fork, clone, or modify the original source and open
+new issues and feature requests on this repo. For project news and updates,
+follow me on [Twitter](https://twitter.com/gitpitch).
 
 If you like this project please show your support with a
 [GitHub Star](https://github.com/gitpitch/gitpitch/stargazers). Your support is
