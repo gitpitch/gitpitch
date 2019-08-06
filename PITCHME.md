@@ -21,7 +21,7 @@
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Desktop
-[Pro + Lite Desktop Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/desktop)
+[The Desktop Docs @fa[external-link fa-font]](https://gitpitch.com/docs/work-offline/desktop)
 @snapend
 
 @snap[east span-50]
@@ -104,7 +104,7 @@ PowerPoint & Office 365, LibreOffice, Apple Keynote & Apple iCloud, Google Slide
 
 @snap[north-east raleway-medium span-55]
 #### GitPitch Power
-[Pro + Lite Power Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/bonus)
+[Pro + Lite Power Docs @fa[external-link fa-font]](https://gitpitch.com/docs/pro-features/power)
 @snapend
 
 @snap[east span-50]
