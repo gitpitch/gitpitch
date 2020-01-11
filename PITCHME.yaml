@@ -1,57 +1,54 @@
 #
-# GitPitch - The Markdown Presentation Service on GitHub
+# GitPitch Markdown Presentations
 #
 
 #
-# Theme Setting
-# Doc: https://gitpitch.com/docs/settings/theme
+# Theme Settings
+# Doc: https://gitpitch.com/docs/themes/default
 #
-theme : simple
+theme            : template
+theme-background : [ "#000000" ]
+theme-headline   : [ "Montserrat", "#FBD95E", "none", "#FFFFFF", "100", "120", "15" ]
+theme-byline     : [ "Concert One", "#FFFFFF", "none", "#FBD95E", "100", "100", "0" ]
+theme-text       : [ "Ubuntu", "#FFFFFF", "none", "#A0C865", "100", "100", "15" ]
+theme-links      : [ "#FBD95E", "#5254F7" ]
+theme-code       : [ "Fira Code", "100", "120" ]
+highlight        : ir-black
+theme-controls   : [ "#C0C0C0" ]
+theme-margins    : [ "0", "15px" ]
+logo             : assets/img/logo.png
+logo-position    : top-left
+layout           : center
 
 #
 # Theme-Override Setting
 # Doc: https://gitpitch.com/docs/settings/custom-theme
 #
-theme-override: assets/css/PITCHME.css
-
-#
-# [Global] Background Settings
-# Doc: https://gitpitch.com/docs/settings/background
-#
-background : assets/img/audience.png
-background-opacity : 5
-background-position : bottom
-background-size : 100% 60%
-
-#
-# Logo Setting
-# https://gitpitch.com/docs/settings/logo
-#
-logo : assets/img/logo.png
-logo-postion : top-left
-
-#
-# Layout Setting
-# Doc: https://gitpitch.com/docs/settings/layout
-#
-layout : center
+theme-override   : assets/css/PITCHME.css
 
 #
 # Twitter Card Settings
 # Doc: https://gitpitch.com/docs/settings/twitter-card
 #
-title : "GitPitch - The Markdown Presentation Service on Git"
-description : "Modern Slide Decks for Developers on Linux, OSX, Windows 10. Present offline. Share online. Export to PPTX and PDF."
+title : "GitPitch Markdown Presentations"
+description : "Slide Decks for Developers on MacOS, Linux, Windows 10. Present offline. Share online. Export to PDF and PPTX."
 # thumbnail : assets/img/thumbnail.png
 
 #
 # Footnote Setting
 # Doc: https://gitpitch.com/docs/settings/footnote
 #
-footnote : "GitPitch - The Fastest Way From Idea To Presentation"
+footnote: " "
 
 #
 # Published Setting
 # Doc: https://gitpitch.com/docs/settings/published
 #
 published : true
+
+#
+# Charts Plugin Setting
+# Doc: https://gitpitch.com/docs/settings/charts-plugin
+#
+charts : true
+
