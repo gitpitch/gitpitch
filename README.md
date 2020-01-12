@@ -1,73 +1,50 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
-# Modern Slide Decks for Developers on Git
+# Slide Decks for Tech Conferences, Meetups, and Training
 
 #### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Docs](https://gitpitch.com/docs) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
 
 
 ### What is GitPitch?
 
-> Consultants. Conference Speakers. Educators. Training Instructors. Pssst...
+> Developers. Conference Speakers. Educators. Training Instructors. Pssst...
+>
+<br>
 
-GitPitch is a modern PowerPoint uniquely adapted for developers on GitHub,
-GitLab, and Bitbucket. Develop, preview, and present offline. Git-push to
-publish and share online. Or one-click export to PowerPoint, Keynote, Google
-Slides, and PDF.
+![GITPITCH](assets/images/gitpitch-lets-get-started.gif)
 
-![WHAT IS GITPITCH](assets/images/gitpitch-what-is-gitpitch.jpg)
+<br><br>
 
-> Click link to view the **What is GitPitch?** slide deck: https://gitpitch.com/gitpitch/what-is-gitpitch
+- GitPitch is a markdown presentation tool for MacOS, Linux, or Windows 10.
+- GitPitch Desktop lets you develop, preview, and present markdown presentations offline.
+- Export your markdown presentations to PDF and PowerPoint PTTX.
+- And publish and share your markdown presentations online at [gitpitch.com](https://gitpitch.com).
+- To publish any deck just *git-push* from your desktop to any repo on GitHub, GitLab, or Bitbucket.
+- And share it as a public, private, or password-protected markdown presentation in the cloud.
 
 <br>
 
-### What is GitPitch.com?
+### GitPitch Theme Builder
 
-GitPitch.com is a modern slide deck solution hosted on
-[gitpitch.com](https://gitpitch.com). GitPitch is powered by the tools you
-already know and love - Markdown and Git. You can learn more about each of
-the available GitPitch services at the following links:
+![GITPITCH](assets/images/gitpitch.gif)
 
-- [A Modern Slide Deck Service in the Cloud Free for Everyone](https://gitpitch.com/free-features)
-- [A Modern Slide Deck Service in the Cloud and on the Desktop for Subscribers](https://gitpitch.com/features)
-- [A Modern Slide Deck Service for Enterprise Deployment On-Premises](https://gitpitch.com/enterprise)
-
-<br>
-
-![GITPITCH DEMO DECK](assets/images/gitpitch-demo-deck.jpg)
-
-> Click link to view the **GitPitch Hello World** slide deck: https://gitpitch.com/gitpitch/demo-deck
-
-<br>
-
-### What makes GitPitch so perfect for Developers?
-
-Click on the links below to view sample slide decks and feature guides to
-learn what makes GitPitch a truly unique *developer-native* slide deck solution
-for everyone on GitHub, GitLab, and Bitbucket.
+> Click link to view the **Theme Builder Guide** : https://gitpitch.com/docs/themes/default
 
 <br><br>
 
-![SNAP LAYOUTS](assets/images/gitpitch-modular.jpg)
+### GitPitch Snap Layouts
 
-> Click link to view the **Modular Slide Decks with Git Guide**: https://gitpitch.com/docs/git
+![GITPITCH](assets/images/gitpitch-snap-layouts.gif)
 
-<br><br>
-
-![THEME CUSTOMIZATION](assets/images/gitpitch-theme-template.jpg)
-
-> Click link to view the **The Theme Template** slide deck: https://gitpitch.com/gitpitch/theme-template-demos
+> Click link to view the **Snap Layouts Guide** : https://gitpitch.com/docs/layout-features/snap-layouts
 
 <br><br>
 
-![SNAP LAYOUTS](assets/images/gitpitch-snap-layouts.jpg)
-
-> Click link to view the **Custom Layouts Guide**: https://gitpitch.com/gitpitch/snap-layouts
-
-<br><br>
+### GitPitch Live Code Presenting
 
 ![GITPITCH CODE PRESENTING](assets/images/gitpitch-code-presenting.gif)
 
-> Click link to view the **Live Code Presenting** slide deck: https://gitpitch.com/gitpitch/pro-code-presenting
+> Click link to view the **Live Code Presenting Guide** : https://gitpitch.com/docs/code-features/presenting
 
 <br><br>
 
@@ -77,17 +54,13 @@ for everyone on GitHub, GitLab, and Bitbucket.
 
 <br><br>
 
-![GITPITCH DESKTOP](assets/images/gitpitch-desktop.gif)
+![GITPITCH MODULAR PRESENTATIONS](assets/images/gitpitch-modular.jpg)
 
-> Click link to view the **The GitPitch Desktop Guide**: https://gitpitch.com/docs/pro-features/desktop
-
-<br><br>
-
-![GITPITCH EXPORT TO POWERPOINT](assets/images/gitpitch-export-powerpoint.jpg)
-
-> Click link to view the **The GitPitch Desktop Export Guide**: https://gitpitch.com/docs/pro-features/desktop
+> Click link to view the **Modular Presentations Guide** : https://gitpitch.com/docs/git/branch-shared-markdown
 
 <br><br>
+
+### The GitPitch Docs
 
 ![GITPITCH DOCS](assets/images/gitpitch-docs.jpg)
 
