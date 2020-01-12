@@ -70,9 +70,7 @@
 
 ### GitPitch In-60-Seconds Tutorial
 
-<a target="_blank" href="https://github.com/gitpitch/in-60-seconds">
 ![GITPITCH TUTORIAL](assets/images/gitpitch-in-60-seconds-tutorial.jpg)
-</a>
 
 > Click link to launch the **GitPitch In-60-Seconds Tutorial**: https://github.com/gitpitch/in-60-seconds
 
