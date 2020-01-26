@@ -17,7 +17,7 @@
 
 - GitPitch is a markdown presentation tool for MacOS, Linux, and Windows 10.
 - GitPitch Desktop lets you develop, preview, and present markdown presentations offline.
-- Export your markdown presentations to PDF and PowerPoint PTTX.
+- Export your markdown presentations to PDF and PowerPoint PPTX.
 - And publish and share your markdown presentations online at [gitpitch.com](https://gitpitch.com).
 - To publish any deck just *git-push* from your desktop to any repo on GitHub, GitLab, or Bitbucket.
 - And share it as a public, private, or password-protected markdown presentation in the cloud.
