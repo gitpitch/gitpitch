@@ -67,6 +67,12 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 - For any GitPitch slide deck in any repo you can...
 - Auto-generate PDF, PowerPoint PPTX, and/or Slide Screenshots (JPG)
 
+## [May 12, 2020]
+### Added
+- Brand new [Custom Fonts Support](https://gitpitch.com/docs/themes/custom-fonts) unlocks unlimited typography options for GitPitch slide decks
+
+![GITPITCH CUSTOM FONTS](assets/changelog/gitpitch-custom-fonts.png)
+
 ## [May 06, 2020]
 ### Added
 - New PITCHME.yaml [Confidential Mode Challenge Form Settings](https://gitpitch.com/docs/pro-features/security#confidential-mode-customization) for secure publishing on [gitpitch.com](https://gitpitch.com)
