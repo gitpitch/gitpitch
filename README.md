@@ -62,6 +62,11 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 
 ## [Work In Progress]
 
+- Support **citation** syntax and auto-generated bibliographies
+- Using existing **BibTEX**, **EndNote**, and **RIS** databases
+
+## [Work In Progress]
+
 - New product **GitPitch CI**
 - For seamless integration with your existing CI/CD pipelines
 - For any GitPitch slide deck in any repo you can...
