@@ -70,7 +70,7 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 ## [May 23, 2020]
 ### Added
 - Brand new [Citations + Bibliography Support](https://gitpitch.com/docs/citations/bibliography) using exexisting BibTEX, EndNote, or RIS databases.
--
+
 ![GITPITCH CITATIONS](assets/changelog/gitpitch-citations.gif)
 
 - Support **citation** syntax and auto-generated bibliographies
