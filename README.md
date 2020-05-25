@@ -62,15 +62,19 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 
 ## [Work In Progress]
 
-- Support **citation** syntax and auto-generated bibliographies
-- Using existing **BibTEX**, **EndNote**, and **RIS** databases
-
-## [Work In Progress]
-
 - New product **GitPitch CI**
 - For seamless integration with your existing CI/CD pipelines
 - For any GitPitch slide deck in any repo you can...
 - Auto-generate PDF, PowerPoint PPTX, and/or Slide Screenshots (JPG)
+
+## [May 23, 2020]
+### Added
+- Brand new [Citations + Bibliography Support](https://gitpitch.com/docs/citations/bibliography) using exexisting BibTEX, EndNote, or RIS databases.
+-
+![GITPITCH CITATIONS](assets/changelog/gitpitch-citations.gif)
+
+- Support **citation** syntax and auto-generated bibliographies
+- Using existing **BibTEX**, **EndNote**, and **RIS** databases
 
 ## [May 12, 2020]
 ### Added
