@@ -67,6 +67,11 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 - For any GitPitch slide deck in any repo you can...
 - Auto-generate PDF, PowerPoint PPTX, and/or Slide Screenshots (JPG)
 
+## [May 27, 2020]
+### Added
+- GitPitch [Desktop Whiteboard](https://gitpitch.com/docs/work-offline/desktop-whiteboard) powered by the amazing [Excalidraw](https://github.com/excalidraw/excalidraw)
+- Create beautiful mockups, wireframes, sys diagrams, UI flows, etc for any slide
+
 ## [May 23, 2020]
 ### Added
 - Brand new [Citations + Bibliography Support](https://gitpitch.com/docs/citations/bibliography) using BibTEX, EndNote, or RIS databases.
