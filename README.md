@@ -70,7 +70,9 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 ## [May 27, 2020]
 ### Added
 - GitPitch [Desktop Whiteboard](https://gitpitch.com/docs/work-offline/desktop-whiteboard) powered by the amazing [Excalidraw](https://github.com/excalidraw/excalidraw)
-- Create beautiful mockups, wireframes, sys diagrams, UI flows, etc for any slide
+- Create beautiful mockups, wireframes, system diagrams, UI flows, brainstorming, etc for any slide
+
+![GITPITCH DESKTOP WHITEBOARD](assets/changelog/gitpitch-desktop-whiteboard.png)
 
 ## [May 23, 2020]
 ### Added
