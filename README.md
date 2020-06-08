@@ -60,9 +60,6 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 
 <br>
 
-## [Work In Progress]
-
-- Support for [Mermaid Diagrams + Flowcharts](https://mermaid-js.github.io/mermaid)
 
 ## [Work In Progress]
 
@@ -70,6 +67,14 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 - For seamless integration with your existing CI/CD pipelines
 - For any GitPitch slide deck in any repo you can...
 - Auto-generate PDF, PowerPoint PPTX, and/or Slide Screenshots (JPG)
+
+## [Jun 08, 2020]
+### Added
+- Brand new [Mermaid Diagram Markdown Widget](https://gitpitch.com/docs/diagram-features/mermaid-diagrams) for rendering diagrams and flowcharts on any slide
+- See the [Mermaid Diagrams + Flowcharts Official Docs](https://mermaid-js.github.io/mermaid)
+- The [Cloud Diagram Markdown Widget](https://gitpitch.com/docs/diagram-features/cloud-diagrams) updated to support [Diagrams As Code v0.13.1](https://diagrams.mingrammer.com/)
+
+![GITPITCH MERMAID DIAGRAMS](assets/changelog/mermaid-sequence.png)
 
 ## [May 27, 2020]
 ### Added
