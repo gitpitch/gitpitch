@@ -60,6 +60,13 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 
 <br>
 
+## [Work In Progress]
+
+- A brand new **layout engine** for GitPitch slide decks
+- Supporting the *precise* placement and sizing of slide content
+- Comparable or superior to traditional *drag-and-drop* solutions
+
+<br>
 
 ## [Work In Progress]
 
