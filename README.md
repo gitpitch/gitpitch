@@ -31,7 +31,7 @@
 - [GitPitch.com ( Paid )](https://gitpitch.com/pricing)
 - [GitPitch Desktop](https://gitpitch.com/docs/work-offline/desktop)
 - [GitPitch Enterprise](https://gitpitch.com/docs/enterprise)
-- GitPitch CI ( Coming Soon )
+- [GitPitch CI](https://gitpitch.com/docs/ci)
 
 <br>
 
@@ -74,6 +74,8 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 - Initial support for [CircleCI](https://circleci.com/)
 - For any GitPitch slide deck in any repo you can...
 - Auto-generate PDF, PowerPoint PPTX, and/or Slide Screenshots (JPG)
+-
+![GITPITCH CI](assets/changelog/gitpitch-ci-circleci-artifacts.png)
 
 ## [Jun 08, 2020]
 ### Added
