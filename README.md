@@ -67,10 +67,11 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 
 <br>
 
-## [Work In Progress]
-
-- New product **GitPitch CI**
+## [Jun 25, 2020]
+### Added
+- New product [GitPitch CI](https://gitpitch.com/docs/ci)
 - For seamless integration with your existing CI/CD pipelines
+- Initial support for [CircleCI](https://circleci.com/)
 - For any GitPitch slide deck in any repo you can...
 - Auto-generate PDF, PowerPoint PPTX, and/or Slide Screenshots (JPG)
 
