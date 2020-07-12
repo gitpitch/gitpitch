@@ -63,7 +63,6 @@ entire [GitPitch Product Family](#gitpitch-product-family).
 ## [Work In Progress]
 
 - GitPitch 4.0
-- Including a brand new layout engine for GitPitch slide decks
 
 <br>
 
