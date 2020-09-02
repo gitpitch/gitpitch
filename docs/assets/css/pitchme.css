@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('../font/inter-regular.woff2') format('woff2'),
+       url('../font/inter-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../font/fira-code-regular.woff2') format('woff2'),
+       url('../font/fira-code-regular.woff') format('woff');
+}
+body { font-size: 18px; }
+:root {
+  --sidebar-width: 19rem;
+  --heading-h1-font-size : 2rem;
+  --heading-h1-font-weight : 600;
+  --heading-h3-font-size : 1.5rem;
+  --heading-h3-font-weight : 600;
+  --theme-color   : #E67E22;
+  --base-font-family : Inter;
+  --code-font-size : 1rem;
+  --code-font-family : Fira Code;
+  --notice-tip-border-color : #E67E22;
+  --notice-important-border-color : #E67E22;
+  --link-color : #E67E22;
+  --link-color--hover : #935116;
+  --copycode-background: #E67E22;
+  --copycode-color     : #fff;
+}
+
+.sidebar li p { font-weight: 700; }
+.sidebar li a { font-size: 1rem; }
+.app-nav li a { color: #E67E22; }
+.app-nav li a:hover { color: #935116; }
+
+body .docsify-pagination-container {
+  border-width: 2px;
+  border-color: #E67E22;
+}
+
+iframe#youtube { border: 4px outset black; }
+.markdown-section details {
+  padding-bottom: 12px;
+}

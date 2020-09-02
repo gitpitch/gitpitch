@@ -5,7 +5,7 @@
 
 ### General Support
 
-If you have general questions about GitPitch that are not answered by the [GitPitch How-To Wiki](https://github.com/gitpitch/gitpitch/wiki) then the best way to ask those questions is by [sending me a tweet](https://twitter.com/gitpitch) on Twitter. Otherwise [open a new issue](https://github.com/gitpitch/gitpitch/issues) on GitHub.
+If you have general questions about GitPitch that are not answered by the [GitPitch Docs](https://docs.gitpitch.com) then the best way to ask those questions is by [sending me a tweet](https://twitter.com/gitpitch) on Twitter. Otherwise [open a new issue](https://github.com/gitpitch/gitpitch/issues) on GitHub.
 
 
 ### Bug Reports
