@@ -35,5 +35,5 @@ window.$docsify = {
     crossChapter: true,
     crossChapterText: false
   },
-  ga: 'UA-XXXXX-Y'
+  ga: 'UA-80973712-1'
 }
