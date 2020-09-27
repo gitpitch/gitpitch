@@ -1,5 +1,4 @@
-#gp-logo img { height: 2.5em; }
-div.progress { display: none !important; }
-div.slide-number { display: none !important; }
-#title-footer { display: none !important; }
+.dashed {
+  border: 2px dashed gray !important;
+}
 
