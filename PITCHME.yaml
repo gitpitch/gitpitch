@@ -29,5 +29,5 @@ custom-fonts : [
 mathjax : TeX-MML-AM_HTMLorMML-full
 
 title : "GitPitch Markdown"
-description : "The perfect slide deck solution for Tech Conferences, Training, Developer Advocates, and Educators."
+description : "The perfect slide deck solution for Tech Conferences, Training, Developer Advocates, and Educators. Available on MacOS, Linux, and Windows 10."
 thumbnail : assets/img/gitpitch-40-splash.png
