@@ -6,7 +6,7 @@
 
 ### About
 
-See the [What's New in Gitpitch 4.0 Guide](https://docs.gitpitch.com/#/whats-new-in-40).
+See the [What's New in GitPitch 4.0 Guide](https://docs.gitpitch.com/#/whats-new-in-40).
 
 GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, developer advocates, and educators. Available on MacOS, Linux, and Windows 10. Work and present offline. Export to PDF and PPTX. Or git-push to share public, private and password-protected slide decks online.
 
