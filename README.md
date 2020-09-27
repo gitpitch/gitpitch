@@ -24,7 +24,7 @@ GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, 
 
 <br>
 
-# GitPitch Product Repos
+## GitPitch Product Repos
 
 I started working on GitPitch as an open-source project back in 2016.  Since early 2017 I have been working full time developing a number of [GitPitch products and services](https://docs.gitpitch.com/#/meet-the-family) most of which are maintained in private repositories. This repository is now used to maintain the official GitPitch docs. You can also use this repository to report issues and request features for all GitPitch products using GitHub [issue tracking](https://github.com/gitpitch/gitpitch/issues).
 
@@ -32,7 +32,7 @@ As you will see from the following [CHANGELOG](#changelog) the GitPitch project 
 
 <br>
 
-# Changelog
+## Changelog
 
 A high level change history for GitPitch projects. Unless otherwise indicated fixes and features shown below are integrated across the entire [GitPitch Product Family](https://docs.gitpitch.com/#/meet-the-family).
 
