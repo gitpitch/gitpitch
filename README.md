@@ -22,7 +22,7 @@ GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, 
 - Using modular markdown to deliver modular decks...perfect for training and course content.
 - Export your markdown presentations to PDF and PowerPoint PPTX.
 - And publish and share your markdown presentations online at [gitpitch.com](https://gitpitch.com).
-- To publish any deck just *git-push* from your desktop to any repo on GitHub, GitLab, or Bitbucket.
+- To publish any deck just *git-push* to any repo on GitHub, GitLab, or Bitbucket.
 - And share it as a public, private, or password-protected slide deck on [gitpitch.com](https://gitpitch.com).
 
 <br>
