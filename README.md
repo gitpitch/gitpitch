@@ -6,7 +6,7 @@
 
 ### About
 
-GitPitch 4.0 was released in October, 2020.
+GitPitch 4.0 was released on October 1, 2020.
 
 - Watch the [Introducing GitPitch 4.0 Video](https://www.youtube.com/watch?v=MT88pCE291I)
 - View the [Introducing GitPitch 4.0 Slide Deck](https://gitpitch.com/gitpitch/gitpitch)
