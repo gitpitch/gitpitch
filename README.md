@@ -39,5 +39,5 @@ GitPitch began as an open-source project back in 2016.  Since early 2017 I have 
 
 This repository is now used to maintain the official GitPitch docs. You can also use this repository to report issues and request features for all GitPitch products using GitHub [issue tracking](https://github.com/gitpitch/gitpitch/issues).
 
-As you will see from the [CHANGELOG](CHANGELOG.md) the GitPitch project is actively under development with fixes, features and even new products being added all the time.
+The GitPitch project is actively under development. Fixes, features and even new products are being added all the time. For details see the [CHANGELOG](CHANGELOG.md). For announcements, follow me on [Twitter](https://twitter.com/gitpitch).
 
