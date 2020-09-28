@@ -8,7 +8,7 @@ A high level change history for GitPitch projects. Unless otherwise indicated fi
 ### Released
 - Brand new product GitPitch 4.0
 - See the [What's New in 4.0 Guide](https://docs.gitpitch.com/#/whats-new-in-40)
-- [YouTube: Introducing GitPitch 4.0](#)
+- [YouTube: Introducing GitPitch 4.0](https://www.youtube.com/watch?v=MT88pCE291I)
 
 <br>
 
