@@ -11,7 +11,7 @@ GitPitch 4.0 was released on October 1, 2020.
 - Watch the [Introducing GitPitch 4.0 Video](https://www.youtube.com/watch?v=MT88pCE291I)
 - View the [Introducing GitPitch 4.0 Slide Deck](https://gitpitch.com/gitpitch/gitpitch)
 - Visit the [What's New in GitPitch 4.0 Guide](https://docs.gitpitch.com/#/whats-new-in-40)
-- Browse the complete [GitPitch 4.0 Documentation](https://docs.gitpitch.com)
+- Go directly to the [GitPitch 4.0 Quickstart Guide](https://docs.gitpitch.com/#/quickstart)
 
 GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, developer advocates, and educators. Available on MacOS, Linux, and Windows 10. Work and present offline. Export to PDF and PPTX. Or git-push to share public, private and password-protected slide decks online.
 
