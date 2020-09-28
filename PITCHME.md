@@ -232,4 +232,5 @@ Are you ready to
 
 [drag=100 15, drop=0 -0, set=bubblegum]
 
-[GitPitch 4.0 is coming soon. Watch out for release announcements on @fab[twitter]](https://twitter.com/gitpitch)
+[No sign-up or credit card needed. Start your free trial now @fa[external-link]](https://docs.gitpitch.com/#/whats-new-in-40)
+
