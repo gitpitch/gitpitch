@@ -29,7 +29,7 @@ GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, 
 
 ## GitPitch Documentation
 
-The official GitPitch docs are maintained in this repository under the [docs](/docs) directory.
+The official GitPitch docs are maintained in this repository under the [docs](/docs) directory. Any PR to fix or improve the documentation in any way is very welcome. You can view the documentation live at [https://docs.gitpitch.com](https://docs.gitpitch.com/).
 
 <br>
 
