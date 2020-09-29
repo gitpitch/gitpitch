@@ -1,0 +1,10 @@
+sequenceDiagram
+    autonumber
+    Student->>Admin: Can I enrol this semester?
+    loop enrolCheck
+        Admin->>Admin: Check previous results
+    end
+    Note right of Admin: Exam results<br>may be delayed
+    Admin-->>Student: Enrolment success
+    Admin->>Professor: Assign student to tutor
+    Professor-->>Admin: Student is assigned

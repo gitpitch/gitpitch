@@ -1,363 +1,236 @@
-# Welcome to **GitPitch**
+[drag=35 10, drop=top, pad=10, fit=1.1]
 
----?image=assets/img/code.jpg&opacity=60&position=left&size=45% 100%
-@title[Slide Decks for Developers]
+The Perfect Slide Deck Solution
 
-@snap[east span-50 text-center]
-## GitPitch
-#### Slide Decks
-#### for
-### Developers
-@snapend
+@md[title=GitPitch](assets/md/splash.md)
 
----
-@title[Create, Preview, Present]
+![drag=5, drop=23 17, rotate=5](assets/img/logo-circled.svg)
 
-@snap[north span-50 text-center]
-@fab[docker text-pink]
-@snapend
+[drag=30 3, drop=50 77 true false, set=text-gray, fit=0.5]
+Press F for Fullscreen Mode
 
-@snap[midpoint span-100 text-center]
-The GitPitch Desktop app lets you
-**Create**, **Preview**, and **Present** Offline
-@snapend
+[drag=100 20, drop=bottom, fit=1.05]
 
-@snap[south span-50 text-center]
-@fa[linux fa-2x] @fa[apple fa-2x] @fa[windows fa-2x]
-@snapend
+For Tech Conferences, Training, **Developer** Advocates, and Educators
+
+[drag=8 10, drop=-29 55, opacity=0.7, set=h2-silver, fit=0.8, animate=bouncedown, filter=contrast]
+
+## 4.0
 
 ---
-@title[Export to PDF + PPTX]
 
-@snap[north span-50 text-center]
-@fab[docker text-pink]
-@snapend
+![drag=60 80, drop=right, opacity=0.1](assets/img/logo-circled.svg)
 
-@snap[midpoint span-100 text-center]
-Plus **export** any deck to **PDF** @fa[file-pdf] and **PPTX** @fa[file-powerpoint]
-@snapend
+[drag=40 55, drop=1 10, fit=0.9]
 
-@snap[south span-50 text-center]
-@fa[linux fa-2x] @fa[apple fa-2x] @fa[windows fa-2x]
-@snapend
+## GitPitch **Desktop**
 
----
-@title[Custom Visual Themes]
+@fab[docker fa-xs]
 
-@snap[north span-50 text-center]
-@fa[palette text-pink]
-@snapend
+An app to develop,<br>preview, and present<br>slide decks offline.
 
-@snap[midpoint span-100 text-center]
-The GitPitch Theme Builder lets you 
-create new **Visual Themes** for any Deck
-@snapend
+[drag=40 10, drop=1 -25, flow=row]
 
-@snap[south span-50 text-center]
-![THEME-BUILDER](https://www.youtube.com/embed/pfMsOZRvfXw)
-@snapend
+@fa[linux fa-2x]
+@fa[apple fa-2x]
+@fa[windows fa-2x ]
+
+[drag=40 10, drop=1 -15, set=fragmentx]
+
+Available on Linux, MacOS, Windows
+
+![drop=41 1, width=1100](assets/img/gitpitch-desktop-edit-mode.png)
+
+![drop=-1 -1, width=600](assets/img/gitpitch-present.png)
 
 ---
-@title[Custom Slide Layouts]
 
-@snap[north-west span-50 text-center]
-![](assets/img/r2d2.png)
-@snapend
+[drag=40 10, drop=topleft, pad=10, fit=1.2]
 
-@snap[north span-50 text-center]
-@fa[drafting-compass text-pink]
-@snapend
+With the **Desktop** app you can...
 
-@snap[north-east span-50 text-center]
-![](assets/img/eve.png)
-@snapend
+@ul[drag=40 80, drop=2 15, sync=true, list-spaced-bullets]
+- Develop slides using markdown<br>and powerful **markdown widgets**
+- Using an embedded markdown editor
+- Or your favorite IDE
+- Enjoy live browser previews
+- Dedicated speaker support
+- And pixel-perfect slide export
+- To **PDF @fa[file-pdf]** and PowerPoint **PPTX @fa[file-powerpoint]**
+@ul
 
-@snap[midpoint span-100 text-center]
-GitPitch Markdown Snap Layouts let you
-create **Custom Layouts** for any Slide
-@snapend
+[drag=60 100, drop=right, flow=stack, pad=0 40, sync=true]
 
-@snap[south-west span-50 text-left]
-![](assets/img/goomba.png)
-@snapend
-
-@snap[south span-50 text-center]
-![](assets/img/pacman.png)
-@snapend
-
-@snap[south-east span-50 text-right]
-![](assets/img/walle.png)
-@snapend
+@fab[markdown fa-10x]
+![width=950, rotate=10](assets/img/gitpitch-are-you-ready.png)
+![width=900, rotate=-10](assets/img/gitpitch-desktop-ide-mode.png)
+![rotate=](assets/img/gitpitch-preview.png)
+![rotate=-10](assets/img/gitpitch-present.png)
+![](assets/img/gitpitch-export.png)
+![rotate=10](assets/img/gitpitch-keynote.png)
 
 ---
-@title[Flexible Layout Grid]
 
+[drag=100 10, drop=top, fit=1.2]
 
-@snap[west span-50 text-center]
-![](assets/img/r2d2.png)
-@snapend
+And with a simple **git-push** to GitHub, GitLab, and Bitbucket you can share...
 
-@snap[east span-50 text-center]
-![](assets/img/eve.png)
-@snapend
+[drag=100 40, drop=center, flow=row, bg=#232B2B, set=text-white]
 
-@snap[north span-100 text-center]
-Using a **Flexible Grid** System
-@snapend
+@fa[users fa-4x]
+@fa[user-shield fa-4x]
+@fa[lock fa-4x]
 
-@snap[north-east span-50 text-right]
-![](assets/img/goomba.png)
-@snapend
+[drag=100 20, drop=0 -5, set=fragment, fit=1.5]
 
-@snap[south span-50 text-center]
-![](assets/img/pacman.png)
-@snapend
-
-@snap[south-west span-50 text-left]
-![](assets/img/walle.png)
-@snapend
+...public, private, and **password-protected** slide decks on gitpitch.com.
 
 ---
-@title[Live Code Presenting]
 
-@snap[north span-50 text-center]
-@fa[search-plus text-pink]
-@snapend
+![drag=100, drop=center, stretch=true](assets/img/gitpitch-grid-outline.png)
 
-@snap[midpoint span-100 text-center]
-GitPitch Live Code Presenting lets you
-**Step-and-ZOOM** into Source Code on any Slide
-@snapend
+[drag=85 10, drop=top, fit=1.2]
 
-@snap[south span-50 text-center]
-@fa[code fa-5x]
-@snapend
+GitPitch 4.0 introduces brand new **grid layouts** for your slide content...
 
----
-@title[Live Code Presenting Demo]
+@code[drag=37 41, drop=21 13, fit=0.66, border=2px dashed gray, elixir](src/demo.ex)
 
-@snap[north span-100 text-center text-smallcaps text-08]
-Live Code Presenting
-@snapend
+[drag=35, drop=12 56, pad=40px, bg=#FFFFBF, border=2px dashed gray]
 
-```sql zoom-19
-CREATE TABLE "topic" (
-    "id" serial NOT NULL PRIMARY KEY,
-    "forum_id" integer NOT NULL,
-    "subject" varchar(255) NOT NULL
-);
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-ALTER TABLE "topic"
-ADD CONSTRAINT forum_id
+[drag=25 70, drop=-18 16, rotate=35, border=2px dashed gray]
 
-FOREIGN KEY ("forum_id")
-REFERENCES "forum" ("id");
-```
+![width=400, filter=contrast, border=2px dashed gray](assets/img/gitpitch-sketch.png)
+@mermaid[width=250, theme=forest, border=2px dashed gray](src/demo.mmd)
 
-@snap[south span-100 text-08]
-@[1-5](Step-into and focus on specific lines of code on any slide.)
-@[2-4, zoom-09](Zoom in-or-out to help guide your audience.)
-@[6-9, zoom-14](Using optional annotations &#40; like this one &#41; for extra context.)
-@snapend
+![drag=20 25, drop=-5 -15, filter=contrast, border=2px dashed black](assets/img/paint.png)
+
+[drag=100 7, drop=bottom, flow=row, border=2px dashed gray, fit=0.8]
+
+@fa[github] gitpitch
+david@gitpitch.com
+@fa[twitter] gitpitch
+
+[drag=30 20, drop=-0 -11, bg=#232B2B, set=text-white fragment, fit=0.9, animate=bounceright]
+
+The new grid layouts system<br>brings **drag-and-drop** layout precision<br>to GitPitch markdown presentations.
 
 ---
-@title[Markdown Widgets]
+[drag=100 10, drop=top, fit=1.1]
 
-@snap[north span-50 text-center]
-@fab[markdown text-pink]
-@snapend
+With Markdown **widgets** you can render rich slide content including...
 
-@snap[midpoint span-100 text-center]
-GitPitch Markdown Widgets add
-**Interactivity** and **Rich-Content** to any Slide
-@snapend
+@ul[drag=40 70, drop=0 20, sync=true, list-spaced-sm-bullets list-fade-fragments]
+- Images with filters + transformations
+- Mermaid + PlantUML diagrams
+- Cloud architecture diagrams
+- LaTeX Math formulas
+- YouTube, Vimeo, Mp4 Videos
+- Excalidraw whiteboard sketches
+- Plus slide content synchronization **@fa[arrow-right]**
+@ul
 
-@snap[south span-50 text-center]
-@fab[medapps fa-5x]
-@snapend
+[drag=60 80, drop=-2 15, flow=stack, pad=0 30, fit=0.75, sync=true]
 
----
-@title[Markdown Widgets Demo]
-
-@snap[west span-48 text-center bg-black]
-@fab[markdown fa-3x text-white]
-@snapend
-
-@snap[west span-50 text-center fragment]
-![TOOL](assets/img/tool.png)
-@snapend
-
-@snap[east span-48 text-center]
-@ul[text-11 list-spaced-bullets list-fade-fragments]
-- **Markdown**
-- Modular
-- **Git** Native
-- Speaker Ready
-- **Cross Platform**
-@ulend
-@snapend
+![rotate=10, filter=contrast](assets/img/paint.png)
+@mermaid[theme=forest](src/demo.mmd)
+@cloud[](src/demo.py)
+@math[pad=30px, rotate=-25, fit=1.4]
+`\[
+\left( \sum_{k=22}^n a_k b_k \right)^{\!\!2} \leq
+ \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+\]`
+@math
+![Gravity, width=1000, border=6px solid gray](https://player.vimeo.com/video/125471012)
+![](assets/img/gitpitch-sketch.png)
+### This slide is an example of<br>**slide content synchronization**.<br><br>The display of the list-content<br>on the left has been<br> synchronized with the display of<br>this stack-content on the right.
 
 ---
-@title[Markdown Widgets Demo]
 
-@snap[west span-48 text-center]
-## GitPitch
-#### Slide Decks
-#### for
-### Developers
-@snapend
+[drag=60 10, drop=top, pad=20, fit=1.2]
 
+Enjoy  **stunning** code slides with live **step-and-zoom**...
 
-@snap[east span-48 text-center text-11 list-spaced-bullets]
-- **Markdown**
-- Modular
-- **Git** Native
-- Speaker Ready
-- **Cross Platform**
-@snapend
+![drop=2 15, width=800 ](assets/img/gitpitch-sample-sql.png)
+![drop=11 43, width=900](assets/img/gitpitch-sample-php.png)
+![drop=-2 8, width=1100](assets/img/gitpitch-sample-elixir.png)
 
----?color=#EE5D58
-@title[Embed Tweets]
+[drag=30 5, drop=-5 -24, fit=0.5]
 
-@snap[north-west span-50 text-center text-smallcaps text-08]
-Rich Media Support
-@snapend
+<sup>*</sup> GitPitch 4.0 supports the use of the full slide area when rendering code.
 
-@snap[west span-50 text-center]
-@fa[twitter fa-4x]
-#### Tweets
-@snapend
+Note:
 
-@snap[east span-45]
-@tweet[https://twitter.com/gitpitch/status/1214471194642022401]
-@snapend
+- Selection of Monospaced Code Fonts
+- 100+ Syntax Highlighting Styles
+- Step-and-ZOOM into Code 
+- Including Fenced Code Blocks
+- Repository Source Code Files
+- And any public GitHub GIST
+
+---
+
+@code[drag=98, drop=1, fit=1.6, elixir](src/demo.ex)
+
+[drag=50 6, drop=-2 1, flow=false, set=font-concert-one pull-right]
+
+@[1-4](Live code presenting with optional annotations.)
+@[6,12](Filtering, casting, and validation of constraints.)
+@[7-8, zoom-11](Taking advantage of Elixir's pipe operator.)
+@[7-9, zoom-11]
+@[7-10, zoom-11]
+@[7-11, zoom-11]
+
+---
+
+[drag=100 10, drop=top, fit=1.2]
+
+All powered using **modular** Markdown under Git **version control**...
+
+[drag=30 90, drop=5 15, rotate=-4, bg=#232B2B]
+@fab[markdown fa-4x text-white]
+![width=250](assets/img/jigsaw.png)
+@fab[git fa-4x text-white]
+
+@code[drag=17 80, drop=50 16 true false, fit=0.5, text](src/demo.txt)
+
+[drag=30 90, drop=-5 15, rotate=4, bg=#B70057]
+[drag=30 90, drop=-5 15, pad=0 40, rotate=4, fit=1.4, set=text-white]
+
+... so you can manage your presentation<br>+ training content<br>the same way you manage `code`.
+
+---
+
+![drag=35 100, drop=5 0, animate=bouncedown](assets/img/gitpitch-theme-builder.png)
+
+[drag=60 90, drop=-5 5, fit=1.2]
+
+And before you publish, stamp<br>your **brand** on any slide deck...
+
+![width=1000, height=580](https://www.youtube.com/embed/pfMsOZRvfXw)
+
+Using the GitPitch Presentation Theme Builder
+
+Note:
+
+You can activate custom fonts, color schemes, logos and more for any slide deck.
 
 ---?color=black
-@title[Embed Charts]
-
-@snap[north-west span-50 text-center text-smallcaps text-08]
-Rich Media Support
-@snapend
-
-@snap[west span-50 text-center]
-@fa[chart-pie fa-4x]
-#### Charts
-@snapend
-
-@snap[east span-45 text-left]
-<canvas data-chart="line">
-<!--
-{
- "data": {
-  "labels": ["January"," February"," March"," April"," May"," June"," July"],
-  "datasets": [
-   {
-    "data":[65,59,80,81,56,55,40],
-    "label":"Sample Data X",
-    "backgroundColor":"rgba(20,220,220,.8)"
-   },
-   {
-    "data":[28,48,40,19,86,27,90],
-    "label":"Sample Data Y",
-    "backgroundColor":"rgba(120,220,0,.8)"
-   }
-  ]
- },
- "options": { "responsive": "true" }
-}
--->
-</canvas>
-@snapend
-
----?color=white
-@title[Embed UML Diagrams]
-
-@snap[north-west span-50 text-center text-smallcaps text-08 text-black]
-Rich Media Support
-@snapend
-
-@snap[west span-50 text-center h4-black]
-@fa[chart-pie fa-4x text-black]
-#### UML Diagrams
-@snapend
-
-@snap[east span-45 text-left]
-@uml[span-100](assets/demo/graph.puml)
-@snapend
-
-
----?color=#16A085
-@title[Embed Video]
-
-@snap[north-west span-50 text-center text-smallcaps text-08]
-Rich Media Support
-@snapend
-
-@snap[west span-50 text-center]
-@fa[youtube fa-4x text-white]
-#### Video
-@snapend
-
-@snap[east span-45 text-left]
-![Gravity](https://player.vimeo.com/video/125471012)
-@snapend
-
----?color=white
-@title[Embed LaTeX Math]
-
-@snap[north-west span-50 text-center text-smallcaps text-08 text-black]
-Rich Media Support
-@snapend
-
-@snap[west span-50 text-center h4-black]
-@fa[square-root-alt fa-4x text-black]
-#### LaTeX Math
-@snapend
-
-@snap[east span-45 text-left]
-@uml[span-100](assets/demo/math.puml)
-@snapend
-
----?color=black
-@title[Embed Font Awesome]
-
-@snap[north-west span-50 text-center text-smallcaps text-08]
-Rich Media Support
-@snapend
-
-@snap[west span-50 text-center]
-@fa[font-awesome fa-4x text-white]
-#### Font Awesome
-@snapend
-
-@snap[east span-45 text-left]
-@fa[smile fa-8x text-gold]
-@snapend
-
----?image=assets/img/robot.jpg&opacity=20
-@title[Available Everywhere]
-
-#### Available Everywhere You Work
-<br>
-## MacOS, Linux,<br>and Windows 10<sup>*</sup>
-
-@snap[south span-100 text-smallcaps text-06 text-gray]
-<sup>*</sup>MacOS, Linux, Windows 10 Pro + Enterprise
-@snapend
-
----?image=assets/img/fireworks.gif&opacity=40&size=100% 50%&position=center
 @title[Now It's Your Turn]
 
-@snap[north span-100 text-smallcaps text-08]
-Slide Decks for Developers
-@snapend
+[drag=30 10, drop=35 0, set=text-smallcaps]
 
-@snap[midpoint span-100 text-center text-13]
-##### Are you ready to
-## Git**Pitch**?
-@snapend
+### Slide Decks for Developers
 
-@snap[south span-100 font-bubblegum text-center text-10 fragment]
-[Start your free trial today @fa[external-link]](https://gitpitch.com/pricing)
-@snapend
+![drag=100 60, drop=center, opacity=0.4, stretch=true](assets/img/fireworks.gif)
+
+[drag=100 40, drop=center, fit=1.3]
+
+Are you ready to
+# GitPitch?
+
+[drag=100 15, drop=0 -0, set=bubblegum]
+
+[No sign-up or credit card needed. Start your free trial now @fa[external-link]](https://docs.gitpitch.com/#/whats-new-in-40)
 
