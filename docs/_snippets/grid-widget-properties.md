@@ -38,7 +38,7 @@
 - **animate=**slideup | slidedown | slideleft | slideright | tada | flip | fadein | fadeout
 - **animate=**bounceup | bouncedown | bounceleft | bounceright | speedleft | speedright
 - **audio=**path/to/sound.file
-- **stretch=**true
+- **stretch=**true | false
 - **sync=**true | false | index 
 
 </details>
