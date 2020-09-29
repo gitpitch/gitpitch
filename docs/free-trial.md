@@ -4,7 +4,7 @@ No sign-up. No credit card. And no time limits on your trial. To get started wit
 To download the desktop app run the following command in a local shell on MacOS, Linux, or Windows:
 
 ```shell
-docker pull gitpitch:trial
+docker pull gitpitch/trial
 ```
 
 For more complete download instructions see the [Desktop Download Guide](/desktop/download.md). Once your download completes jump to the [Desktop Launch Guide](/desktop/launch.md).
