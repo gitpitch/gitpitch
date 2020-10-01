@@ -6,10 +6,10 @@
 
 The trial edition of the [Desktop app](/desktop/README.md) is delivered as a Docker image and available for use on MacOS, Linux, and Windows 10.
 
-The trial image is maintained within a *public* repository on Docker Hub. No prior authorization is required to access this public image. To dowload simply run the following command in a local shell:
+The trial image is maintained within a *public* repository on Docker Hub. No prior authorization is required to access this public image. To download simply run the following command in a local shell:
 
 ```shell
-docker pull gitpitch/trial
+docker pull gitpitch:trial
 ```
 
 Once your download completes see the [Desktop Launch Guide](/desktop/launch.md).
@@ -22,5 +22,11 @@ The paid edition of the [Desktop app](/desktop/README.md) is also delivered as a
 
 The paid image is maintained within a *private* repository on Docker Hub. Access to this image requires explicit authorization. Authorization is granted as part of [paid service activation](https://gitpitch.com/pricing).
 
-Following successful service activation download instructions for the paid edition of the desktop app will be displayed on your GitPitch account dashboard.
+Once authorized, to download make sure you first `docker login` and then run the following command in a local shell:
+
+```shell
+docker pull gitpitch:4.0
+```
+
+Following successful service activation download instructions for the paid edition of the desktop app will also be displayed on your GitPitch account dashboard.
 
