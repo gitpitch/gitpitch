@@ -25,7 +25,7 @@ The paid image is maintained within a *private* repository on Docker Hub. Access
 Once authorized, to download make sure you first `docker login` and then run the following command in a local shell:
 
 ```shell
-docker pull gitpitch:4.0
+docker pull gitpitch/4.0
 ```
 
 Following successful service activation download instructions for the paid edition of the desktop app will also be displayed on your GitPitch account dashboard.
