@@ -1,4 +1,4 @@
-# GitPitch Desktop Launch
+#GitPitch  GitPitch Desktop Launch
 
 !> [Docker Desktop](https://www.docker.com/products/docker-desktop) must already be installed locally in order to launch GitPitch Desktop.
 
@@ -14,26 +14,27 @@ This guide assumes that you have successfully [downloaded the desktop app](/desk
 
 ?> To use the Docker Dashboard you must install or update to Docker Desktop 2.2 or later. You can download the latest release of Docker Desktop [here](https://www.docker.com/products/docker-desktop).
 
-The Docker Dashboard provides an intuitive UI that you can use to manage and launch GitPitch Desktop. This is the recommended approach to launch GitPitch Desktop. If you are prefer to work with a CLI rather than a UI see the other launch options details in this guide.
+The Docker Dashboard provides an intuitive UI that you can use to manage and launch GitPitch Desktop. This is now the recommended approach for launching GitPitch Desktop. If you prefer to work with a CLI at the command line see the other launch options detailed in this guide.
 
 The following short video introduces Docker Dashboard and demonstrates how it can be used to quickly launch GitPitch Desktop:
 
 <iframe id="youtube" width="900" height="600" src="https://www.youtube.com/embed/Lt1xySQnEpk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-The video details and demonstrates the steps to launch GitPitch Desktop. The following screenshot is also provided as a quick reference for the main settings described in the video:
+While the video demonstrates the set of steps to launch GitPitch Desktop the following screenshot is provided as a quick reference for the main settings described in the video:
 
 ![Screenshot showing the Docker Desktop Dashboard](../_images/gitpitch-desktop-docker-dashboard.png)
 
-These settings are summarized again here for your convenience:
+The settings labeled in the above screenshot are described as follows:
 
 1. The **Container Name** describes the purpose of a collection of slide decks in a specific directory.
 1. The **Local Host**  must always be set to **9000**.
 1. The **Host Path** points to a local file system directory that contains your presentation files.
 1. The **Container Path**  must always be set to **/repo**.
-1. After specifying custom values for these settings, click **Run**.
+1. After specifying values for these settings, create a container instance by clicking **Run**.
 
-As noted in the video you can define and name multiple container instances for GitPitch Desktop. You can then switch between these instances to launch GitPitch Desktop for different collections of slide decks on your file system.
+As noted in the video you can define multiple container instances for GitPitch Desktop. Each instance represents a distinct set of slide decks. Each set found in a dedicated directory on your local file system.
 
+You can easily switch between these instances to work on different slide decks in different directories. Just remember to *stop* any running instance before attempting to *start* the new desktop instance.
 ### Use a Bash Alias
 
 The simplest way to launch the desktop app using the command line is to create a simple *bash alias* or equivalent for your preferred shell.
