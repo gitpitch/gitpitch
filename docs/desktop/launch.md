@@ -1,4 +1,4 @@
-#GitPitch  GitPitch Desktop Launch
+# GitPitch  GitPitch Desktop Launch
 
 !> [Docker Desktop](https://www.docker.com/products/docker-desktop) must already be installed locally in order to launch GitPitch Desktop.
 
