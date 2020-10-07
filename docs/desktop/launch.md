@@ -32,9 +32,9 @@ The settings labeled in the above screenshot are described as follows:
 1. The **Container Path**  must always be set to **/repo**.
 1. After specifying values for these settings, create a container instance by clicking **Run**.
 
-As noted in the video you can define multiple container instances for GitPitch Desktop. Each instance represents a distinct set of slide decks. Each set found in a dedicated directory on your local file system.
+As noted in the video you can define multiple container instances for GitPitch Desktop. Each instance corresponds to a specific directory on your local file system where your slide decks are found.
 
-You can easily switch between these instances to work on different slide decks in different directories. Just remember to *stop* any running instance before attempting to *start* the new desktop instance.
+You can easily switch between these instances to work on different slide decks in different directories. Just remember to *stop* any running instance before attempting to *start* a new desktop instance.
 ### Use a Bash Alias
 
 The simplest way to launch the desktop app using the command line is to create a simple *bash alias* or equivalent for your preferred shell.
