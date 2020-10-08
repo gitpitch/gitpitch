@@ -41,18 +41,25 @@ The simplest way to launch the desktop app using the command line is to create a
 
 <!-- tabs:start -->
 
-#### ** Trial **
+#### ** 4.0 Trial **
 
 ```bash
 # Add GitPitch launch alias to your ~/.bashrc
 alias gpd='docker run -it -v $PWD:/repo -p 9000:9000 gitpitch/trial'
 ```
 
-#### ** Paid **
+#### ** 4.0 Paid **
 
 ```bash
 # Add GitPitch launch alias to your ~/.bashrc
 alias gpd='docker run -it -v $PWD:/repo -p 9000:9000 gitpitch/4.0'
+```
+
+#### ** 3.0 Pro **
+
+```bash
+# Add GitPitch launch alias to your ~/.bashrc
+alias gpd='docker run -it -v $PWD:/repo -p 9000:9000 gitpitch/desktop:pro'
 ```
 
 <!-- tabs:end -->
@@ -99,16 +106,22 @@ You can launch the desktop app from any directory using the following `docker ru
 
 <!-- tabs:start -->
 
-#### ** Trial **
+#### ** 4.0 Trial **
 
 ```shell
 docker run -it -v {LOCALWORKINGDIR}:/repo -p 9000:9000 gitpitch/trial
 ```
 
-#### ** Paid **
+#### ** 4.0 Paid **
 
 ```shell
 docker run -it -v {LOCALWORKINGDIR}:/repo -p 9000:9000 gitpitch/4.0
+```
+
+#### ** 3.0 Pro **
+
+```shell
+docker run -it -v {LOCALWORKINGDIR}:/repo -p 9000:9000 gitpitch/desktop:pro
 ```
 
 <!-- tabs:end -->
@@ -131,7 +144,7 @@ You can use the *docker-compose* command as a convenient alternative to [docker 
 
 <!-- tabs:start -->
 
-#### ** Trial **
+#### ** 4.0 Trial **
 
 ```yaml
 version: '3'
@@ -147,13 +160,29 @@ services:
       - SWEEP=false
 ```
 
-#### ** Paid **
+#### ** 4.0 Paid **
 
 ```yaml
 version: '3'
 services:
   gitpitch:
     image: gitpitch/4.0
+    volumes:
+      - .:/repo
+    ports:
+      - "9000:9000"
+    environment:
+      - PORT=9000
+      - SWEEP=false
+```
+
+#### ** 3.0 Pro **
+
+```yaml
+version: '3'
+services:
+  gitpitch:
+    image: gitpitch/desktop:pro
     volumes:
       - .:/repo
     ports:
