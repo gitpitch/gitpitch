@@ -48,7 +48,7 @@ The simplest way to launch the desktop app using the command line is to create a
 alias gpd='docker run -it -v $PWD:/repo -p 9000:9000 gitpitch/trial'
 ```
 
-#### ** 4.0 Paid **
+#### ** 4.0 Pro **
 
 ```bash
 # Add GitPitch launch alias to your ~/.bashrc
@@ -112,7 +112,7 @@ You can launch the desktop app from any directory using the following `docker ru
 docker run -it -v {LOCALWORKINGDIR}:/repo -p 9000:9000 gitpitch/trial
 ```
 
-#### ** 4.0 Paid **
+#### ** 4.0 Pro **
 
 ```shell
 docker run -it -v {LOCALWORKINGDIR}:/repo -p 9000:9000 gitpitch/4.0
@@ -160,7 +160,7 @@ services:
       - SWEEP=false
 ```
 
-#### ** 4.0 Paid **
+#### ** 4.0 Pro **
 
 ```yaml
 version: '3'
