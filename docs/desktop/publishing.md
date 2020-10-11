@@ -1,10 +1,14 @@
 # Desktop Offline Publishing
 
-Using the desktop app you can export any slide deck as a PDF document or a PPTX slide deck with just one click.
+Using the desktop app you can export any slide deck with just one click:
+
+- As a PDF document
+- As a PPTX slide deck or
+- As a self-contained HTML bundle
 
 ![Screenshot showing the Desktop Offline Publishing Manager](../_images/gitpitch-desktop-offline-publishing.png)
 
-PDF is a highly portable document format that is great for sharing or printing any slide deck. While PPTX slides can be viewed in Microsoft PowerPoint, LibreOffice, Apple Keynote, and Google Slides.
+PDF is a highly portable document format that is great for sharing or printing any slide deck. PPTX slides can be viewed in Microsoft PowerPoint, LibreOffice, Apple Keynote, and Google Slides. While your HTML slides can be published by copying the exported files under your own website or [GitHub Pages](https://pages.github.com/).
 
 ### Settings
 

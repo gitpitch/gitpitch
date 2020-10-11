@@ -6,7 +6,7 @@ The [Desktop app](desktop/README.md) is a markdown presentation tool delivered u
 
 1. [Offline Slide Deck Development](#offline-development)
 1. [Offline Slide Deck Presenting](#offline-presenting)
-1. [Offline Publishing PDF + PPTX](#offline-publishing)
+1. [Offline Publishing PDF, PPTX, HTML](#offline-publishing)
 1. [Online Publishing on gitpitch.com](#online-publishing)
 
 ### Offline Development
@@ -35,11 +35,11 @@ Within the desktop app you can press the **S** key to launch the speaker window 
 
 !> To unlock offline publishing features for your slide decks [activate paid service](https://gitpitch.com/pricing).
 
-Beyond slide development and presenting the desktop app makes it very simple to share slide decks with your audience. With just one click the offline publishing manager lets you export any slide deck as a PDF document or a PPTX slide deck.
+Beyond slide development and presenting the desktop app makes it very simple to share slide decks with your audience. With just one click the offline publishing manager lets you export any slide deck as a PDF document, as a PPTX slide deck, or as a self-contained HTML bundle.
 
 ![Screenshot showing the Desktop Offline Publishing Manager](../_images/gitpitch-desktop-offline-publishing.png)
 
-PDF is a highly portable document format that is great for sharing or printing any slide deck. While PPTX slides can be viewed in Microsoft PowerPoint, LibreOffice, Apple Keynote, and Google Slides.
+PDF is a highly portable document format that is great for sharing or printing any slide deck. PPTX slides can be viewed in Microsoft PowerPoint, LibreOffice, Apple Keynote, and Google Slides. While your HTML slides can be published by copying the exported files under your own website or [GitHub Pages](https://pages.github.com/).
 
 For further details see the [Desktop Offline Publishing Guide](/desktop/publishing.md).
 

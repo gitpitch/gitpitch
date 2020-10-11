@@ -4,6 +4,15 @@ A high level change history for GitPitch projects. Unless otherwise indicated fi
 
 <br>
 
+## [Oct 11, 2020]
+### Added
+- Support for Slide Deck export to HTML
+- See the [Desktop Offline Publishing Guide](https://docs.gitpitch.com/#/desktop/publishing)
+
+![GITPITCH EXPORT](assets/changelog/gitpitch-desktop-offline-publishing.png)
+
+<br>
+
 ## [Oct 1, 2020]
 ### Released
 - Brand new product GitPitch 4.0

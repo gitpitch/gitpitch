@@ -82,7 +82,7 @@ $ gpd
 [info] WHITEBOARD ( Excalidraw ) service enabled.
 [info] COMPRESSION ( JPG - PNG - GIF ) service enabled.
 [info] SPEAKER ( Window - Notes - Remote ) service enabled.
-[info] PUBLISHING ( Offline - PDF - PPTX ) service enabled.
+[info] PUBLISHING ( Offline - PDF - PPTX - HTML ) service enabled.
 [info] PUBLISHING ( Online - Public - Private - Password ) service enabled.
 [info] Application started (Prod)
 [info] Listening for HTTP on /0.0.0.0:9000

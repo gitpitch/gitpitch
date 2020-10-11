@@ -13,7 +13,7 @@ With this release all barriers to getting started have been removed. No sign-up 
 
 ### GitPitch Desktop
 
-The [Desktop App](/desktop/README.md) has been given a makeover. A major makeover.  With a new user interface, improved navigation, an **embedded markdown editor**, and built-in help. The new desktop experience is a joy. The app is also at the heart of exciting new features including [Grid Layouts](#grid-layouts).
+The [Desktop App](/desktop/) has been given a makeover. A major makeover.  With a new user interface, improved navigation, an **embedded markdown editor**, and built-in help. The new desktop experience is a joy. The app is also at the heart of exciting new features including [Grid Layouts](#grid-layouts).
 
 ![Screenshot showing the desktop app in edit mode](../_images/gitpitch-desktop-offline-development.png)
 
@@ -23,11 +23,13 @@ At its core the GitPitch 4.0 redesign is built around a brand new grid layouts s
 
 ![GitPitch grid layouts sample slide screenshot](../_images/gitpitch-grid-layouts-about.png)
 
-### Grid Native 
+### PDF, PPTX, and HTML
 
-GitPitch has always supported rich slide content. From basic markdown, including text, lists, and images to more sophisticated and interactive content including live code presenting powered by *Markdown Widget Syntax*. In 4.0 widgets have been upgraded to become [100% Grid Native](/grid-layouts/native-widgets.md).
+Using the new desktop app you can now [export any slide deck](/desktop/publishing) with just one click. As a PDF document, as a PPTX slide deck, or as a self-contained HTML bundle that can be published by copying the exported files under your own website or GitHub Pages.
 
-![Sample slide demonstrating code trans behavior](../_images/gitpitch-code-behaviors-trans-bg.png)
+![Screenshot showing the Desktop Offline Publishing Manager](../_images/gitpitch-desktop-offline-publishing.png)
+
+You can also [publish and share](/cloud/) public, private, and password-protected slide decks on **gitpitch.com**.
 
 ### Synchronized Stacks
 

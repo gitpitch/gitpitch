@@ -56,7 +56,7 @@ With the **Desktop** app you can...
 - Enjoy live browser previews
 - Dedicated speaker support
 - And pixel-perfect slide export
-- To **PDF @fa[file-pdf]** and PowerPoint **PPTX @fa[file-powerpoint]**
+- To **PDF @fa[file-pdf]**, **PPTX @fa[file-powerpoint]**, and **HTML @fa[html5]**
 @ul
 
 [drag=60 100, drop=right, flow=stack, pad=0 40, sync=true]
@@ -233,4 +233,3 @@ Are you ready to
 [drag=100 15, drop=0 -0, set=bubblegum]
 
 [No sign-up or credit card needed. Start your free trial now @fa[external-link]](https://docs.gitpitch.com/#/whats-new-in-40)
-
