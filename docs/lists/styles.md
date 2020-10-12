@@ -28,6 +28,7 @@ The following built-in list bullet styles are available for use on the list widg
 - **list-alpha-bullets**
 - **list-roman-bullets**
 - **list-boxed-bullets**
+- **list-no-bullets**
 
 By activating one of these styles on your list widget you can control the item marker used for list items. The default style for unordered lists is the **disc** style.
 
