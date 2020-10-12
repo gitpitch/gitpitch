@@ -54,6 +54,9 @@ The following snippets demonstrate the basic structure of confidential slide dec
 # The default slide deck in the acmecorp/tech-talk repo, master branch.
 https://gitpitch.com/acmecorp/tech-talk
 
+# The default slide deck in the acmecorp/tech-talk repo, main branch.
+https://gitpitch.com/acmecorp/tech-talk/main
+
 # The default slide deck in the acmecorp/tech-talk repo, dev branch.
 https://gitpitch.com/acmecorp/tech-talk/dev
 
@@ -73,6 +76,9 @@ https://gitpitch.com/acmecorp/tech-talk/commitX?p=coding/intro
 # The default slide deck in the acmecorp/tech-talk repo, master branch.
 https://gitpitch.com/acmecorp/tech-talk?grs=gitlab
 
+# The default slide deck in the acmecorp/tech-talk repo, main branch.
+https://gitpitch.com/acmecorp/tech-talk/main?grs=gitlab
+
 # The default slide deck in the acmecorp/tech-talk repo, dev branch.
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=gitlab
 
@@ -91,6 +97,9 @@ https://gitpitch.com/acmecorp/tech-talk/commitX?grs=gitlab&p=coding/intro
 ```bash
 # The default slide deck in the acmecorp/tech-talk repo, master branch.
 https://gitpitch.com/acmecorp/tech-talk?grs=bitbucket&s=sneakpEEk
+
+# The default slide deck in the acmecorp/tech-talk repo, main branch.
+https://gitpitch.com/acmecorp/tech-talk/main?grs=bitbucket&s=sneakpEEk
 
 # The default slide deck in the acmecorp/tech-talk repo, dev branch.
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=bitbucket&s=sneakpEEk
