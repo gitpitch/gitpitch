@@ -52,7 +52,7 @@ The following snippets demonstrate the basic structure of confidential slide dec
 
 ```bash
 # The default slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk
+https://gitpitch.com/acmecorp/tech-talk/master
 
 # The default slide deck in the acmecorp/tech-talk repo, main branch.
 https://gitpitch.com/acmecorp/tech-talk/main
@@ -61,7 +61,7 @@ https://gitpitch.com/acmecorp/tech-talk/main
 https://gitpitch.com/acmecorp/tech-talk/dev
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk?p=coding/intro
+https://gitpitch.com/acmecorp/tech-talk/master?p=coding/intro
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
 https://gitpitch.com/acmecorp/tech-talk/tagX?p=coding/intro
@@ -74,7 +74,7 @@ https://gitpitch.com/acmecorp/tech-talk/commitX?p=coding/intro
 
 ```bash
 # The default slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk?grs=gitlab
+https://gitpitch.com/acmecorp/tech-talk/master?grs=gitlab
 
 # The default slide deck in the acmecorp/tech-talk repo, main branch.
 https://gitpitch.com/acmecorp/tech-talk/main?grs=gitlab
@@ -83,7 +83,7 @@ https://gitpitch.com/acmecorp/tech-talk/main?grs=gitlab
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=gitlab
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk?grs=gitlab&p=coding/intro
+https://gitpitch.com/acmecorp/tech-talk/master?grs=gitlab&p=coding/intro
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
 https://gitpitch.com/acmecorp/tech-talk/tagX?grs=gitlab&p=coding/intro
@@ -96,7 +96,7 @@ https://gitpitch.com/acmecorp/tech-talk/commitX?grs=gitlab&p=coding/intro
 
 ```bash
 # The default slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk?grs=bitbucket&s=sneakpEEk
+https://gitpitch.com/acmecorp/tech-talk/master?grs=bitbucket&s=sneakpEEk
 
 # The default slide deck in the acmecorp/tech-talk repo, main branch.
 https://gitpitch.com/acmecorp/tech-talk/main?grs=bitbucket&s=sneakpEEk
@@ -105,7 +105,7 @@ https://gitpitch.com/acmecorp/tech-talk/main?grs=bitbucket&s=sneakpEEk
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=bitbucket&s=sneakpEEk
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk?grs=bitbucket&p=coding/intro
+https://gitpitch.com/acmecorp/tech-talk/master?grs=bitbucket&p=coding/intro
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
 https://gitpitch.com/acmecorp/tech-talk/tagX?grs=bitbucket&p=coding/intro
