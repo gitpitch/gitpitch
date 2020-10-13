@@ -46,21 +46,23 @@ Password-protected token management is as simple as adding and removing tokens o
 
 The following snippets demonstrate the basic structure of confidential slide deck URLs on **gitpitch.com**. Decks can be uniquely identified using PITCHME.md paths, branch names, tag names, and commit ids.
 
+?> If the files for your slide deck are maintained within  a branch named **master** you can omit the branch name from the URL for your slide deck. All other branches require the branch name to be specified on the URL.
+
 <!-- tabs:start -->
 
 #### ** GitHub Deck**
 
 ```bash
-# The default slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk/master
+# The default slide deck in the acmecorp/tech-talk repo, branch named "master".
+https://gitpitch.com/acmecorp/tech-talk
 
-# The default slide deck in the acmecorp/tech-talk repo, main branch.
+# The default slide deck in the acmecorp/tech-talk repo, branch named "main".
 https://gitpitch.com/acmecorp/tech-talk/main
 
-# The default slide deck in the acmecorp/tech-talk repo, dev branch.
+# The default slide deck in the acmecorp/tech-talk repo, branch named "dev".
 https://gitpitch.com/acmecorp/tech-talk/dev
 
-# The coding/intro slide deck in the acmecorp/tech-talk repo, master branch.
+# The coding/intro slide deck in the acmecorp/tech-talk repo, branch named "master".
 https://gitpitch.com/acmecorp/tech-talk/master?p=coding/intro
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
@@ -73,16 +75,16 @@ https://gitpitch.com/acmecorp/tech-talk/commitX?p=coding/intro
 #### ** GitLab Deck**
 
 ```bash
-# The default slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk/master?grs=gitlab
+# The default slide deck in the acmecorp/tech-talk repo, branch named "master".
+https://gitpitch.com/acmecorp/tech-talk?grs=gitlab
 
-# The default slide deck in the acmecorp/tech-talk repo, main branch.
+# The default slide deck in the acmecorp/tech-talk repo, branch named "main".
 https://gitpitch.com/acmecorp/tech-talk/main?grs=gitlab
 
-# The default slide deck in the acmecorp/tech-talk repo, dev branch.
+# The default slide deck in the acmecorp/tech-talk repo, branch named "dev".
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=gitlab
 
-# The coding/intro slide deck in the acmecorp/tech-talk repo, master branch.
+# The coding/intro slide deck in the acmecorp/tech-talk repo, branch named "master".
 https://gitpitch.com/acmecorp/tech-talk/master?grs=gitlab&p=coding/intro
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
@@ -95,16 +97,16 @@ https://gitpitch.com/acmecorp/tech-talk/commitX?grs=gitlab&p=coding/intro
 #### ** Bitbucket Deck**
 
 ```bash
-# The default slide deck in the acmecorp/tech-talk repo, master branch.
-https://gitpitch.com/acmecorp/tech-talk/master?grs=bitbucket&s=sneakpEEk
+# The default slide deck in the acmecorp/tech-talk repo, branch named "master".
+https://gitpitch.com/acmecorp/tech-talk?grs=bitbucket&s=sneakpEEk
 
-# The default slide deck in the acmecorp/tech-talk repo, main branch.
+# The default slide deck in the acmecorp/tech-talk repo, branch named "main".
 https://gitpitch.com/acmecorp/tech-talk/main?grs=bitbucket&s=sneakpEEk
 
-# The default slide deck in the acmecorp/tech-talk repo, dev branch.
+# The default slide deck in the acmecorp/tech-talk repo, branch named "dev".
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=bitbucket&s=sneakpEEk
 
-# The coding/intro slide deck in the acmecorp/tech-talk repo, master branch.
+# The coding/intro slide deck in the acmecorp/tech-talk repo, branch named "master".
 https://gitpitch.com/acmecorp/tech-talk/master?grs=bitbucket&p=coding/intro
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 

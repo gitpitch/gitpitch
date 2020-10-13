@@ -22,7 +22,7 @@ GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, 
 - GitPitch is a markdown presentation tool for MacOS, Linux, and Windows 10.
 - GitPitch Desktop lets you develop, preview, and present markdown presentations offline.
 - Using modular markdown to deliver modular decks...perfect for training and course content.
-- Export your markdown presentations to PDF, PowerPoint PPTX, and HTML.
+- Export your markdown presentations to PDF, PPTX, and HTML.
 - And publish and share your markdown presentations online at [gitpitch.com](https://gitpitch.com).
 - To publish any deck just *git-push* to any repo on GitHub, GitLab, or Bitbucket.
 - And share it as a public, private, or password-protected slide deck on [gitpitch.com](https://gitpitch.com).
