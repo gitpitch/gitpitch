@@ -35,6 +35,8 @@ You can also [publish and share](/cloud/) public, private, and password-protecte
 
 Rendering simple list content remains a core feature for most presentation tools. With the release of [Grid Stacks](/grid-layouts/stacks) 4.0 introduces brand new rendering behaviors for rich slide content. Including code, diagrams, videos, math formulas and more. These behaviors combined with **slide content synchronizations** across both stack and list content are [a joy to behold](/grid-layouts/synchronization).
 
+![Short screencast demonstrating grid synchronization](../_images/gitpitch-grid-layouts-sync.gif)
+
 ### Modular Markdown
 
 With GitPitch you manage your slide decks and training materials the same way you manage code. Your slide markdown is modular by design. And natively under Git version control. In 4.0 modular markdown support has taken **giant leaps forward** with the introduction of [Markdown Injection](/modular-markdown/injection.md), [Markdown Variables](/modular-markdown/variables.md), [Markdown Globals](/modular-markdown/globals.md), and [Markdown Templates](/modular-markdown/templates.md). If you are building training or course materials these exciting new modularization features are a must see.

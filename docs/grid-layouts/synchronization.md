@@ -2,6 +2,8 @@
 
 The grid *sync* property is used to synchronize behavior across fragment-aware elements on a slide. Fragment-aware elements include [lists](/lists/widget.md) and [stacks](/grid-layouts/stacks.md). When `sync=true` is activated it permits the simultaneous display of fragments across all participating slide elements.
 
+![Short screencast demonstrating grid synchronization](../_images/gitpitch-grid-layouts-sync.gif)
+
 ?> Synchronized fragments can help you to focus an audience's attention on key concepts.
 
 ### Sync Activation
