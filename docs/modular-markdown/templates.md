@@ -1,6 +1,6 @@
 # Markdown Templates
 
-A [markdown injection widget](/modular-markdown/injection.md) provide a simple way to inject a reusable markdown snippet on **any** slide. A markdown template provides a simple way to inject a reusable markdown snippet on **every** slide.
+A [markdown injection widget](/modular-markdown/injection.md) provides a simple way to inject a reusable markdown snippet on **any** slide. A markdown template provides a simple way to inject a reusable markdown snippet on **every** slide.
 
 Templates are perfect for injecting custom branding or core messaging across all sides in your slide decks. For example, you could advertise your project using it's name and logo. You could promote your company website. Or add a note of appreciation to sponsors at a meetup or conference.
 
