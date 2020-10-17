@@ -1,6 +1,6 @@
 # Markdown Includes
 
-A [markdown injection widget](/modular-markdown/injection.md) provide a simple way to inject a **reusable markdown snippet** on any slide. Markdown includes provide a simple way to inject **reusable slides** into any slide deck.
+A [markdown injection widget](/modular-markdown/injection.md) provides a simple way to inject a **reusable markdown snippet** on any slide. Markdown includes provide a simple way to inject **reusable slides** into any slide deck.
 
 ?> Markdown includes are one more way GitPitch supports modular design for slide decks.
 
