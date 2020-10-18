@@ -1,5 +1,7 @@
 # Desktop Offline Publishing
 
+!> To unlock offline publishing features for your slide decks [activate paid service](https://gitpitch.com/pricing).
+
 Using the desktop app you can export any slide deck with just one click:
 
 - As a PDF document

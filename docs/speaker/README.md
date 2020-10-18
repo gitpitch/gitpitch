@@ -1,5 +1,7 @@
 # Speaker Support
 
+!> To unlock speaker support for your slide decks [activate paid service](https://gitpitch.com/pricing).
+
 GitPitch slide decks offer a number of dedicated features tailored specifically for conference speakers and training instructors.
 
 - [Speaker Notes](/speaker/notes.md)
