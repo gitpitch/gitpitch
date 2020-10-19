@@ -53,6 +53,7 @@
 - Grid Behaviors
 
   - [Grid Set](grid-layouts/set.md)
+  - [Grid Alignment](grid-layouts/alignment.md)
   - [Grid Fragments](grid-layouts/fragments.md)
   - [Grid Synchronization](grid-layouts/synchronization.md)
   - [Grid Animations](grid-layouts/animations.md)
