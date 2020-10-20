@@ -1,6 +1,6 @@
 # Grid Layouts Flow
 
-Grid layouts [drag-and-drop](/grid-layouts/drag-and-drop.md) both sizes and positions content on your slides. This is achieved using a simple concept called a block. The grid *flow* property on a block is used to control the layout of content within the block.
+Grid layouts [drag-and-drop](/grid-layouts/drag-and-drop.md) both sizes and positions content on your slides. This is achieved using a simple concept called a block. The grid *flow* property on a block is used to control the layout and spacing of content within the block.
 
 ?> When discussing grid layouts *content-within-blocks* are referred to as *block items*.
 
