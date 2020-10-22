@@ -14,7 +14,9 @@ This guide assumes that you have successfully [downloaded the desktop app](/desk
 
 ?> To use the Docker Dashboard you must install or update to Docker Desktop 2.2 or later. You can download the latest release of Docker Desktop [here](https://www.docker.com/products/docker-desktop).
 
-The Docker Dashboard provides an intuitive UI that you can use to manage and launch GitPitch Desktop. This is now the recommended approach for launching GitPitch Desktop. If you prefer to work with a CLI at the command line see the other launch options detailed in this guide.
+The Docker Dashboard provides an intuitive UI that you can use to manage and launch GitPitch Desktop. For users that prefer to work in a UI this is the recommended approach for launching GitPitch Desktop.
+
+**If you prefer to work at the command line go directly to the [bash alias launch](#use-a-bash-alias) instructions.**
 
 The following short video introduces Docker Dashboard and demonstrates how it can be used to quickly launch GitPitch Desktop:
 
