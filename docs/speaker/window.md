@@ -16,7 +16,7 @@ To open the speaker window within any slide deck simply press the `S` key on you
 
 There are times when you may want to disable the speaker window functionality for a slide deck. For example when you [publish and share](/cloud/) a slide deck with your audience online following a tech conference or meetup.
 
-To turn off speaker window funtionality disable the `speaker-mode` property in the [PITCHME.yaml](/conventions/pitchme-yaml/md) settings for your slide deck:
+To turn off speaker window funtionality disable the `speaker-mode` property in the [PITCHME.yaml](/conventions/pitchme-yaml) settings for your slide deck:
 
 ```yaml
 speaker-mode : false

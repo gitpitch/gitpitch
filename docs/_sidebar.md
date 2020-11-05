@@ -21,6 +21,7 @@
   - [Modes](desktop/app-modes.md)
   - [Publishing](desktop/publishing.md)
   - [Tools](desktop/tools.md)
+  - [OBS Studio](desktop/obs.md)
   - [FAQ](desktop/faq.md)
 
 - GitPitch Cloud
