@@ -1,6 +1,6 @@
 # Desktop OBS Studio
 
-GitPitch Desktop intregrates with [OBS Studio](https://obsproject.com/) to deliver a seamless GitPitch/OBS presentation experience whether you are live streaming or video recording.
+GitPitch Desktop integrates with [OBS Studio](https://obsproject.com/) to deliver a seamless GitPitch/OBS presentation experience whether you are live streaming or video recording.
 
 1. Present a new slide or slide fragment.
 1. And have GitPitch Desktop automatically activate a new OBS scene for your audience.
