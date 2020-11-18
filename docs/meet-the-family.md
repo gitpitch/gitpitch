@@ -2,7 +2,7 @@
 
 ### About Me
 
-Hi, I'm David. The solo founder and developer of GitPitch. I've been flipping bits for over 30 years. Working on everything from Linux kernel device drivers, the Java platform at Sun Microsystems, to cardiac medical systems at startups, and big data analytics engines acquired by Microsoft. These days I spend my time crafting all things GitPitch.
+Hi, I'm David. The solo founder and developer of GitPitch. I've been flipping bits for work and pleasure for over 30 years. These days I spend my time crafting all things GitPitch.
 
 ### GitPitch Desktop
 
