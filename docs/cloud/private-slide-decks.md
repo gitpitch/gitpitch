@@ -25,13 +25,13 @@ To publish a private slide deck using a *private* repository on GitHub, GitLab, 
 The following *PITCHME.yaml* snippet demonstrates a single value on the `stealth` setting:
 
 ```yaml
-stealth: 091827
+stealth: X91827
 ```
 
 The following *PITCHME.yaml* snippet demonstrates multiple values on the `stealth` setting:
 
 ```yaml
-stealth: 091827, AcmeCorp, sneakpEEk
+stealth: X91827, AcmeCorp, sneakpEEk
 ```
 
 Note, all stealth tokens are case-sensitive.
@@ -61,13 +61,13 @@ https://gitpitch.com/acmecorp/tech-talk/main?s=sneakpEEk
 https://gitpitch.com/acmecorp/tech-talk/dev?s=sneakpEEk
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, branch named "master".
-https://gitpitch.com/acmecorp/tech-talk/master?p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/master?p=coding/intro&s=X91827
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
-https://gitpitch.com/acmecorp/tech-talk/tagX?p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/tagX?p=coding/intro&s=X91827
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at commitX. 
-https://gitpitch.com/acmecorp/tech-talk/commitX?p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/commitX?p=coding/intro&s=X91827
 ```
 
 #### ** GitLab Deck**
@@ -83,13 +83,13 @@ https://gitpitch.com/acmecorp/tech-talk/main?grs=gitlab&s=sneakpEEk
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=gitlab&s=sneakpEEk
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, branch named "master".
-https://gitpitch.com/acmecorp/tech-talk/master?grs=gitlab&p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/master?grs=gitlab&p=coding/intro&s=X91827
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
-https://gitpitch.com/acmecorp/tech-talk/tagX?grs=gitlab&p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/tagX?grs=gitlab&p=coding/intro&s=X91827
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at commitX. 
-https://gitpitch.com/acmecorp/tech-talk/commitX?grs=gitlab&p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/commitX?grs=gitlab&p=coding/intro&s=X91827
 ```
 
 #### ** Bitbucket Deck**
@@ -105,13 +105,13 @@ https://gitpitch.com/acmecorp/tech-talk/main?grs=bitbucket&s=sneakpEEk
 https://gitpitch.com/acmecorp/tech-talk/dev?grs=bitbucket&s=sneakpEEk
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, branch named "master".
-https://gitpitch.com/acmecorp/tech-talk/master?grs=bitbucket&p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/master?grs=bitbucket&p=coding/intro&s=X91827
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at tagX. 
-https://gitpitch.com/acmecorp/tech-talk/tagX?grs=bitbucket&p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/tagX?grs=bitbucket&p=coding/intro&s=X91827
 
 # The coding/intro slide deck in the acmecorp/tech-talk repo, at commitX. 
-https://gitpitch.com/acmecorp/tech-talk/commitX?grs=bitbucket&p=coding/intro&s=091827
+https://gitpitch.com/acmecorp/tech-talk/commitX?grs=bitbucket&p=coding/intro&s=X91827
 ```
 
 <!-- tabs:end -->
