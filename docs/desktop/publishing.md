@@ -129,6 +129,7 @@ When exporting GitPitch slide decks to PDF, PPTX, and HTML there are a number of
 
 - Speaker notes are disabled on export.
 - Grid Animations are disabled on export.
+- Table of contents are disabled on export.
 - Video and Asciinema playback are disabled on export.
 - Animated GIFs are exported as a single static image.
 
