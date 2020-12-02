@@ -1,15 +1,15 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
 
+> Service on [gitpitch.com](https://gitpitch.com) is shutting down on March 1, 2021.
+
 ## GitPitch 4.0
 
-#### WEBSITE: [www.gitpitch.com](https://gitpitch.com) | HOW-TO : [GitPitch Docs](https://docs.gitpitch.com/#/) | TWITTER: [@gitpitch](https://twitter.com/gitpitch)
+- [Docs](https://docs.gitpitch.com)
+- [Twitter](https://twitter.com/gitpitch)
 
 ### About
 
-GitPitch 4.0 was released on October 1, 2020.
-
 - Watch the [Introducing GitPitch 4.0 Video](https://www.youtube.com/watch?v=MT88pCE291I)
-- View the [Introducing GitPitch 4.0 Slide Deck](https://gitpitch.com/gitpitch/gitpitch)
 - Visit the [What's New in GitPitch 4.0 Guide](https://docs.gitpitch.com/#/whats-new-in-40)
 - Go directly to the [GitPitch 4.0 Quickstart Guide](https://docs.gitpitch.com/#/quickstart)
 
@@ -40,6 +40,4 @@ The official GitPitch docs are maintained in this repository under the [docs](/d
 GitPitch began as an open-source project back in 2016.  Since early 2017 I have been working full time developing a number of [GitPitch products and services](https://docs.gitpitch.com/#/meet-the-family) most of which are maintained in private repositories.
 
 This repository is now used to maintain the official GitPitch docs. You can also use this repository to report issues and request features for all GitPitch products using GitHub [issue tracking](https://github.com/gitpitch/gitpitch/issues).
-
-The GitPitch project is actively under development. Fixes, features and even new products are being added all the time. For details see the [CHANGELOG](CHANGELOG.md). For announcements, follow me on [Twitter](https://twitter.com/gitpitch).
 
