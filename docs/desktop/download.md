@@ -4,16 +4,7 @@
 
 ### Trial Edition
 
-The trial edition of the [Desktop app](/desktop/README.md) is delivered as a Docker image and available for use on MacOS, Linux, and Windows 10.
-
-The trial image is maintained within a *public* repository on Docker Hub. No prior authorization is required to access this public image. To download simply run the following command in a local shell:
-
-```shell
-docker pull gitpitch/trial
-```
-
-Once your download completes see the [Desktop Launch Guide](/desktop/launch.md).
-
+The trial software is no longer available. GitPitch is shutting down on March 1, 2021.
 
 ### Paid Edition
 
