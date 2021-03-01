@@ -1,6 +1,4 @@
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/gitpitch/gitpitch/master) [![Build Status](https://semaphoreci.com/api/v1/onetapbeyond/gitpitch/branches/master/shields_badge.svg)](https://semaphoreci.com/onetapbeyond/gitpitch)
-
-> Service on [gitpitch.com](https://gitpitch.com) is shutting down on March 1, 2021.
+> March 1, 2021: Service on **gitpitch.com** has been shutdown permanently.
 
 ## GitPitch 4.0
 
@@ -21,11 +19,11 @@ GitPitch 4.0 is the perfect slide deck solution for tech conferences, training, 
 
 - GitPitch is a markdown presentation tool for MacOS, Linux, and Windows 10.
 - GitPitch Desktop lets you develop, preview, and present markdown presentations offline.
-- Using modular markdown to deliver modular decks...perfect for training and course content.
+- Using modular markdown to deliver modular decks.
 - Export your markdown presentations to PDF, PPTX, and HTML.
-- And publish and share your markdown presentations online at [gitpitch.com](https://gitpitch.com).
+- And publish and share your markdown presentations online.
 - To publish any deck just *git-push* to any repo on GitHub, GitLab, or Bitbucket.
-- And share it as a public, private, or password-protected slide deck on [gitpitch.com](https://gitpitch.com).
+- And share it as a public, private, or password-protected slide deck.
 
 <br>
 
